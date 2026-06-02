@@ -1,0 +1,65 @@
+{
+  "id": "simulatorde-baslama",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "FPV öğrenirken neden önce simülatörde başlamak önerilir?",
+      "options": [
+        "Çünkü simülatörde uçmak gerçeğinden daha zordur, böylece kendini zorlarsın",
+        "Çünkü ucuz, güvenli ve sınırsız pratik sağlar; düşersen parça kırmaz veya kimseye zarar vermezsin",
+        "Çünkü simülatörde uçmak yasal olarak zorunludur",
+        "Çünkü gerçek drone'lar simülatör olmadan açılmaz"
+      ],
+      "answerIndex": 1,
+      "explanation": "Simülatör bedavadır, kimseye zarar veremezsin ve sınırsızca tekrar yapabilirsin. İlk düşüşlerini burada yaşamak hem parayı hem stresi ortadan kaldırır."
+    },
+    {
+      "id": "q2",
+      "prompt": "Aşağıdakilerden hangisi popüler bir FPV simülatörü DEĞİLDİR?",
+      "options": [
+        "Liftoff",
+        "Velocidrone",
+        "DRL (Drone Racing League) Sim",
+        "Photoshop"
+      ],
+      "answerIndex": 3,
+      "explanation": "Liftoff, Velocidrone, Uncrashed ve DRL Sim popüler FPV simülatörleridir. Photoshop bir görüntü düzenleme programıdır, uçuşla ilgisi yoktur."
+    },
+    {
+      "id": "q3",
+      "prompt": "Kendi FPV kumandanı simülatörde kullanmak için en pratik yol nedir?",
+      "options": [
+        "Kumandayı USB ile bağlayıp 'USB Joystick' (oyun kolu) modunu seçmek",
+        "Kumandayı hiç bağlamayıp fareyle uçmak",
+        "Kumandanın bataryasını çıkarmak",
+        "Telefonu kumandanın üstüne koymak"
+      ],
+      "answerIndex": 0,
+      "explanation": "Kumandayı USB kablosuyla bağlayıp 'USB Joystick' modunu seçmek, onu ekstra donanım olmadan doğrudan oyun kolu gibi tanıtan en pratik yoldur."
+    },
+    {
+      "id": "q4",
+      "prompt": "Simülatörde çubukları kalibre etmemek neden sorun yaratır?",
+      "options": [
+        "Simülatör hiç açılmaz",
+        "Grafikler bozuk görünür",
+        "Drone, sen çubuğu bırakmadan kaymaya devam edebilir ve baştan yanlış alışkanlık edinirsin",
+        "Kumandanın bataryası daha hızlı biter"
+      ],
+      "answerIndex": 2,
+      "explanation": "Yanlış kalibrasyon, çubuk ortadayken bile drone'un kaymasına yol açar. Bu, daha en baştan hatalı kontrol alışkanlığı edinmene neden olur."
+    },
+    {
+      "id": "q5",
+      "prompt": "Simülatörde öğrenilen çubuk kontrolü (stick control) gerçek drone'a nasıl yansır?",
+      "options": [
+        "Hiç yansımaz; simülatör tamamen farklı bir beceri öğretir",
+        "Aynı çubuk hareketleri ve refleksler gerçek drone'da da işe yarar; kas hafızası tekrarla oluşur",
+        "Sadece yarış drone'larında işe yarar, freestyle'da işe yaramaz",
+        "Yalnızca aynı marka drone alırsan işe yarar"
+      ],
+      "answerIndex": 1,
+      "explanation": "Simülatörde edindiğin çubuk hissi ve kas hafızası doğrudan gerçek drone'a aktarılır. Bu yüzden profesyonel pilotlar bile antrenman için simülatör kullanır."
+    }
+  ]
+}

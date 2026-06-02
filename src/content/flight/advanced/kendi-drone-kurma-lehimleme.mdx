@@ -1,0 +1,99 @@
+---
+id: kendi-drone-kurma-lehimleme
+track: flight
+level: advanced
+order: 3
+title: "Kendi drone'unu kurma ve lehimleme"
+summary: "Sıfırdan bir FPV drone kurmanın temellerini anlatır: parça uyumu (frame/motor/ESC/FC eşleşmesi), güvenli lehimleme, sıralı montaj ve ilk açılış öncesi smoke-stopper ile duman testi (smoke check)."
+estimatedMinutes: 14
+objectives:
+  - "Frame, motor, ESC ve FC'nin birbiriyle nasıl uyumlu seçildiğini açıklayabilmek"
+  - "Güvenli lehimlemenin temel kurallarını (havalandırma, sıcaklık, kalay) söyleyebilmek"
+  - "Bir drone'un mantıklı (sıralı) montaj adımlarını sıralayabilmek"
+  - "İlk açılış öncesi smoke-stopper / duman testinin (smoke check) neden hayati olduğunu anlamak"
+prerequisites: ["temel-ariza-cozme"]
+quizId: kendi-drone-kurma-lehimleme
+---
+
+# Kendi drone'unu kurma ve lehimleme
+
+Hazır drone uçurmak güzeldir, ama FPV'nin gerçek özgürlüğü **kendi drone'unu kurmaktır**: parçaları sen seçer, sen lehimler, sen ayarlarsın. Bu ders bir adım adım montaj kılavuzu değil; **doğru zihniyeti** ve **güvenlik temellerini** verir, çünkü en sık hatalar burada yapılır.
+
+## 1. Parça uyumu: her şey birbirine bağlıdır
+
+Bir drone, rastgele toplanmış parçaların bir araya gelmesi değildir. **Frame, motor, ESC ve FC** bir takım gibi birbiriyle uyumlu seçilmelidir. Tek bir uyumsuzluk tüm kurulumu çöpe çevirebilir.
+
+<PartHighlight part="frame" />
+
+Her şey **frame** ile başlar, çünkü frame hangi **pervane boyutunu** kullanacağını belirler (ör. 5 inç frame → 5 inç pervane). Pervane boyutu da motor ve batarya seçimini zincirleme etkiler. Ayrıca frame'in **FC montaj standardı** (en yaygın olarak 30.5x30.5 mm) elektroniğinle uyuşmalıdır; 30.5 bekleyip 20x20 frame almak parçaların oturmaması demektir.
+
+<PartHighlight part="motors" />
+
+**Motorlar**, kullandığın **batarya hücre sayısına (S)** göre seçilir. Motorun hızı KV ile anılır: batarya voltajı arttıkça (ör. 4S'ten 6S'e) motor daha hızlanır, bu yüzden 6S'te **daha düşük KV** seçersin. Yanlış eşleşme (ör. 6S'te çok yüksek KV) motoru ve ESC'yi yakar.
+
+<PartHighlight part="esc" />
+
+**ESC**'de en kritik değer **akım kapasitesidir (Amper)**: ESC'nin verebileceği akım, motorların çekeceği tepe akımdan **yüksek** olmalı (pay bırakmak güvenlidir). Ayrıca desteklediği batarya hücre aralığı (ör. 3-6S) motorun/bataryanla uyuşmalı.
+
+<PartHighlight part="fc" />
+
+**FC** (uçuş kontrolcüsü), frame'le aynı **montaj standardında** olmalı ve bağlayacağın cihazlar (alıcı, VTX, GPS) için yeterli **UART** sayısına sahip olmalı. Çoğu zaman FC ve ESC, birbiriyle uyumlu bir **"stack"** olarak birlikte satılır; yeni başlayan için bu en güvenli yoldur.
+
+<Callout type="tip">
+Pratik kural: **Önce frame ve pervane boyutuna karar ver**, sonra zinciri takip et: pervane → motor (+ batarya S) → ESC (akım) → FC (montaj + UART). Emin değilsen uyumlu satılan bir FC+ESC "stack" ve hazır bir "parça listesi (build list)" temel almak, uyumsuzluk riskini büyük ölçüde azaltır.
+</Callout>
+
+## 2. Lehimleme güvenliği
+
+Kurulumun kalbi **lehimlemedir**: parçaları elektriksel olarak birleştirmek. İyi lehim hem güvenli hem güvenilir uçuş demektir; kötü lehim ise havada bağlantı kopması veya yangın demektir.
+
+<KeyTerm en="solder">Lehim (solder/kalay)</KeyTerm> ve havya (lehim ucu) ile çalışırken temel güvenlik kuralları:
+
+- **Havalandırma:** Lehim dumanını (özellikle reçine/flux dumanı) doğrudan solumayın; havalandırılan bir ortamda ve mümkünse bir duman emici/fan ile çalışın.
+- **Sıcaklık:** Havyayı yeterince sıcak tut (genelde ~320-360 °C aralığı tipiktir). **Çok soğuk** havya "soğuk lehim" (mat, çatlak, zayıf bağlantı) yapar; **çok sıcak** havya pad'i kaldırır veya parçayı yakar. Hedef: pad'i hızlıca ısıtıp kalayı akıtıp **çekmek** — uzun süre beklememek.
+- **Kalay (solder):** Hobi elektroniğinde reçine özlü (flux'lı) kalay kullanılır. İyi bir lehim **parlak ve içbükey** görünür; topak gibi, mat veya tepe gibi duran lehim şüphelidir.
+- **Güvenlik:** Sıcak havyayı asla başıboş bırakma; lehim sıçramalarına karşı gözünü koru; çalıştıktan sonra ellerini yıka (kurşunlu kalay kullanıyorsan özellikle).
+
+<Callout type="warning">
+**Soğuk lehim sinsi bir tehlikedir.** Yerde sağlam görünen ama aslında zayıf olan bir bağlantı, uçuştaki titreşim ve akımla kopabilir; bu da havada güç kaybı veya bağlantı arızası demektir. Her lehimi yaptıktan sonra hafifçe çek/kontrol et — parlak ve sağlam mı?
+</Callout>
+
+<DemoPlaceholder title="İyi lehim vs soğuk lehim" note="Yakın çekim iki pad: solda parlak, içbükey, pürüzsüz 'iyi' lehim; sağda mat, topak, tepe gibi duran 'soğuk' lehim. Yanında havya sıcaklık göstergesi: çok düşük = soğuk lehim, çok yüksek = pad kalkması. Doğru aralık vurgulansın." />
+
+## 3. Sıralı (mantıklı) montaj
+
+Montajı rastgele değil, **erişimi kolaydan zora** doğru yaparsın. Tipik bir sıra:
+
+1. **Hazırlık:** Tüm parçaları, lehim ekipmanını ve build list'i önüne diz. Uyumu son kez kontrol et.
+2. **Motorları frame'e** vidala (vida boyuna dikkat — çok uzun vida motor sargısını keser).
+3. **ESC'yi yerleştir**, motor kablolarını ESC'ye lehimle; batarya güç kablosunu ve (varsa) kondansatörü ESC'ye lehimle.
+4. **FC'yi ESC'nin üstüne** stack olarak monte et (titreşim damperleriyle), ESC-FC kablosunu tak.
+5. **Alıcı (RX) ve VTX**'i FC'ye doğru UART'lara bağla (TX-RX çapraz!), güç hatlarına dikkat et.
+6. **Kamera**'yı ön kafese, anteni arkaya yerleştir; kabloları toparla.
+7. **Pervaneleri en sona** tak — ve ilk testleri **pervanesiz** yap.
+
+<Callout type="warning">
+**Pervaneleri her zaman en son tak ve ilk açılış/testleri kesinlikle pervanesiz yap.** Yanlışlıkla arm olan ve dönen bir motor, takılı bir pervaneyle parmağını ciddi şekilde kesebilir. Test (motor yönü, ayarlar) pervaneler çıkarılıyken yapılır.
+</Callout>
+
+## 4. İlk açılış: smoke-stopper ve duman testi (smoke check)
+
+Lehimledin, monte ettin — ama bataryayı **doğrudan** takmak en riskli andır. Eğer bir yerde ters polarite veya kısa devre varsa, LiPo anında çok yüksek akım verir ve parçalar **duman çıkararak yanar** (hatta alev alır).
+
+İşte bu yüzden ilk açılışta bir <KeyTerm en="smoke stopper">smoke-stopper</KeyTerm> kullanılır: bataryayla drone arasına bağlanan, akımı sınırlayan küçük bir koruma cihazıdır. Bir hata varsa, smoke-stopper akımı kısar; parçaların yanmak yerine sadece "uyarı verir" (ışık yanar / güç geçmez). Böylece pahalı bir hatayı **dumansız** yakalarsın.
+
+<KeyTerm en="smoke check">Smoke check</KeyTerm> (duman testi) mantığı:
+
+1. **Görsel kontrol:** Bataryayı takmadan önce gözle bak — ters lehim, açık tel ucu, birbirine değen pad var mı? Kondansatör kutbu (+/-) doğru mu?
+2. **Smoke-stopper ile ilk güç:** Bataryayı doğrudan değil, smoke-stopper üzerinden ver. Anormal bir durum (smoke-stopper uyarısı, ısınma, koku) varsa **hemen** ayır ve hatayı bul.
+3. **Her şey normalse:** Smoke-stopper sorun göstermiyorsa, bilgisayara bağlanıp ayarları (Betaflight) yap, motor yönlerini **pervanesiz** kontrol et, ve ancak her şey doğruyken sahaya çık.
+
+<Callout type="warning">
+Ters polarite (batarya +/- ters lehimi) bir drone'u **anında** öldüren en yaygın hatadır. İlk bağlantıyı **asla** doğrudan tam akımla yapma; bir smoke-stopper birkaç saniyelik iş ama yüzlerce liralık elektroniği (ve yangın riskini) önler.
+</Callout>
+
+<DemoPlaceholder title="Smoke-stopper ile ilk açılış" note="Şema: batarya → smoke-stopper → drone. İki senaryo: (1) Kısa devre/ters polarite varsa smoke-stopper kırmızı yanıp akımı kesiyor, drone güvende. (2) Her şey doğruysa yeşil yanıyor ve güç normal geçiyor. Doğrudan bağlamanın (smoke-stopper'sız) parçaları nasıl yaktığını da bir 'yapma' karesiyle göster." />
+
+<Callout type="info">
+**Özet:** Frame ile başla, uyum zincirini takip et (pervane → motor + batarya S → ESC akımı → FC montaj/UART). Lehimi havalandırılan ortamda, doğru sıcaklıkta, parlak ve sağlam yap; soğuk lehimden kaçın. Montajı sıralı yap, **pervaneleri en sona**. İlk açılışı **smoke-stopper ile** yaparak duman testini (smoke check) geç — ters polariteyi dumansız yakala. Şimdi mini quiz!
+</Callout>

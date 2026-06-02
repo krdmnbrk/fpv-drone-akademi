@@ -1,0 +1,70 @@
+---
+id: pid-rates-temel
+track: flight
+level: intermediate
+order: 4
+title: "PID ve rates temel kavramı"
+summary: "Drone'un dengeyi nasıl tuttuğunu (PID) ve çubuğa göre dönüş hızını (rates) sezgisel düzeyde açıklar; ne zaman ayar gerektiğini netleştirir."
+estimatedMinutes: 11
+objectives:
+  - "PID'in drone'un dengeyi tutmasını nasıl sağladığını sezgisel olarak açıklayabilmek"
+  - "Rates'in çubuğa göre dönüş hızını belirlediğini anlamak"
+  - "Çoğu yeni başlayan için varsayılan ayarların yeterli olduğunu bilmek"
+prerequisites: ["betaflight-giris"]
+quizId: pid-rates-temel
+---
+
+# PID ve rates temel kavramı
+
+Betaflight'ta gezerken "PID" ve "Rates" diye iki ayar göreceksin. Bunlar kulağa korkutucu, mühendislik gibi gelir — ama mantıkları aslında çok sezgiseldir. Bu derste **ne olduklarını** anlayacağız; ince ayar (tuning) ileri seviyenin konusu.
+
+## PID: Drone dengeyi nasıl tutar?
+
+Bir drone havada dümdüz durmaz — sürekli rüzgar, titreşim ve küçük dengesizliklerle savaşır. Onu dengede tutan sistem <KeyTerm en="PID controller">PID</KeyTerm>'dir.
+
+PID'i bir **otomatik düzeltme döngüsü** gibi düşün. FC saniyede binlerce kez şunu sorar: *"Drone'un olması gereken açı ile şu anki açısı arasında fark var mı?"* Varsa motorları o farkı kapatacak şekilde ayarlar. Bu fark, **hata** (error) olarak adlandırılır ve PID'in üç harfi bu hatayı üç farklı açıdan ele alır:
+
+- **P (Proportional / Oransal):** "Şu anda ne kadar sapmışım?" Hata büyükse büyük düzeltme yapar. PID'in ana itici gücüdür.
+- **I (Integral):** "Uzun süredir azıcık mı sapıyorum?" Küçük ama ısrarlı sapmaları (ör. sürekli yan iten bir rüzgar) zamanla toplayıp düzeltir.
+- **D (Derivative / Türev):** "Ne kadar hızlı sapıyorum?" Düzeltmenin aşırıya kaçıp **salınmasını** (oscillation) engelleyen frendir.
+
+<Callout type="info">
+Günlük benzetme: Bisiklette dengede kalmak gibi. **P** = "yana eğildim, hemen karşı tarafa kırarım." **I** = "rüzgar beni sürekli sola itiyor, biraz sağa yaslı dururum." **D** = "fazla sert kırdım, savrulmamak için yumuşatırım." Drone bunu saniyede binlerce kez, senin yerine yapar.
+</Callout>
+
+İyi ayarlanmış bir PID, drone'u sağlam ve "kaya gibi" hissettirir. Kötü ayarlanmışsa drone titrer, salınır ya da komutlara geç tepki verir. Ama dikkat: **hazır gelen drone'ların PID'i zaten makul ayarlıdır.**
+
+## Rates: Çubuğa göre dönüş hızı
+
+PID drone'un kendini *nasıl dengelediğiyle* ilgilenir. <KeyTerm en="rates">Rates</KeyTerm> ise tamamen farklı bir şeydir: **çubuğu ne kadar ittiğinde drone'un ne kadar hızlı döneceğini** belirler.
+
+Yani rates, kontrollerin ne kadar **hassas mı yoksa keskin mi** hissedeceğini ayarlar:
+
+- **Düşük rates:** Çubuğu sonuna kadar itsen bile drone yavaş döner. Yumuşak, sakin, affedici his — yeni başlayan ve sinematik uçuş için rahat.
+- **Yüksek rates:** Çubuğun küçük bir hareketi bile drone'u çok hızlı döndürür. Keskin, agresif his — hızlı freestyle ve flip/roll için.
+
+<Callout type="tip">
+Rates bir "doğru/yanlış" ayarı değil, bir **tercih** ayarıdır. Bazı pilotlar yumuşak, bazıları çok keskin sever. İkisi de geçerlidir; mesele senin elinde hangisinin rahat hissettiğidir.
+</Callout>
+
+## Ne zaman ayara gerek olur?
+
+İşte en önemli ve en rahatlatıcı kısım:
+
+<Callout type="warning">
+**Çoğu yeni başlayan için varsayılan ayarlar fazlasıyla yeterlidir.** Yeni bir drone'un ya da Betaflight'ın varsayılan PID ve rates değerleri, deneyimli geliştiriciler tarafından "iyi uçacak" şekilde seçilmiştir. PID/rates'e dokunmadan aylarca rahatça uçabilirsin — ve uçmalısın.
+</Callout>
+
+PID/rates ayarına genellikle şu durumlarda dokunulur (ve hepsi ileri seviyedir):
+
+- Drone'da gözle görülür bir **titreme/salınım** varsa (PID sorunu).
+- Kontrollerin sana fazla yavaş veya fazla keskin geliyorsa (rates tercihi).
+- Kendi drone'unu kurduysan ve ona özel ayar yapmak istiyorsan.
+
+Bunların hiçbiri yoksa **en iyi "ayar" hiç dokunmamaktır.** Uçuş hissini önce **direğin başında çok uçarak** geliştir; rakamları kurcalamak en sona kalır. PID/filter ince ayarını ileri seviyedeki **tuning** dersinde ayrıntılı göreceğiz.
+
+<DemoPlaceholder title="PID dengesi ve rates eğrisi" note="İki bölüm. Solda: drone bir rüzgar darbesiyle yana itiliyor; iyi PID'de hemen toparlanıyor, düşük P'de yavaş düzeliyor, yüksek/kötü D'de titreyerek salınıyor. Sağda: bir 'çubuk hareketi → dönüş hızı' eğrisi; kullanıcı rates'i düşük/yüksek çekince eğri yatıklaşıp dikleşiyor ve drone'un aynı çubuk hareketine ne kadar sert tepki verdiği gösteriliyor." />
+
+<Callout type="info">
+**Özet:** PID, drone'un dengeyi tutan otomatik düzeltme döngüsüdür (P: ne kadar saptım, I: uzun süredir azıcık mı sapıyorum, D: ne kadar hızlı sapıyorum / fren). Rates ise çubuğa göre dönüş hızını, yani kontrollerin keskinliğini belirler — bir tercih meselesi. Yeni başlayan için varsayılanlar yeterlidir; ayar en sona kalır. Şimdi mini quiz!
+</Callout>

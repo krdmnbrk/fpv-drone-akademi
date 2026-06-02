@@ -1,0 +1,65 @@
+{
+  "id": "yaris-cizgileri",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Drone yarışında 'racing line' (yarış çizgisi) mantığının özü nedir?",
+      "options": [
+        "Her zaman kapılar arasındaki en kısa düz çizgiyi izlemek",
+        "Pisti en pürüzsüz (en akıcı) çizgiyle, momentumu koruyarak en kısa sürede bitirmek",
+        "Anlık olarak ulaşılabilen en yüksek hıza çıkmak",
+        "Mümkün olduğunca çok kapıyı atlayarak kısa yoldan gitmek"
+      ],
+      "answerIndex": 1,
+      "explanation": "Amaç en yüksek anlık hız ya da en kısa düz çizgi değil, momentumu koruyan en pürüzsüz çizgiyle pisti baştan sona en hızlı bitirmektir."
+    },
+    {
+      "id": "q2",
+      "prompt": "Neden köşeli (her kapıda sert fren yapılan) bir çizgi genellikle pürüzsüz çizgiden daha yavaştır?",
+      "options": [
+        "Çünkü köşeli çizgi daha uzundur",
+        "Çünkü her sert frenleme biriktirilen momentumu yok eder ve onu yeniden kazanmak zaman alır",
+        "Çünkü köşeli çizgide drone daha fazla yakıt harcar",
+        "Çünkü köşeli çizgi yasaktır"
+      ],
+      "answerIndex": 1,
+      "explanation": "Sert fren + sert dönüş + yeniden hızlanma momentumu harcar. Pürüzsüz çizgi hızın çoğunu koruyarak taşır, bu yüzden toplam süre kısalır."
+    },
+    {
+      "id": "q3",
+      "prompt": "Bir yarış kapısından çıkarken ideal durum nedir?",
+      "options": [
+        "Drone'un burnunun zaten bir sonraki kapıya hizalanmış/bakıyor olması",
+        "Kapıdan çıkar çıkmaz tamamen durmak",
+        "Her kapıdan sonra geriye dönüp kapıyı kontrol etmek",
+        "Çıkış açısının hiç önemi yoktur"
+      ],
+      "answerIndex": 0,
+      "explanation": "Bir kapıdan çıkış açın bir sonraki kapıya giriş çizgini belirler. İdeal olarak çıkarken zaten sonraki hedefe hizalanmış olursun; iyi pilot ileriyi okur."
+    },
+    {
+      "id": "q4",
+      "prompt": "Yarışta gaz (throttle) nasıl yönetilmelidir?",
+      "options": [
+        "Sürekli tam gazda (kökte) tutulmalı",
+        "Sadece açık ya da kapalı (aç/kapa) olarak kullanılmalı",
+        "Bir musluk gibi kademeli: düzlüklerde açılıp, dönüş ve kapı öncesi yumuşakça azaltılmalı",
+        "Tüm pist boyunca tek bir sabit değerde tutulmalı"
+      ],
+      "answerIndex": 2,
+      "explanation": "Sürekli tam gaz kontrolü zorlaştırır ve drone'u çizgi dışına savurur. Gaz, düzlüklerde açılıp dönüş öncesi azaltılan, çıkışta tekrar açılan bir musluk gibi modüle edilir."
+    },
+    {
+      "id": "q5",
+      "prompt": "Yarışta neden tutarlılık (consistency) ham hızdan daha değerlidir?",
+      "options": [
+        "Çünkü tutarlı uçmak daha az batarya harcar",
+        "Çünkü kurallar hızı yasaklar",
+        "Çünkü bir tur çok hızlı atıp diğer turda çarpmak/ıskalamak toparlanma süresi veya yarış dışı kalma demektir; temiz ve tekrarlanabilir çizgi daha kısa toplam süre verir",
+        "Çünkü tutarlılık hızı otomatik olarak iki katına çıkarır"
+      ],
+      "answerIndex": 2,
+      "explanation": "Sınırı aşıp her turda çarpan pilot, biraz daha yavaş ama temiz uçandan daha geç bitirir. Önce temiz ve tutarlı çizgi; hız bunun üzerine kademeli eklenir."
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+---
+id: lipo-bakimi
+track: flight
+level: intermediate
+order: 5
+title: "LiPo batarya bakımı"
+summary: "LiPo bataryaların hücre voltajını, saklama (storage) voltajını, şarj akımını (C oranı) ve şişme/hasar/atık güvenlik kurallarını öğretir."
+estimatedMinutes: 13
+objectives:
+  - "Bir LiPo hücresinin nominal, dolu ve güvenli alt voltaj sınırlarını söyleyebilmek"
+  - "Storage (saklama) voltajının ne olduğunu ve neden önemli olduğunu açıklayabilmek"
+  - "C oranına göre güvenli şarj akımını ve şişme/hasar durumunda ne yapılacağını bilmek"
+prerequisites: ["guvenlik-ve-shgm"]
+quizId: lipo-bakimi
+---
+
+# LiPo batarya bakımı
+
+FPV drone'ların gücü <KeyTerm en="LiPo (Lithium Polymer) battery">LiPo bataryalardan</KeyTerm> gelir. LiPo'lar çok yüksek akım verebildikleri için drone'lar için idealdir — ama aynı güç, yanlış kullanıldığında onları **tehlikeli** yapar. Bu ders, LiPo'nu hem güvenli hem uzun ömürlü tutmanın temel kurallarıdır.
+
+<PartHighlight part="lipo" />
+
+Yukarıdaki LiPo, drone'un enerji deposudur. Birden fazla **hücreden** (cell) oluşur; her hücrenin voltajı bataryanın sağlığını anlamanın anahtarıdır.
+
+## Hücre voltajı: En önemli sayılar
+
+Bir LiPo, seri bağlı hücrelerden oluşur ("S" sayısı hücre sayısıdır; ör. 4S = 4 hücre). Her **tek hücre** için aklında tutman gereken üç sayı vardır:
+
+- **3.7V — nominal:** Hücrenin "ortalama/anma" voltajı. Bataryanın üzerinde yazan değer budur (ör. 4S = 4 × 3.7 = 14.8V).
+- **4.2V — tam dolu:** Bir hücreyi şarj edebileceğin **en yüksek** voltaj. Üzerine çıkmak tehlikelidir.
+- **3.3–3.5V — alt sınır:** Uçuş sırasında hücreyi indirmemen gereken seviye. Genel pratik kural: yük altında ~3.5V, dinlenmede ~3.3V altına **düşürme.**
+
+<Callout type="warning">
+Bir hücreyi 3.3V'un altına boşaltmak (over-discharge) LiPo'ya kalıcı hasar verir ve şişmeye/tehlikeye yol açabilir. Bu yüzden drone'da, voltaj düşünce öten bir uyarı (lipo/voltage alarm) ayarlanır ve alarm ötmeye başlayınca **iniş yapılır.** "Biraz daha uçayım" deme — pil ömrünü ve güvenliğini bu sınır korur.
+</Callout>
+
+## Storage (saklama) voltajı
+
+LiPo'lar **tam dolu veya tam boş bekletilmekten** hoşlanmaz; bu hallerde bekletildiklerinde hızla yaşlanır ve şişebilirler. Eğer bataryayı birkaç günden uzun kullanmayacaksan, onu <KeyTerm en="storage voltage">storage (saklama) voltajına</KeyTerm> getir:
+
+- **~3.8V/hücre** — LiPo'nun en mutlu, en uzun ömürlü dinlenme seviyesi.
+
+İyi şarj cihazlarında "Storage" modu vardır: bataryayı (dolu ise) bu seviyeye boşaltır, (boş ise) bu seviyeye doldurur. Uçtuktan sonra bataryayı tam dolu bırakmak yerine storage'a çekmek, ömrünü kat kat uzatır.
+
+<Callout type="tip">
+Pratik alışkanlık: Uçacaksan bataryayı **uçmadan hemen önce** doldur. Uçmayacaksan **storage'da** beklet. "Şarjda unutulup günlerce dolu bekleyen" bataryalar en çok şişen bataryalardır.
+</Callout>
+
+## Şarj akımı: C oranı
+
+LiPo'yu ne kadar hızlı şarj edebileceğini <KeyTerm en="C rating">C oranı</KeyTerm> belirler. Mantığı basittir: C oranı, bataryanın kapasitesine (mAh) göre güvenli akımı verir.
+
+- **1C** güvenli ve standart şarj hızıdır. 1C, kapasiteye eşit akım demektir.
+- Örnek: 1500mAh'lık bir batarya → 1C = 1.5A ile şarj edilir.
+- Birçok modern LiPo daha yüksek hızlara izin verir, ama **şüphedeysen 1C kullan** — daha yavaş şarj, daha uzun ömür ve daha az ısı demektir.
+
+<Callout type="warning">
+Şarj akımını gereğinden yüksek seçmek bataryayı ısıtır, ömrünü kısaltır ve risk yaratır. Etiketi okumadan yüksek akım verme. Ayrıca **LiPo'yu asla başında durmadan, gözetimsiz şarj etme.**
+</Callout>
+
+## Şişme, hasar ve atık kuralları
+
+LiPo güvenliğinin değişmez kuralları:
+
+- **Şişmiş (puffed) batarya = ömrü bitmiş batarya.** Hafifçe bile şişmişse artık uçuşta kullanma; güvenli şekilde imhaya ayır.
+- **Fiziksel hasar tehlikelidir.** Çarpma sonrası delinmiş, ezilmiş ya da kılıfı yırtılmış bir LiPo alev alabilir. Sert bir çarpmadan (crash) sonra bataryayı kontrol et; şişme/sıcaklık/koku varsa **güvenli bir yere (ör. dışarı, yanmaz zemine) al ve gözlemle.**
+- **Asla normal çöpe atma.** Hasarlı/eski LiPo'lar özel atık/geri dönüşüm noktalarına verilir. İmhadan önce genelde tuzlu suda deşarj edilir (üreticinin/yerel kuralların yönergesine uy).
+- **<KeyTerm en="LiPo-safe bag">LiPo-safe çanta</KeyTerm> kullan.** Şarj ederken ve taşırken bataryayı yanmaz bu özel çanta/kutu içinde tut; olası bir yangını içeride hapseder.
+
+<DemoPlaceholder title="LiPo voltaj ölçeği ve durumlar" note="Tek hücreyi temsil eden bir voltaj çubuğu: 4.2V (dolu, yeşil) → 3.8V (storage, mavi 'mutlu' işareti) → 3.7V (nominal) → 3.5V (uyarı, sarı, 'iniş yap') → 3.3V (kırmızı, 'durma noktası'). Yanında: sağlam vs şişmiş batarya görseli ve bir LiPo-safe çanta. Kullanıcı çubuğu hareket ettirip her seviyenin ne anlama geldiğini görebilsin." />
+
+<Callout type="info">
+**Özet:** Hücre başına 3.7V nominal, 4.2V dolu, ~3.3–3.5V altına inme. Uzun beklemede ~3.8V/hücre storage'a çek. Şüphedeysen 1C ile şarj et ve gözetimsiz bırakma. Şişmiş/hasarlı LiPo'yu kullanma, çöpe atma; LiPo-safe çantada sakla ve özel atığa ver. Şimdi mini quiz!
+</Callout>

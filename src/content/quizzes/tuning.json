@@ -1,0 +1,65 @@
+{
+  "id": "tuning",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Tuning (PID/filtre ince ayarı) hakkında en doğru ifade hangisidir?",
+      "options": [
+        "Her yeni drone'da uçmadan önce yapılması zorunlu bir adımdır",
+        "Modern varsayılan ayarlar genelde iyidir; tuning bir sorunu çözmek veya iyi uçuşu mükemmelleştirmek içindir",
+        "Sadece yarış drone'larında gereklidir, freestyle'da hiç gerekmez",
+        "Tuning drone'u her zaman yavaşlatır"
+      ],
+      "answerIndex": 1,
+      "explanation": "Stok ayarlar çoğu drone için zaten iyidir. Tuning körlemesine yapılan zorunlu bir adım değil, bir belirti/sorun olduğunda başvurulan bir ince ayardır."
+    },
+    {
+      "id": "q2",
+      "prompt": "Drone'da titreşim/salınım görünce tuning'e başlamadan önce ne yapılmalıdır?",
+      "options": [
+        "Hemen P değerini iki katına çıkarmak",
+        "Önce mekanik sorunları elemek (eğri/çatlak pervane, gevşek motor vidası, dengesiz parça, gevşek frame)",
+        "Bataryayı değiştirmek",
+        "Filtreleri tamamen kapatmak"
+      ],
+      "answerIndex": 1,
+      "explanation": "'PID sorunu' gibi görünen titreşimlerin çoğu aslında mekaniktir. Yazılımdan çözmeye çalışmadan önce donanımın temiz ve sağlam olduğundan emin olmak gerekir."
+    },
+    {
+      "id": "q3",
+      "prompt": "Blackbox kaydı tuning'de ne işe yarar?",
+      "options": [
+        "Drone'un videosunu daha net kaydeder",
+        "Bataryanın ömrünü uzatır",
+        "Uçuş verilerini (gyro, motor çıkışı, komut) kaydeder; böylece tuning'i 'hissetmek' yerine ölçüp görerek (ör. setpoint vs gyro, titreşim frekansı) yapabilirsin",
+        "Drone'un ağırlığını azaltır"
+      ],
+      "answerIndex": 2,
+      "explanation": "Blackbox, neyin ne zaman olduğunu saniyede binlerce kez kaydeder. Bu sayede tuning bir tahmin oyunu değil, ölçüp gözlemleyerek (veriyle) yapılan bir iş olur."
+    },
+    {
+      "id": "q4",
+      "prompt": "Filtre ile gecikme (latency) arasındaki denge için en doğru ifade hangisidir?",
+      "options": [
+        "Ne kadar çok filtre eklenirse drone o kadar iyi uçar",
+        "Filtrelerin hiçbir bedeli yoktur",
+        "Her filtre gürültüyü temizlerken sinyale gecikme ekler; amaç en çok filtre değil, işi görecek en az filtredir",
+        "Filtreler sadece video kalitesini etkiler, uçuşu etkilemez"
+      ],
+      "answerIndex": 2,
+      "explanation": "Filtre gürültüyü temizler ama her filtre biraz gecikme ekler ve drone'u tembelleştirebilir. Hedef, mümkün olan en az filtreyle yeterli temizliği sağlamaktır."
+    },
+    {
+      "id": "q5",
+      "prompt": "Tuning yaparken izlenmesi gereken pratik yaklaşım nedir?",
+      "options": [
+        "Aynı anda P, I, D ve filtreleri birlikte büyük adımlarla değiştirmek",
+        "Tek seferde tek değişkeni, küçük adımlarla değiştirip test etmek; sonuçları kaydedip geri dönüş için yedek tutmak",
+        "Hiç test etmeden tüm değerleri maksimuma almak",
+        "Sadece bir kez değişiklik yapıp bir daha hiç dokunmamak"
+      ],
+      "answerIndex": 1,
+      "explanation": "Tek seferde tek şey, küçük adımlarla değiştirilir; her değişiklik test edilip (blackbox'la) karşılaştırılır ve çalışan bir ayar yedeklenir ki kötüleşirse geri dönülebilsin."
+    }
+  ]
+}

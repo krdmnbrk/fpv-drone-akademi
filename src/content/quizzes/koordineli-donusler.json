@@ -1,0 +1,65 @@
+{
+  "id": "koordineli-donusler",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Sadece yaw ile (sadece burnu çevirerek) dönmenin tipik sorunu nedir?",
+      "options": [
+        "Drone çok hızlı yükselir",
+        "Dönüş çok dar ama yavaş ve 'kaygan' olur; drone yana savrulur",
+        "Drone hiç dönmez",
+        "Pervaneler ters döner"
+      ],
+      "answerIndex": 1,
+      "explanation": "Tek başına yaw, drone'u neredeyse olduğu yerde döndürür; dar ama yavaş ve yana kayan (sideslip) bir dönüş verir. Bu yüzden roll ile birleştirilir."
+    },
+    {
+      "id": "q2",
+      "prompt": "Roll ile dönüş (banka alma) drone'a ne yaptırır?",
+      "options": [
+        "Drone'u dönüş yönüne yatırır ve ileri hızla geniş bir yay çizdirir (uçak gibi)",
+        "Sadece burnu çevirir, konumu değiştirmez",
+        "Drone'u dikey olarak yukarı kaldırır",
+        "Motorları durdurur"
+      ],
+      "answerIndex": 0,
+      "explanation": "Roll, drone'u dönmek istediğin yöne yatırır (banka); ileri hız varken bu, drone'u o yöne doğru geniş bir yay çizdirir, tıpkı viraja yatan bir uçak gibi."
+    },
+    {
+      "id": "q3",
+      "prompt": "Koordineli dönüş ne demektir?",
+      "options": [
+        "Sadece gaz vererek dönmek",
+        "Roll ile yatırıp dönüşü başlatmak ve yaw ile burnu dönüş yönüne hizalayarak kaymayı engellemek",
+        "Pervaneleri tek tek durdurmak",
+        "Drone'u tamamen düz tutarak yana kaydırmak"
+      ],
+      "answerIndex": 1,
+      "explanation": "Koordineli dönüşte roll dönüşü başlatır (yarıçapı belirler) ve yaw burnu gittiği yöne hizalar; böylece drone yana kaymadan, burnu yörüngeye bakan temiz bir daire çizer."
+    },
+    {
+      "id": "q4",
+      "prompt": "Drone yana yatınca (banka alınca) neden yükseklik kaybeder?",
+      "options": [
+        "Çünkü batarya zayıflar",
+        "Çünkü pervaneler yavaşlar",
+        "Çünkü itmenin bir kısmı artık yana gider, yukarı kalan kısım yer çekimini yenmeye yetmez",
+        "Çünkü hava direnci yok olur"
+      ],
+      "answerIndex": 2,
+      "explanation": "Hover'da itme tamamen yukarıdır. Drone yatınca itmenin bir kısmı yana yönelir; yukarı bileşen azalır ve yer çekimini yenmeye yetmeyince drone alçalır."
+    },
+    {
+      "id": "q5",
+      "prompt": "Pürüzsüz, sabit yükseklikte bir daire çizmek için dönüşte ne yapmak gerekir?",
+      "options": [
+        "Gazı tamamen kesmek",
+        "Yatıştan kaynaklanan yükseklik kaybını telafi etmek için dönüşte gazı biraz artırmak",
+        "Sadece yaw kullanıp roll'u hiç kullanmamak",
+        "Çubukları olabildiğince sert ve ani oynatmak"
+      ],
+      "answerIndex": 1,
+      "explanation": "Banka açısı yükseklik kaybettirdiği için dönüşe girerken gazı biraz artırmak, düzelirken geri almak gerekir. Bu, dairenin sabit yükseklikte kalmasını sağlar."
+    }
+  ]
+}

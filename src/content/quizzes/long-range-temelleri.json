@@ -1,0 +1,65 @@
+{
+  "id": "long-range-temelleri",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Uzun menzilde ELRS gibi bir kontrol linki neden tercih edilir?",
+      "options": [
+        "Çünkü drone'u daha hafif yapar",
+        "Yüksek alıcı duyarlılığı, çok düşük gecikme ve esnek paket hızı (düşük hız = daha uzak erişim) sayesinde daha güvenilir uzun menzil sağlar",
+        "Çünkü video kalitesini otomatik artırır",
+        "Çünkü batarya kapasitesini büyütür"
+      ],
+      "answerIndex": 1,
+      "explanation": "ELRS yüksek duyarlılığı, düşük gecikmesi ve ayarlanabilir paket hızıyla (düşük paket hızında daha uzak erişim) uzun menzil için güvenilir bir kontrol linki sunar."
+    },
+    {
+      "id": "q2",
+      "prompt": "Omni (her yöne) anten ile yönlü (directional) anten arasındaki temel fark nedir?",
+      "options": [
+        "Omni sadece video, yönlü sadece kontrol için kullanılır",
+        "Omni sinyali her yöne eşit yayar (esnek ama tek yönde sınırlı menzil); yönlü sinyali belirli bir yöne odaklar (o yönde çok daha uzak, dışında zayıf)",
+        "İkisi de tamamen aynıdır, sadece şekilleri farklıdır",
+        "Yönlü anten her zaman her durumda daha iyidir"
+      ],
+      "answerIndex": 1,
+      "explanation": "Omni her yöne eşit yayar/alır, esnektir ama tek yönde menzili sınırlıdır. Yönlü anten enerjiyi bir yöne odaklar; o yönde menzil çok artar ama dışına çıkınca sinyal zayıflar. Diversity ikisini birleştirir."
+    },
+    {
+      "id": "q3",
+      "prompt": "VTX ve gözlük anteni için polarizasyon neden önemlidir?",
+      "options": [
+        "Önemli değildir, herhangi bir kombinasyon çalışır",
+        "İkisi aynı polarizasyonda (ör. ikisi de RHCP) olmalıdır; yanlış eşleşme (RHCP VTX + LHCP gözlük) sinyali dramatik düşürür ve menzili neredeyse bitirir",
+        "Farklı polarizasyon kullanmak menzili artırır",
+        "Polarizasyon sadece bataryayı etkiler"
+      ],
+      "answerIndex": 1,
+      "explanation": "FPV antenleri genelde dairesel polarizedir ve VTX ile gözlük anteni aynı polarizasyonda olmalıdır. Uyumsuzluk sinyali ciddi düşürür; uzun menzilde bu menzilin bitmesi anlamına gelir."
+    },
+    {
+      "id": "q4",
+      "prompt": "Uzun menzil uçuşunda batarya/menzil planlaması nasıl yapılmalıdır?",
+      "options": [
+        "Sadece gidiş mesafesi hesaplanır, dönüş düşünülmez",
+        "Gaz kökleyerek en hızlı şekilde gidilir",
+        "Gidiş-dönüş (ve rüzgâr) hesaba katılarak, verimli bir seyir hızında uçulur ve dönüş için bol pay bırakılır; voltaj sürekli izlenip geri dönüş erken verilir",
+        "Batarya tamamen bitene kadar uçulur"
+      ],
+      "answerIndex": 2,
+      "explanation": "Uzun menzilde verimli seyir hızı menzili uzatır; dönüş ve rüzgâr (gidişte iten rüzgâr dönüşte karşına çıkar) hesaba katılmalı ve voltaj tükenmeden erken geri dönülmelidir."
+    },
+    {
+      "id": "q5",
+      "prompt": "Failsafe (bağlantı koparsa drone'un davranışı) hakkında en doğru ifade hangisidir?",
+      "options": [
+        "Sadece yarışta gereklidir, uzun menzilde önemsizdir",
+        "Uçmadan önce ayarlanıp test edilmelidir; ayarlanmamış/yanlış failsafe, link koptuğunda drone'un kontrolsüz uçup gitmesi ve ciddi tehlike demektir",
+        "Failsafe otomatik olarak her drone'da mükemmel ayarlıdır, dokunmaya gerek yoktur",
+        "Failsafe drone'un hızını artıran bir ayardır"
+      ],
+      "answerIndex": 1,
+      "explanation": "Failsafe link koptuğunda ne olacağını belirler (motorları kes ya da GPS ile geri dön). Uzun menzilde hayatidir; uçmadan önce mutlaka ayarlanıp test edilmeli, yoksa drone kontrolsüz uçup gidebilir."
+    }
+  ]
+}

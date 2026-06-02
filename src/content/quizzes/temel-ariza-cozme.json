@@ -1,0 +1,65 @@
+{
+  "id": "temel-ariza-cozme",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Drone arm olmuyorsa nedenini bulmanın en güvenilir yolu nedir?",
+      "options": [
+        "Rastgele parçaları değiştirmek",
+        "Bataryayı yenilemek",
+        "Betaflight'a bağlanıp Setup ekranındaki arming flag'lere (arm engelleri) bakmak; Betaflight nedeni doğrudan söyler",
+        "Pervaneleri çıkarmak"
+      ],
+      "answerIndex": 2,
+      "explanation": "Betaflight, arm olmayı engelleyen nedenleri arming flag listesinde gösterir (örneğin THROTTLE, ANGLE, RX_FAILSAFE). Tahmin etmek yerine bağlanıp flag'lere bakmak en hızlı çözümdür."
+    },
+    {
+      "id": "q2",
+      "prompt": "Betaflight'ta sadece 'THROTTLE' arming flag'i yanıyorsa çözüm nedir?",
+      "options": [
+        "Gaz çubuğunu en alta (sıfıra) çekmek",
+        "Yeni bir motor takmak",
+        "Anteni değiştirmek",
+        "PID değerlerini sıfırlamak"
+      ],
+      "answerIndex": 0,
+      "explanation": "THROTTLE flag'i gaz çubuğunun yukarıda olduğunu gösterir. Arm için gaz en altta (sıfırda) olmalıdır; çubuğu sıfıra çekmek sorunu çözer."
+    },
+    {
+      "id": "q3",
+      "prompt": "Drone havada titriyorsa, PID ayarlarına dokunmadan önce ilk olarak ne kontrol edilmelidir?",
+      "options": [
+        "Gözlüğün kanalı",
+        "Pervaneler (hasarlı/dengesiz pervane, gevşek somun) ve motor gibi mekanik nedenler",
+        "Bataryanın markası",
+        "Kumandanın rengi"
+      ],
+      "answerIndex": 1,
+      "explanation": "Titremenin en yaygın nedeni hasarlı/dengesiz bir pervanedir. Yeni pilotların klasik hatası mekaniği atlayıp PID kurcalamaktır; önce pervane/somun/motor kontrol edilir."
+    },
+    {
+      "id": "q4",
+      "prompt": "Gözlükte görüntü karlanıyor veya hiç gelmiyorsa, video sorunlarının en sık nedeni hangisidir?",
+      "options": [
+        "Bataryanın çok dolu olması",
+        "Pervanelerin yanlış takılması",
+        "Gözlük ile VTX'in farklı kanalda olması (kanal/frekans uyuşmazlığı) veya anten sorunu",
+        "Gaz çubuğunun yukarıda olması"
+      ],
+      "answerIndex": 2,
+      "explanation": "Görüntü sorunları video zincirindedir: en sık neden gözlük ile VTX'in aynı kanalda olmamasıdır; ayrıca gevşek/kırık anten de görüntüyü bozar. (Anten takılı olmadan VTX'i açmak VTX'i yakabilir.)"
+    },
+    {
+      "id": "q5",
+      "prompt": "Troubleshooting'in (arıza çözmenin) altın kuralı nedir?",
+      "options": [
+        "Mümkün olduğunca çok şeyi aynı anda değiştirmek",
+        "Bir seferde sadece tek bir şeyi değiştirip test etmek, böylece neyin işe yaradığını bilmek",
+        "Hiçbir şeyi değiştirmeden beklemek",
+        "Sorunu görmezden gelmek"
+      ],
+      "answerIndex": 1,
+      "explanation": "Tek değişken yaklaşımı: bir seferde tek bir şeyi değiştirip test edersin. Aynı anda birçok şey değiştirirsen sorun düzelse bile hangisinin düzelttiğini bilemezsin."
+    }
+  ]
+}

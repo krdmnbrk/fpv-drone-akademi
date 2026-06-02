@@ -1,0 +1,65 @@
+{
+  "id": "stabil-hover-yaw",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Yaw hareketi bir drone'a ne yaptırır?",
+      "options": [
+        "Drone'u olduğu yerde, dikey eksen etrafında döndürür (burun sağa/sola döner)",
+        "Drone'u yana doğru taşır",
+        "Drone'u yukarı/aşağı hareket ettirir",
+        "Drone'u öne/arkaya eğer"
+      ],
+      "answerIndex": 0,
+      "explanation": "Yaw, drone'u dikey bir eksen etrafında döndürür; konumu değişmez, sadece burnun baktığı yön değişir. Tıpkı yerinde kendi etrafında dönmen gibi."
+    },
+    {
+      "id": "q2",
+      "prompt": "Roll ile yaw arasındaki temel fark nedir?",
+      "options": [
+        "Roll drone'u döndürür, yaw drone'u yana taşır",
+        "Roll drone'u yana taşır/yatırır, yaw ise drone'u olduğu yerde döndürür",
+        "İkisi tamamen aynı şeydir",
+        "Roll gazı, yaw ise yüksekliği kontrol eder"
+      ],
+      "answerIndex": 1,
+      "explanation": "Roll drone'u yana yatırıp taşır; yaw ise burnu çevirerek drone'u olduğu yerde döndürür. İkisi de 'sağa-sola' hissedilir ama farklı işler yapar."
+    },
+    {
+      "id": "q3",
+      "prompt": "Standart bir Mode 2 kumandada yaw'ı hangi hareket kontrol eder?",
+      "options": [
+        "Sağ çubuğun yukarı/aşağı hareketi",
+        "Sağ çubuğun sağa/sola hareketi",
+        "Sol çubuğun sağa/sola hareketi",
+        "Sol çubuğun yukarı/aşağı hareketi"
+      ],
+      "answerIndex": 2,
+      "explanation": "Mode 2'de yaw, sol çubuğun sağa/sola hareketidir. Aynı sol çubuğun yukarı/aşağısı ise gazı (throttle) kontrol eder."
+    },
+    {
+      "id": "q4",
+      "prompt": "Yaw yaparken yeni pilotların en sık yaptığı hata nedir?",
+      "options": [
+        "Pervaneleri yanlış takmak",
+        "Bataryayı ters bağlamak",
+        "Yaw ile aynı çubukta olan gaza yanlışlıkla dokunup yüksekliği bozmak",
+        "Gözlüğü çıkarmayı unutmak"
+      ],
+      "answerIndex": 2,
+      "explanation": "Yaw ve gaz aynı (sol) çubukta olduğu için, burnu çevirirken çubuğu yanlışlıkla yukarı/aşağı oynatıp gaza dokunmak ve yüksekliği kaybetmek çok yaygındır."
+    },
+    {
+      "id": "q5",
+      "prompt": "Drone'un burnu sana doğru döndüğünde kontroller neden zorlaşır?",
+      "options": [
+        "Çünkü kontroller ters hisseder: drone sana bakarken senin sağın drone'un soludur",
+        "Çünkü batarya daha hızlı biter",
+        "Çünkü yaw çalışmayı durdurur",
+        "Çünkü gaz otomatik olarak kapanır"
+      ],
+      "answerIndex": 0,
+      "explanation": "Burun sana döndüğünde drone'un yönü seninkine terstir; bu yüzden roll/pitch girdileri ters hisseder. Bu yüzden küçük adımlarla ve önce simülatörde çalışmak gerekir."
+    }
+  ]
+}

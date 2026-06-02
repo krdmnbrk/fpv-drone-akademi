@@ -1,0 +1,65 @@
+{
+  "id": "ilk-hover",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Hover ne demektir?",
+      "options": [
+        "Drone'u en yüksek hızda ileri uçurmak",
+        "Drone'u havada tek bir noktada, sabit ve dengeli tutmak (ne tırmanır ne alçalır ne kayar)",
+        "Drone'u takla attırmak",
+        "Drone'u yere indirmek"
+      ],
+      "answerIndex": 1,
+      "explanation": "Hover, drone'u havada sabit ve dengeli tutmaktır. Tüm diğer manevralar bu temel becerinin üzerine kurulduğu için en önemli ilk hedeftir."
+    },
+    {
+      "id": "q2",
+      "prompt": "İlk hover'ı hangi uçuş modunda yapmak en doğrusudur ve neden?",
+      "options": [
+        "Acro modunda, çünkü en çok kontrol verir",
+        "Angle modunda, çünkü çubuğu bırakınca drone kendini düzeltir ve güven verir",
+        "Hiçbir modda; hover mod gerektirmez",
+        "Sadece gece modunda"
+      ],
+      "answerIndex": 1,
+      "explanation": "Angle modunda çubuğu bırakınca drone kendini düzeltip asılı kalmaya çalışır. Bu, ilk hover'da panikleyip çubukları bıraksan bile sana güven verir."
+    },
+    {
+      "id": "q3",
+      "prompt": "Drone hover sırasında hafifçe sağa kaymaya başlarsa ne yapmalısın?",
+      "options": [
+        "Büyük ve sert bir sol roll vermek",
+        "Gazı tamamen kesmek",
+        "Hafif (küçük) bir sol roll vererek drone'u azar azar geri çekmek",
+        "Drone'u takla attırmak"
+      ],
+      "answerIndex": 2,
+      "explanation": "Hover sürekli küçük düzeltmelerden oluşur. Sağa kayınca küçük bir sol roll ile geri çekersin. Büyük/sert düzeltme seni ters yöne fırlatır ve salınım başlatır."
+    },
+    {
+      "id": "q4",
+      "prompt": "İlk hover denemeleri için drone'u nerede tutmak en uygunudur?",
+      "options": [
+        "Mümkün olan en yüksek irtifada",
+        "Gözünden tamamen uzakta, görünmeyecek kadar uzakta",
+        "Göz hizasında (veya hafif altında), sana yakın ve alçak bir yükseklikte",
+        "Tam tepende, başının üstünde"
+      ],
+      "answerIndex": 2,
+      "explanation": "Göz hizası drone'un yönelimini en net gördüğün seviyedir; yakın ve alçak olması hem kontrolü kolaylaştırır hem de bir hatada düşüş hasarını azaltır."
+    },
+    {
+      "id": "q5",
+      "prompt": "Bir hover denemesi sırasında drone aniden kontrolden çıkarsa, panik yapmadan yapılacak en doğru refleks nedir?",
+      "options": [
+        "Çubukları rastgele ve sertçe oynatmak",
+        "Gazı sonuna kadar açıp drone'u yükseltmek",
+        "Disarm etmek (arming switch'ini kapatıp motorları durdurmak)",
+        "Kumandayı yere bırakmak"
+      ],
+      "answerIndex": 2,
+      "explanation": "Kontrolden çıkan bir drone'u çubuklarla kurtarmaya çalışmak çoğu zaman durumu kötüleştirir. Disarm etmek motorları anında durdurur ve drone'u alçaktan güvenle düşürür."
+    }
+  ]
+}

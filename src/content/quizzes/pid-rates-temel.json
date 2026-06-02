@@ -1,0 +1,65 @@
+{
+  "id": "pid-rates-temel",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "PID sezgisel olarak ne yapar?",
+      "options": [
+        "Bataryanın voltajını ölçer",
+        "Drone'un olması gereken açı ile şu anki açısı arasındaki farkı (hatayı) sürekli ölçüp motorlarla kapatan otomatik bir düzeltme döngüsüdür",
+        "Kameranın görüntüsünü gözlüğe yollar",
+        "Pervanelerin dönme yönünü belirler"
+      ],
+      "answerIndex": 1,
+      "explanation": "PID, FC'nin saniyede binlerce kez 'hedef açı ile gerçek açı arasında fark var mı?' diye sorup motorları o farkı kapatacak şekilde ayarladığı otomatik denge döngüsüdür."
+    },
+    {
+      "id": "q2",
+      "prompt": "PID'in 'D' (Derivative / türev) bileşeni temel olarak ne işe yarar?",
+      "options": [
+        "Düzeltmenin aşırıya kaçıp salınmasını (oscillation) engelleyen bir fren gibi davranır",
+        "Bataryayı şarj eder",
+        "Drone'un rengini değiştirir",
+        "Çubuğun dönüş hızını belirler"
+      ],
+      "answerIndex": 0,
+      "explanation": "D bileşeni 'ne kadar hızlı sapıyorum?' sorusuyla ilgilenir ve düzeltmenin aşırıya kaçıp drone'u titretmesini/salınmasını engelleyen bir frendir."
+    },
+    {
+      "id": "q3",
+      "prompt": "Rates ayarı neyi belirler?",
+      "options": [
+        "Bataryanın kaç hücreli olduğunu",
+        "Çubuğu ne kadar ittiğinde drone'un ne kadar hızlı döneceğini (kontrollerin keskinliğini)",
+        "Pervanelerin kaç inç olduğunu",
+        "Kameranın çözünürlüğünü"
+      ],
+      "answerIndex": 1,
+      "explanation": "Rates, çubuk hareketine karşılık drone'un dönüş hızını belirler. Düşük rates yumuşak/sakin, yüksek rates keskin/agresif bir his verir."
+    },
+    {
+      "id": "q4",
+      "prompt": "Yüksek rates ile düşük rates arasındaki fark için hangisi doğrudur?",
+      "options": [
+        "Yüksek rates her zaman daha iyidir; düşük rates bozuktur",
+        "Düşük rates yumuşak/affedici (yeni başlayan ve sinematik için), yüksek rates keskin/agresif (hızlı freestyle için) hissettirir; bu bir tercih meselesidir",
+        "Rates sadece bataryayı etkiler, uçuş hissini etkilemez",
+        "İkisi de tamamen aynıdır"
+      ],
+      "answerIndex": 1,
+      "explanation": "Rates bir doğru/yanlış değil, tercih ayarıdır. Düşük rates yumuşak ve affedici, yüksek rates keskin ve agresiftir; hangisinin rahat hissettiği pilota bağlıdır."
+    },
+    {
+      "id": "q5",
+      "prompt": "Yeni başlayan biri PID ve rates ayarları için ne yapmalıdır?",
+      "options": [
+        "Hemen ilk gün tüm PID değerlerini sıfırlamalı",
+        "Genellikle hiçbir şeye dokunmamalı; varsayılan ayarlar çoğu yeni başlayan için fazlasıyla yeterlidir ve önce uçarak hissi geliştirmek gerekir",
+        "PID'i mümkün olduğunca yükseğe çekmeli",
+        "Rates'i her uçuştan önce değiştirmeli"
+      ],
+      "answerIndex": 1,
+      "explanation": "Varsayılan PID/rates değerleri iyi uçacak şekilde seçilmiştir. Yeni başlayan için en iyi 'ayar' dokunmamaktır; önce çok uçarak his geliştirilir, ince ayar (tuning) en sona kalır."
+    }
+  ]
+}

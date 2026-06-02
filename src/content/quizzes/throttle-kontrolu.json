@@ -1,0 +1,65 @@
+{
+  "id": "throttle-kontrolu",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Throttle (gaz) drone'da neyi kontrol eder?",
+      "options": [
+        "Drone'un rengini",
+        "Motorların hızını, yani üretilen itmeyi (thrust) ve dolayısıyla tırmanış/alçalmayı",
+        "Kameranın açısını",
+        "Yalnızca dönüş yönünü"
+      ],
+      "answerIndex": 1,
+      "explanation": "Throttle motorların ne kadar hızlı döneceğini belirler. Daha çok itme drone'u tırmandırır, daha az itme alçaltır."
+    },
+    {
+      "id": "q2",
+      "prompt": "Hover throttle noktası nedir?",
+      "options": [
+        "Gazın tam tavanda olduğu nokta",
+        "Motorların durduğu nokta",
+        "İtmenin drone'un ağırlığına eşit olduğu, drone'un havada asılı kaldığı gaz seviyesi",
+        "Bataryanın bittiği nokta"
+      ],
+      "answerIndex": 2,
+      "explanation": "Hover throttle, itmenin ağırlığa eşit olduğu ve drone'un ne tırmandığı ne de alçaldığı denge noktasıdır. FPV drone'larında genelde ortanın biraz altındadır."
+    },
+    {
+      "id": "q3",
+      "prompt": "Belli bir yükseklikte kalmak için throttle'ı ne yapman gerekir?",
+      "options": [
+        "Gazı bir kez yukarı itip bırakmak; drone o yükseklikte kalır",
+        "Gazı sürekli hover (denge) noktasında tutmak; bırakırsan drone alçalır",
+        "Gazı tamamen kesmek",
+        "Gazı tam açık bırakmak"
+      ],
+      "answerIndex": 1,
+      "explanation": "Throttle drone'u bir yüksekliğe götüren bir komut değildir; ne hızlı çıkıp indiğini belirler. Yükseklik korumak için gazı denge noktasında tutman gerekir."
+    },
+    {
+      "id": "q4",
+      "prompt": "Gaz kullanımında yeni başlayanların en sık yaptığı hata nedir?",
+      "options": [
+        "Gazı bir anahtar gibi tam açıp tam kapatmak (ani gaz)",
+        "Gazı hiç kullanmamak",
+        "Gazı çok yavaş değiştirmek",
+        "Gazı sadece inişte kullanmak"
+      ],
+      "answerIndex": 0,
+      "explanation": "Gazı bir anda dibe veya tavana vurmak drone'u yere çakar ya da kontrolsüzce fırlatır. Doğrusu yumuşak ve kademeli gaz kullanmaktır."
+    },
+    {
+      "id": "q5",
+      "prompt": "Neden gazı yumuşak ve kademeli kullanmak gerekir?",
+      "options": [
+        "Çünkü ani gaz bataryayı patlatır",
+        "Çünkü FPV'de güç boldur; küçük bir gaz değişikliği bile büyük etki yapar, ani gaz drone'u zıplatıp fırlatır",
+        "Çünkü yumuşak gaz drone'u daha hızlı uçurur",
+        "Çünkü kurallar yumuşak gazı zorunlu kılar"
+      ],
+      "answerIndex": 1,
+      "explanation": "FPV drone'ları ağırlıklarına göre çok güçlüdür; az bir gaz değişikliği büyük etki yapar. Yumuşak, kademeli dokunuşlar drone'u kontrollü ve 'yapışık' tutar."
+    }
+  ]
+}

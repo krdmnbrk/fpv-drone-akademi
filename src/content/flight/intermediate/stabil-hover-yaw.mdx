@@ -1,0 +1,74 @@
+---
+id: stabil-hover-yaw
+track: flight
+level: intermediate
+order: 1
+title: "Stabil hover ve yaw (dönüş)"
+summary: "Sabit bir hover'ı korurken yaw ekseninde drone'un burnunu sağa/sola çevirmeyi ve bu iki beceriyi birleştirmeyi öğretir."
+estimatedMinutes: 10
+objectives:
+  - "Yaw ekseninin ne olduğunu ve drone'u nasıl döndürdüğünü açıklayabilmek"
+  - "Hover'ı bozmadan burnu kontrollü biçimde sağa/sola çevirebilmek"
+  - "Hover ile yaw'ı birleştirerek drone'u olduğu yerde döndürebilmek"
+prerequisites: ["ilk-hover"]
+quizId: stabil-hover-yaw
+---
+
+# Stabil hover ve yaw (dönüş)
+
+Artık drone'u havada sabit tutmayı (hover) biliyorsun. Sıradaki adım, hover'ı bozmadan drone'un **burnunu çevirmek**. Bunu yapan harekete <KeyTerm en="yaw">yaw</KeyTerm> denir.
+
+## Yaw ekseni nedir?
+
+Bir drone'un üç dönme ekseni vardır. Bunları kafanı düşünerek hatırlamak kolaydır:
+
+- **Pitch** — başını öne/arkaya eğmek (drone burnu aşağı/yukarı).
+- **Roll** — başını omzuna yatırmak (drone sağa/sola yan yatar).
+- **Yaw** — başını "hayır" der gibi sağa/sola çevirmek (drone burnu sağa/sola döner).
+
+<KeyTerm en="yaw">Yaw</KeyTerm>, drone'u **dikey bir eksen etrafında**, yani olduğu yerde döndürür. Drone yana kaymaz, yükselmez; sadece baktığı yön değişir. Tıpkı yerinde durup kendi etrafında dönmen gibi.
+
+<Callout type="info">
+Önemli ayrım: **Roll** drone'u yana **taşır**, **yaw** ise drone'u olduğu yerde **döndürür**. İkisi de "sağa-sola" gibi hissedilir ama tamamen farklı şeyler yaparlar. Bu farkı bir sonraki derste (koordineli dönüşler) çok kullanacağız.
+</Callout>
+
+## Yaw'ı hangi çubuk kontrol eder?
+
+Standart bir Mode 2 kumandada **yaw, sol çubuğun sağa/sola hareketidir**. (Sol çubuğun yukarı/aşağısı ise gazdır — throttle.)
+
+- Sol çubuğu **sağa** itersen burun **sağa** döner.
+- Sol çubuğu **sola** itersen burun **sola** döner.
+- Çubuğu ne kadar iterse o kadar **hızlı** döner; bıraktığında dönüş durur.
+
+<Callout type="warning">
+Yeni başlayanların en sık karıştırdığı şey budur: gaz ve yaw **aynı çubuktadır**. Burnu çevirmek isterken çubuğu yanlışlıkla yukarı/aşağı oynatıp gaza dokunmak çok olur. Bu yüzden yaw'ı öğrenirken gazı sabit tutmaya ayrıca dikkat et.
+</Callout>
+
+## Hover'ı korurken yaw birleştirme
+
+Asıl beceri, dönerken **hover'ı kaybetmemek**. Bir drone burnunu çevirdiğinde iki şey zorlaşır:
+
+1. **Gaz sabit kalmalı.** Yaw, sol çubuğun yatay hareketi olduğu için gaza (dikey hareket) yanlışlıkla dokunmak kolaydır. Dönerken drone'un alçalıp yükselmemesi gerekir.
+2. **Yön algın değişir.** Burun sana doğru döndüğünde kontroller **ters hisseder**: drone sana bakarken "sağa roll" senin solundur. Bu, yeni pilotların en çok zorlandığı andır.
+
+Bu yüzden alıştırmayı **küçük adımlarla** yap: önce 90 derece çevir, dur, hover'ı topla, sonra biraz daha. Tüm turu tek seferde dönmeye çalışma.
+
+<DemoPlaceholder title="Yerinde yaw dönüşü" note="Havada sabit hover yapan bir drone'u üstten gösteren animasyon. Sol çubuk sağa itildikçe drone yerinden hiç kaymadan burnunu saat yönünde çeviriyor; konum sabit, sadece ok (burun yönü) dönüyor. Kullanıcı çubuğu oynatıp dönüş hızını hissedebilsin." />
+
+## Klasik alıştırma: burun hep dışarı
+
+Yaw + hover'ı pekiştirmenin klasik yolu: drone'u göz hizasında tut ve **burnunu daima senden uzağa bakacak şekilde** yavaşça kendi etrafında döndür. Bunu yaparken:
+
+- Gazı sabit tutarak yüksekliği koru.
+- Sadece küçük yaw girdileriyle burnu çevir.
+- Drone yerinden kayarsa minik roll/pitch düzeltmeleriyle geri getir.
+
+Bu alıştırma kolayken, bir de **burnu sana doğru** döndürerek dene — ters kontrol hissine alışmak ileride çok işine yarayacak.
+
+<Callout type="tip">
+Bütün bu pratiği **simülatörde** yap. Yaw + hover birleştirmesi başta kafa karıştırıcıdır ve simülatörde defalarca denemek bedava. Gerçek drone'da aynı hatayı yapmak pervane veya gövde kırabilir.
+</Callout>
+
+<Callout type="info">
+**Özet:** Yaw, drone'un burnunu dikey eksende sağa/sola çevirir (yerinden taşımaz). Mode 2'de sol çubuğun yatay hareketidir ve gazla aynı çubukta olduğu için dönerken gazı sabit tutmak şarttır. Burun sana döndüğünde kontroller ters hisseder; bu yüzden küçük adımlarla çalış. Şimdi mini quiz!
+</Callout>

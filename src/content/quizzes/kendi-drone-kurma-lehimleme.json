@@ -1,0 +1,65 @@
+{
+  "id": "kendi-drone-kurma-lehimleme",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Parça seçiminde uyum zinciri genellikle nereden başlar?",
+      "options": [
+        "Gözlük seçiminden",
+        "Frame ve pervane boyutundan; bu, motor, batarya, ESC ve FC seçimini zincirleme etkiler",
+        "Rastgele en ucuz parçalardan",
+        "Önce kumandadan, sonra geri kalan her şeyden"
+      ],
+      "answerIndex": 1,
+      "explanation": "Her şey frame (ve onun belirlediği pervane boyutu) ile başlar; oradan motor (+ batarya S), ESC (akım) ve FC (montaj standardı + UART) uyumlu seçilir."
+    },
+    {
+      "id": "q2",
+      "prompt": "ESC seçerken en kritik değer nedir?",
+      "options": [
+        "Renginin frame'le uyumlu olması",
+        "Akım kapasitesinin (Amper) motorların çekeceği tepe akımdan yüksek olması",
+        "Mümkün olan en düşük akım kapasitesine sahip olması",
+        "Ağırlığının olabildiğince fazla olması"
+      ],
+      "answerIndex": 1,
+      "explanation": "ESC'nin verebileceği akım, motor tepe akımından yüksek olmalı ve pay bırakılmalıdır; düşük kapasiteli ESC akım aşıldığında yanar (duman çıkarır)."
+    },
+    {
+      "id": "q3",
+      "prompt": "Aşağıdakilerden hangisi güvenli ve iyi bir lehim için doğrudur?",
+      "options": [
+        "Havyayı olabildiğince soğuk tutmak iyi lehim verir",
+        "Lehim dumanını doğrudan solumak zararsızdır",
+        "Havalandırılan ortamda, doğru sıcaklıkta çalışılır; iyi lehim parlak ve içbükeydir, soğuk (mat/topak) lehimden kaçınılır",
+        "İyi lehim her zaman mat ve topak görünür"
+      ],
+      "answerIndex": 2,
+      "explanation": "Lehim havalandırılan ortamda, yeterli sıcaklıkta yapılır. İyi lehim parlak ve içbükeydir; mat/topak görünen soğuk lehim zayıftır ve uçuşta kopabilir."
+    },
+    {
+      "id": "q4",
+      "prompt": "Pervaneler montaj ve ilk testlerde ne zaman takılmalıdır?",
+      "options": [
+        "İlk adımda, motorlardan hemen sonra",
+        "En sona; ilk açılış ve motor testleri kesinlikle pervanesiz yapılır",
+        "Lehimlemeden hemen önce",
+        "Bataryayı takmadan hemen önce, test için"
+      ],
+      "answerIndex": 1,
+      "explanation": "Pervaneler en sona takılır ve ilk testler (motor yönü, ayarlar) pervanesiz yapılır; yanlışlıkla dönen bir pervane parmağı ciddi keser."
+    },
+    {
+      "id": "q5",
+      "prompt": "İlk kez bataryayı takarken smoke-stopper kullanmanın amacı nedir?",
+      "options": [
+        "Drone'un daha hızlı uçmasını sağlamak",
+        "Bataryayı daha hızlı şarj etmek",
+        "Akımı sınırlayarak, ters polarite veya kısa devre gibi bir hata varsa parçaların yanmasını önlemek ve hatayı dumansız yakalamak",
+        "Video görüntüsünü netleştirmek"
+      ],
+      "answerIndex": 2,
+      "explanation": "Smoke-stopper batarya ile drone arasına girer ve akımı kısıtlar. Bir hata (ör. ters polarite) varsa parçalar yanmak yerine uyarı verir; böylece pahalı bir hatayı duman çıkmadan fark edersin."
+    }
+  ]
+}

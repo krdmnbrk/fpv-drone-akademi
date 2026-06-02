@@ -1,0 +1,69 @@
+---
+id: throttle-kontrolu
+track: flight
+level: beginner
+order: 6
+title: "Gaz (throttle) kontrolü"
+summary: "Throttle'ın (gaz) itme ve tırmanışı nasıl kontrol ettiğini, hover throttle noktasını, yumuşak ve kademeli gaz kullanımını ve ani gazdan kaçınmayı anlatır."
+estimatedMinutes: 8
+objectives:
+  - "Throttle'ın (gaz) drone'un itme ve tırmanışını nasıl kontrol ettiğini açıklayabilmek"
+  - "Hover throttle noktasının ne olduğunu ve neden önemli olduğunu anlamak"
+  - "Yumuşak, kademeli gaz kullanmanın neden ani gazdan daha doğru olduğunu kavramak"
+prerequisites: ["arming-disarming"]
+quizId: throttle-kontrolu
+---
+
+# Gaz (throttle) kontrolü
+
+Drone'u arm ettin, motorlar uyandı. Şimdi onları ne kadar zorlayacağını sen belirleyeceksin. Bunu yapan kontrol **throttle**'dır.
+
+<KeyTerm en="throttle">Throttle</KeyTerm> (gaz), motorların ne kadar hızlı döneceğini — yani drone'un ne kadar **itme (thrust)** üreteceğini — kontrol eder. Kumandada genellikle **sol çubuğun yukarı/aşağı** ekseni gazı yönetir: yukarı ittikçe motorlar hızlanır, aşağı çektikçe yavaşlar.
+
+## Throttle = itme ve tırmanış
+
+Bir multikopter havada durabilmek için kendi ağırlığını taşıyacak kadar itme üretmelidir. Throttle'ı bu mantıkla düşün:
+
+- **Gaz az** → motorlar yavaş → üretilen itme drone'un ağırlığından küçük → drone **alçalır** (veya hiç kalkamaz).
+- **Gaz çok** → motorlar hızlı → itme ağırlıktan büyük → drone **tırmanır**.
+- **Gaz tam dengede** → itme = ağırlık → drone **olduğu yükseklikte kalır**.
+
+<Callout type="info">
+Burada kritik bir nokta var: throttle drone'u **belli bir yüksekliğe** götüren bir komut değildir. Throttle, drone'un **ne kadar hızlı çıkıp indiğini** belirler. Belli bir yükseklikte kalmak istiyorsan, gazı sürekli o denge noktasında **tutman** gerekir. Bırakırsan drone o yükseklikte asılı kalmaz; gaz düşer ve alçalır.
+</Callout>
+
+## Hover throttle noktası
+
+İşte uçuşun kalbi: <KeyTerm en="hover throttle">hover throttle</KeyTerm> noktası. Bu, drone'un ne tırmandığı ne de alçaldığı, **tam olarak havada asılı kaldığı** gaz seviyesidir. Bu noktada itme, drone'un ağırlığına eşittir.
+
+Tipik bir FPV drone'unda bu nokta genellikle gazın **ortasının biraz altındadır** (kabaca %35–50 civarı), çünkü FPV drone'ları ağırlıklarına göre çok güçlüdür. Her drone, batarya doluluğu ve ağırlığa göre bu nokta biraz değişir.
+
+<Callout type="tip">
+İlk hedefin, kendi drone'unun (ya da simülatördeki drone'un) hover throttle noktasını **parmağınla bulmaktır.** Gazı yavaşça artır; drone yükselmeyi bırakıp havada asılı kaldığı an, parmağının o gaz seviyesini "ezberlemesi" gerekir. Bir sonraki ders olan ilk hover, tamamen bu noktayı hissetmekle ilgilidir.
+</Callout>
+
+## Yumuşak ve kademeli gaz
+
+Yeni başlayanların en sık yaptığı hata, gazı bir anahtar gibi açıp kapatmaktır: ya tam basar ya tamamen bırakır. Bu, drone'u zıplatır, fırlatır ve kontrolü kaybettirir.
+
+Doğru yaklaşım **yumuşak ve kademeli** gazdır:
+
+- Gazı bir ses düğmesini çevirir gibi **azar azar** değiştir, sıçramalı değil.
+- Yükselirken gazı yavaşça arttır; istediğin yüksekliğe yaklaşınca gazı kademeli olarak hover noktasına geri çek.
+- İnişte de aynısı: gazı birden kesme, **azar azar** azalt ki drone yumuşak insin.
+
+<Callout type="warning">
+**Ani gazdan kaçın.** Throttle'ı bir anda dibe vurmak (panik refleksiyle) drone'u yere çakar; bir anda tavana vurmak ise drone'u kontrolsüzce fırlatır. FPV'de güç boldur — az bir gaz değişikliği bile büyük etki yapar. Bu yüzden her zaman **küçük, yumuşak** dokunuşlarla çalış.
+</Callout>
+
+Neden uçarken bu kadar önemli? Çünkü gaz, drone'la aranızdaki en sürekli iletişimdir: hover boyunca, manevra boyunca, inişte... parmağın neredeyse hiç durmadan gazı ince ince ayarlar. Bu yumuşaklığı simülatörde kas hafızasına yerleştirirsen, gerçek uçuşta drone sana "yapışık" hisseder.
+
+<DemoPlaceholder title="Hover throttle noktasını bulmak" note="Sol çubuğun gaz ekseni ve yanında bir yükseklik göstergesi. Gaz yavaşça arttırıldıkça drone tırmanıyor; tam denge noktasında drone havada asılı kalıyor ve o gaz seviyesi bir çizgiyle vurgulanıyor ('HOVER'). Ani gaz örneğinde drone zıplayıp fırlıyor — kullanıcı yumuşak ile sert gaz farkını görsün." />
+
+## Sırada ne var?
+
+Artık gazın drone'u nasıl yukarı-aşağı taşıdığını ve hover noktasının ne olduğunu biliyorsun. Sıradaki ders bunu pratiğe döküyor: **ilk hover** — drone'u göz hizanda, sabit havada tutmak.
+
+<Callout type="info">
+**Özet:** Throttle = itme/tırmanış kontrolü; drone'u bir yüksekliğe değil, ne hızlı çıkıp indiğine göre yönetir. **Hover throttle**, drone'un havada asılı kaldığı denge noktasıdır (genelde ortanın biraz altı). Gazı her zaman **yumuşak ve kademeli** kullan, ani gazdan kaçın. Şimdi mini quiz!
+</Callout>

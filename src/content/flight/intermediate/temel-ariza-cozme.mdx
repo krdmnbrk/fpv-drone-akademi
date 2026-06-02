@@ -1,0 +1,77 @@
+---
+id: temel-ariza-cozme
+track: flight
+level: intermediate
+order: 6
+title: "Temel arıza çözme (troubleshooting)"
+summary: "Arm olmama, motor titremesi ve görüntü kaybı gibi sık sorunları, tek değişkenli sistematik bir yaklaşımla çözmeyi öğretir."
+estimatedMinutes: 13
+objectives:
+  - "Drone'un neden arm olmadığını (arming flags) yorumlayıp çözebilmek"
+  - "Motor titremesi ve pervane dengesizliği ile görüntü kaybının olası nedenlerini tanımak"
+  - "Arızaları tek değişkenli, sistematik bir yöntemle çözebilmek"
+prerequisites: ["betaflight-giris", "lipo-bakimi"]
+quizId: temel-ariza-cozme
+---
+
+# Temel arıza çözme (troubleshooting)
+
+Her pilot er ya da geç bir sorunla karşılaşır: drone arm olmaz, havada titrer ya da gözlükte görüntü kaybolur. İyi haber: bu sorunların çoğu birkaç yaygın nedene dayanır ve **sistemli** bir yaklaşımla çoğu zaman kendi başına çözülür.
+
+## 1. Drone arm olmuyor
+
+En sık karşılaşılan sorun budur. Neyse ki Betaflight sana **nedenini doğrudan söyler.** Configurator'ı bağlarsın ve Setup ekranında bir <KeyTerm en="arming flags">arming flag</KeyTerm> (arm engeli) listesi görürsün — drone bu engeller temizlenmeden arm olmaz.
+
+En yaygın arm engelleri ve anlamları:
+
+- **THROTTLE** — Gaz çubuğu yukarıda. Arm için gaz **en altta (sıfırda)** olmalı.
+- **ANGLE / tilt** — Drone fazla eğik duruyor. Düz bir zemine koy.
+- **ARM_SWITCH** — Daha drone bağlanırken arm switch'i açık konumda. Önce switch'i kapat.
+- **NO_GYRO / MSP / RX_FAILSAFE** — Sensör, USB bağlantısı ya da alıcı/kumanda ile ilgili sorun. (Örneğin kumanda kapalıysa RX_FAILSAFE çıkar — kumandayı aç.)
+- **CRASH / RPMFILTER vb.** — Bir önceki uçuşta algılanan sorun ya da donanım uyarısı.
+
+<Callout type="tip">
+Drone arm olmuyorsa **tahmin etme — bağlan ve flag'lere bak.** Betaflight neredeyse her zaman sana tam nedeni söyler. Örneğin sadece "THROTTLE" yanıyorsa, çözüm gaz çubuğunu sıfıra çekmektir. Bu, troubleshooting'in en kolay kazanılan zaferidir.
+</Callout>
+
+## 2. Motor titremesi / pervane dengesizliği
+
+Drone havadayken titriyor, "vınlıyor" ya da garip ses çıkarıyorsa, en sık fiziksel bir neden vardır. Yazılıma (PID) dokunmadan **önce mekaniği kontrol et:**
+
+- **Hasarlı/dengesiz pervane:** En yaygın neden. Çentilmiş, çatlamış ya da bir kanadı eğilmiş bir pervane dengesizlik (titreşim) yaratır. Pervaneleri tek tek kontrol et; şüpheliyi **değiştir** (bu en ucuz ve en sık çözümdür).
+- **Gevşek pervane somunu:** Pervane sıkı oturmamışsa titrer. Somunları kontrol et.
+- **Eğik motor mili veya hasarlı motor:** Bir çarpmadan sonra motor mili eğilmiş olabilir; motor elle çevrildiğinde pürüzlü/takılı hissediyorsa şüphelen.
+- **Gevşek montaj:** FC ya da motorlar gevşekse titreşim sensörlere yansır.
+
+<Callout type="warning">
+Titreme genelde **pervaneyle başlar**, PID'le değil. Yeni pilotların klasik hatası, dengesiz bir pervaneyi fark etmeden saatlerce PID kurcalamaktır. Önce pervaneyi değiştir; sorun çoğu zaman orada biter.
+</Callout>
+
+## 3. Görüntü kaybı (video)
+
+Gözlükte görüntü gidiyor, karlanıyor (statik/kar) ya da hiç gelmiyorsa, sorun **video zincirindedir** (kamera → VTX → anten → gözlük):
+
+- **Kanal/frekans uyuşmazlığı:** Gözlüğün ile VTX'in **aynı kanalda** olmalı. En sık neden budur — gözlüğü VTX'in kanalına ayarla (ya da gözlükte otomatik tarama yap).
+- **Anten sorunu:** Gevşek, kırık ya da takılmamış anten görüntüyü mahveder. <Callout type="warning">VTX'i **anten takılı olmadan** çalıştırmak (yayına geçirmek) VTX'i yakabilir. Anteni her zaman bağlı tut.</Callout>
+- **Menzil/engel:** Çok uzaklaştıysan ya da arada bina/ağaç varsa sinyal zayıflar ve görüntü karlanır.
+- **VTX güç/ısı:** VTX gevşek bağlıysa veya aşırı ısındıysa görüntü kesilebilir.
+
+## Altın kural: Tek değişken yaklaşımı
+
+Tüm troubleshooting'in temelinde tek bir ilke yatar:
+
+<Callout type="info">
+**Bir seferde sadece tek bir şeyi değiştir, sonra test et.** Aynı anda hem pervaneyi değiştirip hem PID'i değiştirip hem anteni oynatırsan, sorun düzelse bile **hangisinin** düzelttiğini asla bilemezsin. Tek değişiklik → test → sonucu gör → bir sonraki değişiklik. Bu sabırlı yöntem, en karmaşık arızaları bile adım adım çözer.
+</Callout>
+
+Sistematik akış şöyle düşün:
+
+1. **Belirtiyi netleştir.** Tam olarak ne oluyor? (Arm olmuyor mu? Havada mı titriyor? Görüntü mü gidiyor?)
+2. **En olası/en basit nedenden başla.** (Arm sorununda flag'lere bak; titremede pervaneyi kontrol et; videoda kanalı kontrol et.)
+3. **Tek değişiklik yap, test et.** Düzeldiyse nedeni buldun; düzelmediyse o değişikliği geri al ve bir sonrakine geç.
+
+<DemoPlaceholder title="Sistematik arıza ağacı" note="Üç dallı bir karar ağacı animasyonu: 'Arm olmuyor' → arming flag'lerini göster → tek tek çöz. 'Titriyor' → pervane→somun→motor sırasıyla kontrol. 'Görüntü yok' → kanal→anten→menzil sırasıyla kontrol. Her adımda 'tek değişken değiştir, test et' vurgusu yanıp sönüyor. Kullanıcı bir belirti seçip adımları takip edebilsin." />
+
+<Callout type="info">
+**Özet:** Arm olmuyorsa Betaflight'taki arming flag'lere bak (THROTTLE, ANGLE, ARM_SWITCH, RX_FAILSAFE...). Titremede önce pervane/somun/motor gibi mekaniği kontrol et, PID'e en son dokun. Görüntü kaybında kanal eşleşmesi, anten ve menzili kontrol et (anteni asla takmadan VTX'i açma). Her zaman tek değişken değiştirip test et. Şimdi mini quiz!
+</Callout>

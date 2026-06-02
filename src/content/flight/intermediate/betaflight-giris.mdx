@@ -1,0 +1,71 @@
+---
+id: betaflight-giris
+track: flight
+level: intermediate
+order: 3
+title: "Betaflight'a giriş"
+summary: "FPV drone'ların ayar yazılımı Betaflight'ın ne olduğunu, temel sekmelerini ve pervaneleri çıkarmadan motor testi yapmama güvenlik kuralını tanıtır."
+estimatedMinutes: 12
+objectives:
+  - "Betaflight'ın ne olduğunu ve ne işe yaradığını açıklayabilmek"
+  - "Setup, Ports, Receiver, Modes ve Motors sekmelerinin temel görevini tanımak"
+  - "Motor testinden önce pervaneleri çıkarmanın neden zorunlu olduğunu anlamak"
+prerequisites: ["arming-disarming"]
+quizId: betaflight-giris
+---
+
+# Betaflight'a giriş
+
+Drone'un beyninin uçuş kontrolcüsü (flight controller, FC) olduğunu biliyorsun. Peki bu beynin nasıl davranacağını nereden ayarlıyoruz? Cevap: <KeyTerm en="Betaflight">Betaflight</KeyTerm>.
+
+## Betaflight nedir?
+
+Betaflight, FPV drone'ların büyük çoğunluğunda kullanılan **açık kaynaklı uçuş yazılımıdır** (firmware). İki parçası vardır:
+
+- **Firmware:** FC'nin içinde çalışan asıl yazılım — dengeyi sağlar, motor komutlarını üretir.
+- **Configurator:** Bilgisayarına kurduğun, FC'yi USB ile bağlayıp ayarları gördüğün/değiştirdiğin **arayüz** (Betaflight Configurator). Genelde "Betaflight'a girmek" derken bu arayüzü kastederiz.
+
+Drone'u USB kablosuyla bilgisayara bağlarsın, Configurator'ı açarsın ve karşına sol tarafta bir **sekme listesi** çıkar. Her sekme drone'un bir yönünü ayarlar.
+
+<PartHighlight part="fc" />
+
+Yukarıda vurgulanan uçuş kontrolcüsü (FC), Betaflight'ın üzerinde çalıştığı donanımdır. USB ile bağladığın şey budur; tüm ayarlar bu kartın hafızasına yazılır.
+
+## Temel sekmeler
+
+Yeni başlayan için en önemli beş sekme şunlardır:
+
+- **Setup** — Genel durum ekranı. Drone'un 3B modelini gösterir; drone'u elinde döndürünce ekrandaki modelin de dönmesi, sensörlerin (gyro/accelerometer) doğru çalıştığını gösterir. Burada drone'u "düz" olarak da kalibre edersin.
+- **Ports** — FC üzerindeki bağlantı noktalarının (UART) hangi işe ayrıldığını belirler. Örneğin alıcının (receiver) hangi porta bağlı olduğu burada tanımlanır.
+- **Receiver** — Kumandadan gelen sinyali gösterir. Çubukları oynatınca ekrandaki çubukların (roll/pitch/yaw/throttle) doğru yönde hareket etmesini buradan **doğrularsın**.
+- **Modes** — Uçuş modlarını ve switch'leri burada ayarlarsın. Hangi switch'in **arm** yapacağı, hangisinin Angle/Acro modunu seçeceği burada tanımlanır (arming dersinden hatırla).
+- **Motors** — Motorların doğru sırada ve doğru yönde döndüğünü test ettiğin sekme. **Burası en dikkatli olunması gereken yerdir.**
+
+<Callout type="info">
+Hepsini ilk günden ezberlemen gerekmez. Mantık şu: **Ports** bağlantıları tanımlar → **Receiver** kumandanın algılandığını doğrular → **Modes** hangi switch'in ne yapacağını belirler → **Setup** her şeyin düzgün durduğunu gösterir → **Motors** motorları test eder.
+</Callout>
+
+## EN ÖNEMLİ GÜVENLİK KURALI: Pervaneleri çıkar
+
+Motors sekmesinde motorları kayar (slider) ile tek tek döndürerek test edebilirsin. Bunu yapmadan önce **mutlaka, istisnasız** uyulması gereken tek bir kural var:
+
+<Callout type="warning">
+**Motor testi yapmadan önce pervaneleri ÇIKAR.** Configurator'da motor testi yaparken pervaneler takılıysa, motor beklenmedik şekilde fırlayabilir ve dönen pervaneler ciddi yaralanmaya yol açar. Bu, FPV'nin en önemli güvenlik kurallarından biridir ve asla atlanmaz. Pervane = bıçak; çıplak motor = güvenli.
+</Callout>
+
+Pervaneler çıkınca Motors sekmesinde şunları güvenle kontrol edebilirsin:
+
+- **Her motor doğru köşede mi dönüyor?** (Slider'ı oynatınca dönen motorun yerini gör.)
+- **Her motor doğru yönde mi dönüyor?** (Betaflight'ın şemasındaki ok yönüyle aynı olmalı.)
+
+Yanlış sıra veya yanlış yön, drone'un kalkışta hemen takla atıp düşmesine neden olur — bunu yerde, pervanesiz yakalamak çok daha iyidir.
+
+<DemoPlaceholder title="Betaflight Configurator turu" note="Betaflight arayüzünün sol sekme listesini gösteren animasyon. Sırayla Setup (3B model drone ile dönüyor), Ports, Receiver (çubuk oynatınca barlar hareket ediyor), Modes (arm switch'i atanıyor) ve Motors sekmeleri vurgulanıyor. Motors sekmesinde büyük bir uyarı: 'Pervaneleri çıkar!' Kullanıcı sekmelere tıklayıp ne işe yaradıklarını okuyabilsin." />
+
+<Callout type="tip">
+Bağladığın drone'da bir şeyi değiştirdiysen, çıkmadan önce sağ alttaki **"Save and Reboot"** ile kaydetmeyi unutma. Kaydetmezsen yaptığın ayarlar USB'yi çıkarınca kaybolur.
+</Callout>
+
+<Callout type="info">
+**Özet:** Betaflight, FPV drone'ların açık kaynaklı uçuş yazılımıdır; Configurator ise FC'yi USB ile bağlayıp ayarladığın arayüzdür. Temel sekmeler: Setup (durum/sensör), Ports (bağlantılar), Receiver (kumanda doğrulama), Modes (switch/mod atama), Motors (motor testi). En kritik kural: **motor testinden önce pervaneleri çıkar.** Şimdi mini quiz!
+</Callout>

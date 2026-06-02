@@ -1,0 +1,65 @@
+{
+  "id": "arming-disarming",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Bir drone'u 'arm' etmek ne anlama gelir?",
+      "options": [
+        "Motorları aktif (uçmaya hazır) duruma getirmek; gaz verince motorlar döner",
+        "Drone'un bataryasını şarj etmek",
+        "Pervaneleri sökmek",
+        "Drone'u kapatıp kutusuna koymak"
+      ],
+      "answerIndex": 0,
+      "explanation": "Arm, motorları aktifleştirmektir: arm edildikten sonra gaz verdiğinde motorlar döner. Disarm ise motorları kilitler (gaz versen bile dönmezler)."
+    },
+    {
+      "id": "q2",
+      "prompt": "Arming switch genellikle kumandanın neresine atanır ve neden önemlidir?",
+      "options": [
+        "Gaz çubuğuna; bataryayı korur",
+        "Bir AUX (yardımcı) kanalındaki kola; sana anında disarm etme gücü verir",
+        "Ekran parlaklığı düğmesine; görüntüyü netleştirir",
+        "Hiçbir yere atanmaz; arming otomatiktir"
+      ],
+      "answerIndex": 1,
+      "explanation": "Arming bir AUX kanalındaki switch'e bağlanır. Bir şey ters giderse o kolu kapatıp motorları anında durdurabilirsin; bu en önemli güvenlik refleksidir."
+    },
+    {
+      "id": "q3",
+      "prompt": "Drone'u masada test ederken veya ilk kez arm ederken en önemli güvenlik kuralı nedir?",
+      "options": [
+        "Bataryayı tam dolu tutmak",
+        "Önce pervaneleri çıkarmak (prop-off testi)",
+        "Odanın ışıklarını kapatmak",
+        "Kumandayı bilgisayardan ayırmak"
+      ],
+      "answerIndex": 1,
+      "explanation": "Pervaneler dönerken keskin bıçaklar gibidir. Test/ayar öncesi pervaneleri çıkarmak (prop-off), motorların döndüğünü kimseye zarar vermeden güvenle görmeni sağlar."
+    },
+    {
+      "id": "q4",
+      "prompt": "Çoğu drone'da motorlar ne zaman dönmeye başlar?",
+      "options": [
+        "Yalnızca gaz tam açıldığında",
+        "Batarya takılır takılmaz, arm edilmeden",
+        "Arm anında, gaz sıfırdayken bile çok düşük bir devirde (idle) dönmeye başlar",
+        "Hiçbir zaman; pervaneler elle döndürülür"
+      ],
+      "answerIndex": 2,
+      "explanation": "Motorlar gazla değil arm anında 'uyanır'. Arm olunca gaz sıfırdayken bile düşük devirde dönmeye başlamaları normaldir ve drone'un komut beklediğini gösterir."
+    },
+    {
+      "id": "q5",
+      "prompt": "Uçarken kumanda ile drone arasındaki bağlantı koparsa, yeni başlayan için en güvenli failsafe davranışı nedir?",
+      "options": [
+        "Drone'un tam gazla ileri uçmaya devam etmesi",
+        "Motorların durması, böylece drone kontrolsüzce uçup uzaklaşmak yerine olduğu yere düşmesi",
+        "Drone'un pervaneleri otomatik atması",
+        "Hiçbir şey; drone aynı şekilde uçmaya devam eder"
+      ],
+      "answerIndex": 1,
+      "explanation": "Failsafe, bağlantı kopunca devreye girer. En güvenli davranış motorların kesilmesidir; böylece kontrolden çıkmış bir drone uçup gitmek yerine düşer."
+    }
+  ]
+}

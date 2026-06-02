@@ -1,0 +1,65 @@
+{
+  "id": "betaflight-giris",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Betaflight nedir?",
+      "options": [
+        "Bir FPV gözlüğü markası",
+        "FPV drone'ların çoğunda kullanılan açık kaynaklı uçuş yazılımı (firmware) ve onu ayarlamak için kullanılan arayüz (Configurator)",
+        "Bir batarya şarj cihazı",
+        "Bir drone yarışı ligi"
+      ],
+      "answerIndex": 1,
+      "explanation": "Betaflight, FC'nin üzerinde çalışan açık kaynaklı uçuş yazılımıdır. Betaflight Configurator ise FC'yi USB ile bağlayıp ayarları gördüğün/değiştirdiğin arayüzdür."
+    },
+    {
+      "id": "q2",
+      "prompt": "Motor testi (Motors sekmesi) yapmadan önce yapılması gereken en önemli güvenlik adımı nedir?",
+      "options": [
+        "Pervaneleri çıkarmak",
+        "Gözlüğü takmak",
+        "Bataryayı tam dolu olduğundan emin olmak",
+        "Drone'u dışarı çıkarmak"
+      ],
+      "answerIndex": 0,
+      "explanation": "Motor testinden önce pervaneler MUTLAKA çıkarılır. Pervaneler takılıyken motor beklenmedik dönerse ciddi yaralanma olur. Bu, asla atlanmayan bir güvenlik kuralıdır."
+    },
+    {
+      "id": "q3",
+      "prompt": "Kumandadan gelen çubuk hareketlerinin (roll/pitch/yaw/throttle) doğru yönde algılandığını hangi sekmeden doğrularsın?",
+      "options": [
+        "Motors",
+        "Ports",
+        "Receiver",
+        "Setup"
+      ],
+      "answerIndex": 2,
+      "explanation": "Receiver sekmesinde çubukları oynatınca ekrandaki barların doğru yönde hareket etmesini doğrularsın. Böylece kumandanın doğru algılandığından emin olursun."
+    },
+    {
+      "id": "q4",
+      "prompt": "Hangi switch'in arm yapacağı veya hangi uçuş modunu (Angle/Acro) seçeceği Betaflight'ta nerede ayarlanır?",
+      "options": [
+        "Setup sekmesi",
+        "Modes sekmesi",
+        "Ports sekmesi",
+        "Motors sekmesi"
+      ],
+      "answerIndex": 1,
+      "explanation": "Modes sekmesinde uçuş modlarını ve switch atamalarını yaparsın: hangi switch arm yapacak, hangisi Angle/Acro seçecek burada tanımlanır."
+    },
+    {
+      "id": "q5",
+      "prompt": "Betaflight'ta motorların yanlış sırada veya yanlış yönde döndüğünü pervanesiz yakalamak neden önemlidir?",
+      "options": [
+        "Çünkü yanlış sıra/yön drone'un kalkışta hemen takla atıp düşmesine neden olur; bunu yerde, pervanesiz fark etmek çok daha güvenlidir",
+        "Çünkü yanlış yön bataryayı patlatır",
+        "Çünkü motorlar pervanesiz dönmez",
+        "Çünkü Betaflight pervane olmadan açılmaz"
+      ],
+      "answerIndex": 0,
+      "explanation": "Motor sırası/yönü yanlışsa drone kalkışta hemen devrilir. Bunu pervaneler çıkarılmış halde, drone yerdeyken fark etmek hem güvenli hem de drone'u kırmaktan kurtarır."
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+---
+id: long-range-temelleri
+track: flight
+level: advanced
+order: 5
+title: "Long-range temelleri"
+summary: "Uzun menzil (long-range) FPV'nin temellerini anlatır: ELRS kontrol linki ve neden tercih edildiği, verici gücü ve anten seçimi (yönlü vs omni, polarizasyon), batarya menzil/verim hesabı, failsafe ayarı ve uzun menzilin ek riskleri/sorumlulukları."
+estimatedMinutes: 14
+objectives:
+  - "Uzun menzil için neden ELRS gibi bir kontrol linkinin tercih edildiğini açıklayabilmek"
+  - "Verici gücü ve anten seçiminin (yönlü vs omni, polarizasyon) menzile etkisini anlamak"
+  - "Bataryayla menzil/verim ilişkisinin temel mantığını ve neden 'gidiş-dönüş' planlandığını söyleyebilmek"
+  - "Failsafe ayarının ve uzun menzilin ek risk/sorumluluklarının neden kritik olduğunu kavramak"
+prerequisites: ["tuning", "guvenlik-ve-shgm"]
+quizId: long-range-temelleri
+---
+
+# Long-range temelleri
+
+<KeyTerm en="long-range">Long-range</KeyTerm> (uzun menzil), drone'u görüş alanının ötesine, uzun mesafelere uçurma disiplinidir; genellikle manzara/keşif uçuşları için yapılır. Hız ve akrobasiden çok **güvenilir bağlantı, verim ve planlama** üzerine kuruludur. Bu ders, freestyle/yarıştan farklı olan bu öncelikleri tanıtır.
+
+<Callout type="warning">
+Uzun menzil, bu müfredattaki en çok **sorumluluk** isteyen konudur: drone gözünden uzaklaştıkça hata payı küçülür, riskler büyür. Önce **güvenlik ve SHGM** kurallarını tam bildiğinden emin ol; uzun menzil, kuralları ve sınırları zorlamak için bir bahane değildir.
+</Callout>
+
+## 1. Kontrol linki: neden ELRS?
+
+Drone uzaklaştıkça en kritik şey, kumandadan gelen kontrol sinyalinin **kopmadan** ulaşmasıdır. İşte burada kontrol linki devreye girer.
+
+<PartHighlight part="rx" />
+
+Yukarıdaki **alıcı (RX)**, kumandanın sinyalini yakalayıp FC'ye ileten parçadır. Uzun menzilde bugün en yaygın açık standart <KeyTerm en="ExpressLRS, ELRS">ExpressLRS (ELRS)</KeyTerm>'tir. Neden uzun menzil için tercih edilir?
+
+- **Yüksek alıcı duyarlılığı:** Çok zayıf sinyalleri bile çözebilir, bu da daha uzun menzil demektir.
+- **Çok düşük gecikme:** Kontrol hissini canlı tutar.
+- **Esnek paket hızı:** Daha düşük "paket hızı" (ör. yarış için yüksek, uzun menzil için düşük) seçerek menzili artırabilirsin — düşük hız = daha uzak erişim.
+- **Frekans seçenekleri:** Genelde 2.4 GHz; en uzun menzil için 868/915 MHz bandı da vardır (daha iyi nüfuz/menzil).
+
+<Callout type="tip">
+Kontrol linki ile **video linki ayrı sistemlerdir.** Uzun menzilde sık görülen bir gerçek: kontrol linkin (ELRS) hâlâ sağlamken videon önce bozulmaya başlar. Yani çoğu zaman seni geri döndüren şey, kontrolün değil **görüntünün** menzilidir; ikisini birlikte planlamak gerekir.
+</Callout>
+
+## 2. Verici gücü ve anten
+
+Menzili belirleyen iki büyük etken: ne kadar **güç** yaydığın ve hangi **anteni** kullandığın. Burada en büyük kazanç çoğu zaman güçten değil, **antenden** gelir.
+
+<PartHighlight part="vtx" />
+
+Yukarıdaki **VTX (video vericisi)** görüntüyü antenle yollar; verici gücü **mW (miliwatt)** ile ölçülür. Ama dikkat: gücü artırmak menzili belli bir yere kadar artırır ve bedeli vardır (ısı, parazit, daha fazla pil tüketimi, ve yasal sınırlar). Antenin doğru seçimi genelde ham güçten daha etkilidir.
+
+İki anten türünü tanı:
+
+- <KeyTerm en="omnidirectional antenna">Omni (her yöne) anten</KeyTerm>: Sinyali her yöne **eşit** yayar/alır. Avantajı: drone hangi yönde olursa olsun çalışır, esnektir. Dezavantajı: enerji her yöne dağıldığı için tek bir yönde menzili sınırlıdır.
+- <KeyTerm en="directional antenna">Yönlü (directional) anten</KeyTerm>: Sinyali **belirli bir yöne** odaklar (ör. bir patch anten). Avantajı: odaklandığı yönde çok daha uzun menzil. Dezavantajı: o yönün dışına çıkarsan (drone yan/arkana geçerse) sinyal zayıflar.
+
+<Callout type="info">
+Uzun menzilde yaygın çözüm **diversity** (çeşitlilik) kurulumudur: gözlükte/alıcıda **hem omni hem yönlü** anten bulunur; sistem o an hangisi daha iyi sinyal alıyorsa onu kullanır. Böylece hem yakın/her yön esnekliği (omni) hem de uzak menzil (yönlü) bir arada olur.
+</Callout>
+
+Bir diğer kritik kavram <KeyTerm en="polarization">polarizasyon</KeyTerm>dur: FPV'de antenler genelde **dairesel polarize**dir ve VTX ile gözlük anteni **aynı polarizasyonda** (ör. ikisi de RHCP) olmalıdır. Yanlış eşleşme (RHCP VTX + LHCP gözlük) sinyali dramatik biçimde düşürür — uzun menzilde bu, menzilin neredeyse bitmesi demektir.
+
+<DemoPlaceholder title="Omni vs yönlü anten kapsama alanı" note="Kuşbakışı pilot konumu. Omni anten: pilot etrafında eşit bir daire (her yön orta menzil). Yönlü anten: pilotun baktığı yönde uzun bir koni (o yönde çok uzak, yanlarda zayıf). Diversity: ikisinin birleşimi gösterilsin. Drone koniden çıkınca yönlü sinyalin düştüğü, omninin devreye girdiği canlandırılsın." />
+
+## 3. Batarya: menzil ve verim hesabı
+
+Uzun menzilde batarya artık "ne kadar uçarım"dan çok **"ne kadar uzağa gidip geri dönerim"** sorusudur. Temel mantık:
+
+- **Verim (efficiency):** Uzun menzilde gaz kökleyerek değil, **verimli bir seyir hızında** uçarsın. Tıpkı arabada sabit hızın dur-kalktan az yakması gibi, sabit ve makul bir seyir hızı menzili ciddi uzatır.
+- **Gidiş-dönüş planı:** Mesafeyi planlarken **dönüşü de** hesaba kat. Yaygın güvenli kural, dönüş için bol pay bırakmaktır (ör. enerjinin önemli bir kısmını dönüş ve yedek için ayır). Rüzgâr varsa, gidişte arkadan iten rüzgâr dönüşte **karşına** çıkar ve dönüşü çok daha pahalı yapar.
+- **Voltajı izle:** Uçuş boyunca pil voltajını sürekli takip et (gözlükteki OSD'den). Geri dönüş kararını voltaj tükenmeden, **erken** ver.
+
+<Callout type="warning">
+Uzun menzil bataryasını "tek yön" düşünerek planlama. En sık ve en pahalı hatalardan biri, **uzağa gidip dönecek enerjinin kalmaması**dır; bu, drone'u uzakta düşürmek (ve çoğu zaman kaybetmek) demektir. Her zaman dönüşü ve rüzgârı hesaba katıp güvenli bir geri dönüş eşiği belirle.
+</Callout>
+
+## 4. Failsafe: bağlantı koparsa ne olacak?
+
+<KeyTerm en="failsafe">Failsafe</KeyTerm>, kontrol linki koptuğunda drone'un ne yapacağını belirleyen güvenlik davranışıdır. Yakın uçuşta bile önemlidir; uzun menzilde **hayatidir**, çünkü menzilin sınırında bağlantı kopması çok daha olasıdır.
+
+Yaygın failsafe davranışları:
+
+- **Motorları kes (drop):** Drone düşer. Yakın/boş alanda en güvenli seçenektir (kontrolsüz uçup gitmesindense düşsün).
+- **Geri dön (Return-to-Home, RTH):** GPS varsa drone otomatik olarak kalkış noktasına döner. Uzun menzilde tercih edilir ama **doğru kurulmuş ve test edilmiş** bir GPS/RTH gerektirir; yanlış ayarlı RTH yeni bir tehlikedir.
+
+<Callout type="warning">
+Failsafe'i **uçmadan önce ayarla ve test et.** Ayarlanmamış veya yanlış ayarlanmış failsafe, link koptuğunda drone'un kontrolsüz biçimde uçup gitmesi demektir — bu, hem onu kaybetmek hem de çevre için ciddi bir tehlikedir. Uzun menzile çıkmadan failsafe davranışını mutlaka doğrula.
+</Callout>
+
+## Uzun menzilin ek riskleri ve sorumluluğu
+
+Drone gözünden uzaklaştıkça yeni riskler eklenir; bunların farkında olmak işin bir parçasıdır:
+
+- **Görüş alanı dışına çıkma:** FPV zaten doğrudan görüş (VLOS) sayılmaz; uzun menzilde drone hem gözlemcinin hem senin görüşünün tamamen dışına çıkabilir. Türkiye'de bunun **yasal sınırları ve izin gereksinimleri** vardır.
+- **Çevreyi göremezsin:** Uzaktaki engelleri, başka hava araçlarını, insanları göremezsin. Uçuş alanını ve rotayı önceden tanımak şart.
+- **Kayıp ve kurtarma:** Uzakta düşen bir drone'u bulmak zordur; GPS konumu ve telemetri burada çok değerlidir.
+- **Sorumluluk:** Drone senin sorumluluğundadır. Gözünden ne kadar uzaksa, başkalarına/mülke verebileceği zararın sorumluluğu da o kadar ağırdır.
+
+<Callout type="info">
+**Özet:** Uzun menzil = güvenilir link + verim + planlama. Kontrol linki için **ELRS** (yüksek duyarlılık, düşük paket hızıyla uzun menzil) tercih edilir; video linki ondan ayrıdır ve genelde önce video biter. Menzili çoğunlukla **anten** (omni vs yönlü, doğru polarizasyon, diversity) belirler, ham güç değil. Bataryayı **gidiş-dönüş + rüzgâr** payıyla planla. **Failsafe'i** önceden ayarla/test et. Ve unutma: uzaklaştıkça riskler ve sorumluluk artar — önce güvenlik ve SHGM. Şimdi mini quiz!
+</Callout>

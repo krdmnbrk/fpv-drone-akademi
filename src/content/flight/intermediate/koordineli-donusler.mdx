@@ -1,0 +1,64 @@
+---
+id: koordineli-donusler
+track: flight
+level: intermediate
+order: 2
+title: "Koordineli dönüşler"
+summary: "Roll ile dönüş ile yaw ile dönüşü karşılaştırır; ikisini ve gazı birleştirerek pürüzsüz, kontrollü bir daire çizmeyi öğretir."
+estimatedMinutes: 12
+objectives:
+  - "Roll ile dönüş ile yaw ile dönüş arasındaki farkı açıklayabilmek"
+  - "Roll, yaw ve gazı birleştirerek pürüzsüz bir daire çizebilmek"
+  - "Dönüş sırasında neden gaz (throttle) eklemek gerektiğini anlamak"
+prerequisites: ["stabil-hover-yaw"]
+quizId: koordineli-donusler
+---
+
+# Koordineli dönüşler
+
+Yerinde yaw yapmayı öğrendin. Şimdi drone'u **ileri uçururken** dönmeyi, yani gerçek bir **daire** çizmeyi ele alalım. Burada iki farklı "dönüş" yöntemi vardır ve iyi pilotlar ikisini **birleştirir**.
+
+## Roll ile dönüş vs yaw ile dönüş
+
+Bir drone'u ileri giderken döndürmenin iki yolu vardır:
+
+- **Yaw ile dönüş:** Sadece burnu çevirirsin. Drone neredeyse olduğu yerde döner; çok dar ama **yavaş ve "kayık"** hisseden bir dönüştür. Tek başına kullanıldığında drone yana savrulur (yana kayma — sideslip).
+- **Roll ile dönüş:** Drone'u dönmek istediğin yöne **yatırırsın** (banka alırsın). Tıpkı bir uçağın ya da motosikletin viraja yatması gibi. İleri hız varken roll, drone'u o yöne doğru **geniş bir yay** çizdirir.
+
+<KeyTerm en="coordinated turn">Koordineli dönüş</KeyTerm>, bu ikisini birlikte kullanmaktır: **roll ile yatırıp** dönüşü başlatırsın, **yaw ile** de burnu dönüş yönüne çevirip drone'un yana kaymasını engellersin. Sonuç: drone burnu daima gittiği yöne bakan, pürüzsüz bir daire çizer.
+
+<Callout type="info">
+Sezgisel ayrım: **Roll** dönüşün *yarıçapını* (ne kadar geniş döndüğünü) belirler, **yaw** ise burnu *hizalar* (drone'un gittiği yöne bakmasını sağlar). Sadece yaw = dar ama kaygan; sadece roll = geniş ama burun yana bakar; ikisi birlikte = temiz daire.
+</Callout>
+
+## Dönüşte gaz (throttle) yönetimi
+
+İşte yeni pilotların gözden kaçırdığı kritik nokta: **drone yana yatınca yükseklik kaybeder.**
+
+Neden? Hover'da pervaneler itmenin tamamını **yukarı** verir. Drone yana yattığında (banka aldığında) bu itmenin bir kısmı artık yana doğru gider; yukarı kalan kısım azalır. Yer çekimini yenmeye yetmez ve drone alçalmaya başlar.
+
+Çözüm basit: **dönüşe girerken gazı biraz artır.** Banka açısı arttıkça biraz daha gaz; dönüşten çıkıp düzelirken gazı geri al. Bu küçük gaz eklemesi, dairenin düz bir yükseklikte kalmasını sağlar.
+
+<Callout type="warning">
+Bunu unutursan dönüşlerin "aşağı kıvrılan" bir spiral gibi olur — drone her dönüşte alçalır. Sert (dik) bankalarda yükseklik kaybı çok hızlıdır. Bu yüzden başta **yumuşak, az yatık** dönüşlerle çalış.
+</Callout>
+
+## Pürüzsüz daire çizmek
+
+Hepsini birleştiren komut, aynı anda üç küçük girdidir:
+
+1. **Roll** — drone'u dönüş yönüne hafifçe yatır (yarıçapı belirler).
+2. **Yaw** — burnu dönüş yönüne çevirerek kaymayı engelle.
+3. **Throttle** — yatıştan kaynaklanan yükseklik kaybını telafi etmek için biraz gaz ekle.
+
+Bunlar ani değil, **yumuşak ve eşzamanlı** olmalı. Hedef, çubukları zıplatmadan, drone'un akıcı tek bir yay çizmesidir.
+
+<DemoPlaceholder title="Koordineli daire" note="Üstten görünümde bir drone daire çiziyor. Üç ince çubuk göstergesi: roll (yatış), yaw (burun hizası), throttle (yükseklik telafisi). Önce sadece yaw seçilince drone dar ve kaygan döner; sadece roll seçilince geniş döner ama burun yana bakar ve drone alçalır; üçü birleşince burun hep yörüngeye teğet, yükseklik sabit, temiz bir daire çıkar." />
+
+<Callout type="tip">
+Alıştırma için yere (ya da simülatörde) hayali bir daire seç ve drone'u o çizgide tutmaya çalış. Önce büyük ve yavaş daireler; kontrol arttıkça daireyi küçült ve hızlan. Hem saat yönünde hem tersinde çalış — biri sana daha kolay gelecek, zayıf yönü bilerek pratik et.
+</Callout>
+
+<Callout type="info">
+**Özet:** Yaw dönüşü dar ama kaygandır; roll dönüşü geniştir ama burun yana bakar ve yükseklik kaybettirir. Koordineli dönüş ikisini birleştirir ve yatıştan gelen yükseklik kaybını **gaz ekleyerek** telafi eder. Sonuç: burnu hep yörüngeye bakan, sabit yükseklikte pürüzsüz bir daire. Şimdi mini quiz!
+</Callout>

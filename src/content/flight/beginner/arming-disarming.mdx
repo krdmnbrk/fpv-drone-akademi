@@ -1,0 +1,83 @@
+---
+id: arming-disarming
+track: flight
+level: beginner
+order: 5
+title: "Arming (motorları aktifleştirme)"
+summary: "Arm/disarm kavramını, arming switch'i (AUX kanalı), prop-off gibi güvenlik kurallarını, motorların ne zaman dönmeye başladığını ve failsafe sezgisini anlatır."
+estimatedMinutes: 9
+objectives:
+  - "Arm ve disarm kavramlarının ne anlama geldiğini açıklayabilmek"
+  - "Arming switch'in (AUX kanalı) rolünü ve temel güvenlik kurallarını bilmek"
+  - "Prop-off testi ve failsafe gibi güvenlik önlemlerinin neden önemli olduğunu anlamak"
+prerequisites: ["simulatorde-baslama"]
+quizId: arming-disarming
+---
+
+# Arming: motorları aktifleştirme
+
+Simülatörün açık ve kumandan bağlı. Drone'u havalandırmadan önce öğrenmen gereken ilk şey, motorların nasıl "uyandığı"dır. Bu işleme **arming** denir.
+
+- <KeyTerm en="arm">Arm</KeyTerm> = motorları **aktif (uçmaya hazır)** duruma getirmek. Arm ettikten sonra gaz verdiğinde motorlar döner.
+- <KeyTerm en="disarm">Disarm</KeyTerm> = motorları **kilitlemek (durdurmak)**. Disarm durumunda gaz versen bile motorlar dönmez.
+
+Bir drone her zaman ya armed ya da disarmed durumdadır. Bunu arabanın kontağına benzet: kontak kapalıyken (disarmed) gaza bassan da araba hareket etmez; kontağı açtığında (armed) araç komutlara cevap vermeye başlar.
+
+## Arming switch nedir? (AUX kanalı)
+
+Drone'u arm/disarm etmek için kumandanın bir düğmesini (genelde bir kol/switch) kullanırsın. Bu, kumandanın <KeyTerm en="AUX channel">AUX kanalı</KeyTerm> denen yardımcı kanallarından birine atanmıştır.
+
+Kumandanın iki ana çubuğu (gaz/yön) dışında, ek düğme ve kollar için **AUX kanalları** vardır. Bunlardan birini "arming switch" olarak ayarlarsın: kolu yukarı atınca drone arm olur, aşağı çekince disarm olur.
+
+<Callout type="tip">
+Arming'i ayrı bir switch'e bağlamak çok önemlidir, çünkü bu sana **anında disarm** etme gücü verir. Bir şeyler ters giderse — drone kontrolden çıkar veya tehlikeli yöne giderse — o kolu kapatman, motorları o an durdurur. Bu, FPV'nin en önemli güvenlik refleksidir.
+</Callout>
+
+## Güvenlik kuralları: ÖNCE pervaneleri çıkar
+
+Gerçek bir drone'da motorlar dönerken pervaneler keskin birer bıçak gibidir; saniyede binlerce devir yaparlar ve ciddi yaralanmaya yol açabilirler. Bu yüzden:
+
+<Callout type="warning">
+**Altın kural: Kuruluma, ayara veya teste başlamadan önce PERVANELERİ ÇIKAR.** Drone'unu masada test edecek, ayar yapacak veya ilk kez arm edip motorların döndüğünü görecekken pervaneler **takılı olmamalıdır.** Pervanesiz dönen motor zararsızdır.
+</Callout>
+
+Buna <KeyTerm en="prop-off test">prop-off testi</KeyTerm> denir: pervaneleri çıkarıp drone'u arm ederek motorların doğru yönde, sorunsuz döndüğünü güvenle kontrol etmek. Motorların gerçekten döndüğünü ve kumandaya cevap verdiğini bu şekilde, kimseye zarar vermeden görürsün.
+
+Birkaç güvenlik alışkanlığı daha:
+
+- **Arm etmeden önce her zaman drone'dan ve insanlardan uzak dur.** Arm anında motorlar düşük devirde dönmeye başlayabilir.
+- **İşin bitince hemen disarm et.** Drone yerdeyken bile "armed" bırakmak risklidir.
+- **Bataryayı en son tak, en başta çıkar.** (Bunu donanım derslerinde detaylandırıyoruz.)
+
+## Motorlar ne zaman dönmeye başlar?
+
+Yeni başlayanların kafasını en çok karıştıran nokta budur. Sıralama şöyledir:
+
+1. Drone **disarmed** — gaz versen bile motorlar **dönmez**.
+2. Arming switch'i açarsın → drone **armed**.
+3. Çoğu drone arm olur olmaz, gaz sıfırdayken bile motorları **çok düşük bir devirde** (idle) döndürmeye başlar. Bu, "hazırım" demektir.
+4. Gaz verdiğinde devir artar ve drone kalkar.
+
+<Callout type="info">
+Yani motorlar gazla değil, **arm anında** uyanır. Bu yüzden "arm ettim, motorlar yavaşça dönmeye başladı" görmek normaldir ve iyi bir işarettir — drone komut bekliyor demektir. Pervaneler takılıyken bunu asla masada deneme.
+</Callout>
+
+## Failsafe sezgisi
+
+Peki ya uçarken kumandayla drone arasındaki bağlantı koparsa (çok uzaklaştın, sinyal kesildi)? İşte burada <KeyTerm en="failsafe">failsafe</KeyTerm> devreye girer.
+
+Failsafe, drone'un "kumandamı kaybettim" durumunda otomatik yaptığı güvenlik davranışıdır. Yeni başlayan için en yaygın ve en güvenli failsafe ayarı şudur: **bağlantı kesilirse motorları hemen durdur (disarm/drop).** Böylece kontrolden çıkmış bir drone, kontrolsüzce uçup uzaklaşmak yerine olduğu yere düşer.
+
+<Callout type="warning">
+Failsafe'in mantığını şimdiden kavra: kumanda bağlantısı koparsa drone'un **kontrolden çıkıp uçup gitmesini istemezsin.** İlk uçuşlarda en güvenli davranış, sinyal gidince motorların kesilmesidir. Detaylı ayarını ileride yaparsın; şu an sezgiyi edinmen yeterli.
+</Callout>
+
+<DemoPlaceholder title="Arm / disarm ve prop-off testi" note="İki sahne: (1) Kumandadaki AUX kolu yukarı atılıyor, drone 'ARMED' yazıyor ve pervanesiz motorlar yavaşça dönmeye başlıyor; kol aşağı çekilince 'DISARMED' ve motorlar duruyor. (2) Yan panelde 'PERVANELER ÇIKARILDI' rozeti vurgulanıyor. Kullanıcı arm/disarm geçişini hissetsin." />
+
+## Sırada ne var?
+
+Artık motorları güvenle aktifleştirmeyi biliyorsun. Sıradaki ders, o motorlara ne kadar güç vereceğini belirleyen şeyi öğretecek: **gaz (throttle) kontrolü.**
+
+<Callout type="info">
+**Özet:** Arm = motorları aktifleştir, disarm = kilitle. Arming bir AUX kanalındaki switch'e bağlanır ve anında disarm gücü verir. Test/ayar öncesi **pervaneleri çıkar (prop-off)**. Motorlar gazla değil arm anında uyanır. Failsafe, bağlantı kopunca drone'u güvenle durdurur. Şimdi mini quiz!
+</Callout>

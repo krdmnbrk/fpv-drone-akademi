@@ -1,0 +1,79 @@
+---
+id: yaris-cizgileri
+track: flight
+level: advanced
+order: 2
+title: "Yarış çizgileri (racing lines)"
+summary: "Drone yarışında çizgi (racing line) mantığını; en hızlı değil en pürüzsüz çizginin neden kazandırdığını; kapıya (gate) giriş/çıkış açısını, gaz yönetimini ve tutarlılığın önemini anlatır."
+estimatedMinutes: 11
+objectives:
+  - "Racing line (yarış çizgisi) kavramını ve neden 'en kısa' değil 'en pürüzsüz' çizginin tercih edildiğini açıklayabilmek"
+  - "Bir kapıya (gate) doğru giriş ve çıkış açısının neden önemli olduğunu anlamak"
+  - "Yarışta gaz (throttle) yönetiminin temel mantığını söyleyebilmek"
+  - "Tutarlılığın (consistency) neden ham hızdan daha değerli olduğunu kavramak"
+prerequisites: ["freestyle-temelleri"]
+quizId: yaris-cizgileri
+---
+
+# Yarış çizgileri (racing lines)
+
+Freestyle'da figürleri öğrendin; şimdi enerjini bir hedefe yönelttiğimiz alana bakalım: **yarış**. Drone yarışında pilotlar bir dizi **kapıdan (gate)** ve bayraktan geçerek en kısa sürede pisti tamamlamaya çalışır. Burada işin sırrı motorun gücünde değil, izlediğin **çizgide** saklıdır.
+
+<KeyTerm en="racing line">Racing line</KeyTerm> (yarış çizgisi), pist üzerinde takip ettiğin ideal yoldur. Bu dersin tek cümlelik özeti şudur:
+
+<Callout type="info">
+Yarışta amaç **en hızlı anlık hıza** ulaşmak değil, pisti **en pürüzsüz** (en akıcı) çizgiyle baştan sona en kısa sürede bitirmektir. Otomobil ve motor yarışından bilinen bu fikir, drone'da da aynen geçerlidir.
+</Callout>
+
+## Neden "en hızlı" değil "en pürüzsüz"?
+
+İçgüdüsel olarak "kapılar arası en kısa düz çizgi en hızlıdır" diye düşünebilirsin. Ama gerçek farklıdır: keskin, köşeli bir çizgide her kapıda **sert fren + sert dönüş + yeniden hızlanma** yaparsın. Her sert frenleme momentumunu (biriktirdiğin hızı) yok eder ve onu tekrar kazanman zaman alır.
+
+Pürüzsüz bir çizgide ise:
+
+- Dönüşlere **geniş ve yuvarlak** girersin, böylece hızının çoğunu korursun.
+- Bir kapıdan çıkarken zaten bir sonraki kapıya **doğru hizalanmış** olursun.
+- Momentumunu harcamak yerine **taşırsın**; bu da toplam süreyi kısaltır.
+
+<DemoPlaceholder title="Köşeli çizgi vs pürüzsüz çizgi" note="Kuşbakışı bir pist (3-4 kapı). İki hayalet çizgi üst üste: kırmızı 'köşeli' çizgi her kapıda sert fren yapıyor (hız göstergesi düşüp çıkıyor), yeşil 'pürüzsüz' çizgi geniş yaylarla akıyor (hız daha sabit). Sonda iki çizginin bitiş süresi gösterilsin — pürüzsüz olan daha hızlı bitiyor." />
+
+## Kapıya giriş ve çıkış açısı
+
+Bir yarış kapısı sadece "geçilecek bir delik" değildir; nasıl **girdiğin** ve nasıl **çıktığın** önemlidir. Çünkü bir kapıdan çıkış açın, bir sonraki kapıya giriş çizgini belirler.
+
+- **Giriş (entry):** Kapıya, bir sonraki hedefe yönelmeni kolaylaştıracak açıyla yaklaş. Bazen kapıya hafifçe "dıştan" girip içeriden çıkmak, sonraki kapıya hizalanmanı sağlar.
+- **Çıkış (exit):** Kapıdan çıkarken burnunun zaten bir sonraki kapıya bakıyor olması idealdir. İyi pilot, bir kapıdan geçerken aklı çoktan **bir sonraki iki kapıdadır**.
+
+<Callout type="tip">
+Pratik ipucu: Tek tek kapılara değil, **kapılar arasındaki geçişlere** odaklan. "Şu kapıdan nasıl geçerim" yerine "bu kapıdan çıkıp sonrakine en akıcı nasıl bağlanırım" diye düşün. İleriyi okumak (look ahead) yarışın en önemli zihinsel becerisidir.
+</Callout>
+
+## Gaz (throttle) yönetimi
+
+Yeni yarışçıların en yaygın hatası **sürekli tam gaz**tır. Gaz kökte uçmak hem kontrolü zorlaştırır hem de dönüşlerde drone'u çizginin dışına savurur. Doğru mantık:
+
+- **Düzlüklerde (straights)** gazı aç, hızlan.
+- **Dönüş ve kapı öncesi** gazı yumuşakça azalt; drone'u çizgiye otur.
+- **Kapıdan çıkışta** tekrar yumuşakça aç.
+
+Yani gaz bir aç/kapa anahtarı değil, sürekli ve kademeli ayarladığın bir musluktur. Buna yarışta "gazı modüle etmek" denir.
+
+<DemoPlaceholder title="Pist boyunca gaz haritası" note="Aynı kuşbakışı pist; pürüzsüz çizgi üzerinde renk gradyanı: düzlüklerde yeşil (yüksek gaz), kapı/dönüş öncesi sarıdan kırmızıya (gaz azalıyor), çıkışta tekrar yeşile dönüyor. Gazın çizgi boyunca nasıl 'nefes aldığını' göster." />
+
+## Tutarlılık (consistency), hızdan önce gelir
+
+Yarışta bir tur çok hızlı atıp sonraki turda bir kapıyı ıskalamak veya çarpmak hiçbir işe yaramaz. Asıl kazandıran şey **tutarlılık**: aynı pürüzsüz çizgiyi tur tur, hatasız tekrarlayabilmek.
+
+<Callout type="warning">
+"Daha hızlı uçayım" diye sınırını aşıp her turda çarpan bir pilot, biraz daha yavaş ama temiz uçan pilottan **daha yavaş** bitirir; çünkü her çarpma toparlanma süresi (hatta yarış dışı kalma) demektir. Önce **temiz ve tutarlı** uç; hız, tutarlılığın üzerine doğal olarak eklenir.
+</Callout>
+
+İlerleme yolu nettir:
+
+1. Çizgiyi **temiz** uçabil (hatasız, ama yavaş olabilir).
+2. Aynı çizgiyi **tekrar tekrar** aynı şekilde uçabil (tutarlılık).
+3. Ancak bundan sonra çizgiyi koruyarak **kademeli hızlan**.
+
+<Callout type="info">
+**Özet:** Racing line = en kısa değil **en pürüzsüz** çizgi; çünkü momentumu korumak frenleyip yeniden hızlanmaktan hızlıdır. Kapıya giriş/çıkış açın bir sonraki kapıya hizanı belirler; ileriyi oku. Gazı bir musluk gibi kademeli yönet. Ve her şeyden önce **tutarlı** ol — hız, temiz uçuşun üzerine gelir. Şimdi mini quiz!
+</Callout>

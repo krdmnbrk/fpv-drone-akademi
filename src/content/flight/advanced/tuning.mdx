@@ -1,0 +1,93 @@
+---
+id: tuning
+track: flight
+level: advanced
+order: 4
+title: "Tuning (PID/filter ince ayar)"
+summary: "PID ve filtre ince ayarının (tuning) ne zaman gerektiğini, blackbox sezgisini, PID değişikliklerinin uçuş hissine etkisini, filtre ile gecikme (latency) dengesini ve küçük adımlarla ilerlemenin önemini anlatır."
+estimatedMinutes: 13
+objectives:
+  - "Tuning'in ne zaman gerekli olduğunu, ne zaman gereksiz olduğunu söyleyebilmek"
+  - "Blackbox kaydının ne işe yaradığını ve nasıl bir sezgi verdiğini açıklayabilmek"
+  - "PID değişikliklerinin uçuş hissine etkisini genel hatlarıyla anlamak"
+  - "Filtre ile gecikme (latency) arasındaki dengeyi ve küçük adımlarla ilerlemenin önemini kavramak"
+prerequisites: ["pid-rates-temel", "kendi-drone-kurma-lehimleme"]
+quizId: tuning
+---
+
+# Tuning (PID/filter ince ayar)
+
+Kendi drone'unu kurdun ve PID/rate kavramlarını tanıyorsun. <KeyTerm en="tuning">Tuning</KeyTerm>, drone'un uçuş davranışını yazılımdan (Betaflight) ince ayarla istediğin hisse getirmektir. Ama en önemli mesajla başlayalım:
+
+<Callout type="tip">
+Modern uçuş yazılımlarının **varsayılan (stock) ayarları çoğu drone için zaten çok iyidir.** Tuning, "her drone'da yapılması zorunlu bir adım" değil, **bir sorunu çözmek** ya da iyi bir uçuşu mükemmelleştirmek içindir. Yeni başlıyorsan: önce varsayılanla uç, sorun yoksa dokunma.
+</Callout>
+
+## Tuning ne zaman gerekir?
+
+Tuning'e körlemesine değil, bir **belirti** gördüğünde başvurursun. Tipik işaretler:
+
+- **Titreşim / salınım (oscillation):** Drone havada titriyor, hızlanırken veya gaz verirken "ötüyor", motorlar aşırı ısınıyor.
+- **Bulanık / jelatinimsi video:** Görüntüde titreşim kaynaklı dalgalanma (jello) — genelde bir filtre/titreşim sorunudur.
+- **Tepkisiz veya aşırı tepkili his:** Drone komutlara geç cevap veriyor ya da fazla sinirli/savruk.
+- **Donanım değişikliği:** Çok farklı bir motor/pervane/frame'e geçtiysen varsayılan ayar artık ideal olmayabilir.
+
+<Callout type="warning">
+Tuning'e başlamadan önce **mekanik sorunları ele.** Eğri/çatlak pervane, gevşek motor vidası, kötü dengelenmiş parça veya gevşek frame, "PID sorunu" gibi görünen titreşimlerin çoğunun gerçek sebebidir. Yazılımdan çözmeye çalışmadan önce donanımın temiz olduğundan emin ol.
+</Callout>
+
+## Blackbox: körlemesine değil, veriyle
+
+<KeyTerm en="blackbox">Blackbox</KeyTerm>, uçuş sırasında drone'un içindeki tüm verileri (gyro hareketi, motor çıkışları, komutlar) saniyede binlerce kez kaydeden bir "kara kutu"dur. Sonra bu kaydı bilgisayarda inceleyip **neyin ne zaman olduğunu** görebilirsin.
+
+Blackbox'ın sana verdiği sezgi şudur: "hisset"meye çalışmak yerine **gör**. Örneğin:
+
+- Drone'un istenen hareket (setpoint) ile gerçekte yaptığı hareket (gyro) ne kadar örtüşüyor?
+- Titreşim hangi frekansta? (Bu, hangi filtrenin gerektiğini söyler.)
+- Motorlar gereksiz yere mi çalışıyor (sürekli düzeltme yapıyor)?
+
+<DemoPlaceholder title="Blackbox: setpoint vs gyro" note="Bir grafik animasyonu: 'setpoint' (pilotun istediği) çizgisi ile 'gyro' (drone'un gerçekte yaptığı) çizgisi üst üste. İyi tuning'de iki çizgi neredeyse çakışık ve pürüzsüz. Kötü tuning'de gyro çizgisi setpoint'in etrafında titreşiyor (salınım). Pilot bir kaydırıcıyla P değerini oynatınca salınımın azalıp arttığı görülsün." />
+
+<Callout type="info">
+Blackbox'ı en ince ayrıntısına kadar okumak ileri bir konudur; burada amaç **sezgi** kazanmaktır: tuning bir tahmin oyunu değil, ölçüp gözlemleyerek yapılan bir iştir. "Daha iyi hissettirdi" yerine "grafikte salınım azaldı" demek istersin.
+</Callout>
+
+## PID değişikliklerinin uçuş hissine etkisi
+
+<KeyTerm en="PID">PID</KeyTerm>, drone'un "istediğim hareket ile gerçek hareket arasındaki farkı nasıl düzelteceğini" belirleyen üç ayardır. Çok kabaca, uçuş hissi açısından:
+
+- **P (Proportional):** Drone'un hataya ne kadar **sert** tepki verdiği. Çok düşük P = yumuşak, gevşek, "sünger" his. Çok yüksek P = keskin ama bir noktadan sonra **titreşim/salınım** başlar.
+- **I (Integral):** Drone'un bir yönü ne kadar **inatla koruduğu** (ör. rüzgârda burnunu sabit tutma). Çok düşük I = drone "kayar", istenen açıyı tutamaz. Çok yüksek I = sertlik, geç toparlama hissi.
+- **D (Derivative):** Salınımı **bastıran/sönümleyen** ayar; P'nin aşırılığını dizginler. Ama D motorları ısıtır ve fazlası gürültüye (ve ısıya) yol açar.
+
+<Callout type="tip">
+Sezgisel özet: P "ne kadar sert", I "ne kadar inatçı tutar", D "salınımı ne kadar söndürür". Tek bir değeri tek başına değil, dengeyi düşün: çoğu zaman P'yi artırırsan onu dizginlemek için D'ye de bakman gerekir.
+</Callout>
+
+## Filtre vs gecikme (latency) dengesi
+
+<KeyTerm en="filter">Filtreler</KeyTerm>, gyro ve motor sinyalindeki istenmeyen **gürültüyü/titreşimi** temizler. Filtre olmadan bu gürültü motorlara geçer, ısınmaya ve bulanık videoya yol açar. Kulağa "ne kadar çok filtre o kadar iyi" gibi gelebilir — ama bir bedeli vardır.
+
+<KeyTerm en="latency">Latency</KeyTerm> (gecikme), bir komutun/algılamanın etkiye dönüşmesi için geçen süredir. Her filtre, sinyali "yumuşatırken" ona biraz **gecikme** ekler. İşte temel denge:
+
+- **Çok ağır filtre:** Gürültü iyi temizlenir ama drone "tembelleşir", komutlara geç tepki verir, his bulanıklaşır ve aslında salınıma daha yatkın hale gelebilir.
+- **Çok hafif filtre:** Tepki keskin ve canlı olur ama gürültü temizlenmediği için motorlar ısınır ve titreşim artar.
+
+<Callout type="warning">
+Amaç "mümkün olan en çok filtre" değil, **işi görecek en az filtre**dir. Gereksiz ağır filtreleme, çözmeye çalıştığın gecikme/tepki sorununu büyütebilir. Donanımın temizse (iyi dengelenmiş, sağlam) zaten daha az filtreye ihtiyaç duyarsın.
+</Callout>
+
+<DemoPlaceholder title="Filtre ile gecikme dengesi" note="İki kefeli bir terazi animasyonu: bir kefede 'gürültü temizliği', diğerinde 'düşük gecikme (canlı his)'. Kullanıcı filtre miktarını artırınca terazi 'temizlik' tarafına ama 'gecikme' artarak kayıyor; azaltınca tersi. Ortada 'dengeli' bölge vurgulansın." />
+
+## Küçük adımlarla ilerle
+
+Tuning'in en önemli pratik kuralı: **tek seferde tek şey, küçük adımlarla.**
+
+1. **Tek değişken:** Aynı anda hem P'yi hem D'yi hem filtreyi değiştirme. Bir şeyi değiştir, uç/ölç, sonucu gör.
+2. **Küçük adım:** Büyük sıçramalar yapma; küçük değişiklikle test et. Büyük adım, sorunu nereden geldiğini anlamadan büyütebilir.
+3. **Kaydet ve karşılaştır:** Hangi ayardan ne sonuç aldığını not et (ve blackbox'la karşılaştır). "Daha iyi mi oldu?" sorusuna veriyle cevap ver.
+4. **Geri dönebil:** Çalışan bir ayarı (ör. stok veya iyi bir hazır tune) yedekle ki kötüleşirsen geri dönebilesin.
+
+<Callout type="info">
+**Özet:** Tuning her drone'da zorunlu değildir; varsayılanlar genelde iyidir. Bir belirti (titreşim, jello, kötü his) görünce ve önce **mekanik** elendikten sonra başvur. Körlemesine değil **blackbox** ile ölçerek ilerle. P = sertlik, I = tutma inadı, D = salınım sönümleme; filtre gürültüyü temizler ama **gecikme** ekler — en az filtreyle yetin. Her şeyi **tek seferde tek değişken, küçük adımlarla** yap ve geri dönüş için yedek tut. Şimdi mini quiz!
+</Callout>

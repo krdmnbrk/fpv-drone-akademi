@@ -1,0 +1,65 @@
+{
+  "id": "guvenlik-ve-shgm",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Türkiye'de bir drone'un (İHA) kayıt zorunluluğunu belirleyen ağırlık eşiği nedir ve nasıl tartılmalıdır?",
+      "options": [
+        "1 kg; bataryasız tartılır",
+        "500 gram; bataryayla birlikte tartılır (500 gr ve üzeri için kayıt zorunlu)",
+        "2 kg; sadece pervanelerle tartılır",
+        "100 gram; kutusuyla tartılır"
+      ],
+      "answerIndex": 1,
+      "explanation": "500 gr ve üzeri her drone için kayıt zorunludur. Drone batarya takılıyken tartılmalıdır; çünkü LiPo eklenince çoğu drone bu eşiği kolayca geçer."
+    },
+    {
+      "id": "q2",
+      "prompt": "Tipik bir 5 inç FPV drone'u hangi İHA kategorisine girer ve nereye kayıt yapılır?",
+      "options": [
+        "İHA3; TÜBİTAK'a kayıt yapılır",
+        "İHA0; iha.shgm.gov.tr (İHA Kayıt Sistemi) üzerinden kayıt yapılır",
+        "Hiçbir kategoriye girmez; kayıt gerekmez",
+        "İHA2; belediyeye kayıt yapılır"
+      ],
+      "answerIndex": 1,
+      "explanation": "Bataryayla ~0.5–0.9 kg gelen 5 inç FPV drone'u İHA0 (500 gr–4 kg) sınıfına girer. Kayıt iha.shgm.gov.tr üzerinden hem cihaz hem pilot için yapılır."
+    },
+    {
+      "id": "q3",
+      "prompt": "Hobi/sportif uçuşta yerden (AGL) izin verilen maksimum irtifa tavanı nedir?",
+      "options": [
+        "120 metre (400 feet)",
+        "500 metre",
+        "1 kilometre",
+        "Sınır yoktur"
+      ],
+      "answerIndex": 0,
+      "explanation": "Maksimum irtifa yerden 120 metre (400 feet) ile sınırlıdır. Ayrıca drone yatayda 500 metreyi geçmemeli ve pilotun görüş alanında kalmalıdır."
+    },
+    {
+      "id": "q4",
+      "prompt": "FPV gözlüğüyle uçmak doğrudan görüş hattı (VLOS) sayılmadığı için kural olarak ne gerekir?",
+      "options": [
+        "Hiçbir şey; FPV'de ek bir kural yoktur",
+        "Drone'u çıplak gözle sürekli izleyen bir gözlemci (spotter / İHA gözlemcisi) bulundurmak",
+        "İkinci bir kumanda taşımak",
+        "Geceleri uçmak"
+      ],
+      "answerIndex": 1,
+      "explanation": "FPV'de drone'a kamera üzerinden bakıldığı için VLOS sağlanmaz. Bu yüzden drone'u gözüyle takip eden ve seni tehlikelere karşı uyaran bir gözlemci şarttır."
+    },
+    {
+      "id": "q5",
+      "prompt": "Aşağıdakilerden hangisi izin alınmadan uçmanın yasak olduğu bir bölge DEĞİLDİR?",
+      "options": [
+        "Havalimanına yaklaşık 9 km'den (5 deniz mili) daha yakın saha",
+        "Askerî bölgeler ve yasak/tahditli sahalar",
+        "Konser, miting, spor alanı gibi kalabalık yerlerin üzeri",
+        "İnsanlardan ve yapılardan 50 m'den uzak, havalimanı/askerî/kalabalık dışı boş bir kırsal alan"
+      ],
+      "answerIndex": 3,
+      "explanation": "Havalimanı çevresi (≈9 km), askerî/yasak sahalar ve kalabalık üzeri yasaktır. İnsandan 50 m uzak, yasak saha dışı boş bir kırsal alan ise kurallara uygun uçuş için uygundur."
+    }
+  ]
+}

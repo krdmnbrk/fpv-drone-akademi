@@ -1,11 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import {
-  getFlightCurriculum,
-  getLesson,
-  getPart,
-  getQuiz,
-  hardwareParts,
-} from './index';
+import { getFlightCurriculum, getLesson, getPart, getQuiz, hardwareParts } from './index';
 
 describe('content loader', () => {
   it('loads authored beginner lessons as available', () => {
@@ -13,9 +7,11 @@ describe('content loader', () => {
     expect(beginner.find((lesson) => lesson.id === 'fpv-nedir')?.available).toBe(true);
   });
 
-  it('marks planned lessons as unavailable', () => {
+  it('lists all 8 beginner lessons with unique ids', () => {
     const { beginner } = getFlightCurriculum();
-    expect(beginner.find((lesson) => lesson.id === 'simulatorde-baslama')?.available).toBe(false);
+    expect(beginner).toHaveLength(8);
+    const ids = beginner.map((lesson) => lesson.id);
+    expect(new Set(ids).size).toBe(ids.length);
   });
 
   it('orders lessons within a level', () => {
@@ -27,7 +23,7 @@ describe('content loader', () => {
     expect(getQuiz('fpv-nedir')?.questions.length ?? 0).toBeGreaterThan(0);
   });
 
-  it('exposes a resolvable lesson component', () => {
+  it('exposes a component for an authored lesson', () => {
     expect(getLesson('fpv-nedir')?.Component).toBeTypeOf('function');
   });
 

@@ -1,0 +1,72 @@
+---
+id: simulatorde-baslama
+track: flight
+level: beginner
+order: 4
+title: "Simülatörde başlama (Liftoff / Velocidrone)"
+summary: "FPV öğrenmenin neden simülatörde başladığını, popüler simülatörleri (Liftoff, Velocidrone, Uncrashed, DRL) ve kumandayı USB ile bilgisayara nasıl bağlayacağını anlatır."
+estimatedMinutes: 9
+objectives:
+  - "FPV öğrenmenin neden simülatörde başlaması gerektiğini açıklayabilmek"
+  - "Popüler FPV simülatörlerini (Liftoff, Velocidrone, Uncrashed, DRL) tanıyabilmek"
+  - "Kumandayı USB ile bilgisayara bağlayıp simülatörde kontrol olarak kullanmayı bilmek"
+prerequisites: ["fpv-nedir", "ucus-modlari"]
+quizId: simulatorde-baslama
+---
+
+# Simülatörde başlama
+
+Bir önceki derste Acro modunun gerçek FPV için şart olduğunu, ama drone'un seni kurtarmadığını gördük. Peki düşmeden, parça kırmadan bu kontrolü nasıl öğreneceğiz? Cevap tek kelime: **simülatör**.
+
+Bir <KeyTerm en="simulator">simülatör (simulator)</KeyTerm>, gerçek bir FPV uçuşunu bilgisayarında birebir taklit eden bir oyundur. Kendi kumandanı bilgisayara bağlarsın ve ekranda, sanki gerçek drone'unmuş gibi uçarsın. Düşersen tek yaptığın bir tuşa basıp drone'u yeni baştan havalandırmaktır.
+
+## Neden önce simülatör? (Bu dersin en önemli kısmı)
+
+Yeni başlayan bir pilotun ilk uçuşlarda düşmesi neredeyse kesindir. Fark şudur: bu düşüşleri nerede yaşayacaksın?
+
+- **Ucuz.** Gerçek bir drone'u her kırdığında pervane, motor, hatta gövde değiştirirsin; bu hem para hem zamandır. Simülatörde düşmek bedavadır.
+- **Güvenli.** Simülatörde kimseye, hiçbir şeye zarar veremezsin. Tüm o "acaba çarparsam?" stresi olmadan öğrenirsin.
+- **Sınırsız pratik.** Hava, batarya, mekân, izin derdi yok. Gece yarısı 200 kez arka arkaya kalkış denemesi yapabilirsin. Kas hafızası (muscle memory) tam da bu tekrarla oluşur.
+
+<Callout type="tip">
+Profesyonel yarış ve freestyle pilotlarının neredeyse tamamı hâlâ simülatörde pratik yapar. Simülatör "yeni başlayanın oyuncağı" değil; **ciddi pilotların antrenman aracıdır.** İlk haftalarını burada geçirmen, gerçek drone'a geçtiğinde seni çok daha hazır yapar.
+</Callout>
+
+## Popüler FPV simülatörleri
+
+Hepsi aynı temel işi yapar — kumandanı bağlar, Acro modunda uçmayı öğretir. Aralarındaki fark daha çok grafik, harita ve fiyat seviyesindedir:
+
+| Simülatör | Öne çıkan yönü |
+|---|---|
+| **Liftoff** | Çok popüler, gerçekçi freestyle ve yarış; geniş özelleştirme. Yeni başlayanların favorisi. |
+| **Velocidrone** | Yarış pilotlarının tercihi; isabetli fizik ve çevrim içi yarış pistleri. |
+| **Uncrashed** | Modern grafikler, akıcı ve rahat bir başlangıç deneyimi. |
+| **DRL (Drone Racing League) Sim** | Resmî yarış ligi simülatörü; sık sık indirimde, etkinlik odaklı. |
+
+<Callout type="info">
+Hangisini seçeceğine takılma. Herhangi biriyle başlamak, hiç başlamamaktan **kat kat** iyidir. Bütçen kısıtlıysa indirimde olan birini al; öğrendiğin çubuk kontrolü (stick control) tüm simülatörlerde ve gerçek drone'da aynı işine yarar.
+</Callout>
+
+## Kumandayı USB ile bilgisayara bağlamak
+
+Simülatörde fare veya oyun kolu (gamepad) ile değil, **gerçek FPV kumandanla** uçmalısın. Çünkü amacın o kumandanın çubuk hissini öğrenmek. Çoğu modern kumanda bilgisayara çok kolay bağlanır:
+
+1. Kumandanı bir **USB kablosuyla** bilgisayara tak.
+2. Kumandanın açılış menüsünden **"USB Joystick"** (veya benzeri "Game Controller") modunu seç. Bu mod, kumandanın çubuklarını bilgisayara bir oyun kolu gibi tanıtır.
+3. Simülatörün ayarlar (Controls / Calibration) bölümüne gir ve **çubukları kalibre et**: program sırayla her çubuğu uçlara kadar oynatmanı ister.
+
+<KeyTerm en="USB Joystick mode">USB Joystick modu</KeyTerm>, kumandanı ekstra bir alıcı/donanım olmadan doğrudan oyun kolu olarak kullanmanı sağlayan en pratik yoldur.
+
+<Callout type="warning">
+Kalibrasyonu atlama. Çubukların doğru kalibre edilmemesi, drone'un sen çubuğu bırakmadan kaymaya devam etmesine yol açar ve bu, baştan yanlış alışkanlık edinmene neden olur. Bir kez doğru kalibre et, sonra rahatça uç.
+</Callout>
+
+<DemoPlaceholder title="Kumandayı bağlama akışı" note="Adım adım animasyon: (1) USB kablosu kumandaya takılıyor, (2) kumanda ekranında 'USB Joystick' seçeneği işaretleniyor, (3) simülatör kalibrasyon ekranında çubuklar uçlara oynatılıyor ve yeşil 'OK' beliriyor. Kullanıcı her adımı tek tek görsün." />
+
+## Sırada ne var?
+
+Kumandan bağlı ve simülatörün açık. Artık gerçek uçuşun ilk adımına hazırsın. Bir sonraki derste motorları aktifleştirmeyi — yani **arming**'i — ve bunun güvenlik kurallarını öğreneceğiz. Simülatörde bunu defalarca, hiçbir risk olmadan deneyebileceksin.
+
+<Callout type="info">
+**Özet:** Simülatör ucuz, güvenli ve sınırsız pratik sağladığı için FPV öğrenmenin ilk adımıdır. Liftoff, Velocidrone, Uncrashed, DRL popüler seçeneklerdir. Kendi kumandanı USB ile bağlayıp "USB Joystick" modunda kalibre et. Şimdi mini quiz!
+</Callout>

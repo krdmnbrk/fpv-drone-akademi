@@ -1,0 +1,65 @@
+{
+  "id": "freestyle-temelleri",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Freestyle figürlerinin temelinde yatan ortak kavram nedir?",
+      "options": [
+        "Motorları her zaman tam güçte (gaz kökte) tutmak",
+        "Momentumu, yani hız ve yükseklik enerjisini bir biçimden diğerine akıtarak yönetmek",
+        "Drone'u olabildiğince hafifletmek",
+        "Sadece Angle modunda uçmak"
+      ],
+      "answerIndex": 1,
+      "explanation": "Power loop, dive ve split-S'in hepsi momentumla çalışır: yüksekliği hıza, hızı yüksekliğe çevirirsin. İyi freestyle gaz köklemek değil, enerjiyi yönetmektir."
+    },
+    {
+      "id": "q2",
+      "prompt": "Bu üç figürü öğrenmek için önerilen güvenli sıra hangisidir?",
+      "options": [
+        "Önce split-S, sonra power loop, en son dive",
+        "Önce power loop, sonra split-S, en son dive",
+        "Önce dive, sonra power loop, en son split-S",
+        "Sıra önemli değildir, hepsi aynı zorluktadır"
+      ],
+      "answerIndex": 2,
+      "explanation": "Önce dive (gaz yönetimi + toparlama), sonra power loop (iniş yarısı bir dive'dır), en son split-S (roll + dive birleşimi). Her figür bir öncekinin becerisini kullanır."
+    },
+    {
+      "id": "q3",
+      "prompt": "Neden dive (dalış) ilk öğrenilen figürdür?",
+      "options": [
+        "Çünkü en gösterişli figürdür",
+        "Çünkü gaz yönetimi ve toparlama (recovery) refleksini öğretir; bu beceriler diğer figürlerde de kullanılır",
+        "Çünkü hiç gaz gerektirmez",
+        "Çünkü sadece dive yasal olarak serbesttir"
+      ],
+      "answerIndex": 1,
+      "explanation": "Dive, dalışta gazı kısıp dipte toparlamayı öğretir. Power loop'un iniş yarısı da bir dive olduğu için bu refleks tüm freestyle'ın temelidir."
+    },
+    {
+      "id": "q4",
+      "prompt": "Power loop sırasında gaz yönetimi nasıl olmalıdır?",
+      "options": [
+        "İniş (dive) kısmında gazı köklemek",
+        "Tüm figür boyunca gazı tamamen kapatmak",
+        "Tırmanış kısmında gazı koruyup tepeyi yuvarlamak, iniş (dive) kısmında gazı kısıp dipte toparlamak",
+        "Gaz hiç değişmemeli, sabit kalmalı"
+      ],
+      "answerIndex": 2,
+      "explanation": "Tırmanışta momentumu koruyup tepeyi yuvarlarsın; iniş kısmı bir dive olduğu için orada gazı kısıp dipte yumuşakça toparlarsın."
+    },
+    {
+      "id": "q5",
+      "prompt": "Freestyle figürlerini öğrenmek için alan seçerken en önemli güvenlik ilkesi hangisidir?",
+      "options": [
+        "Alanın mümkün olduğunca küçük ve dar olması",
+        "İnsanlara ve engellere yakın olması ki yardım çağırabilesin",
+        "Her yöne (özellikle yukarı/aşağı) bol boşluk olması, çevrede insan/engel bulunmaması ve gözlemciyle uçmak",
+        "Sadece gece uçmak"
+      ],
+      "answerIndex": 2,
+      "explanation": "Freestyle çok dikey ve yatay boşluk ister; toparlamak için her yöne yer gerekir. İnsansız, engelsiz, geniş bir alan ve bir gözlemci güvenliğin temelidir."
+    }
+  ]
+}

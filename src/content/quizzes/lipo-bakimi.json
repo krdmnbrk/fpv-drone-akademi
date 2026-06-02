@@ -1,0 +1,65 @@
+{
+  "id": "lipo-bakimi",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Bir LiPo hücresinin nominal (anma) ve tam dolu voltajları sırasıyla nedir?",
+      "options": [
+        "Nominal 3.7V, tam dolu 4.2V",
+        "Nominal 4.2V, tam dolu 5.0V",
+        "Nominal 3.0V, tam dolu 3.5V",
+        "Nominal 1.5V, tam dolu 2.0V"
+      ],
+      "answerIndex": 0,
+      "explanation": "Bir LiPo hücresi nominal olarak 3.7V'tur (etikette yazan değer) ve tam dolu olarak 4.2V'a kadar şarj edilir. 4.2V'un üzerine çıkmak tehlikelidir."
+    },
+    {
+      "id": "q2",
+      "prompt": "Uçuş sırasında bir LiPo hücresini yaklaşık olarak hangi voltajın altına indirmemek gerekir?",
+      "options": [
+        "4.2V",
+        "3.3-3.5V",
+        "2.0V",
+        "5.0V"
+      ],
+      "answerIndex": 1,
+      "explanation": "Hücre genelde yük altında ~3.5V, dinlenmede ~3.3V altına indirilmez. Daha aşağı boşaltmak (over-discharge) kalıcı hasar verir ve şişmeye/tehlikeye yol açabilir; alarm ötünce iniş yapılır."
+    },
+    {
+      "id": "q3",
+      "prompt": "Bataryayı birkaç günden uzun kullanmayacaksan hangi seviyede (storage / saklama voltajı) saklamalısın?",
+      "options": [
+        "Tam dolu, hücre başına 4.2V",
+        "Tam boş, hücre başına 3.0V",
+        "Hücre başına yaklaşık 3.8V",
+        "Hücre başına 5.0V"
+      ],
+      "answerIndex": 2,
+      "explanation": "LiPo'lar hücre başına ~3.8V storage voltajında en uzun ömürlüdür. Tam dolu veya tam boş bekletilmek onları hızla yaşlandırıp şişirebilir."
+    },
+    {
+      "id": "q4",
+      "prompt": "1500mAh'lık bir LiPo'yu güvenli standart hız olan 1C ile şarj etmek için hangi akımı kullanırsın?",
+      "options": [
+        "0.15A",
+        "1.5A",
+        "15A",
+        "150A"
+      ],
+      "answerIndex": 1,
+      "explanation": "1C, kapasiteye eşit akım demektir. 1500mAh = 1.5Ah olduğu için 1C şarj akımı 1.5A'dir. Şüphedeysen 1C kullanmak en güvenlisidir."
+    },
+    {
+      "id": "q5",
+      "prompt": "Şişmiş (puffed) veya çarpmada hasar görmüş bir LiPo için ne yapmalısın?",
+      "options": [
+        "Normal çöpe atmak",
+        "Uçuşta kullanmaya devam etmek",
+        "Uçuşta kullanmamak, LiPo-safe çantada güvene almak ve özel atık/geri dönüşüm noktasına vermek (çöpe atmamak)",
+        "Daha yüksek akımla şarj ederek düzeltmek"
+      ],
+      "answerIndex": 2,
+      "explanation": "Şişmiş/hasarlı LiPo'nun ömrü bitmiştir ve alev alabilir; uçuşta kullanılmaz, normal çöpe atılmaz. LiPo-safe çantada güvene alınır ve özel atık/geri dönüşüm noktasına verilir."
+    }
+  ]
+}
