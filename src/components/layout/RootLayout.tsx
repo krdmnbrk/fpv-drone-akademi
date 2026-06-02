@@ -5,6 +5,7 @@ import { Header } from './Header';
 import { Footer } from './Footer';
 import { RouteFocusManager } from './RouteFocusManager';
 import { PageLoading } from './PageLoading';
+import { SafetyBanner } from './SafetyBanner';
 
 export function RootLayout() {
   return (
@@ -12,6 +13,7 @@ export function RootLayout() {
       <SkipLink />
       <RouteFocusManager />
       <Header />
+      <SafetyBanner />
       <main id={MAIN_CONTENT_ID} tabIndex={-1} className="flex-1 outline-none">
         <Suspense fallback={<PageLoading />}>
           <Outlet />

@@ -93,6 +93,22 @@ export function HomePage() {
         </div>
       </section>
 
+      <aside className="mx-auto mt-12 max-w-2xl rounded-xl border border-amber-400/30 bg-amber-500/10 p-4">
+        <p className="text-sm font-semibold text-amber-100">
+          <span aria-hidden="true">⚠️ </span>
+          {t('safety.spotterTitle')}
+        </p>
+        <p className="mt-1 text-sm text-amber-100/90">
+          {t('safety.spotterText')}{' '}
+          <Link
+            to="/regulations"
+            className="font-medium underline underline-offset-2 hover:text-white"
+          >
+            {t('safety.learnMore')}
+          </Link>
+        </p>
+      </aside>
+
       <section className="mt-20" aria-labelledby="tracks-heading">
         <h2 id="tracks-heading" className="text-center text-2xl font-bold text-white">
           {t('home.tracksTitle')}

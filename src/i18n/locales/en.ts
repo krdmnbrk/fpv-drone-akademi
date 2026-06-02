@@ -12,6 +12,15 @@ export const en: Translation = {
     loading: 'Loading…',
     backToHome: 'Back to home',
     minutesShort: 'min',
+    dismiss: 'Dismiss',
+  },
+  safety: {
+    bannerLabel: 'Safety notice',
+    bannerText: 'Read before you fly: safety & SHGM rules',
+    spotterTitle: 'Don’t fly FPV alone — a spotter is required',
+    spotterText:
+      'Flying with FPV goggles does not count as visual line of sight (VLOS); keep a spotter who watches the drone with the naked eye.',
+    learnMore: 'Read the rules →',
   },
   nav: {
     home: 'Home',

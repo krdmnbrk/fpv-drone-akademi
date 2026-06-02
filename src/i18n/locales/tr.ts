@@ -9,6 +9,15 @@ export const tr = {
     loading: 'Yükleniyor…',
     backToHome: 'Ana sayfaya dön',
     minutesShort: 'dk',
+    dismiss: 'Kapat',
+  },
+  safety: {
+    bannerLabel: 'Güvenlik uyarısı',
+    bannerText: 'Uçmadan önce oku: Güvenlik & SHGM kuralları',
+    spotterTitle: 'FPV’de yalnız uçma — gözlemci şart',
+    spotterText:
+      'FPV gözlüğüyle uçmak çıplak gözle görüş (VLOS) sayılmaz; yanında drone’u gözle takip eden bir gözlemci bulundur.',
+    learnMore: 'Kuralları oku →',
   },
   nav: {
     home: 'Ana Sayfa',
