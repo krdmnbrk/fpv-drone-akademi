@@ -46,6 +46,10 @@ export const tr = {
     howToChoose: 'Nasıl seçilir',
     howItConnects: 'Nasıl bağlanır',
     commonMistakes: 'Sık yapılan hatalar',
+    relatedLessons: 'İlgili dersler',
+    rotateHint: 'Döndürmek için sürükle, yakınlaştırmak için kaydır.',
+    onCraftNote: 'Drone üzerindeki parçalar 3B modelde vurgulanır.',
+    threeDUnavailable: '3B görünüm bu cihazda kullanılamıyor. Parçaları listeden inceleyebilirsin.',
   },
   flight: {
     title: 'Uçuş Eğitimi',

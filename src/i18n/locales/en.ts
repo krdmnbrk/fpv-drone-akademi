@@ -49,6 +49,10 @@ export const en: Translation = {
     howToChoose: 'How to choose',
     howItConnects: 'How it connects',
     commonMistakes: 'Common mistakes',
+    relatedLessons: 'Related lessons',
+    rotateHint: 'Drag to rotate, scroll to zoom.',
+    onCraftNote: 'Parts on the drone are highlighted in the 3D model.',
+    threeDUnavailable: '3D view is unavailable on this device. Explore the parts from the list.',
   },
   flight: {
     title: 'Flight School',

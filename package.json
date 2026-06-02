@@ -23,6 +23,8 @@
   },
   "dependencies": {
     "@mdx-js/react": "^3.1.1",
+    "@react-three/drei": "9.114",
+    "@react-three/fiber": "8.17",
     "framer-motion": "^11.18.2",
     "i18next": "^23.16.8",
     "i18next-browser-languagedetector": "^8.2.1",
@@ -30,6 +32,7 @@
     "react-dom": "^18.3.1",
     "react-i18next": "^15.7.4",
     "react-router-dom": "^6.30.4",
+    "three": "^0.169.0",
     "zustand": "4.5"
   },
   "devDependencies": {

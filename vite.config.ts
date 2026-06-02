@@ -31,5 +31,7 @@ export default defineConfig({
   build: {
     target: 'es2020',
     sourcemap: true,
+    // The Three.js scene is an intentional, lazy-loaded chunk (/hardware only).
+    chunkSizeWarningLimit: 900,
   },
 });

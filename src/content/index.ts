@@ -4,6 +4,8 @@ import { flightLevels, plannedFlightLessons } from './curriculum';
 import partsData from './hardware/parts.json';
 
 // --- Lessons (authored MDX) ---
+// All lessons live in a single chunk that route code-splitting keeps out of the
+// entry bundle (loaded only when a content route is visited).
 interface LessonModule {
   default: ComponentType;
   frontmatter: LessonFrontmatter;
