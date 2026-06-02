@@ -95,7 +95,7 @@
     "meshName": "rx",
     "order": 7,
     "whatItDoes": "RX (Receiver), pilotun kumandasından (radio) gelen kontrol komutlarını havadan yakalayıp FC'ye ileten parçadır. Kumanda 'sol gaz, sağ pitch' gibi sinyalleri yayar; alıcı bunları alır ve FC anlık olarak motorlara çevirir. Kontrol linki video linkinden ayrı bir RF sistemidir.",
-    "howToChoose": "Kullandığın kumandanın protokolüyle uyumlu olmalı. Bugün en yaygın açık standart ExpressLRS (ELRS)'tir; genellikle 2.4 GHz'de (uzun menzil için 868/915 MHz seçeneğiyle) çalışır, çok düşük gecikme ve yüksek menzil sunar. Diğer sistemler de vardır (ör. TBS Crossfire uzun menzilde). Alıcı ile FC arasındaki veri protokolü genelde CRSF'tir. Anten tipi (linear dipol) RF performansını etkiler.",
+    "howToChoose": "Kullandığın kumandanın protokolüyle uyumlu olmalı. Bugün en yaygın açık standart ExpressLRS (ELRS)'tir; çok düşük gecikme ve yüksek menzil sunar. Frekans bandı donanımla sabittir: 2.4 GHz en yaygın giriş bandıdır, 868/915 MHz ise ayrı bir modüldür (daha menzilli ama düşük paket hızı/yüksek gecikme) ve satın alırken seçilir — sonradan değiştirilemez. Not: Türkiye'de 900 MHz kullanımı yasal olarak sınırlı olabilir. Alıcı ile FC arasındaki veri protokolü genelde CRSF'tir; anten tipi (linear dipol) RF performansını etkiler.",
     "howItConnects": "Alıcı FC'ye bir UART üzerinden (TX/RX hatları çapraz) ve güçle (genelde 5V) bağlanır; FC'de Serial RX olarak CRSF seçilir. Kumanda ile alıcı arasında ilk kez 'binding' (eşleştirme) yapılır — ELRS'te bu genelde bir bağlama anahtarı/parolası ile olur. Alıcı anteni metal/karbon ile kapatılmamalı, açıkta kalmalıdır.",
     "commonMistakes": [
       "Kumanda ve alıcı protokolünü karıştırmak (ör. ELRS kumandaya farklı protokol alıcı almak) — bağlanmaz.",
@@ -124,7 +124,7 @@
     "name": "LiPo Batarya (LiPo battery)",
     "meshName": "lipo",
     "order": 9,
-    "whatItDoes": "LiPo (lityum-polimer) batarya, FPV drone'a kısa sürede çok yüksek akım verebilen enerji kaynağıdır. Tek bir hücrenin (cell, 'S') nominal voltajı 3.7 V'tur; tam dolu 4.2 V, güvenli alt sınır ~3.5 V (yük altında) / boşaltmada 3.0 V'un altına inilmemelidir. Hücreler seri bağlanınca voltaj toplanır: 4S = 4 x 3.7 = 14.8 V nominal (tam dolu 16.8 V), 6S = 22.2 V nominal (tam dolu 25.2 V).",
+    "whatItDoes": "LiPo (lityum-polimer) batarya, FPV drone'a kısa sürede çok yüksek akım verebilen enerji kaynağıdır. Tek bir hücrenin (cell, 'S') nominal voltajı 3.7 V'tur; tam dolu 4.2 V. Uçuşta hücreyi yük altında ~3.5 V (dinlenmede ~3.7 V) altına indirme; 3.0 V bir uçuş hedefi DEĞİL, mutlak hasar eşiğidir — altına inmek kalıcı hasar/yangın riski verir. Hücreler seri bağlanınca voltaj toplanır: 4S = 4 x 3.7 = 14.8 V nominal (tam dolu 16.8 V), 6S = 22.2 V nominal (tam dolu 25.2 V).",
     "howToChoose": "Üç değere bak: hücre sayısı (S) motor/ESC ile uyumlu olmalı (5 inç freestyle bugün çoğunlukla 6S, eskiden 4S); kapasite mAh cinsinden uçuş süresini belirler (ör. 1300-1500 mAh, 5 inç için tipik); deşarj oranı 'C' anlık akım kapasitesidir (ör. 100C x 1.3 Ah = 130 A tepe). Yüksek C, akım çekildiğinde voltajın az düşmesini (az 'sag') sağlar. Şarj akımını da kapasiteye göre ayarla (genelde 1C güvenli).",
     "howItConnects": "Batarya, ana güç kablosuyla (XT60 konnektör 5 inç sınıfında standarttır) ESC/FC güç girişine takılır. Dengeli şarj için ayrıca bir balans soketi (JST-XH) vardır; LiPo şarj cihazı her hücreyi ayrı ayrı eşitler. Drone'a strap (velcro kayış) ile sabitlenir.",
     "commonMistakes": [
