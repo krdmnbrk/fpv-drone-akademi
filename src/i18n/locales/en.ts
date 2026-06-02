@@ -98,6 +98,8 @@ export const en: Translation = {
     video: 'Video',
     playVideo: 'Play video',
     videoEnglish: 'in English',
+    quizNudge: 'Try the quiz to lock in what you learned.',
+    badgeEarned: 'You earned a new badge!',
   },
   quiz: {
     title: 'Mini Quiz',

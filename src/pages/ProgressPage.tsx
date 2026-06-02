@@ -4,42 +4,24 @@ import { Button } from '@/components/ui/Button';
 import { useAppStore } from '@/store/useAppStore';
 import { overallProgressPct, selectCompletedCount } from '@/store/selectors';
 import { getAvailableFlightLessonCount } from '@/content';
-import { badgeDefinitions } from '@/lib/badges';
+import { badgeDefinitions, getBadgeProgress } from '@/lib/badges';
+import { useBadgeText } from '@/lib/useBadgeText';
 import { cn } from '@/lib/cn';
 
 export function ProgressPage() {
   const { t } = useTranslation();
-  const completed = useAppStore(selectCompletedCount);
-  const badges = useAppStore((state) => state.badges);
-  const resetProgress = useAppStore((state) => state.resetProgress);
+  const state = useAppStore();
+  const { badges } = state;
+  const badgeText = useBadgeText();
 
+  const completed = selectCompletedCount(state);
   const total = getAvailableFlightLessonCount();
   const pct = overallProgressPct(completed, total);
   const earnedCount = badgeDefinitions.filter((badge) => badges[badge.id]).length;
 
-  const badgeText: Record<string, { name: string; desc: string }> = {
-    'first-flight': { name: t('badges.firstFlight.name'), desc: t('badges.firstFlight.desc') },
-    'beginner-graduate': {
-      name: t('badges.beginnerGraduate.name'),
-      desc: t('badges.beginnerGraduate.desc'),
-    },
-    'intermediate-graduate': {
-      name: t('badges.intermediateGraduate.name'),
-      desc: t('badges.intermediateGraduate.desc'),
-    },
-    'advanced-graduate': {
-      name: t('badges.advancedGraduate.name'),
-      desc: t('badges.advancedGraduate.desc'),
-    },
-    'full-curriculum': {
-      name: t('badges.fullCurriculum.name'),
-      desc: t('badges.fullCurriculum.desc'),
-    },
-  };
-
   const handleReset = () => {
     if (window.confirm(t('progress.resetConfirm'))) {
-      resetProgress();
+      state.resetProgress();
     }
   };
 
@@ -89,14 +71,16 @@ export function ProgressPage() {
           {badgeDefinitions.map((badge) => {
             const earned = Boolean(badges[badge.id]);
             const text = badgeText[badge.id];
+            const prog = getBadgeProgress(state, badge.id);
+            const progPct = prog.target > 0 ? Math.round((prog.current / prog.target) * 100) : 0;
             return (
               <li
                 key={badge.id}
                 className={cn(
-                  'flex items-center gap-3 rounded-xl border p-4',
+                  'flex items-start gap-3 rounded-xl border p-4',
                   earned
                     ? 'border-brand-400/50 bg-brand-500/10'
-                    : 'border-white/10 bg-white/5 opacity-60',
+                    : 'border-white/10 bg-white/5 opacity-80',
                 )}
               >
                 <span
@@ -108,9 +92,31 @@ export function ProgressPage() {
                 >
                   {earned ? '🏅' : '🔒'}
                 </span>
-                <div>
+                <div className="min-w-0 flex-1">
                   <p className="font-medium text-brand-50">{text?.name}</p>
-                  <p className="text-sm text-brand-300">{earned ? text?.desc : t('badges.locked')}</p>
+                  {earned ? (
+                    <p className="text-sm text-brand-300">{text?.desc}</p>
+                  ) : (
+                    <>
+                      <p className="text-sm text-brand-300">
+                        <span className="sr-only">{t('badges.locked')}</span>
+                        <span>
+                          {prog.current} / {prog.target}
+                        </span>
+                      </p>
+                      {prog.target > 0 && (
+                        <div
+                          aria-hidden="true"
+                          className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/10"
+                        >
+                          <div
+                            className="h-full rounded-full bg-brand-500"
+                            style={{ width: `${progPct}%` }}
+                          />
+                        </div>
+                      )}
+                    </>
+                  )}
                 </div>
               </li>
             );

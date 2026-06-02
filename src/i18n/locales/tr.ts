@@ -95,6 +95,8 @@ export const tr = {
     video: 'Video',
     playVideo: 'Videoyu oynat',
     videoEnglish: 'İngilizce',
+    quizNudge: 'Quiz’i denersen konuyu daha iyi pekiştirirsin.',
+    badgeEarned: 'Yeni rozet kazandın!',
   },
   quiz: {
     title: 'Mini Quiz',

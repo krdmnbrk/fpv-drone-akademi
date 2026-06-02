@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Container } from '@/components/ui/Container';
@@ -11,6 +11,7 @@ import { getLessonVideo } from '@/content/videos';
 import { useAppStore } from '@/store/useAppStore';
 import { selectLessonStatus } from '@/store/selectors';
 import { evaluateBadges } from '@/lib/badges';
+import { useBadgeText } from '@/lib/useBadgeText';
 
 export function LessonPage() {
   const { t } = useTranslation();
@@ -24,12 +25,23 @@ export function LessonPage() {
   const completeLesson = useAppStore((state) => state.completeLesson);
   const recordQuizScore = useAppStore((state) => state.recordQuizScore);
   const awardBadge = useAppStore((state) => state.awardBadge);
+  const quizAttempted = useAppStore((state) =>
+    lessonId ? state.progress[lessonId]?.quizScorePct !== undefined : false,
+  );
+  const badgeText = useBadgeText();
+  const [celebrated, setCelebrated] = useState<string[]>([]);
 
   useEffect(() => {
     if (lesson && lessonId) {
       startLesson(lessonId);
     }
   }, [lesson, lessonId, startLesson]);
+
+  useEffect(() => {
+    if (celebrated.length === 0) return;
+    const timer = setTimeout(() => setCelebrated([]), 4500);
+    return () => clearTimeout(timer);
+  }, [celebrated]);
 
   if (!lesson || !lessonId) {
     return (
@@ -99,15 +111,23 @@ export function LessonPage() {
           <Button
             variant={isCompleted ? 'secondary' : 'primary'}
             onClick={() => {
+              const before = new Set(Object.keys(useAppStore.getState().badges));
               completeLesson(lessonId);
               for (const badgeId of evaluateBadges(useAppStore.getState())) {
                 awardBadge(badgeId);
               }
+              const fresh = Object.keys(useAppStore.getState().badges).filter(
+                (id) => !before.has(id),
+              );
+              if (fresh.length > 0) setCelebrated(fresh);
             }}
             disabled={isCompleted}
           >
             {isCompleted ? t('lesson.completed') : t('lesson.markComplete')}
           </Button>
+          {quiz && !quizAttempted && !isCompleted && (
+            <p className="text-center text-xs text-brand-300">💡 {t('lesson.quizNudge')}</p>
+          )}
           <div className="flex items-center justify-between gap-3">
             {prev ? (
               <ButtonLink to={`/lesson/${prev}`} variant="ghost" size="sm">
@@ -124,6 +144,22 @@ export function LessonPage() {
           </div>
         </div>
       </div>
+
+      {celebrated.length > 0 && (
+        <div
+          role="status"
+          aria-live="polite"
+          className="fixed inset-x-0 bottom-4 z-50 mx-auto w-fit max-w-[90vw] rounded-xl border border-brand-400/50 bg-brand-900 px-5 py-3 text-center shadow-lg"
+        >
+          <p className="text-sm font-semibold text-white">🏅 {t('lesson.badgeEarned')}</p>
+          <p className="mt-0.5 text-sm text-brand-200">
+            {celebrated
+              .map((id) => badgeText[id]?.name)
+              .filter(Boolean)
+              .join(', ')}
+          </p>
+        </div>
+      )}
     </Container>
   );
 }
