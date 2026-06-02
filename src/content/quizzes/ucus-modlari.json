@@ -1,0 +1,65 @@
+{
+  "id": "ucus-modlari",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Üç uçuş modunu birbirinden ayıran temel soru nedir?",
+      "options": [
+        "Drone hangi renkte?",
+        "Çubuğu ortaya bırakınca drone kendi kendine düzelir mi, yoksa son açıda mı kalır?",
+        "Batarya kaç hücreli?",
+        "Pervaneler kaç inç?"
+      ],
+      "answerIndex": 1,
+      "explanation": "Modlar arasındaki fark, kendini dengeleme (self-leveling) konusundadır: çubuğu bırakınca drone'un düzelip düzelmemesi modu belirler."
+    },
+    {
+      "id": "q2",
+      "prompt": "Angle modunda çubuğu ortaya bıraktığında drone ne yapar?",
+      "options": [
+        "Kendiliğinden dümdüz olur ve havada asılı kalmaya çalışır",
+        "Son verdiğin açıda eğik kalır",
+        "Hemen yere iner",
+        "Sürekli takla atmaya başlar"
+      ],
+      "answerIndex": 0,
+      "explanation": "Angle tam bir kendini dengeleme modudur: çubuğu bırakınca drone kendini düzeltir. Bu yüzden yeni başlayan için en affedici moddur."
+    },
+    {
+      "id": "q3",
+      "prompt": "Acro modunun en belirleyici özelliği nedir?",
+      "options": [
+        "Drone'u otomatik olarak eve döndürür",
+        "Kendini dengeler ve takla atılmasını engeller",
+        "Kendini dengelemez; çubuğu bırakınca drone son açıda kalır",
+        "Sadece kapalı alanda çalışır"
+      ],
+      "answerIndex": 2,
+      "explanation": "Acro (rate) modu kendini dengelemez: çubuk dönme hızını kontrol eder ve bırakınca drone son açıda kalır. Düz durması için pilotun düzeltmesi gerekir."
+    },
+    {
+      "id": "q4",
+      "prompt": "Tüm freestyle ve yarış uçuşları neden Acro modunda yapılır?",
+      "options": [
+        "Çünkü Acro modu bataryayı daha az tüketir",
+        "Çünkü Acro, drone üzerinde tam kontrol verir ve power loop/dive/split-S gibi figürleri mümkün kılar",
+        "Çünkü Acro modunda drone hiç düşmez",
+        "Çünkü diğer modlar yasaktır"
+      ],
+      "answerIndex": 1,
+      "explanation": "Acro, eğimi değil dönme hızını kontrol ettiği için drone üzerinde tam kontrol verir; akrobasi figürleri ancak bu modda yapılabilir."
+    },
+    {
+      "id": "q5",
+      "prompt": "Yeni başlayan biri için önerilen öğrenme sırası hangisidir?",
+      "options": [
+        "Doğrudan gerçek drone ile Acro modunda başlamak",
+        "Önce Acro, sonra Angle",
+        "Angle ile başlamak, sonra Horizon, en son simülatörde hazırlanarak Acro",
+        "Sadece Horizon modunu öğrenmek yeterlidir"
+      ],
+      "answerIndex": 2,
+      "explanation": "Önce Angle (en affedici), istersen Horizon ile ilk taklalar, en son simülatörde bolca pratik yaparak Acro'ya geçmek en güvenli ve etkili sıradır."
+    }
+  ]
+}

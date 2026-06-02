@@ -1,0 +1,65 @@
+{
+  "id": "gorus-mesafesi-vs-fpv",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Çıplak gözle uçuş (line-of-sight, LOS) ne demektir?",
+      "options": [
+        "Pilotun drone'a doğrudan, gözüyle bakarak uçurması",
+        "Drone'un tamamen otomatik, pilotsuz uçması",
+        "Pilotun yalnızca gözlükten kamera görüntüsüne bakması",
+        "Drone'un gece, ışıklarla uçurulması"
+      ],
+      "answerIndex": 0,
+      "explanation": "Line-of-sight (LOS), pilotun gökyüzüne bakıp drone'u çıplak gözle görerek uçurmasıdır. FPV ise bunun aksine kamera üzerinden bakmaktır."
+    },
+    {
+      "id": "q2",
+      "prompt": "FPV uçuşu neden doğrudan görüş hattı (VLOS) sayılmaz?",
+      "options": [
+        "Çünkü FPV drone'ları çok hızlıdır",
+        "Çünkü pilot drone'u çıplak gözle değil, kamera/gözlük üzerinden görür",
+        "Çünkü FPV sadece kapalı alanda yapılır",
+        "Çünkü VLOS yalnızca uçaklar için geçerlidir"
+      ],
+      "answerIndex": 1,
+      "explanation": "VLOS, pilotun alet yardımı olmadan araçla doğrudan görsel temasıdır. FPV'de araca kamera aracılığıyla bakıldığı için bu doğrudan görüş hattı sayılmaz."
+    },
+    {
+      "id": "q3",
+      "prompt": "Bir gözlemcinin (spotter) FPV uçuşundaki temel görevi nedir?",
+      "options": [
+        "Drone'un bataryasını şarj etmek",
+        "Kumandayı pilot adına kullanmak",
+        "Drone'u çıplak gözle izleyip çevredeki tehlikeler konusunda pilotu uyarmak",
+        "Drone'un videosunu kaydetmek"
+      ],
+      "answerIndex": 2,
+      "explanation": "Gözlemci, pilot gözlükle uçarken drone'u gözüyle takip eder ve yaklaşan insan/araç/engel gibi tehlikelerde pilotu sesli uyarır."
+    },
+    {
+      "id": "q4",
+      "prompt": "Gözlükle uçarken neden bir gözlemciye ihtiyaç duyulur?",
+      "options": [
+        "Çünkü gözlük takınca görüş alanın daralır ve yanından geçen tehlikeleri göremezsin",
+        "Çünkü tek başına uçmak yasaktır ama tehlikeli değildir",
+        "Çünkü gözlemci olmadan drone havalanmaz",
+        "Çünkü gözlemci bataryanın ömrünü uzatır"
+      ],
+      "answerIndex": 0,
+      "explanation": "Gözlük yalnızca kameranın baktığı yöne odaklanmanı sağlar; yandan yaklaşan kuş, insan veya başka hava aracını göremezsin. Gözlemci bu boşluğu kapatır."
+    },
+    {
+      "id": "q5",
+      "prompt": "Türkiye'de drone'ları (İHA) düzenleyen kurum hangisidir?",
+      "options": [
+        "TÜBİTAK",
+        "SHGM (Sivil Havacılık Genel Müdürlüğü)",
+        "TRT",
+        "Meteoroloji Genel Müdürlüğü"
+      ],
+      "answerIndex": 1,
+      "explanation": "Türkiye'de İHA (drone) kurallarını SHGM (Sivil Havacılık Genel Müdürlüğü) belirler; kayıt da iha.shgm.gov.tr üzerinden yapılır."
+    }
+  ]
+}

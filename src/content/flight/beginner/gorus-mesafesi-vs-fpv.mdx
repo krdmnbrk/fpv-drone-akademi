@@ -1,0 +1,65 @@
+---
+id: gorus-mesafesi-vs-fpv
+track: flight
+level: beginner
+order: 2
+title: "Görüş mesafesi (LOS) vs FPV (+ gözlemci kuralı)"
+summary: "Çıplak gözle (line-of-sight) uçuşla FPV uçuşunu karşılaştırır ve FPV'nin neden bir gözlemci (spotter) gerektirdiğini açıklar."
+estimatedMinutes: 9
+objectives:
+  - "Çıplak gözle uçuş (line-of-sight) ile FPV uçuşu arasındaki görüş farkını açıklayabilmek"
+  - "FPV'nin neden doğrudan görüş hattı (VLOS) sayılmadığını anlamak"
+  - "Bir gözlemcinin (spotter) rolünü ve neden gerekli olduğunu söyleyebilmek"
+prerequisites: ["fpv-nedir"]
+quizId: gorus-mesafesi-vs-fpv
+---
+
+# Görüş mesafesi (LOS) vs FPV
+
+Bir önceki derste FPV'nin "drone'un gözünden bakmak" olduğunu öğrendik. Şimdi bunu, drone uçurmanın **diğer** yoluyla karşılaştıralım: **çıplak gözle uçmak.**
+
+## İki farklı "görme" yolu
+
+**Çıplak gözle uçuş** — İngilizcede <KeyTerm en="line-of-sight, LOS">line-of-sight (LOS)</KeyTerm> denir. Burada pilot yerde durur, başını kaldırır ve **drone'a doğrudan, gözüyle bakarak** uçurur. Oyuncak helikopterler ve çoğu giriş seviyesi drone böyle uçurulur.
+
+**FPV uçuşu** — Pilot gökyüzüne değil, **gözlükteki kamera görüntüsüne** bakar. Drone çok uzakta veya bir engelin arkasında olsa bile, pilot onu "içinden" görmeye devam eder.
+
+<DemoPlaceholder title="Pilotun bakışı: LOS vs FPV" note="Aynı sahnede iki pilot animasyonu: biri başını kaldırıp gökteki drone'a bakıyor (LOS), diğeri gözlük takmış yere bakıyor ama ekranında drone'un önündeki görüntü var (FPV). Drone bir ağacın arkasına geçtiğinde LOS pilotu drone'u kaybediyor, FPV pilotu görmeye devam ediyor — farkı net göster." />
+
+## Kritik fark: FPV doğrudan görüş hattı (VLOS) DEĞİLDİR
+
+Havacılıkta çok önemli bir kavram var: <KeyTerm en="Visual Line of Sight, VLOS">VLOS (görsel görüş hattı)</KeyTerm>. Bu, pilotun **hiçbir alet yardımı olmadan, çıplak gözle** araçla doğrudan görsel temasta kalmasıdır.
+
+FPV gözlüğüyle uçtuğunda araca çıplak gözle değil, **kamera ve gözlük üzerinden** bakarsın. Bu yüzden:
+
+<Callout type="warning">
+**FPV uçuşu, tanım gereği doğrudan görüş hattı (VLOS) sayılmaz.** Çünkü drone'u kendi gözünle değil, bir kamera aracılığıyla görürsün. Bu, hem güvenlik hem de yasal açıdan çok önemli bir ayrımdır.
+</Callout>
+
+Neden önemli? Çünkü gözlük taktığında görüş alanın daralır: yalnızca kameranın baktığı yöne odaklanırsın. Yanından geçen bir kuşu, sana yaklaşan bir insanı, yan taraftaki bir ağacı veya başka bir hava aracını **göremezsin**. İşte bu boşluğu kapatmak için bir kişiye daha ihtiyaç vardır.
+
+## Çözüm: Gözlemci (spotter / İHA gözlemcisi)
+
+Bir <KeyTerm en="spotter / visual observer">gözlemci (spotter)</KeyTerm>, sen gözlükle uçarken **drone'u çıplak gözle sürekli izleyen** kişidir. Görevleri:
+
+- Drone'u gözüyle takip etmek ve nerede olduğunu bilmek.
+- Çevredeki tehlikeleri (yaklaşan insan, araç, başka hava aracı, engel) görüp **seni sesli uyarmak**.
+- Bir sorun olduğunda (ör. drone tehlikeli yöne gidiyor) hemen haber vermek.
+
+<Callout type="tip">
+Pratik kural: **Tek başına gözlüğü takıp uçma.** Yanında drone'u gözüyle takip eden bir gözlemci olsun. Bu hem en güvenli alışkanlıktır hem de — bir sonraki not ettiğimiz gibi — Türkiye kurallarına uygun davranmanın bir parçasıdır.
+</Callout>
+
+## Türkiye'de bu bir kural mı?
+
+Evet. Türkiye'de drone'lar **İHA** (İnsansız Hava Aracı) olarak adlandırılır ve kuralları **SHGM** belirler. Hobi/sportif uçuşların **pilotun görüş alanında** yapılması beklenir; FPV doğrudan görüş hattı (VLOS) sayılmadığı için, drone'u çıplak gözle izleyen bir **İHA gözlemcisi** bulundurmak gerekir.
+
+Bu kuralların tüm ayrıntısını (kayıt, irtifa sınırı, yasak bölgeler, ağırlık kategorileri) ayrı bir bölümde işliyoruz.
+
+<DemoPlaceholder title="Gözlemci ile uçuş düzeni" note="Kuşbakışı şema: pilot (gözlük takmış) ve hemen yanında gözlemci (gökyüzüne bakan). Drone uzaklaştıkça gözlemciden pilota uyarı baloncukları ('sağda ağaç', 'yaklaşan kuş'). Güvenli takım çalışmasını göster." />
+
+> İlgili regülasyon belgesi: SHGM/İHA kuralları (kayıt, gözlemci, irtifa ve yasak bölgeler) — `regulations/shgm.mdx`.
+
+<Callout type="info">
+**Özet:** LOS = drone'a çıplak gözle bakmak. FPV = kamera üzerinden bakmak, bu yüzden VLOS değildir ve görüşün dardır. Bu boşluğu kapatmak için drone'u gözüyle izleyen bir **gözlemci (spotter)** şarttır — hem güvenlik hem kural gereği. Şimdi mini quiz!
+</Callout>

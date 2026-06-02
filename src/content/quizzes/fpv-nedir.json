@@ -1,0 +1,53 @@
+{
+  "id": "fpv-nedir",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "FPV kısaltması ne anlama gelir?",
+      "options": [
+        "First Person View (birinci şahıs bakışı)",
+        "Fast Propeller Velocity (hızlı pervane hızı)",
+        "Flight Path Vector (uçuş yolu vektörü)",
+        "Full Power Voltage (tam güç voltajı)"
+      ],
+      "answerIndex": 0,
+      "explanation": "FPV, 'First Person View' yani birinci şahıs bakışı demektir: drone'un içindeymişsin gibi, onun gözünden uçarsın."
+    },
+    {
+      "id": "q2",
+      "prompt": "FPV uçuşu ile normal (fotoğraf) drone uçuşu arasındaki temel fark nedir?",
+      "options": [
+        "FPV'de drone'a yukarıdan bakarsın, normalde gözlükten bakarsın",
+        "FPV'de gözlükten drone'un gözünden bakarsın, normalde drone'a dışarıdan/üstten bakarsın",
+        "FPV drone'lar uçamaz, sadece simülatörde çalışır",
+        "İkisi tamamen aynıdır, sadece isimleri farklıdır"
+      ],
+      "answerIndex": 1,
+      "explanation": "FPV'de kameranın yolladığı görüntüye (gözlükten) bakarsın; normal drone'da yerden, drone'un kendisine bakarsın."
+    },
+    {
+      "id": "q3",
+      "prompt": "Bir FPV setinde görüntüyü pilotun gözünün önüne getiren parça hangisidir?",
+      "options": [
+        "Pervaneler (propellers)",
+        "Batarya (LiPo)",
+        "Gözlük (goggles)",
+        "Gövde (frame)"
+      ],
+      "answerIndex": 2,
+      "explanation": "Gözlük (goggles), VTX'in yolladığı canlı görüntüyü havadan yakalayıp gözünün önüne getirir. 'FPV' ismi tam olarak buradan gelir."
+    },
+    {
+      "id": "q4",
+      "prompt": "Aşağıdakilerden hangisi bir FPV uçuşu için gereken üç temel bileşenden biri DEĞİLDİR?",
+      "options": [
+        "Drone'un kendisi (frame, motorlar, FC, batarya)",
+        "Kamera + video vericisi (VTX)",
+        "Gözlük (goggles) + kumanda (radio)",
+        "Yazıcı (printer)"
+      ],
+      "answerIndex": 3,
+      "explanation": "FPV için drone, kamera+VTX ve gözlük+kumanda gerekir. Yazıcının uçuşla ilgisi yoktur."
+    }
+  ]
+}

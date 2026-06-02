@@ -1,0 +1,168 @@
+[
+  {
+    "id": "frame",
+    "name": "Gövde / Şasi (frame)",
+    "meshName": "frame",
+    "order": 1,
+    "whatItDoes": "Frame, drone'un tüm parçalarını üzerine monte ettiğin iskelettir. Motorları, uçuş kontrolcüsünü, bataryayı ve kamerayı bir arada tutar; çarpma anında darbeyi soğurarak elektroniği korur. Boyutu genellikle motor-motor köşegen mesafesiyle (wheelbase, mm cinsinden) anılır; 5 inç pervane kullanan tipik freestyle frame'i 210-220 mm sınıfındadır.",
+    "howToChoose": "Hangi pervane boyutunu kullanacağına göre frame seç (ör. 5 inç pervane için 5 inç frame). Malzeme neredeyse her zaman karbon fiberdir; kol (arm) kalınlığı dayanıklılığı belirler (freestyle için 5-6 mm kollar yaygın). Standart FC montaj deliği aralığına dikkat et: 30.5x30.5 mm en yaygın olanıdır, mikro sınıfta 20x20 mm kullanılır. Kolların kırıldığında tek tek değişebilmesi büyük avantajdır.",
+    "howItConnects": "Frame'in göbeğine (center stack) FC ve ESC katman katman monte edilir, lastik damper (gummies) ile titreşimden yalıtılır. Motorlar kolların ucuna vidalanır. Kamera ön kafese (camera mount) oturur, VTX anteni ise arka koruyucudan dışarı çıkar.",
+    "commonMistakes": [
+      "Yanlış FC montaj standardı seçmek (30.5x30.5 mm bekleyip 20x20 mm frame almak) ve parçaların oturmaması.",
+      "Çok ince/ucuz karbon kollar seçip ilk ciddi çarpmada frame'i kırmak; freestyle yapacaksan kalın kol şart.",
+      "Karbon tozunu çıplak elle/maskesiz işlemek; karbon tozu cilde ve solunuma zararlıdır."
+    ],
+    "relatedLessonIds": ["kendi-drone-kurma-lehimleme"]
+  },
+  {
+    "id": "motors",
+    "name": "Motorlar (motors)",
+    "meshName": "motors",
+    "order": 2,
+    "whatItDoes": "Motorlar pervaneleri döndürerek itme (thrust) üretir; quadcopter'da dört adet bulunur. FPV'de fırçasız (brushless) motor kullanılır: kömür/fırça yoktur, ESC üç fazlı sinyalle motoru döndürür. Hızı ölçen birim KV'dir: KV, 1 volt başına yüksüz dönüş hızıdır (devir/dakika). Yüksek KV = daha hızlı dönüş, daha az tork; düşük KV = daha yavaş dönüş, daha fazla tork.",
+    "howToChoose": "Motor boyutu 4 haneli kodla belirtilir (ör. 2207): ilk iki hane stator çapı, son iki hane stator yüksekliğidir (mm). 5 inç freestyle için tipik olarak 2207 boyut ve 4S batarya ile ~2400-2700 KV, 6S batarya ile ~1700-1950 KV seçilir. Batarya hücre sayısı (S) arttıkça KV'yi düşürürsün, yoksa motor aşırı hızlanır ve ısınır. Pervane boyutuyla uyum şarttır.",
+    "howItConnects": "Her motorun üç kablosu vardır ve karşılık gelen ESC'ye lehimlenir (veya soket ile takılır). Üç kablodan herhangi ikisinin yeri değiştirilirse motor ters yöne döner; dönüş yönü Betaflight'tan da yazılımla ayarlanabilir. Motor, frame koluna alttan vidalarla sabitlenir.",
+    "commonMistakes": [
+      "Batarya hücre sayısına göre yanlış KV seçmek (ör. 6S'te 2700 KV kullanmak) ve motoru/ESC'yi yakmak.",
+      "Motor vidasını çok uzun seçip sargılara (windings) değdirmek; vida motorun içine girip sargıyı keser ve motoru bozar.",
+      "Dönüş yönünü kontrol etmeden uçmaya çalışmak; ters dönen motor drone'u anında devirir."
+    ],
+    "relatedLessonIds": ["throttle-kontrolu", "ilk-hover", "kendi-drone-kurma-lehimleme"]
+  },
+  {
+    "id": "esc",
+    "name": "ESC (Elektronik Hız Kontrolcüsü)",
+    "meshName": "esc",
+    "order": 3,
+    "whatItDoes": "ESC (Electronic Speed Controller), bataryadan gelen doğru akımı (DC) fırçasız motorun ihtiyaç duyduğu üç fazlı sinyale çevirir ve motorun hızını binlerce kez saniyede ayarlar. FC'den gelen komutu (ör. 'bu motoru %60 güçte döndür') güce dönüştüren parçadır. Bugün çoğu drone'da dört ESC tek kartta birleşiktir: buna 4'lü ESC (4-in-1 ESC) denir.",
+    "howToChoose": "En kritik değer akım kapasitesidir (Amper, A): ESC'nin sürekli verebileceği akım, motorların çekeceği tepe akımdan yüksek olmalı. 5 inç sınıfı için 45A-60A 4-in-1 ESC tipiktir; pay bırakmak güvenlidir. Desteklediği batarya hücre aralığına bak (ör. 3-6S). Firmware olarak BLHeli_S veya modern BLHeli_32 / AM32 ve DShot protokolü desteği önemlidir.",
+    "howItConnects": "Batarya (+/-) ESC'ye lehimlenir; genelde voltaj dalgalanmasını yumuşatan bir kondansatör (capacitor) de buraya eklenir. Motor kabloları ESC'nin motor pad'lerine bağlanır. ESC, FC ile genelde tek bir şerit kabloyla (8 pinli konnektör) haberleşir ve DShot dijital protokolüyle hız komutu alır.",
+    "commonMistakes": [
+      "Akım kapasitesi düşük ESC seçmek; motor tepe akımı ESC'yi aşınca ESC yanar (duman çıkarır).",
+      "Batarya kutuplarını (+/-) ters lehimlemek; ters polarite ESC'yi anında öldürür.",
+      "Voltaj koruyucu kondansatörü atlamak; voltaj spike'ları hem ESC'ye hem video görüntüsüne zarar verir."
+    ],
+    "relatedLessonIds": ["throttle-kontrolu", "temel-ariza-cozme", "kendi-drone-kurma-lehimleme"]
+  },
+  {
+    "id": "fc",
+    "name": "Uçuş Kontrolcüsü (flight controller, FC)",
+    "meshName": "fc",
+    "order": 4,
+    "whatItDoes": "FC (Flight Controller) drone'un beynidir. İçindeki hareket sensörü (gyro + ivmeölçer, yani IMU) drone'un ne kadar eğildiğini ve döndüğünü saniyede binlerce kez ölçer; FC bu veriyle kumandadan gelen komutu birleştirip 'hangi motor ne kadar dönsün' kararını verir ve ESC'ye iletir. Üzerinde Betaflight gibi bir uçuş yazılımı (firmware) çalışır.",
+    "howToChoose": "İşlemci sınıfına bak: modern FC'ler F4, F7 veya daha güçlü H7 işlemci kullanır (H7 en hızlısı). Montaj standardı frame ile uyumlu olmalı (genelde 30.5x30.5 mm). UART sayısı önemlidir: alıcı, VTX, GPS gibi cihazların her biri bir UART ister. OSD çipi (ekrana telemetri basan) ve yerleşik blackbox (uçuş kaydı) hafızası artıdır. Birçok FC, ESC ile birlikte 'stack' olarak satılır.",
+    "howItConnects": "FC, frame göbeğine titreşim damperleriyle monte edilir. ESC'ye 8 pinli kabloyla, alıcıya bir UART üzerinden (genelde CRSF protokolü), VTX'e ise bir UART + güç ile bağlanır. Bataryadan gelen voltajı bir voltaj regülatörü ile diğer parçalara (ör. 5V, 9V) dağıtır. USB portundan bilgisayara bağlanıp Betaflight'tan ayarlanır.",
+    "commonMistakes": [
+      "FC'yi titreşim yalıtımı olmadan sert monte etmek; gyro titreşimi 'yakalar', uçuş hissi bozulur ve motorlar ısınır.",
+      "TX ve RX hatlarını ters bağlamak; alıcı tanınmaz (UART'ta TX-RX çaprazdır).",
+      "Yanlış voltaj çıkışına cihaz bağlamak (ör. 5V cihazı doğrudan batarya voltajına vermek) ve cihazı yakmak."
+    ],
+    "relatedLessonIds": ["betaflight-giris", "pid-rates-temel", "tuning", "temel-ariza-cozme"]
+  },
+  {
+    "id": "fpv-camera",
+    "name": "FPV Kamerası (fpv camera)",
+    "meshName": "fpv-camera",
+    "order": 5,
+    "whatItDoes": "FPV kamerası pilotun gözüdür: drone'un önündeki görüntüyü gerçek zamanlı yakalar ve VTX'e gönderir. FPV'de çok düşük gecikme (low latency) şarttır; bu yüzden bu kameralar kayıt için değil, anlık aktarım için tasarlanmıştır (kaydı ayrı bir aksiyon kamerası yapar). İki büyük dünya vardır: analog kameralar ve dijital sistem kameraları (ör. DJI, Walksnail).",
+    "howToChoose": "Analog tarafta sensör ve görüntü işlemci (ör. CCD/CMOS, geniş dinamik aralık WDR) gece-gündüz dengesini belirler. En kritik özelliklerden biri lens görüş açısı (FOV) ve sensör en-boy oranıdır: 4:3 klasik analog gözlüklerle, 16:9 bazı dijital sistemlerle uyumludur. Dijital sistem seçeceksen kamera, VTX ve gözlük genelde aynı ekosistemden (aynı marka) olmalıdır.",
+    "howItConnects": "Analog kamera, görüntü sinyalini (genelde tek video kablosu) VTX'e verir ve FC üzerinden beslenir; çoğu FC kamera ve VTX arasına OSD bilgisini de bindirir. Dijital sistemde kamera, sisteme özel bir kablo ile dijital VTX birimine bağlanır. Kamera, frame'in ön kafesine belli bir yukarı açıyla (uptilt) monte edilir; hız arttıkça uptilt artırılır.",
+    "commonMistakes": [
+      "Dijital ekosistemleri karıştırmak (ör. bir markanın kamerasını başka markanın gözlüğüyle eşleştirmeye çalışmak) — uyumsuzdur.",
+      "Kamera açısını (uptilt) sıfır bırakıp hızlı uçmak; yüksek hızda gökyüzüne bakar kalırsın.",
+      "Kamerayı yanlış voltajla beslemek; her kameranın kabul ettiği voltaj aralığı (ör. 5V veya geniş aralık) farklıdır."
+    ],
+    "relatedLessonIds": ["fpv-nedir"]
+  },
+  {
+    "id": "vtx",
+    "name": "Video Vericisi + Anten (VTX)",
+    "meshName": "vtx",
+    "order": 6,
+    "whatItDoes": "VTX (Video Transmitter), kameradan gelen görüntüyü kablosuz olarak gözlüğe yollayan vericidir; antenle birlikte çalışır. Analog FPV neredeyse her zaman 5.8 GHz bandında, belirli kanallar üzerinden yayın yapar. Verici gücü mW (miliwatt) ile ölçülür ve menzili etkiler.",
+    "howToChoose": "Güç seviyesi ayarlanabilir olmalı: 25 mW kapalı alan/yakın mesafe ve yarış için idealdir (az ısı, az parazit), 200-600 mW dış mekan freestyle için dengeli, daha yüksek seviyeler uzun menzil içindir. Anten polarizasyonu en kritik konudur: FPV'de dairesel polarize (circular polarized) anten kullanılır ve en yaygın standart RHCP (sağ el dairesel) anten + RHCP gözlük antenidir. VTX ve gözlük anteni aynı polarizasyonda olmalı, yoksa menzil dramatik düşer.",
+    "howItConnects": "VTX, kameradan video sinyalini, FC'den ise güç ve kontrol (kanal/güç ayarı) sinyalini alır; modern kurulumda FC bir UART üzerinden VTX'i yönetir (ör. SmartAudio/Tramp). Anten, VTX'in çıkışına (genelde MMCX/U.FL/SMA konnektör) takılır ve frame arkasından dışarı uzatılır.",
+    "commonMistakes": [
+      "Anten takmadan VTX'e güç vermek; antensiz yayın VTX'in çıkış katını yakabilir — önce anten, sonra güç.",
+      "VTX ve gözlük anten polarizasyonunu eşleştirmemek (ör. RHCP VTX + LHCP gözlük); sinyal 20-30 dB düşer, menzil neredeyse biter.",
+      "Bulunduğun ülkede izin verilen güç/kanaldan fazlasını kullanmak; hem yasa dışıdır hem başka pilotların yayınını bozar."
+    ],
+    "relatedLessonIds": ["fpv-nedir", "long-range-temelleri", "temel-ariza-cozme"]
+  },
+  {
+    "id": "rx",
+    "name": "Alıcı (receiver, RX)",
+    "meshName": "rx",
+    "order": 7,
+    "whatItDoes": "RX (Receiver), pilotun kumandasından (radio) gelen kontrol komutlarını havadan yakalayıp FC'ye ileten parçadır. Kumanda 'sol gaz, sağ pitch' gibi sinyalleri yayar; alıcı bunları alır ve FC anlık olarak motorlara çevirir. Kontrol linki video linkinden ayrı bir RF sistemidir.",
+    "howToChoose": "Kullandığın kumandanın protokolüyle uyumlu olmalı. Bugün en yaygın açık standart ExpressLRS (ELRS)'tir; genellikle 2.4 GHz'de (uzun menzil için 868/915 MHz seçeneğiyle) çalışır, çok düşük gecikme ve yüksek menzil sunar. Diğer sistemler de vardır (ör. TBS Crossfire uzun menzilde). Alıcı ile FC arasındaki veri protokolü genelde CRSF'tir. Anten tipi (linear dipol) RF performansını etkiler.",
+    "howItConnects": "Alıcı FC'ye bir UART üzerinden (TX/RX hatları çapraz) ve güçle (genelde 5V) bağlanır; FC'de Serial RX olarak CRSF seçilir. Kumanda ile alıcı arasında ilk kez 'binding' (eşleştirme) yapılır — ELRS'te bu genelde bir bağlama anahtarı/parolası ile olur. Alıcı anteni metal/karbon ile kapatılmamalı, açıkta kalmalıdır.",
+    "commonMistakes": [
+      "Kumanda ve alıcı protokolünü karıştırmak (ör. ELRS kumandaya farklı protokol alıcı almak) — bağlanmaz.",
+      "TX-RX hatlarını ters bağlamak veya yanlış UART'a takmak; alıcıdan veri gelmez.",
+      "Anteni karbon frame'in altına gizlemek; menzil düşer ve uçuş ortasında bağlantı (link) kopabilir — bu da failsafe demektir."
+    ],
+    "relatedLessonIds": ["arming-disarming", "long-range-temelleri", "temel-ariza-cozme"]
+  },
+  {
+    "id": "propellers",
+    "name": "Pervaneler (propellers / props)",
+    "meshName": "propellers",
+    "order": 8,
+    "whatItDoes": "Pervaneler dönerek havayı iterek itme üretir; quadcopter'da dört adet bulunur. İki tanesi saat yönünde, iki tanesi saat yönünün tersine döner — bu, drone'un kendi etrafında kontrolsüz dönmesini (tork dengesini) engeller. Pervaneler drone'un en sarf malzemesi parçasıdır: çarpınca ilk onlar kırılır (ve bu kasıtlıdır, motoru korur).",
+    "howToChoose": "Boyut iki sayı ile anılır: çap x hatve (pitch), inç cinsinden (ör. 5x4.3 yani 5 inç çap, 4.3 inç hatve). Çap arttıkça itme artar; hatve (pitch) arttıkça pervane bir turda daha çok 'ilerler', yani daha hızlı ama daha çok akım çeker. Kanat sayısı da önemlidir: 3 kanatlı (tri-blade) freestyle'da yaygındır (denge/itme), 2 kanatlı verimli ve hızlı. Frame, motor KV ve batarya ile uyumlu seçilmelidir.",
+    "howItConnects": "Pervaneler motor miline somun ile sabitlenir. Çok kritik: doğru pervaneyi (CW veya CCW) doğru motora takmak gerekir; Betaflight'taki motor yön/sıra şemasına uymak şarttır. Pervane üstünde dönüş yönü genelde ok ile veya 'R' işaretiyle belirtilir.",
+    "commonMistakes": [
+      "CW/CCW pervaneleri yanlış motora takmak; drone kalkışta takla atar veya hiç havalanmaz.",
+      "Çarpıp gözle görünmez çatlak almış pervaneyle uçmak; dengesiz pervane şiddetli titreşim ve kontrol kaybı yaratır — şüphedeysen değiştir.",
+      "Pervane takılıyken motorları arm etmek/test etmek; pervane parmağı ciddi keser — test her zaman pervanesiz yapılır."
+    ],
+    "relatedLessonIds": ["throttle-kontrolu", "ilk-hover", "kendi-drone-kurma-lehimleme"]
+  },
+  {
+    "id": "lipo",
+    "name": "LiPo Batarya (LiPo battery)",
+    "meshName": "lipo",
+    "order": 9,
+    "whatItDoes": "LiPo (lityum-polimer) batarya, FPV drone'a kısa sürede çok yüksek akım verebilen enerji kaynağıdır. Tek bir hücrenin (cell, 'S') nominal voltajı 3.7 V'tur; tam dolu 4.2 V, güvenli alt sınır ~3.5 V (yük altında) / boşaltmada 3.0 V'un altına inilmemelidir. Hücreler seri bağlanınca voltaj toplanır: 4S = 4 x 3.7 = 14.8 V nominal (tam dolu 16.8 V), 6S = 22.2 V nominal (tam dolu 25.2 V).",
+    "howToChoose": "Üç değere bak: hücre sayısı (S) motor/ESC ile uyumlu olmalı (5 inç freestyle bugün çoğunlukla 6S, eskiden 4S); kapasite mAh cinsinden uçuş süresini belirler (ör. 1300-1500 mAh, 5 inç için tipik); deşarj oranı 'C' anlık akım kapasitesidir (ör. 100C x 1.3 Ah = 130 A tepe). Yüksek C, akım çekildiğinde voltajın az düşmesini (az 'sag') sağlar. Şarj akımını da kapasiteye göre ayarla (genelde 1C güvenli).",
+    "howItConnects": "Batarya, ana güç kablosuyla (XT60 konnektör 5 inç sınıfında standarttır) ESC/FC güç girişine takılır. Dengeli şarj için ayrıca bir balans soketi (JST-XH) vardır; LiPo şarj cihazı her hücreyi ayrı ayrı eşitler. Drone'a strap (velcro kayış) ile sabitlenir.",
+    "commonMistakes": [
+      "Hücreyi 3.0 V altına boşaltmak veya 4.2 V üstüne şarj etmek; kalıcı hasar, kapasite kaybı ve yangın riski yaratır.",
+      "Bataryayı dolu (4.2 V/hücre) saklamak; uzun süre saklanacaksa hücre başına ~3.8 V 'storage' voltajına getir.",
+      "Şişmiş (puf olmuş), delinmiş veya darbe almış LiPo'yu kullanmak/şarj etmek; bunlar yanıcıdır — güvenli torbada (LiPo-safe bag) tut ve tuzlu su yöntemiyle güvenle imha et.",
+      "Konnektörü ters lehimlemek/kısa devre yaptırmak; LiPo kısa devrede çok yüksek akım verir ve alev alabilir."
+    ],
+    "relatedLessonIds": ["lipo-bakimi", "long-range-temelleri", "guvenlik-ve-shgm"]
+  },
+  {
+    "id": "goggles",
+    "name": "FPV Gözlüğü (goggles)",
+    "meshName": "goggles",
+    "order": 10,
+    "whatItDoes": "FPV gözlüğü, VTX'in yolladığı canlı görüntüyü pilotun gözünün önüne getiren başa takılan ekrandır. 'First Person View' adını buradan alır: sanki drone'un içindeymişsin gibi uçarsın. İçinde bir video alıcısı (VRX) vardır; analog gözlükte sinyali bir modül yakalar, dijital gözlükte sistemin kendi alıcısı bulunur.",
+    "howToChoose": "Analog mı dijital mi karar ver: analog ucuz, en düşük gecikme, parazitlendiğinde 'karlanır' ama görüntü kesilmez; dijital (ör. DJI, Walksnail) çok net ama daha pahalı ve ekosisteme bağlısın. Analog gözlükte değiştirilebilir alıcı modülü ve çeşitlilik (diversity) anteni menzili artırır. Gözlük tipi olarak 'box' (tek ekran, ucuz) ve 'goggle' (iki ayrı ekran, kompakt) seçenekleri vardır; IPD (göz bebeği mesafesi) ayarı netlik için önemlidir.",
+    "howItConnects": "Gözlük drone üzerindeki herhangi bir kabloya bağlı değildir; tamamen kablosuzdur ve VTX'in yayınını antenleriyle yakalar. Analog gözlükte kullandığın kanalı VTX kanalıyla aynı yapman gerekir. Gözlük kendi küçük bataryasıyla beslenir. Çoğu gözlük, görüntüyü ayrıca DVR ile kaydedebilir.",
+    "commonMistakes": [
+      "Gözlük ve VTX'i farklı kanala/banda ayarlamak; siyah ekran görürsün (sinyal eşleşmez).",
+      "Gözlük antenini VTX ile aynı polarizasyonda seçmemek (RHCP/LHCP karışıklığı); menzil çok düşer.",
+      "Uçarken sürekli FPV'ye gömülüp çevreyi/diğer insanları gözlemlememek; bu yüzden gözlemci (spotter) önerilir — Türkiye'de FPV doğrudan görüşle uçuş sayılmaz."
+    ],
+    "relatedLessonIds": ["fpv-nedir", "gorus-mesafesi-vs-fpv"]
+  },
+  {
+    "id": "radio",
+    "name": "Kumanda / Verici (radio / transmitter)",
+    "meshName": "radio",
+    "order": 11,
+    "whatItDoes": "Radio (kumanda/verici), pilotun drone'u kontrol ettiği el cihazıdır. İki çubuğu (stick) vardır: tipik 'Mode 2' dizilişte sol çubuk gaz (throttle) ve yaw'ı, sağ çubuk pitch ve roll'u kontrol eder. Kumanda bu komutları RF ile yayar; drone'daki alıcı (RX) bunları yakalar. Üzerinde arming, uçuş modu ve VTX gibi şeyleri ayarlayan switch'ler bulunur.",
+    "howToChoose": "Kumandanın RF protokolü, alıcıyla uyumlu olmalı; bugün en popüler açık standart ExpressLRS (ELRS)'tir (yerleşik veya modül yuvasına takılan verici ile). Yazılım olarak EdgeTX/OpenTX esneklik sağlar. Gimbal (çubuk mekanizması) kalitesi kontrol hassasiyetini belirler: hall sensörlü gimbal'lar daha hassas ve uzun ömürlüdür. Ergonomi ve switch sayısı kişisel tercihtir.",
+    "howItConnects": "Kumandanın kendisi drone'a kabloyla bağlanmaz; havadan alıcı (RX) ile haberleşir. İlk kullanımda kumanda ile alıcı 'bind' (eşleştirme) edilir. Simülatöre USB veya kablosuz dongle ile bağlanarak gerçek drone olmadan pratik yapılır. Çubuk dizilişi (Mode 1/2) ve switch atamaları kumanda yazılımından ayarlanır.",
+    "commonMistakes": [
+      "Protokol uyumsuzluğu (ör. ELRS kumanda + farklı protokol alıcı); bağlanmaz.",
+      "Arming/disarming switch'ini ayarlamadan veya yanlış ayarlayıp uçmaya çalışmak; kontrolsüz arm tehlikelidir.",
+      "Kumanda bataryası bitmek üzereyken havalanmak; kumanda kapanırsa drone failsafe'e düşer — uçuştan önce şarjı kontrol et."
+    ],
+    "relatedLessonIds": ["simulatorde-baslama", "arming-disarming", "throttle-kontrolu"]
+  }
+]

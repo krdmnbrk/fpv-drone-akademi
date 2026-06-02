@@ -1,0 +1,75 @@
+---
+id: ucus-modlari
+track: flight
+level: beginner
+order: 3
+title: "Uçuş modları (Angle / Horizon / Acro)"
+summary: "Üç temel FPV uçuş modunu (Angle, Horizon, Acro) tanıtır ve yeni başlayanın hangisinden başlaması gerektiğini açıklar."
+estimatedMinutes: 10
+objectives:
+  - "Angle, Horizon ve Acro modları arasındaki temel farkı açıklayabilmek"
+  - "Kendini dengeleme (self-leveling) kavramının ne olduğunu anlamak"
+  - "Yeni başlayan birinin modları hangi sırayla öğrenmesi gerektiğini söyleyebilmek"
+prerequisites: ["fpv-nedir"]
+quizId: ucus-modlari
+---
+
+# Uçuş modları: Angle, Horizon, Acro
+
+FPV drone'unun "beyni" olan uçuş kontrolcüsü (flight controller, FC), drone'un nasıl davranacağını bir **uçuş moduna** göre belirler. Mod, çubuğu (stick) bıraktığında drone'un ne yapacağını değiştirir. Üç temel mod vardır ve aralarındaki fark tek bir soruda gizlidir:
+
+> **"Çubuğu ortaya bırakınca drone kendi kendine düz dengelenir mi, yoksa son verdiğin açıda mı kalır?"**
+
+Buna <KeyTerm en="self-leveling">kendini dengeleme (self-leveling)</KeyTerm> denir.
+
+## 1. Angle modu (en kolay)
+
+<KeyTerm en="Angle mode">Angle modu</KeyTerm> tam bir **kendini dengeleme** modudur. İki özelliği var:
+
+- Çubuğu ne kadar yatırırsan drone o kadar eğilir, ama bir **maksimum eğim sınırı** vardır (çok fazla yatamaz).
+- **Çubuğu bıraktığın an drone kendiliğinden dümdüz olur** ve havada asılı kalmaya çalışır.
+
+Bu, fotoğraf drone'larının davrandığı gibidir ve yeni başlayan için en affedici moddur: panikleyip çubukları bırakırsan drone kendini toparlar.
+
+<Callout type="tip">
+Yeni başlıyorsan **Angle modundan başla.** Çubuğu bıraktığında drone'un kendini düzeltmesi, ilk hover ve ilk uçuşlarda sana büyük güven verir.
+</Callout>
+
+## 2. Horizon modu (ara basamak)
+
+<KeyTerm en="Horizon mode">Horizon modu</KeyTerm> bir köprüdür: çoğunlukla Angle gibi **kendini dengeler**, ama çubuğu sonuna kadar ittiğinde takla (flip/roll) atmana **izin verir**.
+
+Yani normalde drone seni korur (bırakınca düzelir), ama "şimdi takla atmak istiyorum" dediğinde buna engel olmaz. Acro'ya geçmeden önce akrobasinin tadına güvenli şekilde bakmak için kullanılır.
+
+## 3. Acro modu (gerçek FPV)
+
+<KeyTerm en="Acro mode (rate mode)">Acro modu</KeyTerm> (bazen "rate mode" da denir) **kendini dengelemez.** Burada çubuk, eğimi değil **dönme hızını** kontrol eder:
+
+- Çubuğu yatırırsan drone döner; **bıraktığında düzelmez, son açıda öylece kalır.**
+- Düz durmasını istiyorsan onu **sen** düzeltmek zorundasın.
+
+Kulağa zor geliyor — ve başta öyledir. Ama tüm freestyle ve yarış uçuşları Acro modunda yapılır, çünkü drone üzerinde **tam kontrol** verir: power loop, dive, split-S gibi figürler ancak burada mümkündür. FPV'nin o akıcı, sınırsız hissi Acro'dan gelir.
+
+<Callout type="warning">
+Acro modunda drone seni kurtarmaz. Çubuğu bırakırsan düz durmaz; eğik kalıp düşebilir. Bu yüzden Acro'ya **doğrudan başlamak yerine** önce simülatörde bolca pratik yapmak gerekir.
+</Callout>
+
+## Üç modu yan yana
+
+| Mod | Çubuğu bırakınca | Takla atabilir mi? | Kime uygun |
+|---|---|---|---|
+| **Angle** | Kendini düzeltir, asılı kalır | Hayır (eğim sınırlı) | Yeni başlayan |
+| **Horizon** | Genelde düzeltir | Evet (çubuğu sona itince) | Geçiş yapan |
+| **Acro** | Düzelmez, son açıda kalır | Evet (tamamen serbest) | Freestyle / yarış |
+
+<DemoPlaceholder title="Aynı manevra, üç modda" note="Üç küçük drone yan yana aynı 'sağa yatır ve bırak' komutunu alıyor. Angle: yatıp hemen düzeliyor. Horizon: yatıyor, sona itilince takla atıyor. Acro: yatıyor ve eğik kalıyor (pilot düzeltmezse düşer). Kullanıcı çubuğu kendi oynatıp farkı hissedebilsin." />
+
+## Öğrenme sırası (önerilen)
+
+1. **Angle** ile başla — havada durmayı, gaz ve yön hissini güvenle öğren.
+2. İstersen **Horizon** ile ilk taklaları dene.
+3. Kendine güvendiğinde **Acro**'ya geç — ama önce **simülatörde**. Acro'da gerçek drone kırmak yerine simülatörde defalarca düşmek hem ücretsizdir hem öğretir.
+
+<Callout type="info">
+**Özet:** Angle = kendini dengeler (en kolay). Horizon = dengeler ama takla atabilir. Acro = dengelemez, tam kontrol (freestyle/yarış). Yeni başlayan **Angle**'dan başlar; Acro'ya simülatörde hazırlanır. Sıradaki ders zaten tam olarak bu: simülatörde başlama. Önce mini quiz!
+</Callout>
