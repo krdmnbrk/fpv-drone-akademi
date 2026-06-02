@@ -13,6 +13,7 @@ import {
 } from '@/content';
 import { useAppStore } from '@/store/useAppStore';
 import { selectLessonStatus } from '@/store/selectors';
+import { evaluateBadges } from '@/lib/badges';
 
 export function LessonPage() {
   const { t } = useTranslation();
@@ -25,6 +26,7 @@ export function LessonPage() {
   const startLesson = useAppStore((state) => state.startLesson);
   const completeLesson = useAppStore((state) => state.completeLesson);
   const recordQuizScore = useAppStore((state) => state.recordQuizScore);
+  const awardBadge = useAppStore((state) => state.awardBadge);
 
   useEffect(() => {
     if (lesson && lessonId) {
@@ -92,7 +94,12 @@ export function LessonPage() {
         <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6">
           <Button
             variant={isCompleted ? 'secondary' : 'primary'}
-            onClick={() => completeLesson(lessonId)}
+            onClick={() => {
+              completeLesson(lessonId);
+              for (const badgeId of evaluateBadges(useAppStore.getState())) {
+                awardBadge(badgeId);
+              }
+            }}
             disabled={isCompleted}
           >
             {isCompleted ? t('lesson.completed') : t('lesson.markComplete')}

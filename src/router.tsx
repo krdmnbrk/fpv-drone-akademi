@@ -17,6 +17,9 @@ const LessonPage = lazy(() =>
 const ProgressPage = lazy(() =>
   import('@/pages/ProgressPage').then((m) => ({ default: m.ProgressPage })),
 );
+const RegulationsPage = lazy(() =>
+  import('@/pages/RegulationsPage').then((m) => ({ default: m.RegulationsPage })),
+);
 const NotFoundPage = lazy(() =>
   import('@/pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })),
 );
@@ -32,6 +35,7 @@ export const router = createBrowserRouter(
         { path: 'flight', element: <FlightPage /> },
         { path: 'lesson/:lessonId', element: <LessonPage /> },
         { path: 'progress', element: <ProgressPage /> },
+        { path: 'regulations', element: <RegulationsPage /> },
         { path: '*', element: <NotFoundPage /> },
       ],
     },

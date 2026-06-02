@@ -100,6 +100,17 @@ export const en: Translation = {
     reset: 'Reset progress',
     resetConfirm: 'All progress and badges will be deleted. Are you sure?',
   },
+  badges: {
+    locked: 'Locked',
+    firstFlight: { name: 'First Flight', desc: 'You completed your first lesson.' },
+    beginnerGraduate: { name: 'Beginner Graduate', desc: 'You completed all beginner lessons.' },
+    intermediateGraduate: {
+      name: 'Intermediate Graduate',
+      desc: 'You completed all intermediate lessons.',
+    },
+    advancedGraduate: { name: 'Advanced Graduate', desc: 'You completed all advanced lessons.' },
+    fullCurriculum: { name: 'Full Pilot', desc: 'You completed the entire curriculum!' },
+  },
   settings: {
     title: 'Settings',
     language: 'Language',
@@ -122,5 +133,6 @@ export const en: Translation = {
     tagline: 'An interactive learning platform for FPV beginners.',
     disclaimer:
       'For educational purposes. Verify current SHGM/İHA regulations from official sources before flying.',
+    regulations: 'SHGM / İHA rules',
   },
 };

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Container } from '@/components/ui/Container';
 
@@ -11,6 +12,12 @@ export function Footer() {
         <p className="font-semibold text-brand-50">{t('common.appName')}</p>
         <p>{t('footer.tagline')}</p>
         <p className="text-xs text-brand-300">{t('footer.disclaimer')}</p>
+        <Link
+          to="/regulations"
+          className="text-xs font-medium text-brand-300 underline underline-offset-2 hover:text-brand-200"
+        >
+          {t('footer.regulations')}
+        </Link>
         <p className="text-xs text-brand-400">© {year}</p>
       </Container>
     </footer>

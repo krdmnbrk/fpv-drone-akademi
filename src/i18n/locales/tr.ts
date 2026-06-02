@@ -97,6 +97,17 @@ export const tr = {
     reset: 'İlerlemeyi sıfırla',
     resetConfirm: 'Tüm ilerleme ve rozetler silinecek. Emin misin?',
   },
+  badges: {
+    locked: 'Kilitli',
+    firstFlight: { name: 'İlk Uçuş', desc: 'İlk dersini tamamladın.' },
+    beginnerGraduate: { name: 'Başlangıç Mezunu', desc: 'Tüm başlangıç derslerini tamamladın.' },
+    intermediateGraduate: {
+      name: 'Orta Seviye Mezunu',
+      desc: 'Tüm orta seviye derslerini tamamladın.',
+    },
+    advancedGraduate: { name: 'İleri Seviye Mezunu', desc: 'Tüm ileri seviye derslerini tamamladın.' },
+    fullCurriculum: { name: 'Tam Pilot', desc: 'Tüm müfredatı tamamladın!' },
+  },
   settings: {
     title: 'Ayarlar',
     language: 'Dil',
@@ -119,6 +130,7 @@ export const tr = {
     tagline: 'FPV’ye yeni başlayanlar için interaktif öğrenme platformu.',
     disclaimer:
       'Eğitim amaçlıdır. Uçuştan önce güncel SHGM/İHA mevzuatını resmî kaynaklardan doğrula.',
+    regulations: 'SHGM / İHA kuralları',
   },
 };
 
