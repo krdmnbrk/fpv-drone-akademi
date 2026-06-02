@@ -19,6 +19,8 @@ export default mergeConfig(
           'src/test/**',
           'src/**/*.test.{ts,tsx}',
           'src/**/*.stories.tsx',
+          // R3F scenes need a real WebGL context; verified via the live preview.
+          'src/scenes/**',
         ],
         // Logic-heavy modules carry a higher, enforced bar (KAPI 2).
         thresholds: {

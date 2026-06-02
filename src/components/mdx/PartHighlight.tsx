@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { getPart } from '@/content';
 
 /**
@@ -6,6 +7,7 @@ import { getPart } from '@/content';
  * part id also drives the 3D highlight (Phase 3).
  */
 export function PartHighlight({ part }: { part: string }) {
+  const { t } = useTranslation();
   const data = getPart(part);
   if (!data) return null;
 
@@ -21,7 +23,9 @@ export function PartHighlight({ part }: { part: string }) {
         ⬡
       </span>
       <span className="flex flex-col">
-        <span className="text-xs uppercase tracking-wide text-brand-300">İlgili donanım</span>
+        <span className="text-xs uppercase tracking-wide text-brand-300">
+          {t('hardware.relatedHardware')}
+        </span>
         <span className="font-medium text-brand-50">{data.name}</span>
       </span>
     </Link>

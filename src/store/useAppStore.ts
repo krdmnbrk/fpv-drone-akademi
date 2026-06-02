@@ -88,6 +88,9 @@ export const useAppStore = create<AppState>()(
             progress: {
               ...state.progress,
               [lessonId]: {
+                // In-app, LessonPage calls startLesson first, so `existing` is set
+                // before a quiz is submitted; the fallback only applies if a score is
+                // recorded for a never-started lesson.
                 status: existing?.status ?? 'in-progress',
                 ...(existing?.completedAt !== undefined
                   ? { completedAt: existing.completedAt }

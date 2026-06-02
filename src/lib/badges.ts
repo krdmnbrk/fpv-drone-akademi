@@ -29,8 +29,12 @@ function completedLessonIds(state: AppState): Set<string> {
 export function evaluateBadges(state: AppState): string[] {
   const completed = completedLessonIds(state);
   const curriculum = getFlightCurriculum();
-  const levelComplete = (level: Level) =>
-    curriculum[level].length > 0 && curriculum[level].every((lesson) => completed.has(lesson.id));
+  // Only count authored (available) lessons — a planned "coming soon" lesson has no
+  // page to complete, so it must not block a level's graduate badge.
+  const levelComplete = (level: Level) => {
+    const lessons = curriculum[level].filter((lesson) => lesson.available);
+    return lessons.length > 0 && lessons.every((lesson) => completed.has(lesson.id));
+  };
 
   const earned: string[] = [];
   if (completed.size >= 1) earned.push('first-flight');

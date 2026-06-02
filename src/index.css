@@ -18,7 +18,7 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Respect the user's motion preference globally. */
+  /* Respect the user's motion preference globally (OS-level). */
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -28,5 +28,15 @@
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
+  }
+
+  /* In-app override (Settings → motion: off), set on <html> from App.tsx. */
+  :root[data-reduced-motion='true'] *,
+  :root[data-reduced-motion='true'] *::before,
+  :root[data-reduced-motion='true'] *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
