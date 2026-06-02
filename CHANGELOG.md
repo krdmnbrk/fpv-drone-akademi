@@ -16,6 +16,8 @@ Initial release of the FPV Drone Academy learning platform.
 - **Learn to fly** — full Beginner → Intermediate → Advanced curriculum: 19 lessons
   (8 / 6 / 5) authored in Turkish as MDX, each with learning objectives,
   prerequisites, and an interactive mini quiz.
+- **Lesson videos** — every lesson embeds a curated, oembed-verified YouTube tutorial
+  (Turkish preferred, English fallback) via a lazy, accessible click-to-load player.
 - **Türkiye SHGM / İHA regulations** page, web-verified against the official
   SHT-İHA source (dated, with sources and a change disclaimer).
 - **Progress & badges** — persisted lesson progress, quiz scores, overall progress
