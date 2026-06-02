@@ -2,6 +2,26 @@
 
 Reverse-chronological log of what happened, decisions made, and what's next.
 
+## 2026-06-03 — Improvement round (v0.2.0)
+
+After a two-persona review (a professional FPV instructor + a first-week beginner),
+implemented the approved **Tier 0** quick-wins from
+`~/.claude/plans/bu-projeyi-profesyonel-bir-vast-hejlsberg.md`:
+
+- Guided entry (start/continue CTA, numbered flight path, next-lesson CTA).
+- Soft prerequisite gating (using the previously-unused `arePrerequisitesMet`).
+- Mobile-accessible jargon (tap-to-reveal KeyTerm) + a searchable glossary at `/sozluk`.
+- Safety surfaced early (dismissible banner + home spotter card).
+- Richer progress (locked-badge progress, completion celebration toast, quiz nudge).
+- Technical accuracy fixes (ELRS band/legality, LiPo 3.0 V, hover %, arm idle).
+- Earlier: a verified YouTube video on every lesson.
+
+62 tests pass (88% coverage); lint + build clean; verified live. Tagged **v0.2.0**.
+**Remaining (from the plan, not yet done):** Tier 1 (interactive stick/sim demos +
+assessment gate), Tier 2 (new lessons: charging/LiPo-fire, failsafe, binding…),
+Tier 3 (3D wiring overlay, goggles/radio meshes), Tier 4 (streak/certificate, EN
+content strategy).
+
 ## Phase status — all phases complete (v0.1.0)
 
 | Phase | Title | Status |

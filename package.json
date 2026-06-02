@@ -1,7 +1,7 @@
 {
   "name": "fpv-drone-academy",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "description": "Interactive, animated FPV drone learning platform — Turkish-first, i18n-ready.",
   "license": "MIT",
