@@ -15,8 +15,15 @@ export const tr = {
     hardware: 'Donanım',
     flight: 'Uçuş Eğitimi',
     progress: 'İlerleme',
+    glossary: 'Sözlük',
     openMenu: 'Menüyü aç',
     closeMenu: 'Menüyü kapat',
+  },
+  glossary: {
+    title: 'Sözlük',
+    intro: 'FPV dünyasının terimleri, sade Türkçe açıklamalarıyla.',
+    search: 'Terim ara…',
+    noResults: 'Sonuç bulunamadı.',
   },
   home: {
     heroKicker: 'Kalkışa hazır',

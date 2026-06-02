@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { renderWithProviders, screen } from '@/test/utils';
+import { renderWithProviders, screen, userEvent } from '@/test/utils';
 import { Callout } from './Callout';
 import { KeyTerm } from './KeyTerm';
 import { PartHighlight } from './PartHighlight';
@@ -11,9 +11,11 @@ describe('MDX components', () => {
     expect(screen.getByRole('note')).toHaveTextContent('Dikkat metni');
   });
 
-  it('KeyTerm exposes the English term via title', () => {
+  it('KeyTerm reveals the English term on tap (mobile-accessible)', async () => {
+    const user = userEvent.setup();
     renderWithProviders(<KeyTerm en="flight controller">uçuş kontrolcüsü</KeyTerm>);
-    expect(screen.getByText('uçuş kontrolcüsü')).toHaveAttribute('title', 'flight controller');
+    await user.click(screen.getByRole('button', { name: 'uçuş kontrolcüsü' }));
+    expect(screen.getByRole('tooltip')).toHaveTextContent('flight controller');
   });
 
   it('PartHighlight links to the related hardware part', () => {

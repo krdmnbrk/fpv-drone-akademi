@@ -20,6 +20,9 @@ const ProgressPage = lazy(() =>
 const RegulationsPage = lazy(() =>
   import('@/pages/RegulationsPage').then((m) => ({ default: m.RegulationsPage })),
 );
+const GlossaryPage = lazy(() =>
+  import('@/pages/GlossaryPage').then((m) => ({ default: m.GlossaryPage })),
+);
 const NotFoundPage = lazy(() =>
   import('@/pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })),
 );
@@ -36,6 +39,7 @@ export const router = createBrowserRouter(
         { path: 'lesson/:lessonId', element: <LessonPage /> },
         { path: 'progress', element: <ProgressPage /> },
         { path: 'regulations', element: <RegulationsPage /> },
+        { path: 'sozluk', element: <GlossaryPage /> },
         { path: '*', element: <NotFoundPage /> },
       ],
     },

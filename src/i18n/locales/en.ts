@@ -18,8 +18,15 @@ export const en: Translation = {
     hardware: 'Hardware',
     flight: 'Flight School',
     progress: 'Progress',
+    glossary: 'Glossary',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
+  },
+  glossary: {
+    title: 'Glossary',
+    intro: 'The FPV world’s terms, explained in plain language.',
+    search: 'Search a term…',
+    noResults: 'No results.',
   },
   home: {
     heroKicker: 'Cleared for takeoff',
