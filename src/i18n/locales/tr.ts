@@ -25,6 +25,10 @@ export const tr = {
       'Donanımı interaktif 3D ile keşfet, başlangıçtan ileri seviyeye uçmayı adım adım öğren.',
     ctaHardware: 'Donanımı Keşfet',
     ctaFlight: 'Uçmayı Öğren',
+    startHere: 'Buradan başla',
+    continue: 'Kaldığın yerden devam et',
+    allDone: 'Tüm dersleri tamamladın 🎉',
+    exploreOwn: 'ya da kendin keşfet',
     tracksTitle: 'İki yol, tek hedef',
     hardwareCardTitle: 'Donanımı Öğren',
     hardwareCardDesc:
@@ -60,6 +64,8 @@ export const tr = {
     },
     comingSoon: 'Yakında',
     inProgress: 'Devam ediyor',
+    prereqHint: 'Önce tamamla',
+    openAnyway: 'Yine de aç',
   },
   lesson: {
     objectives: 'Bu derste öğrenecekleriniz',

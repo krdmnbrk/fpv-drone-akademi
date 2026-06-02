@@ -108,20 +108,18 @@ export function LessonPage() {
           >
             {isCompleted ? t('lesson.completed') : t('lesson.markComplete')}
           </Button>
-          <div className="flex justify-between gap-3">
+          <div className="flex items-center justify-between gap-3">
             {prev ? (
-              <ButtonLink to={`/lesson/${prev}`} variant="ghost">
+              <ButtonLink to={`/lesson/${prev}`} variant="ghost" size="sm">
                 ← {t('lesson.previous')}
               </ButtonLink>
             ) : (
               <span />
             )}
-            {next ? (
-              <ButtonLink to={`/lesson/${next}`} variant="ghost">
+            {next && (
+              <ButtonLink to={`/lesson/${next}`} size="lg">
                 {t('lesson.next')} →
               </ButtonLink>
-            ) : (
-              <span />
             )}
           </div>
         </div>

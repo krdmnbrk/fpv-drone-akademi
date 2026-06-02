@@ -1,15 +1,31 @@
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Container } from '@/components/ui/Container';
-import { getFlightCurriculum, type FlightLessonItem } from '@/content';
+import {
+  getFlightCurriculum,
+  getFlightLessonTitle,
+  getOrderedAvailableFlightLessonIds,
+  type FlightLessonItem,
+} from '@/content';
 import { flightLevels } from '@/content/curriculum';
 import { useAppStore } from '@/store/useAppStore';
-import { selectLessonStatus } from '@/store/selectors';
+import { arePrerequisitesMet, selectLessonStatus, selectResumeLessonId } from '@/store/selectors';
 import { cn } from '@/lib/cn';
 
-function LessonRow({ item }: { item: FlightLessonItem }) {
+function LessonRow({
+  item,
+  step,
+  isResume,
+}: {
+  item: FlightLessonItem;
+  step: number;
+  isResume: boolean;
+}) {
   const { t } = useTranslation();
   const status = useAppStore((state) => selectLessonStatus(state, item.id));
+  const prereqMet = useAppStore((state) => arePrerequisitesMet(state, item.prerequisites));
+  const locked = item.available && !prereqMet;
 
   let badge: { label: string; className: string } | null = null;
   if (!item.available) {
@@ -20,22 +36,47 @@ function LessonRow({ item }: { item: FlightLessonItem }) {
     badge = { label: t('flight.inProgress'), className: 'border-brand-400/40 text-brand-200' };
   }
 
+  const stepCircle = (
+    <span
+      aria-hidden="true"
+      className={cn(
+        'grid h-8 w-8 shrink-0 place-items-center rounded-full border text-sm font-semibold',
+        status === 'completed'
+          ? 'border-emerald-400/50 bg-emerald-500/15 text-emerald-200'
+          : isResume
+            ? 'border-brand-400 bg-brand-500/20 text-white'
+            : 'border-white/15 text-brand-300',
+      )}
+    >
+      {status === 'completed' ? '✓' : item.available ? step : '–'}
+    </span>
+  );
+
   const inner = (
     <div
       className={cn(
-        'flex items-center justify-between gap-4 rounded-xl border p-4',
+        'flex items-center gap-3 rounded-xl border p-4',
         item.available
           ? 'border-white/10 bg-white/5'
           : 'border-dashed border-white/10 bg-transparent opacity-70',
+        isResume && 'ring-2 ring-brand-400/60',
+        locked && 'opacity-60',
       )}
     >
-      <div>
+      {stepCircle}
+      <div className="min-w-0 flex-1">
         <p className="font-medium text-brand-50">{item.title}</p>
         <p className="mt-1 text-sm text-brand-300">{item.summary}</p>
+        {locked && (
+          <p className="mt-1 text-xs text-amber-300">
+            {t('flight.prereqHint')}:{' '}
+            {item.prerequisites.map((id) => getFlightLessonTitle(id) ?? id).join(', ')}
+          </p>
+        )}
       </div>
-      <div className="flex shrink-0 items-center gap-3">
+      <div className="flex shrink-0 flex-col items-end gap-1">
         {item.estimatedMinutes !== undefined && (
-          <span className="hidden text-xs text-brand-400 sm:inline">
+          <span className="text-xs text-brand-400">
             {item.estimatedMinutes} {t('common.minutesShort')}
           </span>
         )}
@@ -52,6 +93,23 @@ function LessonRow({ item }: { item: FlightLessonItem }) {
     return <div aria-disabled="true">{inner}</div>;
   }
 
+  // Soft gate: prerequisites unmet -> discourage but allow an explicit override.
+  if (locked) {
+    return (
+      <div>
+        {inner}
+        <div className="mt-1 pl-11">
+          <Link
+            to={`/lesson/${item.id}`}
+            className="text-xs text-brand-300 underline underline-offset-2 hover:text-brand-100"
+          >
+            {t('flight.openAnyway')}
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <Link
       to={`/lesson/${item.id}`}
@@ -65,6 +123,14 @@ function LessonRow({ item }: { item: FlightLessonItem }) {
 export function FlightPage() {
   const { t } = useTranslation();
   const curriculum = getFlightCurriculum();
+  const orderedIds = useMemo(() => getOrderedAvailableFlightLessonIds(), []);
+  const resumeId = useAppStore((state) => selectResumeLessonId(state, orderedIds));
+
+  const stepOf = useMemo(() => {
+    const map = new Map<string, number>();
+    orderedIds.forEach((id, index) => map.set(id, index + 1));
+    return map;
+  }, [orderedIds]);
 
   return (
     <Container className="py-12">
@@ -80,7 +146,11 @@ export function FlightPage() {
             <ul className="mt-4 grid gap-3">
               {curriculum[level].map((item) => (
                 <li key={item.id}>
-                  <LessonRow item={item} />
+                  <LessonRow
+                    item={item}
+                    step={stepOf.get(item.id) ?? 0}
+                    isResume={item.id === resumeId}
+                  />
                 </li>
               ))}
             </ul>

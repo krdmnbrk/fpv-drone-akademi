@@ -28,6 +28,10 @@ export const en: Translation = {
       'Explore the hardware in interactive 3D and learn to fly step by step, from beginner to advanced.',
     ctaHardware: 'Explore the Hardware',
     ctaFlight: 'Learn to Fly',
+    startHere: 'Start here',
+    continue: 'Continue where you left off',
+    allDone: 'You finished every lesson 🎉',
+    exploreOwn: 'or explore on your own',
     tracksTitle: 'Two paths, one goal',
     hardwareCardTitle: 'Learn the Hardware',
     hardwareCardDesc:
@@ -63,6 +67,8 @@ export const en: Translation = {
     },
     comingSoon: 'Coming soon',
     inProgress: 'In progress',
+    prereqHint: 'Complete first',
+    openAnyway: 'Open anyway',
   },
   lesson: {
     objectives: 'What you will learn',

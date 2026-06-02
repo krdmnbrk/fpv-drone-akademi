@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -5,6 +6,9 @@ import { Container } from '@/components/ui/Container';
 import { ButtonLink } from '@/components/ui/Button';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 import { tokens, toSeconds } from '@/design/tokens';
+import { useAppStore } from '@/store/useAppStore';
+import { selectCompletedCount, selectResumeLessonId } from '@/store/selectors';
+import { getFlightLessonTitle, getOrderedAvailableFlightLessonIds } from '@/content';
 
 function TrackCard({ to, title, description }: { to: string; title: string; description: string }) {
   return (
@@ -14,7 +18,10 @@ function TrackCard({ to, title, description }: { to: string; title: string; desc
     >
       <h3 className="text-xl font-semibold text-white">{title}</h3>
       <p className="mt-2 text-sm text-brand-200">{description}</p>
-      <span aria-hidden="true" className="mt-4 text-brand-300 transition-transform duration-base ease-standard group-hover:translate-x-1">
+      <span
+        aria-hidden="true"
+        className="mt-4 text-brand-300 transition-transform duration-base ease-standard group-hover:translate-x-1"
+      >
         →
       </span>
     </Link>
@@ -25,6 +32,20 @@ export function HomePage() {
   const { t } = useTranslation();
   const reducedMotion = usePrefersReducedMotion();
   const duration = toSeconds(tokens.motion.duration.base);
+
+  const orderedIds = useMemo(() => getOrderedAvailableFlightLessonIds(), []);
+  const completedCount = useAppStore(selectCompletedCount);
+  const resumeId = useAppStore((state) => selectResumeLessonId(state, orderedIds));
+
+  // The single, obvious next step: start, continue, or celebrate completion.
+  const guided = !resumeId
+    ? { to: '/progress', label: t('home.allDone') }
+    : completedCount === 0
+      ? { to: `/lesson/${resumeId}`, label: `${t('home.startHere')} →` }
+      : {
+          to: `/lesson/${resumeId}`,
+          label: `${t('home.continue')}: ${getFlightLessonTitle(resumeId) ?? ''}`,
+        };
 
   const reveal = {
     initial: reducedMotion ? { opacity: 1 } : { opacity: 0, y: 16 },
@@ -55,13 +76,20 @@ export function HomePage() {
         >
           {t('home.heroSubtitle')}
         </motion.p>
-        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <ButtonLink to="/hardware" size="lg">
-            {t('home.ctaHardware')}
+        <div className="mt-8 flex flex-col items-center gap-4">
+          <ButtonLink to={guided.to} size="lg">
+            {guided.label}
           </ButtonLink>
-          <ButtonLink to="/flight" variant="secondary" size="lg">
-            {t('home.ctaFlight')}
-          </ButtonLink>
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm text-brand-300">
+            <span>{t('home.exploreOwn')}:</span>
+            <Link to="/flight" className="underline underline-offset-2 hover:text-brand-100">
+              {t('home.ctaFlight')}
+            </Link>
+            <span aria-hidden="true">·</span>
+            <Link to="/hardware" className="underline underline-offset-2 hover:text-brand-100">
+              {t('home.ctaHardware')}
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -70,8 +98,16 @@ export function HomePage() {
           {t('home.tracksTitle')}
         </h2>
         <div className="mx-auto mt-8 grid max-w-3xl gap-6 sm:grid-cols-2">
-          <TrackCard to="/hardware" title={t('home.hardwareCardTitle')} description={t('home.hardwareCardDesc')} />
-          <TrackCard to="/flight" title={t('home.flightCardTitle')} description={t('home.flightCardDesc')} />
+          <TrackCard
+            to="/hardware"
+            title={t('home.hardwareCardTitle')}
+            description={t('home.hardwareCardDesc')}
+          />
+          <TrackCard
+            to="/flight"
+            title={t('home.flightCardTitle')}
+            description={t('home.flightCardDesc')}
+          />
         </div>
       </section>
     </Container>
