@@ -41,4 +41,13 @@ module.exports = {
       { prefer: 'type-imports', fixStyle: 'inline-type-imports' },
     ],
   },
+  overrides: [
+    {
+      // Test files and helpers are not Fast Refresh boundaries.
+      files: ['**/*.test.{ts,tsx}', 'src/test/**/*.{ts,tsx}'],
+      rules: {
+        'react-refresh/only-export-components': 'off',
+      },
+    },
+  ],
 };

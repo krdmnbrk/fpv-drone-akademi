@@ -1,9 +1,12 @@
 import type { Config } from 'tailwindcss';
+import { motion, easingToCss } from './src/design/tokens';
 
-/**
- * Tailwind is driven by the design tokens in `src/design/tokens.ts`.
- * This starter palette is refined in the design-system step (Phase 2).
- */
+// Motion scale is owned by src/design/tokens.ts; mirror it into Tailwind so
+// utility classes and Framer Motion variants stay in sync.
+const transitionDuration = Object.fromEntries(
+  Object.entries(motion.duration).map(([name, ms]) => [name, `${ms}ms`]),
+);
+
 export default {
   content: ['./index.html', './src/**/*.{ts,tsx,mdx}'],
   darkMode: 'class',
@@ -27,6 +30,12 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+      transitionDuration,
+      transitionTimingFunction: {
+        standard: easingToCss(motion.easing.standard),
+        emphasized: easingToCss(motion.easing.emphasized),
+        exit: easingToCss(motion.easing.exit),
       },
     },
   },
