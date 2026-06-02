@@ -70,6 +70,9 @@ export const tr = {
     previous: 'Önceki ders',
     notFound: 'Ders bulunamadı.',
     demoComingSoon: 'İnteraktif demo • yakında',
+    video: 'Video',
+    playVideo: 'Videoyu oynat',
+    videoEnglish: 'İngilizce',
   },
   quiz: {
     title: 'Mini Quiz',
@@ -99,7 +102,10 @@ export const tr = {
       name: 'Orta Seviye Mezunu',
       desc: 'Tüm orta seviye derslerini tamamladın.',
     },
-    advancedGraduate: { name: 'İleri Seviye Mezunu', desc: 'Tüm ileri seviye derslerini tamamladın.' },
+    advancedGraduate: {
+      name: 'İleri Seviye Mezunu',
+      desc: 'Tüm ileri seviye derslerini tamamladın.',
+    },
     fullCurriculum: { name: 'Tam Pilot', desc: 'Tüm müfredatı tamamladın!' },
   },
   settings: {

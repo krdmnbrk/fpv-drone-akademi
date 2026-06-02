@@ -5,12 +5,9 @@ import { Container } from '@/components/ui/Container';
 import { Button, ButtonLink } from '@/components/ui/Button';
 import { MdxProvider } from '@/components/mdx';
 import { Quiz } from '@/components/quiz/Quiz';
-import {
-  getAdjacentFlightLessons,
-  getFlightLessonTitle,
-  getLesson,
-  getQuiz,
-} from '@/content';
+import { LessonVideo } from '@/components/lesson/LessonVideo';
+import { getAdjacentFlightLessons, getFlightLessonTitle, getLesson, getQuiz } from '@/content';
+import { getLessonVideo } from '@/content/videos';
 import { useAppStore } from '@/store/useAppStore';
 import { selectLessonStatus } from '@/store/selectors';
 import { evaluateBadges } from '@/lib/badges';
@@ -47,6 +44,7 @@ export function LessonPage() {
 
   const { meta, Component } = lesson;
   const quiz = meta.quizId ? getQuiz(meta.quizId) : undefined;
+  const video = getLessonVideo(lessonId);
   const { prev, next } = getAdjacentFlightLessons(lessonId);
   const isCompleted = status === 'completed';
 
@@ -84,6 +82,12 @@ export function LessonPage() {
             <Component />
           </article>
         </MdxProvider>
+
+        {video && (
+          <div className="mt-10">
+            <LessonVideo video={video} />
+          </div>
+        )}
 
         {quiz && (
           <div className="mt-10">

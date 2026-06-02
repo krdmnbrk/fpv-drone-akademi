@@ -73,6 +73,9 @@ export const en: Translation = {
     previous: 'Previous lesson',
     notFound: 'Lesson not found.',
     demoComingSoon: 'Interactive demo • coming soon',
+    video: 'Video',
+    playVideo: 'Play video',
+    videoEnglish: 'in English',
   },
   quiz: {
     title: 'Mini Quiz',
