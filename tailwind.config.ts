@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import typography from '@tailwindcss/typography';
 import { motion, easingToCss } from './src/design/tokens';
 
 // Motion scale is owned by src/design/tokens.ts; mirror it into Tailwind so
@@ -39,5 +40,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [typography],
 } satisfies Config;

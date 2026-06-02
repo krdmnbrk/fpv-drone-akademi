@@ -61,6 +61,8 @@ export const en: Translation = {
     },
     lessonsCount: '{{count}} lessons',
     locked: 'Complete the prerequisite lessons first',
+    comingSoon: 'Coming soon',
+    inProgress: 'In progress',
   },
   lesson: {
     objectives: 'What you will learn',

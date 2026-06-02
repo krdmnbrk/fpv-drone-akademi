@@ -58,6 +58,8 @@ export const tr = {
     },
     lessonsCount: '{{count}} ders',
     locked: 'Önce ön koşul dersleri tamamla',
+    comingSoon: 'Yakında',
+    inProgress: 'Devam ediyor',
   },
   lesson: {
     objectives: 'Bu derste öğrenecekleriniz',
