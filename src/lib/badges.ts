@@ -44,3 +44,43 @@ export function evaluateBadges(state: AppState): string[] {
   if (flightLevels.every(levelComplete)) earned.push('full-curriculum');
   return earned;
 }
+
+export interface BadgeProgress {
+  current: number;
+  target: number;
+}
+
+/** Progress toward a badge (e.g. 6/8 beginner lessons) for the locked-badge display. */
+export function getBadgeProgress(state: AppState, badgeId: string): BadgeProgress {
+  const curriculum = getFlightCurriculum();
+  const completed = completedLessonIds(state);
+  const levelProgress = (level: Level): BadgeProgress => {
+    const lessons = curriculum[level].filter((lesson) => lesson.available);
+    return {
+      current: lessons.filter((lesson) => completed.has(lesson.id)).length,
+      target: lessons.length,
+    };
+  };
+
+  switch (badgeId) {
+    case 'first-flight':
+      return { current: Math.min(completed.size, 1), target: 1 };
+    case 'beginner-graduate':
+      return levelProgress('beginner');
+    case 'intermediate-graduate':
+      return levelProgress('intermediate');
+    case 'advanced-graduate':
+      return levelProgress('advanced');
+    case 'full-curriculum': {
+      const all = flightLevels.flatMap((level) =>
+        curriculum[level].filter((lesson) => lesson.available),
+      );
+      return {
+        current: all.filter((lesson) => completed.has(lesson.id)).length,
+        target: all.length,
+      };
+    }
+    default:
+      return { current: 0, target: 0 };
+  }
+}

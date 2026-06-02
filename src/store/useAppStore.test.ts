@@ -7,6 +7,7 @@ import {
   selectBadgeCount,
   selectCompletedCount,
   selectLessonStatus,
+  selectResumeLessonId,
 } from './selectors';
 
 const resetStore = () =>
@@ -153,5 +154,24 @@ describe('selectors', () => {
     expect(overallProgressPct(0, 0)).toBe(0);
     expect(overallProgressPct(1, 4)).toBe(25);
     expect(overallProgressPct(3, 3)).toBe(100);
+  });
+});
+
+describe('selectResumeLessonId', () => {
+  const order = ['a', 'b', 'c'];
+
+  it('returns the first lesson when nothing is completed', () => {
+    expect(selectResumeLessonId(useAppStore.getState(), order)).toBe('a');
+  });
+
+  it('returns the first non-completed lesson', () => {
+    useAppStore.getState().completeLesson('a');
+    expect(selectResumeLessonId(useAppStore.getState(), order)).toBe('b');
+  });
+
+  it('returns undefined when every lesson is completed', () => {
+    const store = useAppStore.getState();
+    order.forEach((id) => store.completeLesson(id));
+    expect(selectResumeLessonId(useAppStore.getState(), order)).toBeUndefined();
   });
 });

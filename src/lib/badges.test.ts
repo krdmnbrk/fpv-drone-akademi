@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { evaluateBadges } from './badges';
+import { evaluateBadges, getBadgeProgress } from './badges';
 import { getFlightCurriculum } from '@/content';
 import type { AppState } from '@/store/useAppStore';
 
@@ -41,5 +41,30 @@ describe('evaluateBadges', () => {
         'full-curriculum',
       ]),
     );
+  });
+});
+
+describe('getBadgeProgress', () => {
+  it('tracks first-flight toward a target of 1', () => {
+    expect(getBadgeProgress(stateWithCompleted([]), 'first-flight')).toEqual({
+      current: 0,
+      target: 1,
+    });
+    expect(getBadgeProgress(stateWithCompleted(['fpv-nedir']), 'first-flight')).toEqual({
+      current: 1,
+      target: 1,
+    });
+  });
+
+  it('tracks beginner-graduate against the beginner lesson count', () => {
+    const progress = getBadgeProgress(stateWithCompleted(['fpv-nedir']), 'beginner-graduate');
+    expect(progress.target).toBe(8);
+    expect(progress.current).toBe(1);
+  });
+
+  it('reaches its target when the whole curriculum is complete', () => {
+    const progress = getBadgeProgress(stateWithCompleted(allIds), 'full-curriculum');
+    expect(progress.current).toBe(progress.target);
+    expect(progress.target).toBe(19);
   });
 });

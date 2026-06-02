@@ -102,6 +102,11 @@ export function getOrderedFlightLessonIds(): string[] {
   return flightLevels.flatMap((level) => curriculum[level].map((item) => item.id));
 }
 
+/** Flat, ordered list of authored (playable) flight lesson ids only. */
+export function getOrderedAvailableFlightLessonIds(): string[] {
+  return getOrderedFlightLessonIds().filter((id) => lessonRegistry.has(id));
+}
+
 /** Nearest available previous/next authored lessons for in-lesson navigation. */
 export function getAdjacentFlightLessons(id: string): { prev?: string; next?: string } {
   const ordered = getOrderedFlightLessonIds();

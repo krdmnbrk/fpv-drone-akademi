@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { getFlightCurriculum, getLesson, getPart, getQuiz, hardwareParts } from './index';
+import {
+  getFlightCurriculum,
+  getLesson,
+  getOrderedAvailableFlightLessonIds,
+  getPart,
+  getQuiz,
+  hardwareParts,
+} from './index';
 
 describe('content loader', () => {
   it('loads authored beginner lessons as available', () => {
@@ -32,5 +39,11 @@ describe('content loader', () => {
     expect(hardwareParts[0]?.order).toBe(1);
     expect(getPart('esc')?.meshName).toBe('esc');
     expect(hardwareParts.every((part) => part.meshName === part.id)).toBe(true);
+  });
+
+  it('orders all authored flight lessons for resume/navigation', () => {
+    const ids = getOrderedAvailableFlightLessonIds();
+    expect(ids).toHaveLength(19);
+    expect(ids[0]).toBe('fpv-nedir');
   });
 });

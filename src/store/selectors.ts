@@ -28,10 +28,7 @@ export function selectBadgeCount(state: AppState): number {
   return Object.keys(state.badges).length;
 }
 
-export function arePrerequisitesMet(
-  state: AppState,
-  prerequisites: readonly string[],
-): boolean {
+export function arePrerequisitesMet(state: AppState, prerequisites: readonly string[]): boolean {
   return prerequisites.every((id) => isLessonCompleted(state, id));
 }
 
@@ -39,4 +36,16 @@ export function arePrerequisitesMet(
 export function overallProgressPct(completed: number, total: number): number {
   if (total <= 0) return 0;
   return Math.round((completed / total) * 100);
+}
+
+/**
+ * The lesson to resume/start: the first lesson in order that is not yet completed.
+ * Returns undefined when every lesson is completed. Doubles as the "start here"
+ * target (first lesson) when nothing has been done yet.
+ */
+export function selectResumeLessonId(
+  state: AppState,
+  orderedLessonIds: readonly string[],
+): string | undefined {
+  return orderedLessonIds.find((id) => selectLessonStatus(state, id) !== 'completed');
 }
