@@ -7,6 +7,8 @@ export interface DroneSceneProps {
   hoveredId: string | null;
   onSelect: (id: string) => void;
   onHover: (id: string | null) => void;
+  /** Clicking empty space returns to the assembled drone. */
+  onDeselect: () => void;
   reducedMotion: boolean;
 }
 
@@ -21,14 +23,20 @@ export default function DroneScene({
   hoveredId,
   onSelect,
   onHover,
+  onDeselect,
   reducedMotion,
 }: DroneSceneProps) {
   return (
     <Canvas
       camera={{ position: [2.6, 1.8, 2.6], fov: 45 }}
-      dpr={[1, 1.8]}
-      gl={{ antialias: true, powerPreference: 'high-performance' }}
-      onPointerMissed={() => onHover(null)}
+      // Cap DPR (kinder to mobile battery/thermals) and use the default power
+      // profile rather than forcing the discrete/high-performance GPU.
+      dpr={[1, 1.5]}
+      gl={{ antialias: true, powerPreference: 'default' }}
+      onPointerMissed={() => {
+        onHover(null);
+        onDeselect();
+      }}
     >
       <ambientLight intensity={0.35} />
       <hemisphereLight args={['#bcd4ff', '#0b1020', 0.45]} />

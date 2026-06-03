@@ -15,15 +15,15 @@
     },
     {
       "id": "q2",
-      "prompt": "Uçuş sırasında bir LiPo hücresini yaklaşık olarak hangi voltajın altına indirmemek gerekir?",
+      "prompt": "Uçuşu bitirip indiğinde, sağlıklı bir LiPo hücresinin dinlenme (yük kalktıktan sonra) voltajı yaklaşık ne olmalıdır ve mutlak hasar eşiği nedir?",
       "options": [
-        "4.2V",
-        "3.3-3.5V",
-        "2.0V",
-        "5.0V"
+        "Dinlenmede ~4.2V; hasar eşiği 3.7V",
+        "Dinlenmede ~3.7-3.8V; mutlak hasar eşiği 3.0V (asla altına inilmez)",
+        "Dinlenmede ~2.0V; hasar eşiği 1.0V",
+        "Dinlenmede ~5.0V; hasar eşiği 4.0V"
       ],
       "answerIndex": 1,
-      "explanation": "Hücre genelde yük altında ~3.5V, dinlenmede ~3.3V altına indirilmez. Daha aşağı boşaltmak (over-discharge) kalıcı hasar verir ve şişmeye/tehlikeye yol açabilir; alarm ötünce iniş yapılır."
+      "explanation": "Sağlıklı iniş hedefi dinlenmede hücre başına ~3.7-3.8V'tur. Yük altında (gaz kökleyince) voltaj anlık olarak ~3.5V'a düşebilir, ama yük kalkınca toparlar. 3.0V bir uçuş hedefi DEĞİL, asla altına inilmemesi gereken mutlak hasar eşiğidir; altına boşaltmak (over-discharge) kalıcı hasar verir. Alarm ötünce iniş yapılır."
     },
     {
       "id": "q3",

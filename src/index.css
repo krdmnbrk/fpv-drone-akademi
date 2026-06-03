@@ -61,11 +61,13 @@
     background: theme('colors.brand.600');
   }
 
-  /* Respect the user's motion preference globally (OS-level). */
+  /* Respect the OS motion preference globally — but let an explicit in-app
+     "motion on" (data-reduced-motion='false', set by App.tsx) override it, so
+     the resolved preference always wins. */
   @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
+    :root:not([data-reduced-motion='false']) *,
+    :root:not([data-reduced-motion='false']) *::before,
+    :root:not([data-reduced-motion='false']) *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
@@ -73,7 +75,7 @@
     }
   }
 
-  /* In-app override (Settings → motion: off), set on <html> from App.tsx. */
+  /* Resolved "reduce" (OS reduce under 'system', or an explicit in-app choice). */
   :root[data-reduced-motion='true'] *,
   :root[data-reduced-motion='true'] *::before,
   :root[data-reduced-motion='true'] *::after {

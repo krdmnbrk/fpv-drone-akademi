@@ -55,10 +55,15 @@ export function Quiz({ quiz, onComplete }: QuizProps) {
 
   if (finished) {
     return (
-      <section aria-label={t('quiz.title')} className="rounded-2xl border border-white/10 bg-white/5 p-6">
+      <section
+        aria-label={t('quiz.title')}
+        className="rounded-2xl border border-white/10 bg-white/5 p-6"
+      >
         <h2 className="text-xl font-semibold text-white">{t('quiz.resultTitle')}</h2>
         <p className="mt-4 text-4xl font-bold text-brand-300">{scorePct}%</p>
-        <p className="mt-1 text-brand-200">{t('quiz.scoreLine', { correct: correctCount, total })}</p>
+        <p className="mt-1 text-brand-200">
+          {t('quiz.scoreLine', { correct: correctCount, total })}
+        </p>
         <Button variant="secondary" className="mt-6" onClick={handleRetry}>
           {t('quiz.retry')}
         </Button>
@@ -67,12 +72,21 @@ export function Quiz({ quiz, onComplete }: QuizProps) {
   }
 
   return (
-    <section aria-label={t('quiz.title')} className="rounded-2xl border border-white/10 bg-white/5 p-6">
+    <section
+      aria-label={t('quiz.title')}
+      className="rounded-2xl border border-white/10 bg-white/5 p-6"
+    >
       <div className="flex items-baseline justify-between gap-4">
         <h2 className="text-xl font-semibold text-white">{t('quiz.title')}</h2>
         <p className="text-sm text-brand-300">
           {t('quiz.question', { current: index + 1, total })}
         </p>
+      </div>
+      <div className="mt-3 h-1 overflow-hidden rounded-full bg-white/10" aria-hidden="true">
+        <div
+          className="h-full rounded-full bg-brand-500 transition-[width] duration-base ease-standard"
+          style={{ width: `${total > 0 ? ((index + 1) / total) * 100 : 0}%` }}
+        />
       </div>
 
       <fieldset className="mt-4">
@@ -102,6 +116,16 @@ export function Quiz({ quiz, onComplete }: QuizProps) {
                   className="h-4 w-4 accent-brand-500"
                 />
                 <span className="text-sm text-brand-50">{option}</span>
+                {revealed && isAnswer && (
+                  <span className="ml-auto font-semibold text-emerald-300" aria-hidden="true">
+                    ✓
+                  </span>
+                )}
+                {revealed && isChosen && !isAnswer && (
+                  <span className="ml-auto font-semibold text-red-300" aria-hidden="true">
+                    ✗
+                  </span>
+                )}
               </label>
             );
           })}

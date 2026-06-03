@@ -14,7 +14,7 @@ const resetStore = () =>
   useAppStore.setState({
     progress: {},
     badges: {},
-    settings: { motion: 'system', quality: 'auto' },
+    settings: { motion: 'system' },
   });
 
 beforeEach(() => {
@@ -105,11 +105,10 @@ describe('badges', () => {
 });
 
 describe('settings actions', () => {
-  it('updates motion and quality preferences', () => {
+  it('updates the motion preference', () => {
     const store = useAppStore.getState();
     store.setMotionPreference('off');
-    store.setQualityPreference('low');
-    expect(useAppStore.getState().settings).toEqual({ motion: 'off', quality: 'low' });
+    expect(useAppStore.getState().settings).toEqual({ motion: 'off' });
   });
 });
 

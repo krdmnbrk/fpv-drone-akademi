@@ -39,15 +39,15 @@
     },
     {
       "id": "q4",
-      "prompt": "Aşağıdakilerden hangisi bir FPV uçuşu için gereken üç temel bileşenden biri DEĞİLDİR?",
+      "prompt": "Aşağıdakilerden hangisi bir FPV uçuşunu mümkün kılan ÜÇ temel bileşenden biri DEĞİLDİR?",
       "options": [
         "Drone'un kendisi (frame, motorlar, FC, batarya)",
         "Kamera + video vericisi (VTX)",
         "Gözlük (goggles) + kumanda (radio)",
-        "Yazıcı (printer)"
+        "GPS modülü"
       ],
       "answerIndex": 3,
-      "explanation": "FPV için drone, kamera+VTX ve gözlük+kumanda gerekir. Yazıcının uçuşla ilgisi yoktur."
+      "explanation": "FPV görüntü/kontrol zincirini drone, kamera+VTX ve gözlük+kumanda oluşturur. GPS modülü gerçek bir drone parçasıdır ama FPV ile uçmanın temel şartı değildir; çoğu freestyle/yarış drone'u GPS olmadan uçar (GPS daha çok konum/'eve dönüş' gibi işlevler için eklenir)."
     }
   ]
 }

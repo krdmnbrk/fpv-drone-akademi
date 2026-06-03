@@ -71,6 +71,13 @@ export const en: Translation = {
     rotateHint: 'Drag to rotate, scroll to zoom.',
     onCraftNote: 'Parts on the drone are highlighted in the 3D model.',
     threeDUnavailable: '3D view is unavailable on this device. Explore the parts from the list.',
+    onCraftHeading: 'Parts on the drone',
+    offCraftHeading: 'Off-craft gear',
+    notOnCraft:
+      'This part is not carried on the drone; it is used on the ground (goggles) or in your hands (radio), so it is not shown in the 3D model.',
+    showAll: 'Show all',
+    partsListLabel: 'Hardware parts',
+    partFocused: '{{name}} brought to the foreground',
   },
   flight: {
     title: 'Flight School',
@@ -136,14 +143,6 @@ export const en: Translation = {
     language: 'Language',
     turkish: 'Türkçe',
     english: 'English',
-    motion: 'Motion',
-    motionSystem: 'System setting',
-    motionOn: 'On',
-    motionOff: 'Reduced',
-    quality: '3D Quality',
-    qualityAuto: 'Auto',
-    qualityHigh: 'High',
-    qualityLow: 'Low',
   },
   notFound: {
     title: 'Page not found',

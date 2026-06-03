@@ -8,7 +8,7 @@ describe('FlightPage', () => {
     useAppStore.setState({
       progress: {},
       badges: {},
-      settings: { motion: 'system', quality: 'auto' },
+      settings: { motion: 'system' },
     });
   });
 

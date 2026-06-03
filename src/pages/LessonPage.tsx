@@ -66,6 +66,7 @@ export function LessonPage() {
         <p className="text-sm text-brand-300">
           {t(`flight.levels.${meta.level}`)} • {meta.estimatedMinutes} {t('common.minutesShort')}
         </p>
+        <h1 className="mt-2 text-3xl font-bold text-white">{meta.title}</h1>
 
         <div className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-5">
           <h2 className="text-lg font-semibold text-white">{t('lesson.objectives')}</h2>

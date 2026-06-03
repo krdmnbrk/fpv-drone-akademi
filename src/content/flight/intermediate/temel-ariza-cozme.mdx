@@ -14,8 +14,6 @@ prerequisites: ["betaflight-giris", "lipo-bakimi"]
 quizId: temel-ariza-cozme
 ---
 
-# Temel arıza çözme (troubleshooting)
-
 Her pilot er ya da geç bir sorunla karşılaşır: drone arm olmaz, havada titrer ya da gözlükte görüntü kaybolur. İyi haber: bu sorunların çoğu birkaç yaygın nedene dayanır ve **sistemli** bir yaklaşımla çoğu zaman kendi başına çözülür.
 
 ## 1. Drone arm olmuyor
@@ -55,6 +53,45 @@ Gözlükte görüntü gidiyor, karlanıyor (statik/kar) ya da hiç gelmiyorsa, s
 - **Anten sorunu:** Gevşek, kırık ya da takılmamış anten görüntüyü mahveder. <Callout type="warning">VTX'i **anten takılı olmadan** çalıştırmak (yayına geçirmek) VTX'i yakabilir. Anteni her zaman bağlı tut.</Callout>
 - **Menzil/engel:** Çok uzaklaştıysan ya da arada bina/ağaç varsa sinyal zayıflar ve görüntü karlanır.
 - **VTX güç/ısı:** VTX gevşek bağlıysa veya aşırı ısındıysa görüntü kesilebilir.
+
+## Failsafe: kurulum ve test
+
+Uçarken kumandayla drone arasındaki radyo bağlantısı koparsa (çok uzaklaştın, anten gölgelendi, kumanda kapandı) ne olur? Drone'un komut alamadığı bu durumda devreye giren güvenlik davranışına <KeyTerm en="failsafe">failsafe</KeyTerm> denir. Failsafe doğru ayarlanmamış bir drone, bağlantı kopunca **son gaz komutuyla kontrolsüzce uçup gidebilir** — bu yüzden failsafe ayarı ve testi en kritik güvenlik konularından biridir.
+
+### RX failsafe vs FC failsafe
+
+Failsafe aslında iki katmanda çalışır; ikisini karıştırmamak önemlidir:
+
+- **RX failsafe (alıcı tarafı):** Alıcı (RX), sinyali kaybettiğinde FC'ye ne göndereceğine karar verir. Modern ELRS/CRSF kurulumlarında doğru davranış, alıcının "sinyal yok" bilgisini FC'ye iletmesidir (kanal değerlerini sahte bir konumda dondurmak yerine). Bu yüzden alıcıda failsafe modu **"No Pulses" / "sinyal kesildi bilgisini ilet"** olmalıdır.
+- **FC failsafe (Betaflight tarafı):** Asıl güvenlik kararını FC verir. Alıcıdan "sinyal yok" bilgisi gelince Betaflight'ın Failsafe ayarı devreye girer ve drone'un ne yapacağını belirler.
+
+<Callout type="info">
+Mantığı şöyle düşün: **alıcı** sadece "bağlantı koptu" der; **FC** ise "o zaman şunu yap" kararını verir. Güvenli bir kurulum, alıcının doğru bilgiyi iletmesi ve FC'nin de güvenli bir tepki vermesi üzerine kuruludur.
+</Callout>
+
+### Betaflight Failsafe sekmesi
+
+Betaflight Configurator'daki **Failsafe** sekmesinde temel seçimi yaparsın:
+
+- **Drop (varsayılan ve en güvenli başlangıç):** Bağlantı kopunca motorları anında durdurur (disarm). Drone olduğu yere düşer. Yakın mesafe ve başlangıç için en güvenli seçenektir, çünkü drone kontrolsüzce uçup uzaklaşamaz.
+- **GPS Rescue (opsiyonel):** GPS modülü ve uygun ayar varsa, drone bağlantı kopunca otomatik olarak kalkış noktasına geri dönmeye çalışır. Faydalıdır ama doğru kurulum ve GPS sabitlemesi (fix) gerektirir; yanlış ayarlanırsa kendi başına risk yaratır. Başlangıçta **Drop** ile kal.
+
+Failsafe iki aşamalı çalışır: **Stage 1** çok kısa bir "belki sinyal geri gelir" bekleme/yumuşatma anıdır (drone kısa süre seviyelenmeye çalışır); sinyal geri gelmezse **Stage 2** devreye girer ve seçtiğin asıl davranış (Drop veya GPS Rescue) uygulanır. Stage 1 süresi çok kısa tutulur; amaç anlık bir parazitte hemen düşmemek ama gerçek kopmada da geç kalmamaktır.
+
+<Callout type="warning">
+**Failsafe'i MUTLAKA pervanesiz test et.** Failsafe ayarının gerçekten çalıştığını doğrulamadan asla uçma. Test şöyle yapılır: **(1)** Pervaneleri ÇIKAR. **(2)** Drone'u USB'den ayır, bataryayı tak. **(3)** Drone'u arm et (pervanesiz, motorlar dönebilir). **(4)** Kumandayı KAPAT. **(5)** Drone'un birkaç saniye içinde kendiliğinden **disarm** olup motorların durduğunu gözlemle. Motorlar durmuyor veya tam gaza fırlıyorsa failsafe yanlış kurulmuştur — düzeltmeden uçma. Bu testi her yeni kurulumdan sonra tekrarla.
+</Callout>
+
+## Turtle mode (ters dönen drone'u kurtarma)
+
+Bir crash sonrası drone sırtüstü (ters) kalırsa, normalde gidip elinle çevirmen gerekir. <KeyTerm en="turtle mode / flip-over-after-crash">Turtle mode</KeyTerm> (bazen "flip-over-after-crash" olarak da geçer) tam burada işe yarar: Betaflight'ın Modes sekmesinde bir switch'e atadığın bu mod, motorları **ters yönde** ve farklı güçlerde döndürerek drone'un kendi kendini doğru tarafına çevirmesini sağlar.
+
+- Crash'ten sonra drone ters kalınca turtle mode switch'ini aç, sonra gazı yavaşça verip drone'u "yuvarlayarak" doğru tarafa çevir.
+- Düzelince turtle mode'u kapat ve normal uçuşa dön (veya disarm et).
+
+<Callout type="tip">
+Turtle mode, özellikle uzaktaki bir crash'te yürüyüp drone'u almak zorunda kalmadan tekrar havalanmanı sağlar — yarış ve freestyle'da çok kullanışlıdır. Yine de **pervaneler ters yönde dönerken yere/zemine sürtündüğü** için aşınabilir; sert/pürüzlü zeminde dikkatli kullan ve etrafta kimse yokken yap.
+</Callout>
 
 ## Altın kural: Tek değişken yaklaşımı
 

@@ -14,8 +14,6 @@ prerequisites: ["fpv-nedir", "ucus-modlari"]
 quizId: simulatorde-baslama
 ---
 
-# Simülatörde başlama
-
 Bir önceki derste Acro modunun gerçek FPV için şart olduğunu, ama drone'un seni kurtarmadığını gördük. Peki düşmeden, parça kırmadan bu kontrolü nasıl öğreneceğiz? Cevap tek kelime: **simülatör**.
 
 Bir <KeyTerm en="simulator">simülatör (simulator)</KeyTerm>, gerçek bir FPV uçuşunu bilgisayarında birebir taklit eden bir oyundur. Kendi kumandanı bilgisayara bağlarsın ve ekranda, sanki gerçek drone'unmuş gibi uçarsın. Düşersen tek yaptığın bir tuşa basıp drone'u yeni baştan havalandırmaktır.
@@ -45,6 +43,19 @@ Hepsi aynı temel işi yapar — kumandanı bağlar, Acro modunda uçmayı öğr
 
 <Callout type="info">
 Hangisini seçeceğine takılma. Herhangi biriyle başlamak, hiç başlamamaktan **kat kat** iyidir. Bütçen kısıtlıysa indirimde olan birini al; öğrendiğin çubuk kontrolü (stick control) tüm simülatörlerde ve gerçek drone'da aynı işine yarar.
+</Callout>
+
+## Kumandanı Mode 2'ye ayarla (neden standart?)
+
+Başlamadan önce kumandanın çubuk dizilişini kontrol et: FPV'de fiilî standart <KeyTerm en="Mode 2">Mode 2</KeyTerm>'dir; öğreteceğimiz her şey buna göredir. Mode 2'de çubuklar şöyle dağılır:
+
+- **Sol çubuk:** gaz (throttle, yukarı-aşağı) ve yaw (sağa-sola dönme).
+- **Sağ çubuk:** pitch (öne-arkaya) ve roll (sola-sağa yatma).
+
+Mode 2'nin neredeyse herkesin kullandığı standart olmasının pratik bir nedeni var: gaz **kendiliğinden ortaya dönmeyen** (yaylı olmayan) sol çubuğa düşer, böylece bıraktığın gaz seviyesi yerinde kalır; uçuşu yönlendiren pitch/roll ise **ortaya yaylanan** sağ çubukta toplanır. Bu ayrım, gazı sabit tutarken yön vermeyi kolaylaştırır. Hemen hemen tüm eğitim videoları, simülatör varsayılanları ve topluluk Mode 2 üzerinden konuştuğu için, **başlangıçta Mode 2 seç** ve onunla kal.
+
+<Callout type="tip">
+Kumandanı ilk kez kurarken Mode 2 olduğundan emin ol (çoğu kumanda fabrikadan Mode 2 gelir). Farklı bir mod'a alışırsan sonradan değiştirmek zordur; en baştan topluluğun standardıyla öğrenmek hem dersleri takip etmeni hem başkalarından yardım almanı kolaylaştırır.
 </Callout>
 
 ## Kumandayı USB ile bilgisayara bağlamak

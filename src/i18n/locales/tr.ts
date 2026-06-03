@@ -68,6 +68,13 @@ export const tr = {
     rotateHint: 'Döndürmek için sürükle, yakınlaştırmak için kaydır.',
     onCraftNote: 'Drone üzerindeki parçalar 3B modelde vurgulanır.',
     threeDUnavailable: '3B görünüm bu cihazda kullanılamıyor. Parçaları listeden inceleyebilirsin.',
+    onCraftHeading: 'Drone üzerindeki parçalar',
+    offCraftHeading: 'Drone dışı ekipman',
+    notOnCraft:
+      'Bu parça drone’un üzerinde taşınmaz; yerden (gözlük) ya da elde (kumanda) kullanılır, bu yüzden 3B modelde gösterilmez.',
+    showAll: 'Tümünü göster',
+    partsListLabel: 'Donanım parçaları',
+    partFocused: '{{name}} öne çıkarıldı',
   },
   flight: {
     title: 'Uçuş Eğitimi',
@@ -136,14 +143,6 @@ export const tr = {
     language: 'Dil',
     turkish: 'Türkçe',
     english: 'English',
-    motion: 'Animasyon',
-    motionSystem: 'Sistem ayarı',
-    motionOn: 'Açık',
-    motionOff: 'Azaltılmış',
-    quality: '3D Kalite',
-    qualityAuto: 'Otomatik',
-    qualityHigh: 'Yüksek',
-    qualityLow: 'Düşük',
   },
   notFound: {
     title: 'Sayfa bulunamadı',

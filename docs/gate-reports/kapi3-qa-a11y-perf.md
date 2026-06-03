@@ -7,6 +7,18 @@
 - **Date:** 2026-06-02
 - **Verdict:** PASS ✅ (with one documented follow-up: live Lighthouse run in CI)
 
+> **Addendum (2026-06-03) — "Cockpit HUD" re-theme + interactive explorer.**
+> The app moved to the cyan "Cockpit HUD" palette and the hardware explorer gained a
+> select-to-isolate interaction (the picked part lifts out, scales and glows; others
+> stay visible). The 3D-quality and motion toggles were removed (3D is always on when
+> WebGL is available; motion follows the OS and is reasserted via `data-reduced-motion`).
+> Follow-ups from this report are now addressed: CI runs **Lighthouse CI** (throttled
+> mobile profile) and an **entry-chunk bundle budget** (`scripts/check-bundle-size.mjs`,
+> ≤200 KB gzip). Manual contrast spot-checks on the new palette (dark `brand-950`
+> background): `brand-300` ≈13:1, `brand-400` ≈11:1, primary button (dark text on
+> `brand-500`) ≈8:1 — all pass WCAG AA. The new palette should be re-confirmed by the
+> live Lighthouse run.
+
 ## Accessibility
 - **axe-core (automated):** 0 violations on HomePage, HardwareExplorer (list +
   fallback), and Quiz (jsdom; component-level rules). Page-composition rules are the

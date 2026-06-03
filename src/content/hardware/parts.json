@@ -4,7 +4,7 @@
     "name": "Gövde / Şasi (frame)",
     "meshName": "frame",
     "order": 1,
-    "whatItDoes": "Frame, drone'un tüm parçalarını üzerine monte ettiğin iskelettir. Motorları, uçuş kontrolcüsünü, bataryayı ve kamerayı bir arada tutar; çarpma anında darbeyi soğurarak elektroniği korur. Boyutu genellikle motor-motor köşegen mesafesiyle (wheelbase, mm cinsinden) anılır; 5 inç pervane kullanan tipik freestyle frame'i 210-220 mm sınıfındadır.",
+    "whatItDoes": "Frame, drone'un tüm parçalarını üzerine monte ettiğin iskelettir. Motorları, uçuş kontrolcüsünü, bataryayı ve kamerayı bir arada tutar; çarpma anında darbeyi soğurarak elektroniği korur. Boyutu genellikle motor-motor köşegen mesafesiyle (wheelbase, mm cinsinden) anılır; 5 inç pervane kullanan tipik freestyle frame'i ~220 mm (yaklaşık 210-230 mm) sınıfındadır.",
     "howToChoose": "Hangi pervane boyutunu kullanacağına göre frame seç (ör. 5 inç pervane için 5 inç frame). Malzeme neredeyse her zaman karbon fiberdir; kol (arm) kalınlığı dayanıklılığı belirler (freestyle için 5-6 mm kollar yaygın). Standart FC montaj deliği aralığına dikkat et: 30.5x30.5 mm en yaygın olanıdır, mikro sınıfta 20x20 mm kullanılır. Kolların kırıldığında tek tek değişebilmesi büyük avantajdır.",
     "howItConnects": "Frame'in göbeğine (center stack) FC ve ESC katman katman monte edilir, lastik damper (gummies) ile titreşimden yalıtılır. Motorlar kolların ucuna vidalanır. Kamera ön kafese (camera mount) oturur, VTX anteni ise arka koruyucudan dışarı çıkar.",
     "commonMistakes": [
@@ -35,7 +35,7 @@
     "meshName": "esc",
     "order": 3,
     "whatItDoes": "ESC (Electronic Speed Controller), bataryadan gelen doğru akımı (DC) fırçasız motorun ihtiyaç duyduğu üç fazlı sinyale çevirir ve motorun hızını binlerce kez saniyede ayarlar. FC'den gelen komutu (ör. 'bu motoru %60 güçte döndür') güce dönüştüren parçadır. Bugün çoğu drone'da dört ESC tek kartta birleşiktir: buna 4'lü ESC (4-in-1 ESC) denir.",
-    "howToChoose": "En kritik değer akım kapasitesidir (Amper, A): ESC'nin sürekli verebileceği akım, motorların çekeceği tepe akımdan yüksek olmalı. 5 inç sınıfı için 45A-60A 4-in-1 ESC tipiktir; pay bırakmak güvenlidir. Desteklediği batarya hücre aralığına bak (ör. 3-6S). Firmware olarak BLHeli_S veya modern BLHeli_32 / AM32 ve DShot protokolü desteği önemlidir.",
+    "howToChoose": "En kritik değer akım kapasitesidir (Amper, A): ESC'nin sürekli verebileceği akım, motorların çekeceği tepe akımdan yüksek olmalı. 5 inç sınıfı için 45A-60A 4-in-1 ESC tipiktir; pay bırakmak güvenlidir. Desteklediği batarya hücre aralığına bak (ör. 3-6S). Firmware tarafında bugünkü tablo şöyle: giriş seviyesinde **BLHeli_S** donanımı çok yaygındır ve genellikle açık kaynak **Bluejay** firmware'i yüklenerek kullanılır (daha iyi performans/özellik için). Üst segmentte açık kaynak **AM32**, fiilen yeni standart hâline gelmektedir. Eskiden popüler olan kapalı kaynak **BLHeli_32 fiilen sonlandırıldı**; yeni alım yaparken BLHeli_32 yerine **AM32 destekli** bir ESC tercih etmek daha geleceğe dönüktür. Hız komutu için **DShot (özellikle DShot600)** protokolü desteği önemlidir.",
     "howItConnects": "Batarya (+/-) ESC'ye lehimlenir; genelde voltaj dalgalanmasını yumuşatan bir kondansatör (capacitor) de buraya eklenir. Motor kabloları ESC'nin motor pad'lerine bağlanır. ESC, FC ile genelde tek bir şerit kabloyla (8 pinli konnektör) haberleşir ve DShot dijital protokolüyle hız komutu alır.",
     "commonMistakes": [
       "Akım kapasitesi düşük ESC seçmek; motor tepe akımı ESC'yi aşınca ESC yanar (duman çıkarır).",
@@ -117,7 +117,7 @@
       "Çarpıp gözle görünmez çatlak almış pervaneyle uçmak; dengesiz pervane şiddetli titreşim ve kontrol kaybı yaratır — şüphedeysen değiştir.",
       "Pervane takılıyken motorları arm etmek/test etmek; pervane parmağı ciddi keser — test her zaman pervanesiz yapılır."
     ],
-    "relatedLessonIds": ["throttle-kontrolu", "ilk-hover", "kendi-drone-kurma-lehimleme"]
+    "relatedLessonIds": ["throttle-kontrolu", "ilk-hover", "arming-disarming", "betaflight-giris", "kendi-drone-kurma-lehimleme"]
   },
   {
     "id": "lipo",

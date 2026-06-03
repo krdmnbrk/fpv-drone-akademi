@@ -36,3 +36,11 @@ jobs:
       # Production build must succeed
       - name: Build
         run: npm run build
+
+      # KAPI 3 — bundle budget (entry chunk ≤ 200 KB gzip; 3D is lazy-loaded)
+      - name: Bundle size budget
+        run: node scripts/check-bundle-size.mjs
+
+      # KAPI 3 — accessibility & performance gate (throttled mobile profile)
+      - name: Lighthouse CI
+        run: npx --yes @lhci/cli@0.13.x autorun

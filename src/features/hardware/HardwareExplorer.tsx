@@ -10,6 +10,11 @@ import { cn } from '@/lib/cn';
 // Heavy Three.js scene — kept out of the entry bundle.
 const DroneScene = lazy(() => import('@/scenes/DroneScene'));
 
+// Parts carried on the airframe (and therefore shown/highlighted in the 3D
+// model). Goggles and the radio are used off the craft, so they have no mesh.
+const OFF_CRAFT = new Set(['goggles', 'radio']);
+const isOnCraft = (part: HardwarePart) => !OFF_CRAFT.has(part.meshName);
+
 function PartDetail({ part }: { part: HardwarePart }) {
   const { t } = useTranslation();
   const sections = [
@@ -20,6 +25,12 @@ function PartDetail({ part }: { part: HardwarePart }) {
   return (
     <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
       <h3 className="text-xl font-semibold text-white">{part.name}</h3>
+      {!isOnCraft(part) && (
+        <p className="mt-2 rounded-lg border border-amber-400/30 bg-amber-500/10 px-3 py-2 text-sm text-amber-100">
+          <span aria-hidden="true">ℹ️ </span>
+          {t('hardware.notOnCraft')}
+        </p>
+      )}
       <dl className="mt-4 space-y-4">
         {sections.map((section) => (
           <div key={section.label}>
@@ -90,8 +101,49 @@ export function HardwareExplorer() {
     setSearchParams(next, { replace: true });
   };
 
+  // Return to the assembled drone (clears the lifted/selected part).
+  const handleDeselect = () => {
+    setSelectedId(null);
+    setHoveredId(null);
+    const next = new URLSearchParams(searchParams);
+    next.delete('part');
+    setSearchParams(next, { replace: true });
+  };
+
+  const onCraftParts = hardwareParts.filter(isOnCraft);
+  const offCraftParts = hardwareParts.filter((part) => !isOnCraft(part));
+
+  const renderPartButton = (part: HardwarePart) => {
+    const selected = selectedId === part.id;
+    return (
+      <li key={part.id}>
+        <button
+          type="button"
+          aria-pressed={selected}
+          onClick={() => handleSelect(part.id)}
+          onMouseEnter={() => setHoveredId(part.id)}
+          onMouseLeave={() => setHoveredId(null)}
+          onFocus={() => setHoveredId(part.id)}
+          onBlur={() => setHoveredId(null)}
+          className={cn(
+            'w-full rounded-lg border px-3 py-2 text-left text-sm transition-colors duration-fast ease-standard focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300',
+            selected
+              ? 'border-brand-400/60 bg-brand-500/15 text-white'
+              : 'border-white/10 bg-white/5 text-brand-100 hover:border-brand-400/40 hover:bg-white/10',
+          )}
+        >
+          {part.name}
+        </button>
+      </li>
+    );
+  };
+
   return (
     <div>
+      {/* Announce the focused part to assistive tech (the canvas is aria-hidden). */}
+      <p className="sr-only" role="status" aria-live="polite">
+        {selectedPart ? t('hardware.partFocused', { name: selectedPart.name }) : ''}
+      </p>
       <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
         <div>
           <div className="aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-brand-900 to-brand-950">
@@ -103,6 +155,7 @@ export function HardwareExplorer() {
                     hoveredId={hoveredId}
                     onSelect={handleSelect}
                     onHover={setHoveredId}
+                    onDeselect={handleDeselect}
                     reducedMotion={reducedMotion}
                   />
                 </Suspense>
@@ -119,33 +172,42 @@ export function HardwareExplorer() {
         </div>
 
         <div>
-          <h2 className="text-lg font-semibold text-white">{t('hardware.partsHeading')}</h2>
-          <ul className="mt-3 grid gap-2">
-            {hardwareParts.map((part) => {
-              const selected = selectedId === part.id;
-              return (
-                <li key={part.id}>
-                  <button
-                    type="button"
-                    aria-pressed={selected}
-                    onClick={() => handleSelect(part.id)}
-                    onMouseEnter={() => setHoveredId(part.id)}
-                    onMouseLeave={() => setHoveredId(null)}
-                    onFocus={() => setHoveredId(part.id)}
-                    onBlur={() => setHoveredId(null)}
-                    className={cn(
-                      'w-full rounded-lg border px-3 py-2 text-left text-sm transition-colors duration-fast ease-standard focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300',
-                      selected
-                        ? 'border-brand-400/60 bg-brand-500/15 text-white'
-                        : 'border-white/10 bg-white/5 text-brand-100 hover:border-brand-400/40 hover:bg-white/10',
-                    )}
-                  >
-                    {part.name}
-                  </button>
-                </li>
-              );
-            })}
+          <div className="flex items-baseline justify-between gap-3">
+            <h2 className="text-lg font-semibold text-white">{t('hardware.partsHeading')}</h2>
+            {selectedId && (
+              <button
+                type="button"
+                onClick={handleDeselect}
+                className="rounded text-sm text-brand-300 underline underline-offset-2 hover:text-brand-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300"
+              >
+                {t('hardware.showAll')}
+              </button>
+            )}
+          </div>
+
+          <h3
+            id="parts-on-craft"
+            className="mt-4 text-xs font-semibold uppercase tracking-wide text-brand-300"
+          >
+            {t('hardware.onCraftHeading')}
+          </h3>
+          <ul className="mt-2 grid gap-2" aria-labelledby="parts-on-craft">
+            {onCraftParts.map(renderPartButton)}
           </ul>
+
+          {offCraftParts.length > 0 && (
+            <>
+              <h3
+                id="parts-off-craft"
+                className="mt-5 text-xs font-semibold uppercase tracking-wide text-brand-300"
+              >
+                {t('hardware.offCraftHeading')}
+              </h3>
+              <ul className="mt-2 grid gap-2" aria-labelledby="parts-off-craft">
+                {offCraftParts.map(renderPartButton)}
+              </ul>
+            </>
+          )}
         </div>
       </div>
 

@@ -12,11 +12,9 @@ export interface LessonProgress {
 }
 
 export type MotionPreference = 'system' | 'on' | 'off';
-export type QualityPreference = 'auto' | 'high' | 'low';
 
 export interface Settings {
   motion: MotionPreference;
-  quality: QualityPreference;
 }
 
 export interface AppState {
@@ -36,12 +34,11 @@ export interface AppState {
 
   // --- settings actions ---
   setMotionPreference: (motion: MotionPreference) => void;
-  setQualityPreference: (quality: QualityPreference) => void;
 
   resetProgress: () => void;
 }
 
-const initialSettings: Settings = { motion: 'system', quality: 'auto' };
+const initialSettings: Settings = { motion: 'system' };
 
 export const useAppStore = create<AppState>()(
   persist(
@@ -110,14 +107,20 @@ export const useAppStore = create<AppState>()(
       setMotionPreference: (motion) =>
         set((state) => ({ settings: { ...state.settings, motion } })),
 
-      setQualityPreference: (quality) =>
-        set((state) => ({ settings: { ...state.settings, quality } })),
-
       resetProgress: () => set({ progress: {}, badges: {} }),
     }),
     {
       name: 'fpv-academy-store',
-      version: 1,
+      version: 2,
+      // v1 → v2: dropped the unused `quality` setting (3D-quality toggle removed).
+      migrate: (persisted, version) => {
+        const state = persisted as Partial<AppState> | undefined;
+        if (state?.settings && version < 2) {
+          const { motion } = state.settings as { motion?: MotionPreference };
+          state.settings = { motion: motion ?? 'system' };
+        }
+        return state as AppState;
+      },
       partialize: (state) => ({
         progress: state.progress,
         badges: state.badges,

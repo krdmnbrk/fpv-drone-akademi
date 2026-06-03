@@ -20,10 +20,10 @@
         "Liftoff",
         "Velocidrone",
         "DRL (Drone Racing League) Sim",
-        "Photoshop"
+        "Betaflight Configurator"
       ],
       "answerIndex": 3,
-      "explanation": "Liftoff, Velocidrone, Uncrashed ve DRL Sim popüler FPV simülatörleridir. Photoshop bir görüntü düzenleme programıdır, uçuşla ilgisi yoktur."
+      "explanation": "Liftoff, Velocidrone, Uncrashed ve DRL Sim popüler FPV uçuş simülatörleridir. Betaflight Configurator ise bir simülatör değil, drone'un uçuş kontrolcüsünü (FC) USB ile bağlayıp ayarladığın yapılandırma yazılımıdır."
     },
     {
       "id": "q3",
