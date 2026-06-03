@@ -9,7 +9,6 @@ describe('Header', () => {
     expect(screen.getByRole('link', { name: 'Donanım' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Uçuş Eğitimi' })).toBeInTheDocument();
     expect(screen.getByLabelText('Dil')).toBeInTheDocument();
-    expect(screen.getByLabelText('Animasyon')).toBeInTheDocument();
   });
 
   it('toggles the accessible mobile menu', async () => {

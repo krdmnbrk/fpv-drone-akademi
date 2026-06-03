@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Container } from '@/components/ui/Container';
 import { LanguageSwitcher } from '@/components/settings/LanguageSwitcher';
-import { MotionToggle } from '@/components/settings/MotionToggle';
 import { cn } from '@/lib/cn';
 
 const navItems = [
@@ -47,13 +46,23 @@ export function Header() {
       <Container className="flex h-16 items-center justify-between gap-4">
         <NavLink
           to="/"
-          className="flex items-center gap-2 text-base font-bold text-white"
+          className="flex items-center gap-2.5 font-display text-base font-bold tracking-wide text-white"
           onClick={() => setMenuOpen(false)}
         >
-          <span
+          <svg
             aria-hidden="true"
-            className="inline-block h-3 w-3 rotate-45 rounded-sm bg-brand-400"
-          />
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            className="text-brand-400"
+          >
+            <circle cx="12" cy="12" r="9" />
+            <path d="M12 1.5v6M12 16.5v6M1.5 12h6M16.5 12h6" />
+            <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none" />
+          </svg>
           {t('common.appName')}
         </NavLink>
 
@@ -67,7 +76,6 @@ export function Header() {
 
         <div className="hidden items-center gap-3 md:flex">
           <LanguageSwitcher />
-          <MotionToggle />
         </div>
 
         <button
@@ -98,7 +106,6 @@ export function Header() {
             ))}
             <div className="mt-2 flex flex-col gap-3 border-t border-white/10 pt-3">
               <LanguageSwitcher />
-              <MotionToggle />
             </div>
           </Container>
         </div>

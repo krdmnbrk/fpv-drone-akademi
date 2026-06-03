@@ -16,6 +16,49 @@
     font-family: theme('fontFamily.sans');
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Cockpit HUD backdrop: deep instrument black with a faint cyan grid.
+       RootLayout is transparent so this shows through the whole app. */
+    color: theme('colors.brand.50');
+    background-color: theme('colors.brand.950');
+    background-image:
+      linear-gradient(rgba(47, 214, 205, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(47, 214, 205, 0.045) 1px, transparent 1px),
+      radial-gradient(120% 80% at 50% -10%, #0a1626 0%, theme('colors.brand.950') 60%);
+    background-size:
+      40px 40px,
+      40px 40px,
+      100% 100%;
+    background-attachment: fixed;
+  }
+
+  /* HUD display typeface on headings (body stays Barlow). Prose/lesson headings
+     inherit this too — the typography plugin doesn't set its own family. */
+  h1,
+  h2,
+  h3 {
+    font-family: theme('fontFamily.display');
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: rgba(47, 214, 205, 0.3);
+    color: theme('colors.brand.50');
+  }
+
+  /* Thin cyan-tinted scrollbar to match the instrument theme. */
+  * {
+    scrollbar-color: theme('colors.brand.700') transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: theme('colors.brand.800');
+    border-radius: 0;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background: theme('colors.brand.600');
   }
 
   /* Respect the user's motion preference globally (OS-level). */

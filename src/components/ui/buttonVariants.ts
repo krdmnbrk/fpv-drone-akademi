@@ -4,11 +4,14 @@ export type ButtonVariant = 'primary' | 'secondary' | 'ghost';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 const base =
-  'inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-colors duration-base ease-standard focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-950 disabled:pointer-events-none disabled:opacity-50';
+  'inline-flex items-center justify-center gap-2 rounded-sm font-display font-semibold tracking-wide transition-[colors,box-shadow,transform] duration-base ease-standard focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-950 disabled:pointer-events-none disabled:opacity-50';
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: 'bg-brand-500 text-white hover:bg-brand-400 active:bg-brand-600',
-  secondary: 'bg-white/10 text-white hover:bg-white/20 active:bg-white/5',
+  // Dark ink on the glowing cyan accent — high contrast, instrument-key feel.
+  primary:
+    'bg-brand-500 text-brand-950 shadow-glow hover:bg-brand-400 hover:shadow-glow-strong active:bg-brand-600',
+  secondary:
+    'border border-brand-400/30 bg-white/5 text-brand-50 hover:border-brand-400/60 hover:bg-white/10 active:bg-white/5',
   ghost: 'text-brand-100 hover:bg-white/10 active:bg-white/5',
 };
 

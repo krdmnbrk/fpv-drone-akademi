@@ -4,10 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { getFlightLessonTitle, getPart, hardwareParts } from '@/content';
 import type { HardwarePart } from '@/content/types';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
-import { useAppStore } from '@/store/useAppStore';
 import { hasWebGL } from '@/lib/webgl';
 import { cn } from '@/lib/cn';
-import { QualityToggle } from '@/components/settings/QualityToggle';
 
 // Heavy Three.js scene — kept out of the entry bundle.
 const DroneScene = lazy(() => import('@/scenes/DroneScene'));
@@ -69,13 +67,12 @@ export function HardwareExplorer() {
   const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
   const reducedMotion = usePrefersReducedMotion();
-  const quality = useAppStore((state) => state.settings.quality);
 
   const [selectedId, setSelectedId] = useState<string | null>(() => searchParams.get('part'));
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   const webglAvailable = useMemo(() => hasWebGL(), []);
-  const show3D = webglAvailable && quality !== 'low';
+  const show3D = webglAvailable;
   const selectedPart = selectedId ? getPart(selectedId) : undefined;
 
   // Reflect deep links such as /hardware?part=esc.
@@ -95,9 +92,6 @@ export function HardwareExplorer() {
 
   return (
     <div>
-      <div className="mb-4 flex justify-end">
-        <QualityToggle />
-      </div>
       <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
         <div>
           <div className="aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-brand-900 to-brand-950">

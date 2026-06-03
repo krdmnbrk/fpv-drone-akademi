@@ -66,7 +66,7 @@ export default function DroneScene({
         hoveredId={hoveredId}
         onSelect={onSelect}
         onHover={onHover}
-        spin={!reducedMotion}
+        reducedMotion={reducedMotion}
       />
 
       <ContactShadows
@@ -81,7 +81,7 @@ export default function DroneScene({
 
       <OrbitControls
         enablePan={false}
-        autoRotate={!reducedMotion}
+        autoRotate={!reducedMotion && !selectedId}
         autoRotateSpeed={0.7}
         minDistance={2}
         maxDistance={7}

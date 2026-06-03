@@ -9,7 +9,7 @@ import { SafetyBanner } from './SafetyBanner';
 
 export function RootLayout() {
   return (
-    <div className="flex min-h-screen flex-col bg-brand-950 text-brand-50">
+    <div className="flex min-h-screen flex-col bg-transparent text-brand-50">
       <SkipLink />
       <RouteFocusManager />
       <Header />
