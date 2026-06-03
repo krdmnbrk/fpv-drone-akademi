@@ -45,6 +45,8 @@ export const router = createBrowserRouter(
     },
   ],
   {
+    // Match the Vite base path so routing works under the GitHub Pages subpath.
+    basename: import.meta.env.BASE_URL.replace(/\/$/, '') || '/',
     future: {
       v7_relativeSplatPath: true,
     },

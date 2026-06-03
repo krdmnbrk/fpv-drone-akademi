@@ -8,6 +8,8 @@ import { fileURLToPath, URL } from 'node:url';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  // Production builds are served from a GitHub Pages project path; dev/test stay at root.
+  base: process.env.NODE_ENV === 'production' ? '/fpv-drone-akademi/' : '/',
   plugins: [
     // MDX must transform .mdx before @vitejs/plugin-react handles the emitted JSX.
     {
