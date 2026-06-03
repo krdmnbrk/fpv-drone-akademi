@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
+import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getFlightLessonTitle, getPart, hardwareParts } from '@/content';
@@ -85,7 +85,6 @@ export function HardwareExplorer() {
     return param && getPart(param) ? param : null;
   });
   const [hoveredId, setHoveredId] = useState<string | null>(null);
-  const detailRef = useRef<HTMLDivElement>(null);
 
   const webglAvailable = useMemo(() => hasWebGL(), []);
   const show3D = webglAvailable;
@@ -104,20 +103,6 @@ export function HardwareExplorer() {
       setSearchParams(next, { replace: true });
     }
   }, [searchParams, selectedId, setSearchParams]);
-
-  // Bring the detail panel into view when a part is selected — mainly helps on
-  // small screens where the detail sits well below the list. `block: 'nearest'`
-  // keeps it a no-op when the panel is already visible (e.g. desktop).
-  useEffect(() => {
-    const el = detailRef.current;
-    if (selectedPart && el && typeof el.scrollIntoView === 'function') {
-      try {
-        el.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'nearest' });
-      } catch {
-        /* jsdom / older browsers: no-op */
-      }
-    }
-  }, [selectedId, selectedPart, reducedMotion]);
 
   const handleSelect = (id: string) => {
     setSelectedId(id);
@@ -236,7 +221,7 @@ export function HardwareExplorer() {
         </div>
       </div>
 
-      <div className="mt-6" ref={detailRef}>
+      <div className="mt-6">
         {selectedPart ? (
           <PartDetail part={selectedPart} />
         ) : (
