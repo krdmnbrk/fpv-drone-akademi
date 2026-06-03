@@ -1,0 +1,65 @@
+{
+  "id": "freestyle-temelleri",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "What is the common concept underlying all freestyle maneuvers?",
+      "options": [
+        "Always keeping the motors at full power (throttle pinned)",
+        "Managing momentum, that is, channeling the energy of speed and altitude from one form into another",
+        "Making the drone as light as possible",
+        "Flying only in Angle mode"
+      ],
+      "answerIndex": 1,
+      "explanation": "Power loops, dives, and split-S all work on momentum: you convert altitude into speed and speed into altitude. Good freestyle isn't pinning the throttle, it's managing energy."
+    },
+    {
+      "id": "q2",
+      "prompt": "What is the recommended safe order for learning these three maneuvers?",
+      "options": [
+        "Split-S first, then power loop, then dive",
+        "Power loop first, then split-S, then dive",
+        "Dive first, then power loop, then split-S",
+        "Order doesn't matter, they are all equally difficult"
+      ],
+      "answerIndex": 2,
+      "explanation": "Dive first (throttle management + recovery), then power loop (its descending half is a dive), and finally split-S (a combination of roll + dive). Each maneuver builds on the skill of the previous one."
+    },
+    {
+      "id": "q3",
+      "prompt": "Why is the dive the first maneuver to learn?",
+      "options": [
+        "Because it is the flashiest maneuver",
+        "Because it teaches the throttle-management and recovery reflex; these skills are used in the other maneuvers too",
+        "Because it requires no throttle at all",
+        "Because only the dive is legally allowed"
+      ],
+      "answerIndex": 1,
+      "explanation": "The dive teaches you to cut throttle in the descent and recover at the bottom. Because the descending half of a power loop is also a dive, this reflex is the foundation of all freestyle."
+    },
+    {
+      "id": "q4",
+      "prompt": "How should throttle management work during a power loop?",
+      "options": [
+        "Pinning the throttle in the dive (descending) part",
+        "Cutting the throttle completely throughout the whole maneuver",
+        "Holding throttle through the climb to roll over the top, then cutting it in the dive (descent) and recovering at the bottom",
+        "Throttle should never change, it should stay constant"
+      ],
+      "answerIndex": 2,
+      "explanation": "You keep momentum through the climb and roll over the top; because the descent is a dive, you cut throttle there and recover gently at the bottom."
+    },
+    {
+      "id": "q5",
+      "prompt": "What is the most important safety principle when choosing a spot to learn freestyle maneuvers?",
+      "options": [
+        "The spot should be as small and tight as possible",
+        "It should be close to people and obstacles so you can call for help",
+        "Having plenty of clearance in every direction (especially up/down), no people/obstacles around, and flying with a spotter",
+        "Flying only at night"
+      ],
+      "answerIndex": 2,
+      "explanation": "Freestyle needs a lot of vertical and horizontal clearance; you need room in every direction to recover. A wide, open area free of people and obstacles, plus a spotter, is the foundation of safety."
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "id": "ilk-hover",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "What does hover mean?",
+      "options": [
+        "Flying the drone forward at top speed",
+        "Holding the drone in the air at a single point, steady and balanced (neither climbing nor descending nor drifting)",
+        "Making the drone flip",
+        "Landing the drone"
+      ],
+      "answerIndex": 1,
+      "explanation": "Hover means holding the drone steady and balanced in the air. Since all other maneuvers build on this fundamental skill, it's the most important first goal."
+    },
+    {
+      "id": "q2",
+      "prompt": "Which flight mode is best for your first hover, and why?",
+      "options": [
+        "Acro mode, because it gives the most control",
+        "Angle mode, because the drone levels itself when you release the stick and gives you confidence",
+        "No mode; hover doesn't require a mode",
+        "Only night mode"
+      ],
+      "answerIndex": 1,
+      "explanation": "In Angle mode, when you release the stick the drone levels itself and tries to stay suspended. This gives you confidence on your first hover even if you panic and let go of the sticks."
+    },
+    {
+      "id": "q3",
+      "prompt": "If the drone starts drifting slightly to the right during a hover, what should you do?",
+      "options": [
+        "Give a big, hard left roll",
+        "Cut the throttle completely",
+        "Give a small (gentle) left roll to nudge the drone back bit by bit",
+        "Make the drone flip"
+      ],
+      "answerIndex": 2,
+      "explanation": "Hovering is made up of constant small corrections. When it drifts right, you nudge it back with a small left roll. A big/hard correction flings you the other way and starts an oscillation."
+    },
+    {
+      "id": "q4",
+      "prompt": "Where is the best place to keep the drone for your first hover attempts?",
+      "options": [
+        "At the highest possible altitude",
+        "Completely away from your eyes, too far to be seen",
+        "At eye level (or slightly below), close to you and at a low altitude",
+        "Directly overhead, above your head"
+      ],
+      "answerIndex": 2,
+      "explanation": "Eye level is where you see the drone's orientation most clearly; keeping it close and low both makes control easier and reduces crash damage if you make a mistake."
+    },
+    {
+      "id": "q5",
+      "prompt": "If the drone suddenly goes out of control during a hover attempt, what is the best reflex without panicking?",
+      "options": [
+        "Moving the sticks randomly and hard",
+        "Pushing the throttle all the way up to raise the drone",
+        "Disarming (flipping the arming switch off to stop the motors)",
+        "Putting the radio down on the ground"
+      ],
+      "answerIndex": 2,
+      "explanation": "Trying to save an out-of-control drone with the sticks usually makes it worse. Disarming stops the motors instantly and drops the drone safely from a low height."
+    }
+  ]
+}

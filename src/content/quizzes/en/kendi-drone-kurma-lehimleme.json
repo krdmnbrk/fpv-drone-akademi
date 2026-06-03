@@ -1,0 +1,65 @@
+{
+  "id": "kendi-drone-kurma-lehimleme",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Where does the compatibility chain in part selection usually begin?",
+      "options": [
+        "With goggle selection",
+        "With the frame and propeller size; this cascades into the choice of motors, battery, ESC, and FC",
+        "With random, cheapest parts",
+        "With the radio first, then everything else"
+      ],
+      "answerIndex": 1,
+      "explanation": "Everything starts with the frame (and the propeller size it dictates); from there the motors (+ battery S), ESC (current), and FC (mounting standard + UART) are chosen to be compatible."
+    },
+    {
+      "id": "q2",
+      "prompt": "What is the most critical value when choosing an ESC?",
+      "options": [
+        "Its color matching the frame",
+        "Its current capacity (amps) being higher than the peak current the motors will draw",
+        "Having the lowest possible current capacity",
+        "Being as heavy as possible"
+      ],
+      "answerIndex": 1,
+      "explanation": "The current the ESC can deliver must be higher than the motors' peak current, with headroom; a low-capacity ESC burns out (lets the smoke out) when its current limit is exceeded."
+    },
+    {
+      "id": "q3",
+      "prompt": "Which of the following is true for a safe, good solder joint?",
+      "options": [
+        "Keeping the iron as cool as possible gives a good joint",
+        "Breathing in solder fumes directly is harmless",
+        "Work in a ventilated area at the correct temperature; a good joint is shiny and concave, and you avoid a cold (dull/blobby) joint",
+        "A good joint always looks dull and blobby"
+      ],
+      "answerIndex": 2,
+      "explanation": "Soldering is done in a ventilated area at sufficient temperature. A good joint is shiny and concave; a dull/blobby cold joint is weak and can come loose in flight."
+    },
+    {
+      "id": "q4",
+      "prompt": "When should the propellers be installed during assembly and first tests?",
+      "options": [
+        "In the first step, right after the motors",
+        "Last; the first power-up and motor tests are absolutely done props-off",
+        "Right before soldering",
+        "Right before plugging in the battery, for testing"
+      ],
+      "answerIndex": 1,
+      "explanation": "Propellers go on last, and the first tests (motor direction, settings) are done props-off; an accidentally spinning propeller can seriously cut a finger."
+    },
+    {
+      "id": "q5",
+      "prompt": "What is the purpose of using a smoke-stopper when plugging in the battery for the first time?",
+      "options": [
+        "To make the drone fly faster",
+        "To charge the battery faster",
+        "By limiting current, to prevent parts from burning if there's a fault like reverse polarity or a short, and to catch the fault without smoke",
+        "To sharpen the video image"
+      ],
+      "answerIndex": 2,
+      "explanation": "A smoke-stopper goes between the battery and the drone and limits the current. If there's a fault (e.g. reverse polarity), the parts give a warning instead of burning; this lets you catch an expensive mistake before the smoke comes out."
+    }
+  ]
+}

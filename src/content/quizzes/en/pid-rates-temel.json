@@ -1,0 +1,65 @@
+{
+  "id": "pid-rates-temel",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "What does PID intuitively do?",
+      "options": [
+        "Measures the battery voltage",
+        "It's an automatic correction loop that continuously measures the difference (error) between the angle the drone should be at and its current angle, and closes that gap with the motors",
+        "Sends the camera image to the goggles",
+        "Determines the propellers' direction of rotation"
+      ],
+      "answerIndex": 1,
+      "explanation": "PID is the automatic balance loop where the FC asks, thousands of times per second, 'is there a difference between the target angle and the actual angle?' and adjusts the motors to close that gap."
+    },
+    {
+      "id": "q2",
+      "prompt": "What does the 'D' (Derivative) component of PID basically do?",
+      "options": [
+        "It acts like a brake that prevents the correction from overshooting and oscillating",
+        "It charges the battery",
+        "It changes the drone's color",
+        "It sets the stick's rotation rate"
+      ],
+      "answerIndex": 0,
+      "explanation": "The D component is concerned with 'how fast am I deviating?' and acts as a brake that prevents the correction from overshooting and making the drone vibrate or oscillate."
+    },
+    {
+      "id": "q3",
+      "prompt": "What does the Rates setting determine?",
+      "options": [
+        "How many cells the battery has",
+        "How fast the drone rotates for a given stick deflection (the sharpness of the controls)",
+        "How many inches the propellers are",
+        "The camera's resolution"
+      ],
+      "answerIndex": 1,
+      "explanation": "Rates determine how fast the drone rotates in response to stick movement. Low rates feel smooth/calm, high rates feel sharp/aggressive."
+    },
+    {
+      "id": "q4",
+      "prompt": "Which is true about the difference between high rates and low rates?",
+      "options": [
+        "High rates are always better; low rates are broken",
+        "Low rates feel smooth/forgiving (for beginners and cinematic), high rates feel sharp/aggressive (for fast freestyle); it's a matter of preference",
+        "Rates only affect the battery, not the flight feel",
+        "They are exactly the same"
+      ],
+      "answerIndex": 1,
+      "explanation": "Rates aren't a right/wrong setting but a preference. Low rates are smooth and forgiving, high rates are sharp and aggressive; which one feels comfortable depends on the pilot."
+    },
+    {
+      "id": "q5",
+      "prompt": "What should a beginner do about PID and rates settings?",
+      "options": [
+        "Reset all PID values on the very first day",
+        "Usually touch nothing; the default settings are more than enough for most beginners, and you should develop feel by flying first",
+        "Crank the PIDs as high as possible",
+        "Change the rates before every flight"
+      ],
+      "answerIndex": 1,
+      "explanation": "Default PID/rates values are chosen to fly well. For a beginner, the best 'tune' is to leave it alone; develop feel by flying a lot first, and save fine-tuning for last."
+    }
+  ]
+}

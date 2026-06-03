@@ -20,11 +20,15 @@ void i18n
   .init({
     resources,
     defaultNS,
+    // Turkish is the default/shipping language. We only honour an explicit,
+    // remembered choice (localStorage) — the browser's language never auto-
+    // switches the app, so a first visit always opens in Turkish while a saved
+    // 'en' choice is still restored.
     fallbackLng: 'tr',
     supportedLngs: [...supportedLngs],
     interpolation: { escapeValue: false },
     detection: {
-      order: ['localStorage', 'navigator', 'htmlTag'],
+      order: ['localStorage'],
       caches: ['localStorage'],
       lookupLocalStorage: 'fpv-academy-lng',
     },

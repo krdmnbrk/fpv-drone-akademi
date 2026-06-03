@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { getFlightLessonTitle, getPart, hardwareParts } from '@/content';
+import { getFlightLessonTitle, getHardwareParts, getPart } from '@/content';
 import type { HardwarePart } from '@/content/types';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 import { hasWebGL } from '@/lib/webgl';
@@ -120,8 +120,9 @@ export function HardwareExplorer() {
     setSearchParams(next, { replace: true });
   };
 
-  const onCraftParts = hardwareParts.filter(isOnCraft);
-  const offCraftParts = hardwareParts.filter((part) => !isOnCraft(part));
+  const parts = getHardwareParts();
+  const onCraftParts = parts.filter(isOnCraft);
+  const offCraftParts = parts.filter((part) => !isOnCraft(part));
 
   const renderPartButton = (part: HardwarePart) => {
     const selected = selectedId === part.id;

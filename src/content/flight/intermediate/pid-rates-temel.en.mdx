@@ -1,0 +1,68 @@
+---
+id: pid-rates-temel
+track: flight
+level: intermediate
+order: 4
+title: "Basic concept of PID and rates"
+summary: "Explains at an intuitive level how the drone maintains balance (PID) and how stick movement maps to rotation speed (rates); clarifies when tuning is needed."
+estimatedMinutes: 11
+objectives:
+  - "Be able to intuitively explain how PID keeps the drone balanced"
+  - "Understand that rates determine rotation speed relative to stick movement"
+  - "Know that the default settings are sufficient for most beginners"
+prerequisites: ["betaflight-giris"]
+quizId: pid-rates-temel
+---
+
+As you browse Betaflight, you'll see two settings called "PID" and "Rates." They sound intimidating and engineering-like — but their logic is actually very intuitive. In this lesson we'll understand **what they are**; fine-tuning is a topic for the advanced level.
+
+## PID: How does the drone maintain balance?
+
+A drone doesn't sit perfectly still in the air — it's constantly fighting wind, vibration, and small imbalances. The system that keeps it balanced is <KeyTerm en="PID controller">PID</KeyTerm>.
+
+Think of PID as an **automatic correction loop.** Thousands of times per second, the FC asks: *"Is there a difference between the angle the drone should be at and its current angle?"* If so, it adjusts the motors to close that difference. This difference is called the **error**, and PID's three letters tackle this error from three different angles:
+
+- **P (Proportional):** "How far off am I right now?" If the error is large, it makes a large correction. It's the main driving force of PID.
+- **I (Integral):** "Have I been slightly off for a long time?" It accumulates small but persistent deviations over time (e.g. a wind constantly pushing sideways) and corrects them.
+- **D (Derivative):** "How fast am I deviating?" It's the brake that keeps the correction from overshooting and **oscillating**.
+
+<Callout type="info">
+An everyday analogy: like staying balanced on a bicycle. **P** = "I leaned to one side, so I immediately steer the other way." **I** = "the wind keeps pushing me left, so I lean slightly right." **D** = "I steered too hard, so I soften it to avoid swerving." The drone does this thousands of times per second, for you.
+</Callout>
+
+A well-tuned PID makes the drone feel solid and "locked-in." If it's poorly tuned, the drone shakes, oscillates, or responds late to commands. But note: **the PID of off-the-shelf drones is already reasonably tuned.**
+
+## Rates: rotation speed relative to the stick
+
+PID is about *how* the drone balances itself. <KeyTerm en="rates">Rates</KeyTerm> are something entirely different: they determine **how fast the drone rotates for a given amount of stick.**
+
+So rates set how **gentle or sharp** the controls feel:
+
+- **Low rates:** Even if you push the stick all the way, the drone rotates slowly. A smooth, calm, forgiving feel — comfortable for beginners and cinematic flying.
+- **High rates:** Even a small stick movement rotates the drone very fast. A sharp, aggressive feel — for fast freestyle and flips/rolls.
+
+<Callout type="tip">
+Rates aren't a "right/wrong" setting, they're a **preference** setting. Some pilots like it smooth, others like it very sharp. Both are valid; what matters is which feels comfortable in your hands.
+</Callout>
+
+## When is tuning needed?
+
+Here's the most important and most reassuring part:
+
+<Callout type="warning">
+**For most beginners, the default settings are more than enough.** The default PID and rates values of a new drone or of Betaflight are chosen by experienced developers to "fly well." You can fly comfortably for months without touching PID/rates — and you should.
+</Callout>
+
+PID/rates are usually adjusted in the following situations (and they're all advanced-level):
+
+- If the drone has a visible **shake/oscillation** (a PID issue).
+- If the controls feel too slow or too sharp to you (a rates preference).
+- If you built your own drone and want to tune it specifically.
+
+If none of these apply, **the best "tuning" is not touching anything at all.** Develop your flying feel first by **flying a lot on the sticks**; tinkering with numbers comes last. We'll cover PID/filter fine-tuning in detail in the advanced **tuning** lesson.
+
+<DemoPlaceholder title="PID balance and the rates curve" note="Two sections. Left: a drone is pushed sideways by a gust of wind; with good PID it recovers immediately, with low P it corrects slowly, with high/bad D it oscillates and shakes. Right: a 'stick movement → rotation speed' curve; when the user pulls rates low/high the curve flattens/steepens, showing how hard the drone responds to the same stick movement." />
+
+<Callout type="info">
+**Summary:** PID is the automatic correction loop that keeps the drone balanced (P: how far off am I, I: have I been slightly off for a long time, D: how fast am I deviating / brake). Rates determine rotation speed relative to the stick — that is, the sharpness of the controls — a matter of preference. For beginners the defaults are sufficient; tuning comes last. Now a mini quiz!
+</Callout>

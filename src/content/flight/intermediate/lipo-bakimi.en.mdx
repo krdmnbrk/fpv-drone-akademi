@@ -1,0 +1,82 @@
+---
+id: lipo-bakimi
+track: flight
+level: intermediate
+order: 5
+title: "LiPo battery care"
+summary: "Teaches the cell voltage, storage voltage, charge current (C rating), and swelling/damage/disposal safety rules for LiPo batteries."
+estimatedMinutes: 13
+objectives:
+  - "Be able to state a LiPo cell's nominal, full, and safe lower voltage limits"
+  - "Be able to explain what storage voltage is and why it matters"
+  - "Know the safe charge current based on the C rating and what to do in case of swelling/damage"
+prerequisites: ["guvenlik-ve-shgm"]
+quizId: lipo-bakimi
+---
+
+FPV drones get their power from <KeyTerm en="LiPo (Lithium Polymer) battery">LiPo batteries</KeyTerm>. LiPos can deliver very high current, which makes them ideal for drones — but that same power makes them **dangerous** when used incorrectly. This lesson covers the basic rules for keeping your LiPo both safe and long-lived.
+
+<PartHighlight part="lipo" />
+
+The LiPo above is the drone's energy store. It's made up of multiple **cells**; each cell's voltage is the key to understanding the battery's health.
+
+## Cell voltage: the most important numbers
+
+A LiPo is made of cells connected in series (the "S" number is the cell count; e.g. 4S = 4 cells). For each **single cell**, there are three numbers you need to keep in mind:
+
+- **3.7V — nominal:** The cell's "average/rated" voltage. This is the value printed on the battery (e.g. 4S = 4 × 3.7 = 14.8V).
+- **4.2V — fully charged:** The **highest** voltage to which you can charge a cell. Going above it is dangerous.
+- **~3.7–3.8V — healthy landing target:** When you finish flying and land, the cell should be around this level once the battery **rests** (comes off load). Using the battery down to here both preserves its life and gives adequate flight time.
+- **~3.5V — instantaneous lower limit (under load):** When you punch the throttle and put load on it, the voltage temporarily drops (this is called "sag"); dipping to ~3.5V momentarily is normal. But once the load is removed, the battery should recover to around 3.7V. When your voltage alarm starts beeping, you're at this level — **land.**
+- **3.0V — ABSOLUTE damage threshold:** This is NOT a flight target; it's the limit you must never go below. Discharging a cell below 3.0V (over-discharge) causes permanent damage to the LiPo.
+
+<Callout type="warning">
+3.0V is the absolute lower limit; don't aim to "use" the battery down to there. Practical rule: when the alarm beeps (~3.5V under load), **land**, so that once the battery rests it stays at ~3.7–3.8V per cell. Discharging far below this (especially below 3.0V) causes permanent damage and leads to swelling/danger. Don't say "let me fly a bit more" — this limit protects the battery's life and your safety.
+</Callout>
+
+## Storage voltage
+
+LiPos don't like being **left fully charged or fully empty**; left in those states they age quickly and can swell. If you won't use the battery for more than a few days, bring it to its <KeyTerm en="storage voltage">storage voltage</KeyTerm>:
+
+- **~3.8V/cell** — the happiest, longest-lived resting level for a LiPo.
+
+Good chargers have a "Storage" mode: it discharges the battery (if full) to this level, or charges it (if empty) up to this level. Pulling the battery to storage instead of leaving it fully charged after flying extends its life manyfold.
+
+<Callout type="tip">
+A practical habit: if you're going to fly, charge the battery **right before flying.** If you're not going to fly, leave it in **storage.** The batteries that swell the most are the ones "forgotten on the charger and left fully charged for days."
+</Callout>
+
+## Charge current: the C rating
+
+How fast you can charge a LiPo is set by the <KeyTerm en="C rating">C rating</KeyTerm>. The logic is simple: the C rating gives the safe current relative to the battery's capacity (mAh).
+
+- **1C** is the safe and standard charge rate. 1C means a current equal to the capacity.
+- Example: a 1500mAh battery → 1C = charged at 1.5A.
+- Many modern LiPos allow higher rates, but **when in doubt, use 1C** — slower charging means longer life, less heat.
+
+<Callout type="warning">
+Choosing a charge current higher than necessary heats the battery, shortens its life, and creates risk. Don't apply a high current without reading the label. Also, **never charge a LiPo unattended.**
+</Callout>
+
+<Callout type="tip">
+**Don't charge a hot battery immediately.** Right after a flight the battery is hot in your hand; plugging it in to charge in that state puts extra strain on the cells and shortens its life. First let the battery cool to room temperature, then charge it. Likewise, don't charge in freezing cold; charging in a warm environment is the healthiest.
+</Callout>
+
+<Callout type="info">
+**Don't trust the C value on the label too much.** A LiPo's printed discharge rating (e.g. "100C") is often **exaggerated** for marketing purposes; the real instantaneous current performance depends on the brand and manufacturing quality. So when choosing a battery, look not only at the label but at trusted brands and user tests. In practice, "how little the voltage drops (sag)" as you feel it while flying is a more accurate indicator than the number on the label.
+</Callout>
+
+## Swelling, damage, and disposal rules
+
+The immutable rules of LiPo safety:
+
+- **A swollen (puffed) battery = an end-of-life battery.** If it's even slightly swollen, don't use it in flight anymore; set it aside for safe disposal.
+- **Physical damage is dangerous.** A LiPo that's punctured, crushed, or has a torn casing after an impact can catch fire. After a hard crash, check the battery; if there's swelling/heat/odor, **move it to a safe place (e.g. outside, on a non-flammable surface) and observe it.**
+- **Never throw it in the regular trash.** Damaged/old LiPos go to special waste/recycling points. Before disposal they are usually discharged in salt water (follow the manufacturer's/local guidelines).
+- **Use a <KeyTerm en="LiPo-safe bag">LiPo-safe bag</KeyTerm>.** When charging and transporting, keep the battery in this special fireproof bag/box; it contains any potential fire inside.
+
+<DemoPlaceholder title="LiPo voltage scale and states" note="A voltage bar representing a single cell: 4.2V (full, green) → 3.8V (storage, blue 'happy' mark) → 3.7V (healthy landing target) → 3.5V (warning, yellow, 'land'; instantaneous under load) → 3.0V (red, 'absolute damage threshold, never go below'). Beside it: an image of a sound vs swollen battery and a LiPo-safe bag. Let the user move the bar and see what each level means." />
+
+<Callout type="info">
+**Summary:** Per cell, 3.7V nominal, 4.2V fully charged; healthy landing target ~3.7–3.8V at rest, can momentarily dip to ~3.5V under load; **3.0V is the absolute damage threshold, don't go below it.** For long storage, bring it to ~3.8V/cell. When in doubt charge at 1C, don't plug in a hot battery to charge without cooling it, and don't leave it unattended. The C value on the label is often exaggerated. Don't use a swollen/damaged LiPo or throw it in the trash; store it in a LiPo-safe bag and take it to special waste. Now a mini quiz!
+</Callout>

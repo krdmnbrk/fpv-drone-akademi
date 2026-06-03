@@ -1,0 +1,102 @@
+---
+id: long-range-temelleri
+track: flight
+level: advanced
+order: 5
+title: "Long-range basics"
+summary: "Explains the basics of long-range FPV: the ELRS control link and why it's preferred, transmitter power and antenna choice (directional vs omni, polarization), battery range/efficiency calculation, failsafe setup, and the added risks/responsibilities of long range."
+estimatedMinutes: 14
+objectives:
+  - "Be able to explain why a control link like ELRS is preferred for long range"
+  - "Understand the effect of transmitter power and antenna choice (directional vs omni, polarization) on range"
+  - "Be able to state the basic logic of the battery-range/efficiency relationship and why a 'round trip' is planned"
+  - "Grasp why failsafe setup and the added risks/responsibilities of long range are critical"
+prerequisites: ["tuning", "guvenlik-ve-shgm"]
+quizId: long-range-temelleri
+---
+
+<KeyTerm en="long-range">Long-range</KeyTerm> is the discipline of flying a drone beyond your field of view, over long distances; it's usually done for scenery/exploration flights. Rather than speed and acrobatics, it's built on **a reliable link, efficiency, and planning.** This lesson introduces these priorities, which differ from freestyle/racing.
+
+<Callout type="warning">
+Long range is the topic in this curriculum that demands the most **responsibility**: as the drone gets farther from your eyes, the margin for error shrinks and the risks grow. First make sure you fully know the **safety and SHGM** rules; long range is not an excuse to push the rules and limits.
+</Callout>
+
+## 1. The control link: why ELRS?
+
+As the drone gets farther away, the most critical thing is that the control signal from the radio reaches it **without dropping.** This is where the control link comes in.
+
+<PartHighlight part="rx" />
+
+The **receiver (RX)** above is the part that picks up the radio's signal and passes it to the FC. For long range, the most common open standard today is <KeyTerm en="ExpressLRS, ELRS">ExpressLRS (ELRS)</KeyTerm>. Why is it preferred for long range?
+
+- **High receiver sensitivity:** It can decode even very weak signals, which means longer range.
+- **Very low latency:** It keeps the control feel responsive.
+- **Flexible packet rate:** By choosing a lower "packet rate" (e.g. high for racing, low for long range), you can increase range — lower rate = longer reach.
+- **Frequency band (fixed by hardware):** The most common entry band is **2.4 GHz**. For very long range, separate **868/915 MHz** modules give better penetration/range but with a lower packet rate (higher latency). The band is chosen when you buy the receiver — it's not a setting, it can't be changed later (2.4 GHz and 900 MHz are different physical modules).
+
+<Callout type="warning">
+In Türkiye, the use of 900 MHz (868/915 MHz) and high VTX power may be legally restricted. Before switching to this hardware "for more range," check the current SHGM/RF rules.
+</Callout>
+
+<Callout type="tip">
+The control link and the video link are **separate systems.** A common reality in long range: while your control link (ELRS) is still solid, your video starts to break up first. So what usually turns you back is the range not of your control but of your **video**; you have to plan the two together.
+</Callout>
+
+## 2. Transmitter power and antenna
+
+Two big factors determine range: how much **power** you radiate and which **antenna** you use. The biggest gain here usually comes not from power but from the **antenna.**
+
+<PartHighlight part="vtx" />
+
+The **VTX (video transmitter)** above sends the image with an antenna; transmitter power is measured in **mW (milliwatts).** But beware: increasing power extends range only up to a point and has a cost (heat, interference, more battery consumption, and legal limits). Choosing the right antenna is usually more effective than raw power.
+
+Know the two antenna types:
+
+- <KeyTerm en="omnidirectional antenna">Omnidirectional antenna</KeyTerm>: Radiates/receives the signal **equally** in all directions. Advantage: it works wherever the drone is, it's flexible. Disadvantage: since the energy spreads in every direction, the range in any single direction is limited.
+- <KeyTerm en="directional antenna">Directional antenna</KeyTerm>: Focuses the signal **in a specific direction** (e.g. a patch antenna). Advantage: much longer range in the direction it's focused on. Disadvantage: if you move outside that direction (the drone goes to your side/behind you), the signal weakens.
+
+<Callout type="info">
+A common solution for long range is a **diversity** setup: the goggles/receiver have **both an omni and a directional** antenna, and the system uses whichever is getting the better signal at the moment. This combines both the near/all-direction flexibility (omni) and long range (directional).
+</Callout>
+
+Another critical concept is <KeyTerm en="polarization">polarization</KeyTerm>: in FPV, antennas are usually **circularly polarized**, and the VTX and goggle antennas must be in the **same polarization** (e.g. both RHCP). A mismatch (RHCP VTX + LHCP goggles) drops the signal dramatically — in long range, that means range almost disappearing.
+
+<DemoPlaceholder title="Omni vs directional antenna coverage" note="Bird's-eye pilot position. Omni antenna: an even circle around the pilot (medium range in every direction). Directional antenna: a long cone in the direction the pilot faces (very far in that direction, weak on the sides). Show diversity as a combination of the two. Animate how, when the drone leaves the cone, the directional signal drops and the omni takes over." />
+
+## 3. Battery: the range and efficiency calculation
+
+In long range, the battery is no longer a question of "how long can I fly" but **"how far can I go and come back."** The basic logic:
+
+- **Efficiency:** In long range you fly not by punching the throttle but at an **efficient cruise speed.** Just as a steady speed in a car burns less than stop-and-go, a steady, reasonable cruise speed extends range significantly.
+- **Round-trip plan:** When planning your distance, account for the **return trip too.** A common safe rule is to leave plenty of margin for the return (e.g. reserve a significant portion of the energy for the return and a buffer). If there's wind, a tailwind on the way out becomes a **headwind** on the way back and makes the return much more expensive.
+- **Watch the voltage:** Keep tracking the battery voltage throughout the flight (from the OSD in the goggles). Make the decision to turn back **early**, before the battery runs out.
+
+<Callout type="warning">
+Don't plan the long-range battery thinking "one way." One of the most common and most expensive mistakes is **not having the energy left to go far and return**; this means dropping the drone far away (and often losing it). Always account for the return and the wind and set a safe turn-back threshold.
+</Callout>
+
+## 4. Failsafe: what happens if the link drops?
+
+<KeyTerm en="failsafe">Failsafe</KeyTerm> is the safety behavior that determines what the drone does when the control link drops. It's important even in close flight; in long range it's **vital**, because a link drop is much more likely at the edge of range.
+
+Common failsafe behaviors:
+
+- **Cut the motors (drop):** The drone falls. It's the safest option in a close/empty area (better to drop than to fly off out of control).
+- **Return-to-Home (RTH):** If there's GPS, the drone automatically returns to the takeoff point. It's preferred in long range but requires a **correctly set up and tested** GPS/RTH; a misconfigured RTH is a new danger.
+
+<Callout type="warning">
+**Set up and test the failsafe before flying.** An unconfigured or misconfigured failsafe means the drone flies off uncontrollably when the link drops — that's both losing it and a serious hazard to the surroundings. Always verify the failsafe behavior before going long range.
+</Callout>
+
+## The added risks and responsibility of long range
+
+As the drone gets farther from your eyes, new risks are added; being aware of them is part of the job:
+
+- **Going out of sight:** FPV doesn't count as line of sight (VLOS) to begin with; in long range the drone can go completely out of both the spotter's and your view. In Türkiye there are **legal limits and permission requirements** for this.
+- **You can't see the surroundings:** You can't see distant obstacles, other aircraft, or people. Knowing the flight area and the route in advance is essential.
+- **Loss and recovery:** Finding a drone that crashes far away is hard; GPS position and telemetry are very valuable here.
+- **Responsibility:** The drone is your responsibility. The farther it is from your eyes, the heavier your responsibility for the harm it could cause to others/property.
+
+<Callout type="info">
+**Summary:** Long range = a reliable link + efficiency + planning. **ELRS** (high sensitivity, long range with a low packet rate) is preferred for the control link; the video link is separate from it and usually runs out first. Range is mostly determined by the **antenna** (omni vs directional, correct polarization, diversity), not raw power. Plan the battery with a **round-trip + wind** margin. Set up and test the **failsafe** in advance. And remember: as you go farther, the risks and responsibility grow — safety and SHGM first. Now a mini quiz!
+</Callout>

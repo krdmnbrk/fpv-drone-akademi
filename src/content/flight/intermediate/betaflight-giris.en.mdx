@@ -1,0 +1,69 @@
+---
+id: betaflight-giris
+track: flight
+level: intermediate
+order: 3
+title: "Introduction to Betaflight"
+summary: "Introduces Betaflight, the configuration software for FPV drones, its basic tabs, and the safety rule of never doing a motor test without removing the propellers."
+estimatedMinutes: 12
+objectives:
+  - "Be able to explain what Betaflight is and what it's for"
+  - "Recognize the basic role of the Setup, Ports, Receiver, Modes, and Motors tabs"
+  - "Understand why removing the propellers before a motor test is mandatory"
+prerequisites: ["arming-disarming"]
+quizId: betaflight-giris
+---
+
+You know the drone's brain is the flight controller (FC). But where do we configure how that brain behaves? The answer: <KeyTerm en="Betaflight">Betaflight</KeyTerm>.
+
+## What is Betaflight?
+
+Betaflight is the **open-source flight firmware** used on the vast majority of FPV drones. It has two parts:
+
+- **Firmware:** The actual software running inside the FC — it maintains balance and generates motor commands.
+- **Configurator:** The **interface** you install on your computer, connect the FC to over USB, and view/change settings with (Betaflight Configurator). When we say "go into Betaflight," we usually mean this interface.
+
+You connect the drone to the computer with a USB cable, open the Configurator, and a **list of tabs** appears on the left. Each tab configures one aspect of the drone.
+
+<PartHighlight part="fc" />
+
+The flight controller (FC) highlighted above is the hardware Betaflight runs on. It's what you connect over USB; all settings are written into this board's memory.
+
+## The basic tabs
+
+For a beginner, the five most important tabs are:
+
+- **Setup** — The general status screen. It shows a 3D model of the drone; when you rotate the drone in your hand, the model on screen rotating too confirms that the sensors (gyro/accelerometer) are working correctly. You also calibrate the drone as "level" here.
+- **Ports** — Determines which job each of the connection ports (UARTs) on the FC is assigned to. For example, which port the receiver is connected to is defined here.
+- **Receiver** — Shows the signal coming from the radio. When you move the sticks, you **verify** here that the on-screen bars (roll/pitch/yaw/throttle) move in the correct direction.
+- **Modes** — Where you set up flight modes and switches. Which switch will **arm**, and which selects Angle/Acro mode, is defined here (remember from the arming lesson).
+- **Motors** — The tab where you test that the motors spin in the correct order and direction. **This is the place to be most careful.**
+
+<Callout type="info">
+You don't have to memorize all of them on day one. The logic is: **Ports** defines the connections → **Receiver** confirms the radio is detected → **Modes** sets which switch does what → **Setup** shows everything is sitting correctly → **Motors** tests the motors.
+</Callout>
+
+## THE MOST IMPORTANT SAFETY RULE: Remove the propellers
+
+In the Motors tab you can test the motors by spinning them one at a time with a slider. Before you do this, there is one rule that **must, without exception**, be followed:
+
+<Callout type="warning">
+**REMOVE THE PROPELLERS before doing a motor test.** If the propellers are attached while you test motors in the Configurator, a motor may unexpectedly spin up, and the spinning propellers can cause serious injury. This is one of the most important safety rules in FPV and is never skipped. Propeller = blade; bare motor = safe.
+</Callout>
+
+With the propellers off, you can safely check the following in the Motors tab:
+
+- **Is each motor spinning in the correct corner?** (Move the slider and see where the spinning motor is.)
+- **Is each motor spinning in the correct direction?** (It should match the arrow direction in Betaflight's diagram.)
+
+A wrong order or wrong direction causes the drone to immediately flip and crash on takeoff — far better to catch this on the ground, without propellers.
+
+<DemoPlaceholder title="Betaflight Configurator tour" note="An animation showing the left tab list of the Betaflight interface. In turn, the Setup (3D model rotating with the drone), Ports, Receiver (bars moving as the sticks are moved), Modes (assigning the arm switch), and Motors tabs are highlighted. On the Motors tab, a big warning: 'Remove the propellers!' Let the user click the tabs and read what they do." />
+
+<Callout type="tip">
+If you changed something on the connected drone, don't forget to save with **"Save and Reboot"** at the bottom right before exiting. If you don't save, your settings will be lost when you unplug the USB.
+</Callout>
+
+<Callout type="info">
+**Summary:** Betaflight is the open-source flight firmware of FPV drones; the Configurator is the interface you connect the FC to over USB to configure it. The basic tabs: Setup (status/sensors), Ports (connections), Receiver (radio verification), Modes (switch/mode assignment), Motors (motor test). The most critical rule: **remove the propellers before a motor test.** Now a mini quiz!
+</Callout>

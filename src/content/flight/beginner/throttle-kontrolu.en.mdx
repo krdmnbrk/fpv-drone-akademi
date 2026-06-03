@@ -1,0 +1,67 @@
+---
+id: throttle-kontrolu
+track: flight
+level: beginner
+order: 6
+title: "Throttle control"
+summary: "Explains how throttle controls thrust and climb, the hover throttle point, smooth and gradual throttle use, and avoiding abrupt throttle."
+estimatedMinutes: 8
+objectives:
+  - "Be able to explain how throttle controls the drone's thrust and climb"
+  - "Understand what the hover throttle point is and why it matters"
+  - "Grasp why smooth, gradual throttle is more correct than abrupt throttle"
+prerequisites: ["arming-disarming"]
+quizId: throttle-kontrolu
+---
+
+You armed the drone and the motors woke up. Now you decide how hard to push them. The control that does this is **throttle.**
+
+<KeyTerm en="throttle">Throttle</KeyTerm> controls how fast the motors spin — that is, how much **thrust** the drone produces. On the radio, the **up/down** axis of the **left stick** usually manages throttle: push it up and the motors speed up, pull it down and they slow.
+
+## Throttle = thrust and climb
+
+To stay in the air, a multirotor must produce enough thrust to carry its own weight. Think of throttle this way:
+
+- **Low throttle** → motors slow → thrust produced is less than the drone's weight → the drone **descends** (or never lifts off).
+- **High throttle** → motors fast → thrust greater than weight → the drone **climbs**.
+- **Throttle perfectly balanced** → thrust = weight → the drone **stays at its current height**.
+
+<Callout type="info">
+There's a critical point here: throttle is not a command that takes the drone to **a specific altitude**. Throttle determines **how fast the drone climbs or descends**. If you want to stay at a certain height, you have to **hold** the throttle at that balance point continuously. If you let go, the drone won't hang at that height; the throttle drops and it descends.
+</Callout>
+
+## The hover throttle point
+
+Here's the heart of flying: the <KeyTerm en="hover throttle">hover throttle</KeyTerm> point. This is the throttle level at which the drone neither climbs nor descends but **hangs perfectly still in the air**. At this point, thrust equals the drone's weight.
+
+On a typical FPV drone this point is **below the middle** of the throttle range; on powerful modern 6S setups it can be as low as **25–35%**, because FPV drones are very powerful for their weight. This point shifts a little depending on the drone, the battery's charge level, and the weight.
+
+<Callout type="tip">
+Your first goal is to **find your own drone's (or the simulated drone's) hover throttle point with your finger.** Increase the throttle slowly; the instant the drone stops climbing and hangs in the air, your finger needs to "memorize" that throttle level. The next lesson, your first hover, is all about feeling this point.
+</Callout>
+
+## Smooth and gradual throttle
+
+The most common beginner mistake is treating throttle like a switch: either full on or fully off. This makes the drone bounce, shoot up, and lose control.
+
+The correct approach is **smooth and gradual** throttle:
+
+- Change the throttle **little by little**, like turning a volume knob, not in jumps.
+- While climbing, increase the throttle slowly; as you near the height you want, gradually ease the throttle back to the hover point.
+- The same goes for landing: don't cut the throttle suddenly — reduce it **little by little** so the drone descends gently.
+
+<Callout type="warning">
+**Avoid abrupt throttle.** Slamming the throttle to the bottom (a panic reflex) drives the drone into the ground; slamming it to the top throws the drone up uncontrollably. In FPV there's plenty of power — even a small throttle change has a big effect. So always work with **small, smooth** touches.
+</Callout>
+
+Why does this matter so much when flying? Because throttle is your most continuous communication with the drone: throughout a hover, throughout a maneuver, during landing... your finger is almost constantly fine-tuning the throttle. If you build this smoothness into muscle memory in the simulator, the drone will feel "glued" to you in real flight.
+
+<DemoPlaceholder title="Finding the hover throttle point" note="The throttle axis of the left stick with an altitude indicator beside it. As the throttle is slowly raised, the drone climbs; at the exact balance point the drone hangs in the air and that throttle level is highlighted with a line ('HOVER'). In the abrupt-throttle example the drone bounces and shoots up — let the user see the difference between smooth and harsh throttle." />
+
+## What's next?
+
+Now you know how throttle moves the drone up and down and what the hover point is. The next lesson puts it into practice: **the first hover** — holding the drone steady in the air at eye level.
+
+<Callout type="info">
+**Summary:** Throttle = thrust/climb control; it manages how fast the drone goes up and down, not which altitude it goes to. **Hover throttle** is the balance point where the drone hangs in the air (usually a little below the middle). Always use throttle **smoothly and gradually**, and avoid abrupt throttle. Now a mini quiz!
+</Callout>

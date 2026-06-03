@@ -1,0 +1,65 @@
+{
+  "id": "gorus-mesafesi-vs-fpv",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "What does line-of-sight (LOS) flying mean?",
+      "options": [
+        "The pilot flying the drone by looking at it directly with the naked eye",
+        "The drone flying fully autonomously, without a pilot",
+        "The pilot only looking at the camera feed through goggles",
+        "Flying the drone at night with lights"
+      ],
+      "answerIndex": 0,
+      "explanation": "Line-of-sight (LOS) means the pilot looks up at the sky and flies the drone while seeing it with the naked eye. FPV, by contrast, means looking through a camera."
+    },
+    {
+      "id": "q2",
+      "prompt": "Why is FPV flight not considered visual line-of-sight (VLOS)?",
+      "options": [
+        "Because FPV drones are very fast",
+        "Because the pilot sees the drone through a camera/goggles, not with the naked eye",
+        "Because FPV is only done indoors",
+        "Because VLOS only applies to airplanes"
+      ],
+      "answerIndex": 1,
+      "explanation": "VLOS is the pilot's direct visual contact with the aircraft without any aids. In FPV you look at the aircraft through a camera, so it does not count as visual line-of-sight."
+    },
+    {
+      "id": "q3",
+      "prompt": "What is the main job of a spotter during an FPV flight?",
+      "options": [
+        "Charging the drone's battery",
+        "Operating the radio on the pilot's behalf",
+        "Watching the drone with the naked eye and warning the pilot about hazards in the surroundings",
+        "Recording the drone's video"
+      ],
+      "answerIndex": 2,
+      "explanation": "While the pilot flies in goggles, the spotter follows the drone visually and verbally warns the pilot about approaching hazards such as people, vehicles, or obstacles."
+    },
+    {
+      "id": "q4",
+      "prompt": "Why do you need a spotter when flying in goggles?",
+      "options": [
+        "Because wearing goggles narrows your field of view and you can't see hazards passing by",
+        "Because flying alone is forbidden but not dangerous",
+        "Because the drone won't take off without a spotter",
+        "Because a spotter extends the battery's life"
+      ],
+      "answerIndex": 0,
+      "explanation": "Goggles only let you focus on the direction the camera is pointing; you can't see a bird, person, or other aircraft approaching from the side. The spotter fills this gap."
+    },
+    {
+      "id": "q5",
+      "prompt": "Which authority regulates drones (UAVs) in Türkiye?",
+      "options": [
+        "TÜBİTAK",
+        "SHGM (Directorate General of Civil Aviation)",
+        "TRT",
+        "Turkish State Meteorological Service"
+      ],
+      "answerIndex": 1,
+      "explanation": "In Türkiye, drone (UAV) rules are set by SHGM (Directorate General of Civil Aviation); registration is also done through iha.shgm.gov.tr."
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "id": "simulatorde-baslama",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Why is it recommended to start in a simulator when learning FPV?",
+      "options": [
+        "Because flying in a simulator is harder than the real thing, so you push yourself",
+        "Because it provides cheap, safe, unlimited practice; if you crash you don't break parts or hurt anyone",
+        "Because flying in a simulator is legally mandatory",
+        "Because real drones won't power on without a simulator"
+      ],
+      "answerIndex": 1,
+      "explanation": "A simulator is free, you can't hurt anyone, and you can repeat endlessly. Having your first crashes here removes both the cost and the stress."
+    },
+    {
+      "id": "q2",
+      "prompt": "Which of the following is NOT a popular FPV simulator?",
+      "options": [
+        "Liftoff",
+        "Velocidrone",
+        "DRL (Drone Racing League) Sim",
+        "Betaflight Configurator"
+      ],
+      "answerIndex": 3,
+      "explanation": "Liftoff, Velocidrone, Uncrashed, and DRL Sim are popular FPV flight simulators. Betaflight Configurator is not a simulator but the configuration software where you connect the drone's flight controller (FC) over USB and set it up."
+    },
+    {
+      "id": "q3",
+      "prompt": "What is the most practical way to use your own FPV radio in a simulator?",
+      "options": [
+        "Connecting the radio over USB and selecting 'USB Joystick' mode",
+        "Not connecting the radio at all and flying with the mouse",
+        "Removing the radio's battery",
+        "Placing your phone on top of the radio"
+      ],
+      "answerIndex": 0,
+      "explanation": "Connecting the radio with a USB cable and selecting 'USB Joystick' mode is the most practical way to present it directly as a joystick without any extra hardware."
+    },
+    {
+      "id": "q4",
+      "prompt": "Why is not calibrating the sticks in a simulator a problem?",
+      "options": [
+        "The simulator won't open at all",
+        "The graphics look broken",
+        "The drone may keep drifting without you releasing the stick, and you build a bad habit from the start",
+        "The radio's battery drains faster"
+      ],
+      "answerIndex": 2,
+      "explanation": "Bad calibration causes the drone to drift even with the sticks centered. This makes you build an incorrect control habit from the very beginning."
+    },
+    {
+      "id": "q5",
+      "prompt": "How does the stick control learned in a simulator transfer to a real drone?",
+      "options": [
+        "It doesn't transfer at all; the simulator teaches a completely different skill",
+        "The same stick movements and reflexes work on a real drone too; muscle memory forms through repetition",
+        "It only works on racing drones, not for freestyle",
+        "It only works if you buy the same brand of drone"
+      ],
+      "answerIndex": 1,
+      "explanation": "The stick feel and muscle memory you build in a simulator transfer directly to a real drone. That's why even professional pilots use simulators for training."
+    }
+  ]
+}

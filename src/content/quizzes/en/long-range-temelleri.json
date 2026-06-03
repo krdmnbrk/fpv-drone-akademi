@@ -1,0 +1,65 @@
+{
+  "id": "long-range-temelleri",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Why is a control link like ELRS preferred for long range?",
+      "options": [
+        "Because it makes the drone lighter",
+        "Because its high receiver sensitivity, very low latency, and flexible packet rate (lower rate = longer reach) provide more reliable long range",
+        "Because it automatically increases video quality",
+        "Because it increases battery capacity"
+      ],
+      "answerIndex": 1,
+      "explanation": "ELRS offers a reliable long-range control link thanks to its high sensitivity, low latency, and adjustable packet rate (longer reach at lower packet rates)."
+    },
+    {
+      "id": "q2",
+      "prompt": "What is the key difference between an omni (omnidirectional) antenna and a directional antenna?",
+      "options": [
+        "Omni is only for video, directional is only for control",
+        "Omni radiates the signal equally in all directions (flexible but limited range in any one direction); directional focuses the signal in a specific direction (much farther in that direction, weak outside it)",
+        "They are exactly the same, only the shapes differ",
+        "A directional antenna is always better in every situation"
+      ],
+      "answerIndex": 1,
+      "explanation": "Omni radiates/receives equally in all directions, is flexible, but limited in range in any one direction. A directional antenna focuses energy in one direction; range increases greatly there but the signal weakens outside it. Diversity combines the two."
+    },
+    {
+      "id": "q3",
+      "prompt": "Why is polarization important for the VTX and goggle antennas?",
+      "options": [
+        "It's not important, any combination works",
+        "They must be the same polarization (e.g. both RHCP); a mismatch (RHCP VTX + LHCP goggles) drastically lowers the signal and nearly kills the range",
+        "Using different polarization increases range",
+        "Polarization only affects the battery"
+      ],
+      "answerIndex": 1,
+      "explanation": "FPV antennas are usually circularly polarized, and the VTX and goggle antennas must be the same polarization. A mismatch seriously lowers the signal; for long range this means the range is gone."
+    },
+    {
+      "id": "q4",
+      "prompt": "How should battery/range planning be done on a long-range flight?",
+      "options": [
+        "Only the outbound distance is calculated, the return is not considered",
+        "You go as fast as possible by pinning the throttle",
+        "Accounting for the round trip (and wind), you fly at an efficient cruise speed and leave plenty of margin for the return; voltage is monitored continuously and you turn back early",
+        "You fly until the battery is completely empty"
+      ],
+      "answerIndex": 2,
+      "explanation": "On long range, an efficient cruise speed extends the range; the return and wind (a tailwind on the way out becomes a headwind on the way back) must be accounted for, and you should turn back early before the voltage runs out."
+    },
+    {
+      "id": "q5",
+      "prompt": "Which statement is most correct about failsafe (the drone's behavior if the link is lost)?",
+      "options": [
+        "It's only needed in racing and unimportant for long range",
+        "It must be set up and tested before flying; an unconfigured/wrong failsafe means the drone flies off uncontrollably when the link is lost and poses a serious hazard",
+        "Failsafe is automatically perfectly configured on every drone, no need to touch it",
+        "Failsafe is a setting that increases the drone's speed"
+      ],
+      "answerIndex": 1,
+      "explanation": "Failsafe determines what happens when the link is lost (cut the motors or return home via GPS). It's vital for long range; it must be set up and tested before flying, or the drone could fly off out of control."
+    }
+  ]
+}

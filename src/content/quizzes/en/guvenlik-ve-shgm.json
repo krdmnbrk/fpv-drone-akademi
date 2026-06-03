@@ -1,0 +1,65 @@
+{
+  "id": "guvenlik-ve-shgm",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "What is the weight threshold that determines the registration requirement for a drone (UAV) in Türkiye, and how should it be weighed?",
+      "options": [
+        "1 kg; weighed without the battery",
+        "500 grams; weighed with the battery (registration is mandatory for 500 g and above)",
+        "2 kg; weighed with the propellers only",
+        "100 grams; weighed with the box"
+      ],
+      "answerIndex": 1,
+      "explanation": "Registration is mandatory for every drone of 500 g and above. The drone should be weighed with the battery installed, because once the LiPo is added, most drones easily cross this threshold."
+    },
+    {
+      "id": "q2",
+      "prompt": "Which UAV category does a typical 5-inch FPV drone fall into, and where is it registered?",
+      "options": [
+        "UAV3 (İHA3); registered with TÜBİTAK",
+        "UAV0 (İHA0); registered through iha.shgm.gov.tr (the UAV Registration System)",
+        "It doesn't fall into any category; no registration needed",
+        "UAV2 (İHA2); registered with the municipality"
+      ],
+      "answerIndex": 1,
+      "explanation": "A 5-inch FPV drone, weighing ~0.5–0.9 kg with the battery, falls into the İHA0 (UAV0) class (500 g–4 kg). Registration is done through iha.shgm.gov.tr for both the device and the pilot."
+    },
+    {
+      "id": "q3",
+      "prompt": "What is the maximum altitude ceiling above ground (AGL) allowed for hobby/sport flying?",
+      "options": [
+        "120 meters (400 feet)",
+        "500 meters",
+        "1 kilometer",
+        "There is no limit"
+      ],
+      "answerIndex": 0,
+      "explanation": "Maximum altitude is limited to 120 meters (400 feet) above ground. Additionally, the drone must not exceed 500 meters horizontally and must stay within the pilot's field of view."
+    },
+    {
+      "id": "q4",
+      "prompt": "Because flying with FPV goggles is not considered visual line-of-sight (VLOS), what is required as a rule?",
+      "options": [
+        "Nothing; there's no extra rule for FPV",
+        "Having a spotter (a UAV observer) who continuously watches the drone with the naked eye",
+        "Carrying a second radio",
+        "Flying at night"
+      ],
+      "answerIndex": 1,
+      "explanation": "In FPV, you look at the drone through a camera, so VLOS isn't maintained. That's why a spotter who follows the drone visually and warns you of hazards is essential."
+    },
+    {
+      "id": "q5",
+      "prompt": "Which of the following is NOT an area where flying without permission is forbidden?",
+      "options": [
+        "An area closer than about 9 km (5 nautical miles) to an airport",
+        "Military zones and prohibited/restricted areas",
+        "Over crowded places such as concerts, rallies, and sports venues",
+        "An empty rural area more than 50 m from people and structures, not near an airport/military/crowd"
+      ],
+      "answerIndex": 3,
+      "explanation": "The area around an airport (≈9 km), military/prohibited zones, and over crowds are forbidden. An empty rural area more than 50 m from people and outside prohibited zones, however, is suitable for a rule-compliant flight."
+    }
+  ]
+}

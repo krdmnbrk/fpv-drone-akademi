@@ -1,0 +1,65 @@
+{
+  "id": "yaris-cizgileri",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "What is the essence of the 'racing line' concept in drone racing?",
+      "options": [
+        "Always following the shortest straight line between gates",
+        "Finishing the track in the shortest time with the smoothest (most flowing) line, preserving momentum",
+        "Reaching the highest instantaneous speed possible",
+        "Skipping as many gates as possible to take a shortcut"
+      ],
+      "answerIndex": 1,
+      "explanation": "The goal isn't the highest instantaneous speed or the shortest straight line, but finishing the whole track fastest with the smoothest line that preserves momentum."
+    },
+    {
+      "id": "q2",
+      "prompt": "Why is a cornered line (hard braking at each gate) usually slower than a smooth line?",
+      "options": [
+        "Because the cornered line is longer",
+        "Because every hard brake destroys accumulated momentum, and regaining it takes time",
+        "Because the drone burns more fuel on a cornered line",
+        "Because the cornered line is forbidden"
+      ],
+      "answerIndex": 1,
+      "explanation": "Hard brake + hard turn + re-accelerate burns momentum. A smooth line carries most of the speed through, so the total time is shorter."
+    },
+    {
+      "id": "q3",
+      "prompt": "What is the ideal situation when exiting a race gate?",
+      "options": [
+        "The drone's nose already being aligned with / pointing at the next gate",
+        "Coming to a complete stop right after the gate",
+        "Turning back to check the gate after each one",
+        "The exit angle doesn't matter at all"
+      ],
+      "answerIndex": 0,
+      "explanation": "Your exit angle from one gate determines your entry line into the next. Ideally you're already aligned with the next target as you exit; a good pilot reads ahead."
+    },
+    {
+      "id": "q4",
+      "prompt": "How should throttle be managed in racing?",
+      "options": [
+        "Held at full throttle (pinned) constantly",
+        "Used only as on or off (on/off)",
+        "Modulated like a tap: opened on straights and eased off smoothly before turns and gates",
+        "Held at a single constant value throughout the entire track"
+      ],
+      "answerIndex": 2,
+      "explanation": "Constant full throttle makes control harder and throws the drone off line. Throttle is modulated like a tap: opened on straights, eased off before turns, and opened again on exit."
+    },
+    {
+      "id": "q5",
+      "prompt": "Why is consistency more valuable than raw speed in racing?",
+      "options": [
+        "Because flying consistently uses less battery",
+        "Because the rules ban speed",
+        "Because a blazing lap followed by a crash/miss means recovery time or a DNF; a clean, repeatable line gives a shorter total time",
+        "Because consistency automatically doubles speed"
+      ],
+      "answerIndex": 2,
+      "explanation": "A pilot who pushes past the limit and crashes every lap finishes later than one who flies a bit slower but clean. Clean, consistent lines first; speed is added on top of that gradually."
+    }
+  ]
+}

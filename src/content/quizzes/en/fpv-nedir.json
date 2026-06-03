@@ -1,0 +1,53 @@
+{
+  "id": "fpv-nedir",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "What does the abbreviation FPV stand for?",
+      "options": [
+        "First Person View",
+        "Fast Propeller Velocity",
+        "Flight Path Vector",
+        "Full Power Voltage"
+      ],
+      "answerIndex": 0,
+      "explanation": "FPV stands for 'First Person View': you fly from the drone's point of view, as if you were inside it."
+    },
+    {
+      "id": "q2",
+      "prompt": "What is the key difference between FPV flying and normal (photography) drone flying?",
+      "options": [
+        "In FPV you look at the drone from above, normally you look through goggles",
+        "In FPV you look through goggles from the drone's point of view, normally you look at the drone from outside/above",
+        "FPV drones can't fly, they only work in a simulator",
+        "They are exactly the same, only the names differ"
+      ],
+      "answerIndex": 1,
+      "explanation": "In FPV you look at the image the camera sends (through goggles); with a normal drone you look at the drone itself from the ground."
+    },
+    {
+      "id": "q3",
+      "prompt": "Which part of an FPV setup brings the image in front of the pilot's eyes?",
+      "options": [
+        "The propellers",
+        "The battery (LiPo)",
+        "The goggles",
+        "The frame"
+      ],
+      "answerIndex": 2,
+      "explanation": "The goggles capture the live image the VTX sends over the air and bring it in front of your eyes. The name 'FPV' comes precisely from this."
+    },
+    {
+      "id": "q4",
+      "prompt": "Which of the following is NOT one of the THREE basic components that make an FPV flight possible?",
+      "options": [
+        "The drone itself (frame, motors, FC, battery)",
+        "The camera + video transmitter (VTX)",
+        "The goggles + the radio",
+        "The GPS module"
+      ],
+      "answerIndex": 3,
+      "explanation": "The FPV video/control chain is made up of the drone, the camera+VTX, and the goggles+radio. A GPS module is a real drone part, but it's not a basic requirement for flying FPV; most freestyle/racing drones fly without GPS (GPS is added more for functions like position/'return to home')."
+    }
+  ]
+}

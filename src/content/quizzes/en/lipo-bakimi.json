@@ -1,0 +1,65 @@
+{
+  "id": "lipo-bakimi",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "What are the nominal and fully-charged voltages of a LiPo cell, respectively?",
+      "options": [
+        "Nominal 3.7V, full 4.2V",
+        "Nominal 4.2V, full 5.0V",
+        "Nominal 3.0V, full 3.5V",
+        "Nominal 1.5V, full 2.0V"
+      ],
+      "answerIndex": 0,
+      "explanation": "A LiPo cell is nominally 3.7V (the value written on the label) and is charged to a maximum of 4.2V when full. Going above 4.2V is dangerous."
+    },
+    {
+      "id": "q2",
+      "prompt": "When you finish a flight and land, what should the resting (after the load is removed) voltage of a healthy LiPo cell be roughly, and what is the absolute damage threshold?",
+      "options": [
+        "~4.2V at rest; damage threshold 3.7V",
+        "~3.7-3.8V at rest; absolute damage threshold 3.0V (never go below it)",
+        "~2.0V at rest; damage threshold 1.0V",
+        "~5.0V at rest; damage threshold 4.0V"
+      ],
+      "answerIndex": 1,
+      "explanation": "A healthy landing target is ~3.7-3.8V per cell at rest. Under load (when you pin the throttle) the voltage can momentarily sag to ~3.5V, but it recovers once the load is removed. 3.0V is NOT a flight target but the absolute damage threshold you must never go below; over-discharging below it causes permanent damage. Land when the alarm sounds."
+    },
+    {
+      "id": "q3",
+      "prompt": "If you won't use the battery for more than a few days, at what level (storage voltage) should you store it?",
+      "options": [
+        "Fully charged, 4.2V per cell",
+        "Fully empty, 3.0V per cell",
+        "Approximately 3.8V per cell",
+        "5.0V per cell"
+      ],
+      "answerIndex": 2,
+      "explanation": "LiPos last longest at a storage voltage of ~3.8V per cell. Leaving them fully charged or fully empty ages them quickly and can cause swelling."
+    },
+    {
+      "id": "q4",
+      "prompt": "To charge a 1500mAh LiPo at the safe standard rate of 1C, what current do you use?",
+      "options": [
+        "0.15A",
+        "1.5A",
+        "15A",
+        "150A"
+      ],
+      "answerIndex": 1,
+      "explanation": "1C means a current equal to the capacity. Since 1500mAh = 1.5Ah, the 1C charge current is 1.5A. When in doubt, using 1C is the safest."
+    },
+    {
+      "id": "q5",
+      "prompt": "What should you do with a swollen (puffed) or crash-damaged LiPo?",
+      "options": [
+        "Throw it in the regular trash",
+        "Keep using it in flight",
+        "Stop flying it, secure it in a LiPo-safe bag, and take it to a special waste/recycling point (don't throw it in the trash)",
+        "Fix it by charging it at a higher current"
+      ],
+      "answerIndex": 2,
+      "explanation": "A swollen/damaged LiPo is at the end of its life and can catch fire; don't fly it and don't throw it in the regular trash. Secure it in a LiPo-safe bag and take it to a special waste/recycling point."
+    }
+  ]
+}

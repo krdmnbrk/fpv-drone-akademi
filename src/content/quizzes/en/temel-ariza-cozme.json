@@ -1,0 +1,65 @@
+{
+  "id": "temel-ariza-cozme",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "If the drone won't arm, what is the most reliable way to find out why?",
+      "options": [
+        "Swapping random parts",
+        "Replacing the battery",
+        "Connecting to Betaflight and looking at the arming flags (arm disable reasons) on the Setup screen; Betaflight tells you the reason directly",
+        "Removing the propellers"
+      ],
+      "answerIndex": 2,
+      "explanation": "Betaflight shows the reasons preventing arming in the arming flag list (for example THROTTLE, ANGLE, RX_FAILSAFE). Connecting and looking at the flags is the fastest fix, instead of guessing."
+    },
+    {
+      "id": "q2",
+      "prompt": "If only the 'THROTTLE' arming flag is lit in Betaflight, what is the fix?",
+      "options": [
+        "Pulling the throttle stick all the way down (to zero)",
+        "Installing a new motor",
+        "Changing the antenna",
+        "Resetting the PID values"
+      ],
+      "answerIndex": 0,
+      "explanation": "The THROTTLE flag indicates the throttle stick is up. For arming, throttle must be all the way down (at zero); pulling the stick to zero solves it."
+    },
+    {
+      "id": "q3",
+      "prompt": "If the drone shakes in the air, what should be checked first, before touching the PID settings?",
+      "options": [
+        "The goggle channel",
+        "Mechanical causes such as the propellers (damaged/unbalanced prop, loose nut) and the motor",
+        "The brand of the battery",
+        "The color of the radio"
+      ],
+      "answerIndex": 1,
+      "explanation": "The most common cause of shaking is a damaged/unbalanced propeller. The classic beginner mistake is to skip the mechanics and fiddle with the PIDs; check the prop/nut/motor first."
+    },
+    {
+      "id": "q4",
+      "prompt": "If the goggle image is snowy or doesn't come through at all, what is the most common cause of video problems?",
+      "options": [
+        "The battery being too full",
+        "The propellers being installed incorrectly",
+        "The goggles being on a different channel from the VTX (channel/frequency mismatch) or an antenna problem",
+        "The throttle stick being up"
+      ],
+      "answerIndex": 2,
+      "explanation": "Video problems are in the video chain: the most common cause is the goggles and VTX not being on the same channel; a loose/broken antenna also degrades the image. (Powering the VTX without an antenna can burn the VTX.)"
+    },
+    {
+      "id": "q5",
+      "prompt": "What is the golden rule of troubleshooting?",
+      "options": [
+        "Changing as many things as possible at the same time",
+        "Changing only one thing at a time and testing, so you know what worked",
+        "Waiting without changing anything",
+        "Ignoring the problem"
+      ],
+      "answerIndex": 1,
+      "explanation": "The one-variable approach: change one thing at a time and test. If you change many things at once, even if the problem goes away you won't know which one fixed it."
+    }
+  ]
+}

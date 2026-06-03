@@ -1,0 +1,109 @@
+---
+id: guvenlik-ve-shgm
+track: flight
+level: beginner
+order: 8
+title: "Safety + Türkiye's SHGM rules"
+summary: "Summarizes the SHGM/İHA rules you need to know before flying FPV in Türkiye (categories, registration, altitude, VLOS/spotter, restricted zones) and provides a pre-flight safety checklist."
+estimatedMinutes: 11
+objectives:
+  - "Be able to explain Türkiye's İHA weight categories and the 500 g registration threshold"
+  - "Be able to summarize the 120 m altitude ceiling, the VLOS/spotter rule, and no-fly zones"
+  - "Know how to use a safety checklist to apply before every flight"
+prerequisites: ["gorus-mesafesi-vs-fpv"]
+quizId: guvenlik-ve-shgm
+---
+
+You've nailed the hover in the simulator. Before you go out into the real world, the last and most important thing you need to learn is the **responsibility** part of flying rather than the **technical** part: behaving safely and following the rules in Türkiye.
+
+In Türkiye the official name for a drone is <KeyTerm en="Unmanned Aerial Vehicle">İHA (İnsansız Hava Aracı)</KeyTerm>, and its rules are set by <KeyTerm en="Directorate General of Civil Aviation">SHGM (the Directorate General of Civil Aviation)</KeyTerm>. The summary below gathers the key points for hobby/sport FPV.
+
+<Callout type="warning">
+This lesson is a **summary** and is not legal advice. The rules can change. For the detailed, verified text of the regulations, see the project's regulation document: `regulations/shgm.mdx`. Before flying, always confirm the current rules from official sources: **shgm.gov.tr** and **iha.shgm.gov.tr**.
+</Callout>
+
+## 1. Weight categories and the 500-gram threshold
+
+İHAs are divided into classes by their maximum takeoff weight. The first two are the ones that matter for you:
+
+| Category | Maximum takeoff weight |
+|---|---|
+| **İHA0** | 500 g (inclusive) – 4 kg |
+| **İHA1** | 4 kg (inclusive) – 25 kg |
+
+A typical 5-inch FPV drone (around 0.5–0.9 kg with the battery) almost always falls into the **İHA0** class.
+
+<Callout type="info">
+**The 500-gram threshold is critical.** Drones **under 500 g** with the battery (e.g. a small "tiny whoop") are outside the scope of the regulation and do not require registration. For every drone of **500 g and above**, however, **registration is mandatory.** Always weigh your drone **with the battery installed**; once you add the LiPo, most drones easily pass this threshold.
+</Callout>
+
+## 2. The registration requirement — where?
+
+Anyone who buys or flies a drone weighing **500 g and above** is required to register it:
+
+- Both the **device** (drone) and the **pilot** are registered in the system.
+- Registration is done through **iha.shgm.gov.tr** (the İHA Registration System).
+- Hobby/sport İHA0 pilots must be at least **12 years old** (those under 18 require a legal guardian's commitment).
+
+## 3. Altitude, distance, and the VLOS/spotter rule
+
+When flying recreationally in areas that are not no-fly zones and do not require permission:
+
+- **Maximum altitude:** Do not go above **120 meters (400 feet)** above ground level (AGL).
+- **Horizontal distance:** The drone should not exceed **500 meters** horizontally and must stay **within the pilot's field of view.**
+- **From people/structures:** Fly at least **50 meters** away.
+- Fly **only in daylight** and in conditions with at least 2 km of visibility.
+
+And the most critical point for FPV (we covered this in the "Line of sight vs FPV" lesson):
+
+<Callout type="warning">
+**Flying with FPV goggles does not count as direct visual line of sight (VLOS)**, because you look at the drone through a camera rather than with the naked eye. Since Türkiye's rules treat FPV as outside VLOS, the **safest and most regulation-compliant** way to satisfy the field-of-view requirement is to keep a **spotter (visual observer / İHA observer)** who **continuously watches the drone with the naked eye.** Don't put on goggles and fly alone; have a spotter beside you who warns you of hazards in the surroundings.
+</Callout>
+
+## 4. No-fly zones
+
+Without permission, it is forbidden to fly in the following places, **regardless of class**:
+
+- **Near airports:** Within an area closer than **5 nautical miles (≈ 9 km)** from the nearest runway edge.
+- **Over crowded areas:** Populated places like settlements, concerts/rallies/sports venues, and other places with dense crowds.
+- **Military zones** and restricted/prohibited/dangerous areas.
+- Over **private property**, without the owner's permission.
+
+<Callout type="warning">
+Flying near an airport, over a military zone, or over a crowd is both illegal and very dangerous. **When in doubt, don't fly.** For zones requiring permission, the application depends on the favorable opinion of SHGM and the relevant authorities.
+</Callout>
+
+## 5. Pre-flight safety checklist
+
+Before every real flight, before you head out to the area and before you take off, review the following. This list ensures both that you comply with the rules and that you fly safely:
+
+**Rules (SHGM):**
+
+- [ ] How many grams is my drone **with the battery**? (Registration required if over 500 g)
+- [ ] Am I registered in the İHA Registration System (**iha.shgm.gov.tr**) as device + pilot?
+- [ ] Is the place I'll fly **more than 9 km from an airport**; is it **outside** any crowded/military/no-fly area?
+- [ ] Is it **daylight** with at least 2 km of visibility? Will I stay under **120 m** altitude and **500 m** horizontal distance?
+- [ ] Am I at least **50 m** away from people and structures?
+- [ ] Do I have a **spotter** beside me tracking the drone by eye?
+
+**Hardware and safety:**
+
+- [ ] Are the **propellers** sound, crack-free, and firmly attached? (If I did any testing/tuning, did I reattach them?)
+- [ ] Is the **battery** charged, not swollen, and seated firmly in place?
+- [ ] Is the **radio** charged; is the drone disarmed with the sticks centered?
+- [ ] Is the **failsafe** set correctly (will the drone stop safely if the link drops)?
+- [ ] Do I know my **arming switch**, and is my "disarm if it goes wrong" reflex ready?
+
+<Callout type="tip">
+Apply this list on every flight — even experienced pilots do. A single loose propeller or swollen battery can turn an entire flying day into an accident. The checklist is the whole answer to "why it matters when flying": because catching a mistake **before getting airborne** is always safer than catching it in the air.
+</Callout>
+
+<DemoPlaceholder title="Pre-flight checklist" note="An interactive checklist animation: the pilot checks off weight/registration, area (airport distance on a map), spotter, propellers, battery, and failsafe items in turn. When all are green, a 'READY TO FLY' badge appears; if an item is missing, a red warning. Let the user see why each item matters." />
+
+## Congratulations — you've completed the beginner track
+
+You started with what FPV is; you learned flight modes, the simulator, arming, throttle, and hovering; and now you know how to fly safely and within the rules. From here it continues with plenty of practice (in the simulator first!) and getting to know the hardware more closely.
+
+<Callout type="info">
+**Summary:** In Türkiye, drone = İHA, and SHGM sets the rules. **Registration is mandatory above 500 g** (iha.shgm.gov.tr). Ceiling **120 m**, horizontal **500 m**, **50 m** from people, daylight only. **FPV = not VLOS → a spotter is required.** Flying near airports (9 km), over military zones, and over crowds is **forbidden.** Apply your **checklist** before every flight, and see `regulations/shgm.mdx` and **shgm.gov.tr** for details. Now the final mini quiz!
+</Callout>

@@ -1,0 +1,73 @@
+---
+id: ucus-modlari
+track: flight
+level: beginner
+order: 3
+title: "Flight modes (Angle / Horizon / Acro)"
+summary: "Introduces the three basic FPV flight modes (Angle, Horizon, Acro) and explains which one a beginner should start with."
+estimatedMinutes: 10
+objectives:
+  - "Be able to explain the core difference between Angle, Horizon, and Acro modes"
+  - "Understand what the concept of self-leveling means"
+  - "Be able to state the order in which a beginner should learn the modes"
+prerequisites: ["fpv-nedir"]
+quizId: ucus-modlari
+---
+
+The "brain" of your FPV drone, the flight controller (FC), determines how the drone behaves based on a **flight mode**. The mode changes what the drone does when you let go of the stick. There are three basic modes, and the difference between them comes down to a single question:
+
+> **"When I center the stick, does the drone level itself out, or does it stay at the angle I last gave it?"**
+
+This is called <KeyTerm en="self-leveling">self-leveling</KeyTerm>.
+
+## 1. Angle mode (the easiest)
+
+<KeyTerm en="Angle mode">Angle mode</KeyTerm> is a full **self-leveling** mode. It has two characteristics:
+
+- The more you tilt the stick, the more the drone leans, but there is a **maximum tilt limit** (it can't lean too far).
+- **The moment you release the stick, the drone levels itself out** and tries to hold its position in the air.
+
+This is how photo drones behave, and it's the most forgiving mode for a beginner: if you panic and let go of the sticks, the drone recovers itself.
+
+<Callout type="tip">
+If you're just starting out, **begin with Angle mode.** Having the drone correct itself when you release the stick gives you a lot of confidence during your first hover and first flights.
+</Callout>
+
+## 2. Horizon mode (the in-between step)
+
+<KeyTerm en="Horizon mode">Horizon mode</KeyTerm> is a bridge: it mostly **self-levels** like Angle, but when you push the stick all the way, it **lets you** do a flip/roll.
+
+So normally the drone protects you (it levels out when you let go), but when you say "I want to do a flip now," it doesn't stop you. It's used to safely get a taste of acrobatics before moving to Acro.
+
+## 3. Acro mode (real FPV)
+
+<KeyTerm en="Acro mode (rate mode)">Acro mode</KeyTerm> (sometimes also called "rate mode") **does not self-level.** Here the stick controls not the angle but the **rate of rotation**:
+
+- If you tilt the stick, the drone rotates; **when you release it, it does not level — it stays at the last angle.**
+- If you want it to stay level, **you** have to level it yourself.
+
+It sounds hard — and at first it is. But all freestyle and racing flying is done in Acro mode, because it gives you **full control** over the drone: figures like power loops, dives, and split-S are only possible here. FPV's smooth, limitless feeling comes from Acro.
+
+<Callout type="warning">
+In Acro mode the drone won't save you. If you let go of the stick, it won't stay level; it will remain tilted and may crash. That's why instead of **jumping straight into Acro**, you need to practice a lot in a simulator first.
+</Callout>
+
+## The three modes side by side
+
+| Mode | When you release the stick | Can it flip? | Who it's for |
+|---|---|---|---|
+| **Angle** | Levels itself, holds position | No (tilt limited) | Beginner |
+| **Horizon** | Usually levels | Yes (push stick all the way) | Transitioning |
+| **Acro** | Doesn't level, stays at the last angle | Yes (fully free) | Freestyle / racing |
+
+<DemoPlaceholder title="The same maneuver, in three modes" note="Three small drones side by side receive the same 'tilt right and release' command. Angle: tilts and immediately levels. Horizon: tilts, and when pushed to the limit it flips. Acro: tilts and stays tilted (crashes if the pilot doesn't correct it). Let the user move the stick themselves and feel the difference." />
+
+## Learning order (recommended)
+
+1. Start with **Angle** — learn to hold position and get a feel for throttle and direction safely.
+2. If you like, try your first flips with **Horizon**.
+3. When you feel confident, move to **Acro** — but in the **simulator** first. In Acro, crashing dozens of times in the simulator instead of breaking a real drone is both free and instructive.
+
+<Callout type="info">
+**Summary:** Angle = self-levels (easiest). Horizon = levels but can flip. Acro = doesn't level, full control (freestyle/racing). A beginner starts with **Angle** and prepares for Acro in the simulator. The next lesson is exactly that: getting started in a simulator. First, a mini quiz!
+</Callout>

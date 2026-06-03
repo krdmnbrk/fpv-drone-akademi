@@ -1,0 +1,65 @@
+{
+  "id": "betaflight-giris",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "What is Betaflight?",
+      "options": [
+        "A brand of FPV goggles",
+        "The open-source flight firmware used on most FPV drones, and the interface (Configurator) used to set it up",
+        "A battery charger",
+        "A drone racing league"
+      ],
+      "answerIndex": 1,
+      "explanation": "Betaflight is the open-source flight firmware that runs on the FC. Betaflight Configurator is the interface where you connect the FC over USB and view/change settings."
+    },
+    {
+      "id": "q2",
+      "prompt": "What is the most important safety step to take before running a motor test (the Motors tab)?",
+      "options": [
+        "Removing the propellers",
+        "Putting on the goggles",
+        "Making sure the battery is fully charged",
+        "Taking the drone outside"
+      ],
+      "answerIndex": 0,
+      "explanation": "Before a motor test, the propellers MUST be removed. If a motor spins unexpectedly with propellers attached, serious injury can result. This is a safety rule that is never skipped."
+    },
+    {
+      "id": "q3",
+      "prompt": "In which tab do you confirm that the stick movements from the radio (roll/pitch/yaw/throttle) are being read in the correct direction?",
+      "options": [
+        "Motors",
+        "Ports",
+        "Receiver",
+        "Setup"
+      ],
+      "answerIndex": 2,
+      "explanation": "In the Receiver tab, you move the sticks and confirm the on-screen bars move in the correct direction. This way you make sure the radio is being read correctly."
+    },
+    {
+      "id": "q4",
+      "prompt": "Where in Betaflight do you set which switch arms the drone or selects the flight mode (Angle/Acro)?",
+      "options": [
+        "The Setup tab",
+        "The Modes tab",
+        "The Ports tab",
+        "The Motors tab"
+      ],
+      "answerIndex": 1,
+      "explanation": "In the Modes tab, you assign flight modes and switch bindings: which switch arms and which selects Angle/Acro is defined here."
+    },
+    {
+      "id": "q5",
+      "prompt": "Why is it important to catch motors spinning in the wrong order or wrong direction in Betaflight while props are off?",
+      "options": [
+        "Because the wrong order/direction causes the drone to flip and crash immediately on takeoff; catching this on the ground, props off, is much safer",
+        "Because the wrong direction makes the battery explode",
+        "Because motors don't spin without propellers",
+        "Because Betaflight won't open without propellers"
+      ],
+      "answerIndex": 0,
+      "explanation": "If the motor order/direction is wrong, the drone flips immediately on takeoff. Catching this with the props removed while the drone is on the ground is both safe and saves the drone from being broken."
+    }
+  ]
+}

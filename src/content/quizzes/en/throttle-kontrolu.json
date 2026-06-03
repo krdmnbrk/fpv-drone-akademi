@@ -1,0 +1,65 @@
+{
+  "id": "throttle-kontrolu",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "What does throttle control on a drone?",
+      "options": [
+        "The drone's color",
+        "The speed of the motors, that is, the thrust produced and therefore climb/descent",
+        "The camera angle",
+        "Only the direction of rotation"
+      ],
+      "answerIndex": 1,
+      "explanation": "Throttle determines how fast the motors spin. More thrust makes the drone climb, less thrust makes it descend."
+    },
+    {
+      "id": "q2",
+      "prompt": "What is the hover throttle point?",
+      "options": [
+        "The point where throttle is at the very top",
+        "The point where the motors stop",
+        "The throttle level where thrust equals the drone's weight and the drone stays suspended in the air",
+        "The point where the battery dies"
+      ],
+      "answerIndex": 2,
+      "explanation": "Hover throttle is the balance point where thrust equals weight and the drone neither climbs nor descends. On FPV drones it's usually a bit below the middle."
+    },
+    {
+      "id": "q3",
+      "prompt": "What do you need to do with the throttle to stay at a given altitude?",
+      "options": [
+        "Push the throttle up once and release it; the drone stays at that altitude",
+        "Keep the throttle continuously at the hover (balance) point; if you release it, the drone descends",
+        "Cut the throttle completely",
+        "Leave the throttle fully open"
+      ],
+      "answerIndex": 1,
+      "explanation": "Throttle isn't a command that takes the drone to an altitude; it sets how fast it climbs or descends. To hold altitude you must keep the throttle at the balance point."
+    },
+    {
+      "id": "q4",
+      "prompt": "What is the most common mistake beginners make with the throttle?",
+      "options": [
+        "Treating the throttle like a switch, fully on and fully off (abrupt throttle)",
+        "Never using the throttle",
+        "Changing the throttle too slowly",
+        "Using the throttle only when landing"
+      ],
+      "answerIndex": 0,
+      "explanation": "Slamming the throttle to the bottom or top suddenly slams the drone into the ground or flings it uncontrollably. The correct way is smooth, gradual throttle."
+    },
+    {
+      "id": "q5",
+      "prompt": "Why do you need to use the throttle smoothly and gradually?",
+      "options": [
+        "Because abrupt throttle makes the battery explode",
+        "Because power is abundant in FPV; even a small throttle change has a big effect, and abrupt throttle bounces and flings the drone",
+        "Because smooth throttle makes the drone fly faster",
+        "Because the rules require smooth throttle"
+      ],
+      "answerIndex": 1,
+      "explanation": "FPV drones are very powerful for their weight; a small throttle change has a big effect. Smooth, gradual inputs keep the drone controlled and 'locked in.'"
+    }
+  ]
+}

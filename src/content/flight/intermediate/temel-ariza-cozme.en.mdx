@@ -1,0 +1,114 @@
+---
+id: temel-ariza-cozme
+track: flight
+level: intermediate
+order: 6
+title: "Basic troubleshooting"
+summary: "Teaches how to solve common problems like failure to arm, motor vibration, and video loss using a systematic, one-variable-at-a-time approach."
+estimatedMinutes: 13
+objectives:
+  - "Be able to interpret and solve why the drone won't arm (arming flags)"
+  - "Recognize the likely causes of motor vibration, prop imbalance, and video loss"
+  - "Be able to solve faults with a one-variable, systematic method"
+prerequisites: ["betaflight-giris", "lipo-bakimi"]
+quizId: temel-ariza-cozme
+---
+
+Every pilot sooner or later runs into a problem: the drone won't arm, it shakes in the air, or the image disappears in the goggles. The good news: most of these problems come down to a few common causes, and with a **systematic** approach you can usually solve them on your own.
+
+## 1. The drone won't arm
+
+This is the most common problem. Fortunately, Betaflight **tells you the reason directly.** You connect the Configurator and on the Setup screen you see a list of <KeyTerm en="arming flags">arming flags</KeyTerm> (arming blockers) — the drone won't arm until these blockers are cleared.
+
+The most common arming blockers and what they mean:
+
+- **THROTTLE** — The throttle stick is up. For arming, the throttle must be **all the way down (at zero)**.
+- **ANGLE / tilt** — The drone is sitting too tilted. Place it on a level surface.
+- **ARM_SWITCH** — The arm switch is already in the on position while the drone is being connected. Turn the switch off first.
+- **NO_GYRO / MSP / RX_FAILSAFE** — A problem with the sensor, USB connection, or receiver/radio. (For example, if the radio is off, RX_FAILSAFE appears — turn the radio on.)
+- **CRASH / RPMFILTER, etc.** — A problem detected on a previous flight or a hardware warning.
+
+<Callout type="tip">
+If the drone won't arm, **don't guess — connect and look at the flags.** Betaflight almost always tells you the exact reason. For example, if only "THROTTLE" is lit, the fix is to pull the throttle stick to zero. This is the easiest win in troubleshooting.
+</Callout>
+
+## 2. Motor vibration / propeller imbalance
+
+If the drone shakes, "buzzes," or makes a strange noise while airborne, there's usually a physical cause. Before touching the software (PID), **check the mechanics first:**
+
+- **Damaged/unbalanced propeller:** The most common cause. A propeller that's nicked, cracked, or has a bent blade creates imbalance (vibration). Check each propeller; **replace** the suspect one (this is the cheapest and most frequent fix).
+- **Loose propeller nut:** If a propeller isn't seated tightly, it vibrates. Check the nuts.
+- **Bent motor shaft or damaged motor:** A motor shaft may have bent after a crash; suspect this if the motor feels rough/notchy when turned by hand.
+- **Loose mounting:** If the FC or motors are loose, vibration carries into the sensors.
+
+<Callout type="warning">
+Vibration usually **starts with the propeller**, not the PID. A classic beginner mistake is tinkering with PID for hours without noticing an unbalanced propeller. Replace the propeller first; the problem usually ends there.
+</Callout>
+
+## 3. Video loss
+
+If the image cuts out, gets snowy (static/snow), or never comes through in the goggles, the problem is in the **video chain** (camera → VTX → antenna → goggles):
+
+- **Channel/frequency mismatch:** Your goggles and your VTX must be on the **same channel**. This is the most common cause — set the goggles to the VTX's channel (or run an auto-scan in the goggles).
+- **Antenna issue:** A loose, broken, or unattached antenna ruins the image. <Callout type="warning">Powering up (transmitting with) the VTX **without an antenna attached** can burn out the VTX. Always keep the antenna connected.</Callout>
+- **Range/obstacle:** If you got too far away or there's a building/tree in between, the signal weakens and the image gets snowy.
+- **VTX power/heat:** If the VTX is loosely connected or has overheated, the image may cut out.
+
+## Failsafe: setup and testing
+
+What happens if, while flying, the radio link between the radio and the drone drops (you got too far away, the antenna got shadowed, the radio turned off)? The safety behavior that kicks in when the drone can't receive commands is called <KeyTerm en="failsafe">failsafe</KeyTerm>. A drone with an incorrectly configured failsafe can **fly off uncontrollably on its last throttle command** when the link drops — so failsafe setup and testing is one of the most critical safety topics.
+
+### RX failsafe vs FC failsafe
+
+Failsafe actually works in two layers, and it's important not to mix them up:
+
+- **RX failsafe (receiver side):** The receiver (RX) decides what to send to the FC when it loses the signal. In modern ELRS/CRSF setups, the correct behavior is for the receiver to pass the "no signal" information to the FC (rather than freezing the channel values at some fake position). So on the receiver, the failsafe mode should be **"No Pulses" / "pass on the signal-lost information."**
+- **FC failsafe (Betaflight side):** The FC makes the actual safety decision. When the "no signal" information arrives from the receiver, Betaflight's Failsafe setting kicks in and determines what the drone will do.
+
+<Callout type="info">
+Think of the logic this way: the **receiver** just says "link dropped"; the **FC** makes the "then do this" decision. A safe setup is built on the receiver passing the correct information and the FC giving a safe response.
+</Callout>
+
+### The Betaflight Failsafe tab
+
+In the **Failsafe** tab of Betaflight Configurator you make the basic choice:
+
+- **Drop (the default and safest starting point):** When the link drops it stops the motors instantly (disarm). The drone falls where it is. It's the safest option for close range and for beginners, because the drone can't fly off uncontrollably.
+- **GPS Rescue (optional):** If you have a GPS module and proper setup, the drone automatically tries to return to its takeoff point when the link drops. It's useful but requires correct setup and a GPS fix; if misconfigured, it creates its own risk. At the start, stick with **Drop.**
+
+Failsafe works in two stages: **Stage 1** is a very short "maybe the signal comes back" wait/smoothing moment (the drone briefly tries to level out); if the signal doesn't return, **Stage 2** kicks in and applies the actual behavior you chose (Drop or GPS Rescue). Stage 1 is kept very short; the goal is to not drop immediately on a momentary glitch, but also not to be late on a real disconnection.
+
+<Callout type="warning">
+**ALWAYS test failsafe without propellers.** Never fly without verifying that your failsafe setting actually works. Test it like this: **(1)** REMOVE the propellers. **(2)** Disconnect the drone from USB and plug in the battery. **(3)** Arm the drone (propeller-less, the motors may spin). **(4)** Turn the radio OFF. **(5)** Observe that within a few seconds the drone **disarms** on its own and the motors stop. If the motors don't stop or it shoots to full throttle, the failsafe is set up incorrectly — don't fly until you fix it. Repeat this test after every new setup.
+</Callout>
+
+## Turtle mode (recovering a flipped-over drone)
+
+If the drone ends up upside down (inverted) after a crash, you'd normally have to walk over and flip it by hand. <KeyTerm en="turtle mode / flip-over-after-crash">Turtle mode</KeyTerm> (sometimes called "flip-over-after-crash") is exactly what helps here: assigned to a switch in Betaflight's Modes tab, this mode spins the motors **in reverse** and at different power levels to flip the drone back to its correct side.
+
+- After a crash with the drone inverted, flip the turtle mode switch on, then slowly apply throttle to "roll" the drone back to the right side.
+- Once it's righted, turn turtle mode off and return to normal flight (or disarm).
+
+<Callout type="tip">
+Turtle mode lets you take off again without having to walk over and pick up a distant crashed drone — very handy in racing and freestyle. Still, because the **propellers rub against the ground while spinning in reverse**, they can wear; use it carefully on hard/rough ground and do it when no one is around.
+</Callout>
+
+## The golden rule: the one-variable approach
+
+At the foundation of all troubleshooting lies a single principle:
+
+<Callout type="info">
+**Change only one thing at a time, then test.** If you simultaneously replace the propeller, change the PID, and move the antenna, even if the problem goes away you'll never know **which** one fixed it. One change → test → see the result → next change. This patient method solves even the most complex faults step by step.
+</Callout>
+
+Think of the systematic flow like this:
+
+1. **Clarify the symptom.** What exactly is happening? (Won't it arm? Does it shake in the air? Does the image cut out?)
+2. **Start with the most likely/simplest cause.** (For an arming problem, look at the flags; for shaking, check the propeller; for video, check the channel.)
+3. **Make one change, test.** If it's fixed, you found the cause; if not, undo that change and move to the next.
+
+<DemoPlaceholder title="Systematic fault tree" note="A three-branch decision tree animation: 'Won't arm' → show the arming flags → solve them one by one. 'Shaking' → check propeller→nut→motor in order. 'No video' → check channel→antenna→range in order. At every step, 'change one variable, test' flashes for emphasis. Let the user pick a symptom and follow the steps." />
+
+<Callout type="info">
+**Summary:** If it won't arm, look at the arming flags in Betaflight (THROTTLE, ANGLE, ARM_SWITCH, RX_FAILSAFE...). For shaking, check the mechanics first — propeller/nut/motor — and touch PID last. For video loss, check channel matching, antenna, and range (never power up the VTX without an antenna). Always change one variable at a time and test. Now a mini quiz!
+</Callout>

@@ -1,0 +1,97 @@
+---
+id: kendi-drone-kurma-lehimleme
+track: flight
+level: advanced
+order: 3
+title: "Building and soldering your own drone"
+summary: "Explains the basics of building an FPV drone from scratch: part compatibility (frame/motor/ESC/FC matching), safe soldering, an ordered assembly, and a smoke check with a smoke-stopper before first power-up."
+estimatedMinutes: 14
+objectives:
+  - "Be able to explain how the frame, motor, ESC, and FC are chosen to be compatible with each other"
+  - "Be able to state the basic rules of safe soldering (ventilation, temperature, solder)"
+  - "Be able to list the logical (ordered) assembly steps of a drone"
+  - "Understand why a smoke-stopper / smoke check before first power-up is vital"
+prerequisites: ["temel-ariza-cozme"]
+quizId: kendi-drone-kurma-lehimleme
+---
+
+Flying an off-the-shelf drone is nice, but FPV's real freedom is **building your own drone**: you choose the parts, you solder, you configure. This lesson is not a step-by-step assembly guide; it gives you the **right mindset** and the **safety fundamentals**, because this is where the most common mistakes are made.
+
+## 1. Part compatibility: everything is connected
+
+A drone is not a random collection of parts thrown together. The **frame, motor, ESC, and FC** must be chosen to be compatible like a team. A single mismatch can ruin the entire build.
+
+<PartHighlight part="frame" />
+
+Everything starts with the **frame**, because the frame determines which **propeller size** you'll use (e.g. a 5-inch frame → 5-inch propellers). The propeller size then cascades into the motor and battery choice. Also, the frame's **FC mounting standard** (most commonly 30.5x30.5 mm) must match your electronics; expecting 30.5 and buying a 20x20 frame means the parts won't fit.
+
+<PartHighlight part="motors" />
+
+The **motors** are chosen based on the **cell count (S)** of the battery you use. A motor's speed is referred to by its KV: as the battery voltage increases (e.g. from 4S to 6S) the motor spins faster, so on 6S you choose a **lower KV.** A wrong match (e.g. too high a KV on 6S) burns out the motor and the ESC.
+
+<PartHighlight part="esc" />
+
+On the **ESC**, the most critical value is the **current capacity (amps)**: the current the ESC can deliver must be **higher** than the peak current the motors will draw (leaving headroom is safer). Also, its supported battery cell range (e.g. 3-6S) must match your motor/battery.
+
+<PartHighlight part="fc" />
+
+The **FC** (flight controller) must be in the same **mounting standard** as the frame and have enough **UARTs** for the devices you'll connect (receiver, VTX, GPS). Often the FC and ESC are sold together as a compatible **"stack"**; for a beginner this is the safest route.
+
+<Callout type="tip">
+Practical rule: **decide on the frame and propeller size first**, then follow the chain: propeller → motor (+ battery S) → ESC (current) → FC (mounting + UART). If you're unsure, basing it on a compatible FC+ESC "stack" sold together and a ready-made "build list" greatly reduces the risk of incompatibility.
+</Callout>
+
+## 2. Soldering safety
+
+The heart of the build is **soldering**: joining the parts electrically. Good solder means safe and reliable flight; bad solder means a connection failure in the air or a fire.
+
+When working with <KeyTerm en="solder">solder</KeyTerm> and a soldering iron (the tip), the basic safety rules:
+
+- **Ventilation:** Don't breathe in solder fumes directly (especially rosin/flux fumes); work in a ventilated environment and, if possible, with a fume extractor/fan.
+- **Temperature:** Keep the iron hot enough (a range of ~320-360 °C is typical). An iron that's **too cold** makes a "cold joint" (dull, cracked, weak connection); one that's **too hot** lifts the pad or burns the part. The goal: heat the pad quickly, flow the solder, and **pull away** — don't linger.
+- **Solder:** In hobby electronics, rosin-core (fluxed) solder is used. A good joint looks **shiny and concave**; solder that's blobby, dull, or peaked is suspect.
+- **Safety:** Never leave a hot iron unattended; protect your eyes from solder splatter; wash your hands after working (especially if you use leaded solder).
+
+<Callout type="warning">
+**A cold joint is an insidious danger.** A connection that looks solid on the ground but is actually weak can break under flight vibration and current; that means a power loss or connection fault in the air. After making each joint, gently tug/check it — is it shiny and solid?
+</Callout>
+
+<DemoPlaceholder title="Good joint vs cold joint" note="Close-up of two pads: on the left a shiny, concave, smooth 'good' joint; on the right a dull, blobby, peaked 'cold' joint. Beside them, an iron temperature gauge: too low = cold joint, too high = lifted pad. Highlight the correct range." />
+
+## 3. Ordered (logical) assembly
+
+You don't assemble at random; you go from **easiest access to hardest.** A typical order:
+
+1. **Preparation:** Lay out all parts, soldering equipment, and the build list in front of you. Check compatibility one last time.
+2. **Screw the motors to the frame** (watch the screw length — too long a screw cuts into the motor winding).
+3. **Place the ESC**, solder the motor wires to the ESC; solder the battery power lead and (if present) the capacitor to the ESC.
+4. **Mount the FC on top of the ESC** as a stack (with vibration dampers), connect the ESC-FC cable.
+5. **Connect the receiver (RX) and VTX** to the correct UARTs on the FC (TX-RX crossed!), watching the power lines.
+6. **Place the camera** in the front cage, the antenna at the back; tidy up the wires.
+7. **Install the propellers last** — and do the first tests **propeller-less.**
+
+<Callout type="warning">
+**Always install the propellers last and absolutely do the first power-up/tests propeller-less.** A motor that accidentally arms and spins with a propeller attached can severely cut your finger. Testing (motor direction, settings) is done with the propellers removed.
+</Callout>
+
+## 4. First power-up: smoke-stopper and smoke check
+
+You've soldered and assembled — but plugging in the battery **directly** is the riskiest moment. If there's a reverse polarity or short circuit somewhere, the LiPo instantly delivers a very high current and the parts **burn with smoke** (or even catch fire).
+
+This is exactly why a <KeyTerm en="smoke stopper">smoke stopper</KeyTerm> is used at first power-up: a small protective device connected between the battery and the drone that limits the current. If there's a fault, the smoke stopper restricts the current; instead of burning, the parts merely "give a warning" (a light comes on / no power passes through). This way you catch an expensive mistake **without smoke.**
+
+The logic of a <KeyTerm en="smoke check">smoke check</KeyTerm>:
+
+1. **Visual inspection:** Before plugging in the battery, look it over by eye — is there a reverse joint, an exposed wire end, pads touching each other? Is the capacitor's polarity (+/-) correct?
+2. **First power through the smoke-stopper:** Apply the battery not directly but through the smoke-stopper. If there's an abnormal condition (a smoke-stopper warning, heating, odor), **immediately** disconnect and find the fault.
+3. **If everything is normal:** If the smoke-stopper shows no problem, connect to the computer and do the settings (Betaflight), check the motor directions **propeller-less**, and only when everything is correct, go out to the field.
+
+<Callout type="warning">
+Reverse polarity (soldering the battery +/- backwards) is the most common mistake that kills a drone **instantly.** Never make the first connection directly at full current; a smoke-stopper is a few seconds of work but prevents hundreds of dollars of electronics (and a fire risk).
+</Callout>
+
+<DemoPlaceholder title="First power-up with a smoke-stopper" note="Diagram: battery → smoke-stopper → drone. Two scenarios: (1) If there's a short/reverse polarity, the smoke-stopper lights up red and cuts the current, the drone is safe. (2) If everything is correct, it lights up green and power passes normally. Also show, with a 'don't' frame, how connecting directly (without a smoke-stopper) burns the parts." />
+
+<Callout type="info">
+**Summary:** Start with the frame, follow the compatibility chain (propeller → motor + battery S → ESC current → FC mounting/UART). Solder in a ventilated environment, at the right temperature, shiny and solid; avoid cold joints. Assemble in order, **propellers last.** Do the first power-up **with a smoke-stopper**, passing the smoke check — catch reverse polarity without smoke. Now a mini quiz!
+</Callout>

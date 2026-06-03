@@ -1,0 +1,65 @@
+{
+  "id": "ucus-modlari",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "What is the core question that distinguishes the three flight modes?",
+      "options": [
+        "What color is the drone?",
+        "When you center the stick, does the drone level itself, or does it hold the last angle?",
+        "How many cells is the battery?",
+        "How many inches are the propellers?"
+      ],
+      "answerIndex": 1,
+      "explanation": "The difference between the modes is about self-leveling: whether the drone levels itself when you release the stick is what defines the mode."
+    },
+    {
+      "id": "q2",
+      "prompt": "In Angle mode, what does the drone do when you center the stick?",
+      "options": [
+        "It levels itself out and tries to hold its position in the air",
+        "It stays tilted at the last angle you commanded",
+        "It immediately lands",
+        "It starts flipping continuously"
+      ],
+      "answerIndex": 0,
+      "explanation": "Angle is a fully self-leveling mode: when you release the stick, the drone levels itself. That's why it is the most forgiving mode for a beginner."
+    },
+    {
+      "id": "q3",
+      "prompt": "What is the defining feature of Acro mode?",
+      "options": [
+        "It automatically returns the drone home",
+        "It self-levels and prevents flips",
+        "It does not self-level; when you release the stick the drone holds the last angle",
+        "It only works indoors"
+      ],
+      "answerIndex": 2,
+      "explanation": "Acro (rate) mode does not self-level: the stick controls rotation rate, and when you release it the drone holds the last angle. The pilot must correct it to keep it level."
+    },
+    {
+      "id": "q4",
+      "prompt": "Why are all freestyle and racing flights done in Acro mode?",
+      "options": [
+        "Because Acro mode uses less battery",
+        "Because Acro gives full control over the drone and makes maneuvers like power loops, dives, and split-S possible",
+        "Because the drone never crashes in Acro mode",
+        "Because the other modes are forbidden"
+      ],
+      "answerIndex": 1,
+      "explanation": "Because Acro controls rotation rate rather than tilt, it gives full control over the drone; acrobatic maneuvers are only possible in this mode."
+    },
+    {
+      "id": "q5",
+      "prompt": "What is the recommended learning order for a beginner?",
+      "options": [
+        "Starting directly on a real drone in Acro mode",
+        "Acro first, then Angle",
+        "Start with Angle, then Horizon, and finally move to Acro after preparing in a simulator",
+        "Learning only Horizon mode is enough"
+      ],
+      "answerIndex": 2,
+      "explanation": "Angle first (the most forgiving), Horizon for your first flips if you like, and finally moving to Acro after plenty of simulator practice is the safest and most effective order."
+    }
+  ]
+}

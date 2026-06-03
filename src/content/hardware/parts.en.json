@@ -1,0 +1,168 @@
+[
+  {
+    "id": "frame",
+    "name": "Frame / Chassis",
+    "meshName": "frame",
+    "order": 1,
+    "whatItDoes": "The frame is the skeleton onto which you mount all of the drone's parts. It holds the motors, flight controller, battery, and camera together, and absorbs impacts in a crash to protect the electronics. Its size is usually referred to by the motor-to-motor diagonal distance (wheelbase, in mm); a typical freestyle frame using 5-inch propellers is in the ~220 mm class (roughly 210-230 mm).",
+    "howToChoose": "Choose a frame based on the propeller size you'll run (e.g. a 5-inch frame for 5-inch props). The material is almost always carbon fiber; arm thickness determines durability (5-6 mm arms are common for freestyle). Pay attention to the standard FC mounting hole spacing: 30.5x30.5 mm is the most common, while micro class uses 20x20 mm. Being able to replace arms one at a time when they break is a big advantage.",
+    "howItConnects": "The FC and ESC are stacked layer by layer in the frame's center (the center stack) and isolated from vibration with rubber dampers (gummies). The motors bolt to the ends of the arms. The camera sits in the front cage (camera mount), while the VTX antenna sticks out from the rear protector.",
+    "commonMistakes": [
+      "Choosing the wrong FC mounting standard (expecting 30.5x30.5 mm but buying a 20x20 mm frame) so the parts don't fit.",
+      "Choosing thin/cheap carbon arms and breaking the frame on the first serious crash; if you're going to do freestyle, thick arms are a must.",
+      "Working bare-handed/without a mask around carbon dust; carbon dust is harmful to the skin and to breathing."
+    ],
+    "relatedLessonIds": ["kendi-drone-kurma-lehimleme"]
+  },
+  {
+    "id": "motors",
+    "name": "Motors",
+    "meshName": "motors",
+    "order": 2,
+    "whatItDoes": "The motors spin the propellers to produce thrust; a quadcopter has four. FPV uses brushless motors: there are no brushes/commutator, the ESC spins the motor with a three-phase signal. The unit that measures speed is KV: KV is the no-load rotational speed per volt (RPM). High KV = faster rotation, less torque; low KV = slower rotation, more torque.",
+    "howToChoose": "Motor size is given by a 4-digit code (e.g. 2207): the first two digits are the stator diameter, the last two are the stator height (mm). For a 5-inch freestyle build you typically pick 2207 size with ~2400-2700 KV on a 4S battery, or ~1700-1950 KV on a 6S battery. As the battery cell count (S) goes up, you lower the KV, otherwise the motor over-revs and overheats. Matching the propeller size is essential.",
+    "howItConnects": "Each motor has three wires that are soldered to the corresponding ESC (or plugged in with a connector). If any two of the three wires are swapped, the motor spins the opposite direction; the spin direction can also be set in software from Betaflight. The motor is fastened to the frame arm from below with screws.",
+    "commonMistakes": [
+      "Choosing the wrong KV for the battery cell count (e.g. using 2700 KV on 6S) and burning up the motor/ESC.",
+      "Choosing a motor screw that's too long and having it reach the windings; the screw goes into the motor, cuts a winding, and ruins the motor.",
+      "Trying to fly without checking the spin direction; a motor spinning the wrong way flips the drone instantly."
+    ],
+    "relatedLessonIds": ["throttle-kontrolu", "ilk-hover", "kendi-drone-kurma-lehimleme"]
+  },
+  {
+    "id": "esc",
+    "name": "ESC (Electronic Speed Controller)",
+    "meshName": "esc",
+    "order": 3,
+    "whatItDoes": "The ESC (Electronic Speed Controller) converts the direct current (DC) from the battery into the three-phase signal a brushless motor needs, and adjusts the motor's speed thousands of times per second. It's the part that turns the FC's command (e.g. 'spin this motor at 60% power') into power. On most drones today, the four ESCs are combined onto a single board: this is called a 4-in-1 ESC.",
+    "howToChoose": "The most critical value is current capacity (amps, A): the continuous current the ESC can deliver should be higher than the peak current the motors will draw. For the 5-inch class, a 45A-60A 4-in-1 ESC is typical; leaving headroom is safer. Check the supported battery cell range (e.g. 3-6S). On the firmware side, the current landscape is: at entry level, **BLHeli_S** hardware is very common and is generally used by flashing the open-source **Bluejay** firmware (for better performance/features). At the higher end, the open-source **AM32** is effectively becoming the new standard. The once-popular closed-source **BLHeli_32 has effectively been discontinued**; when buying new, it's more future-proof to choose an **AM32-capable** ESC over BLHeli_32. Support for a speed-command protocol (**especially DShot600**) is important.",
+    "howItConnects": "The battery (+/-) is soldered to the ESC; a capacitor that smooths voltage spikes is usually added here too. The motor wires connect to the ESC's motor pads. The ESC usually communicates with the FC over a single ribbon cable (an 8-pin connector) and receives speed commands via the DShot digital protocol.",
+    "commonMistakes": [
+      "Choosing an ESC with low current capacity; when the motor peak current exceeds the ESC, the ESC burns out (lets out smoke).",
+      "Soldering the battery polarity (+/-) backwards; reverse polarity kills the ESC instantly.",
+      "Skipping the voltage-protecting capacitor; voltage spikes damage both the ESC and the video image."
+    ],
+    "relatedLessonIds": ["throttle-kontrolu", "temel-ariza-cozme", "kendi-drone-kurma-lehimleme"]
+  },
+  {
+    "id": "fc",
+    "name": "Flight Controller (FC)",
+    "meshName": "fc",
+    "order": 4,
+    "whatItDoes": "The FC (Flight Controller) is the drone's brain. Its motion sensor inside (gyro + accelerometer, i.e. the IMU) measures how much the drone is tilting and rotating thousands of times per second; the FC combines this data with the command from the radio, decides 'how much should each motor spin,' and passes that to the ESC. It runs flight software (firmware) such as Betaflight.",
+    "howToChoose": "Look at the processor class: modern FCs use F4, F7, or the more powerful H7 processor (H7 is the fastest). The mounting standard must be compatible with the frame (usually 30.5x30.5 mm). The UART count matters: each device such as the receiver, VTX, and GPS needs a UART. An OSD chip (which overlays telemetry on the screen) and built-in blackbox (flight log) memory are pluses. Many FCs are sold together with the ESC as a 'stack.'",
+    "howItConnects": "The FC is mounted in the frame's center with vibration dampers. It connects to the ESC with an 8-pin cable, to the receiver over a UART (usually the CRSF protocol), and to the VTX over a UART + power. It distributes the voltage coming from the battery to the other parts (e.g. 5V, 9V) via a voltage regulator. It's connected to a computer through the USB port and configured in Betaflight.",
+    "commonMistakes": [
+      "Mounting the FC rigidly without vibration isolation; the gyro 'picks up' the vibration, the flight feel degrades, and the motors heat up.",
+      "Connecting the TX and RX lines backwards; the receiver isn't recognized (TX-RX is crossed on a UART).",
+      "Connecting a device to the wrong voltage output (e.g. feeding a 5V device directly with battery voltage) and burning out the device."
+    ],
+    "relatedLessonIds": ["betaflight-giris", "pid-rates-temel", "tuning", "temel-ariza-cozme"]
+  },
+  {
+    "id": "fpv-camera",
+    "name": "FPV Camera",
+    "meshName": "fpv-camera",
+    "order": 5,
+    "whatItDoes": "The FPV camera is the pilot's eyes: it captures the view in front of the drone in real time and sends it to the VTX. Very low latency is essential in FPV, so these cameras are designed for instant transmission, not for recording (a separate action camera does the recording). There are two big worlds: analog cameras and digital-system cameras (e.g. DJI, Walksnail).",
+    "howToChoose": "On the analog side, the sensor and image processor (e.g. CCD/CMOS, wide dynamic range WDR) determine the day-night balance. One of the most critical features is the lens field of view (FOV) and the sensor aspect ratio: 4:3 is compatible with classic analog goggles, 16:9 with some digital systems. If you're going to choose a digital system, the camera, VTX, and goggles should usually be from the same ecosystem (the same brand).",
+    "howItConnects": "An analog camera feeds its video signal (usually a single video wire) to the VTX and is powered through the FC; most FCs also overlay OSD information between the camera and the VTX. In a digital system, the camera connects to the digital VTX unit with a system-specific cable. The camera is mounted in the frame's front cage at a certain upward angle (uptilt); the higher the speed, the more uptilt is used.",
+    "commonMistakes": [
+      "Mixing digital ecosystems (e.g. trying to pair one brand's camera with another brand's goggles) — they're incompatible.",
+      "Leaving the camera angle (uptilt) at zero and flying fast; at high speed you end up staring at the sky.",
+      "Powering the camera with the wrong voltage; each camera's accepted voltage range (e.g. 5V or a wide range) is different."
+    ],
+    "relatedLessonIds": ["fpv-nedir"]
+  },
+  {
+    "id": "vtx",
+    "name": "Video Transmitter + Antenna (VTX)",
+    "meshName": "vtx",
+    "order": 6,
+    "whatItDoes": "The VTX (Video Transmitter) is the transmitter that sends the image from the camera wirelessly to the goggles; it works together with an antenna. Analog FPV almost always transmits on the 5.8 GHz band over specific channels. Transmit power is measured in mW (milliwatts) and affects range.",
+    "howToChoose": "The power level should be adjustable: 25 mW is ideal for indoor/close range and for racing (low heat, low interference), 200-600 mW is a balanced choice for outdoor freestyle, and higher levels are for long range. Antenna polarization is the most critical topic: FPV uses circularly polarized antennas, and the most common standard is an RHCP (right-hand circular) antenna + RHCP goggle antenna. The VTX and goggle antenna must be the same polarization, otherwise the range drops dramatically.",
+    "howItConnects": "The VTX receives the video signal from the camera and the power and control (channel/power setting) signal from the FC; in a modern build, the FC manages the VTX over a UART (e.g. SmartAudio/Tramp). The antenna plugs into the VTX's output (usually an MMCX/U.FL/SMA connector) and is routed out the back of the frame.",
+    "commonMistakes": [
+      "Powering the VTX without an antenna attached; transmitting without an antenna can burn out the VTX's output stage — antenna first, then power.",
+      "Not matching the VTX and goggle antenna polarization (e.g. RHCP VTX + LHCP goggles); the signal drops 20-30 dB and the range is nearly gone.",
+      "Using more power/channels than are permitted in your country; it's both illegal and disrupts other pilots' video feeds."
+    ],
+    "relatedLessonIds": ["fpv-nedir", "long-range-temelleri", "temel-ariza-cozme"]
+  },
+  {
+    "id": "rx",
+    "name": "Receiver (RX)",
+    "meshName": "rx",
+    "order": 7,
+    "whatItDoes": "The RX (Receiver) is the part that captures the control commands sent over the air from the pilot's radio and passes them to the FC. The radio transmits signals like 'left throttle, right pitch'; the receiver picks them up and the FC instantly translates them into motor commands. The control link is a separate RF system from the video link.",
+    "howToChoose": "It must be compatible with the protocol of your radio. Today the most common open standard is ExpressLRS (ELRS); it offers very low latency and high range. The frequency band is fixed by the hardware: 2.4 GHz is the most common entry band, while 868/915 MHz is a separate module (longer range but lower packet rate/higher latency) and is chosen at purchase — it can't be changed later. Note: in Türkiye, 900 MHz use may be legally restricted. The data protocol between the receiver and FC is usually CRSF; the antenna type (linear dipole) affects RF performance.",
+    "howItConnects": "The receiver connects to the FC over a UART (TX/RX lines crossed) and with power (usually 5V); CRSF is selected as the Serial RX in the FC. The radio and receiver are 'bound' (paired) for the first time — in ELRS this is usually done with a binding phrase/password. The receiver antenna must not be covered by metal/carbon and should remain exposed.",
+    "commonMistakes": [
+      "Mixing up the radio and receiver protocols (e.g. buying a different-protocol receiver for an ELRS radio) — it won't bind.",
+      "Connecting the TX-RX lines backwards or to the wrong UART; no data comes from the receiver.",
+      "Hiding the antenna under the carbon frame; range drops and the link can be lost mid-flight — which means failsafe."
+    ],
+    "relatedLessonIds": ["arming-disarming", "long-range-temelleri", "temel-ariza-cozme"]
+  },
+  {
+    "id": "propellers",
+    "name": "Propellers (props)",
+    "meshName": "propellers",
+    "order": 8,
+    "whatItDoes": "Propellers produce thrust by spinning and pushing air; a quadcopter has four. Two spin clockwise and two counterclockwise — this prevents the drone from spinning uncontrollably around itself (it balances the torque). Propellers are the drone's most consumable part: they're the first to break in a crash (and this is intentional, it protects the motor).",
+    "howToChoose": "Size is given by two numbers: diameter x pitch, in inches (e.g. 5x4.3, meaning 5-inch diameter, 4.3-inch pitch). As diameter increases, thrust increases; as pitch increases, the propeller 'advances' more per revolution, meaning faster but more current draw. The blade count also matters: 3-blade (tri-blade) is common in freestyle (balance/thrust), 2-blade is efficient and fast. It should be chosen to match the frame, motor KV, and battery.",
+    "howItConnects": "Propellers are fastened to the motor shaft with a nut. Very critical: you must put the right propeller (CW or CCW) on the right motor; following Betaflight's motor direction/order diagram is essential. The direction of rotation on top of the propeller is usually marked with an arrow or an 'R' marking.",
+    "commonMistakes": [
+      "Putting CW/CCW propellers on the wrong motors; the drone flips on takeoff or won't lift off at all.",
+      "Flying with a propeller that has an invisible crack from a crash; an unbalanced propeller creates severe vibration and loss of control — when in doubt, replace it.",
+      "Arming/testing the motors with propellers attached; a propeller cuts fingers badly — testing is always done props-off."
+    ],
+    "relatedLessonIds": ["throttle-kontrolu", "ilk-hover", "arming-disarming", "betaflight-giris", "kendi-drone-kurma-lehimleme"]
+  },
+  {
+    "id": "lipo",
+    "name": "LiPo Battery",
+    "meshName": "lipo",
+    "order": 9,
+    "whatItDoes": "A LiPo (lithium-polymer) battery is the energy source that can deliver very high current to an FPV drone in a short time. A single cell's (cell, 'S') nominal voltage is 3.7 V; fully charged it's 4.2 V. In flight, don't take a cell below ~3.5 V under load (~3.7 V at rest); 3.0 V is NOT a flight target but the absolute damage threshold — going below it risks permanent damage/fire. When cells are connected in series, the voltages add up: 4S = 4 x 3.7 = 14.8 V nominal (16.8 V full), 6S = 22.2 V nominal (25.2 V full).",
+    "howToChoose": "Look at three values: the cell count (S) must match the motor/ESC (5-inch freestyle is mostly 6S today, was 4S in the past); capacity in mAh determines flight time (e.g. 1300-1500 mAh, typical for 5-inch); the discharge rate 'C' is the instantaneous current capability (e.g. 100C x 1.3 Ah = 130 A peak). A high C means the voltage drops less (less 'sag') when current is drawn. Also set the charge current based on capacity (1C is usually safe).",
+    "howItConnects": "The battery is plugged into the ESC/FC power input with the main power cable (the XT60 connector is standard in the 5-inch class). For balanced charging there's also a balance plug (JST-XH); the LiPo charger equalizes each cell individually. It's secured to the drone with a strap (velcro strap).",
+    "commonMistakes": [
+      "Discharging a cell below 3.0 V or charging it above 4.2 V; this causes permanent damage, capacity loss, and fire risk.",
+      "Storing the battery full (4.2 V/cell); if it will be stored for a long time, bring it to the ~3.8 V per cell 'storage' voltage.",
+      "Using/charging a swollen (puffed), punctured, or impact-damaged LiPo; these are flammable — keep it in a safe bag (LiPo-safe bag) and dispose of it safely with the salt-water method.",
+      "Soldering the connector backwards/causing a short; a LiPo delivers very high current in a short and can catch fire."
+    ],
+    "relatedLessonIds": ["lipo-bakimi", "long-range-temelleri", "guvenlik-ve-shgm"]
+  },
+  {
+    "id": "goggles",
+    "name": "FPV Goggles",
+    "meshName": "goggles",
+    "order": 10,
+    "whatItDoes": "FPV goggles are the head-worn display that brings the live image the VTX sends in front of the pilot's eyes. This is where the name 'First Person View' comes from: you fly as if you were inside the drone. Inside is a video receiver (VRX); in analog goggles a module captures the signal, in digital goggles the system has its own receiver.",
+    "howToChoose": "Decide between analog and digital: analog is cheap, has the lowest latency, gets 'snowy' when there's interference but the image doesn't cut out; digital (e.g. DJI, Walksnail) is very clear but more expensive and ties you to an ecosystem. In analog goggles, a replaceable receiver module and a diversity antenna increase range. As for goggle type, there are 'box' (single screen, cheap) and 'goggle' (two separate screens, compact) options; the IPD (interpupillary distance) adjustment is important for clarity.",
+    "howItConnects": "The goggles aren't connected by any cable to the drone; they're entirely wireless and capture the VTX's transmission with their antennas. With analog goggles you must set the channel you use to the same channel as the VTX. The goggles are powered by their own small battery. Most goggles can also record the image via DVR.",
+    "commonMistakes": [
+      "Setting the goggles and VTX to different channels/bands; you see a black screen (the signal doesn't match).",
+      "Not choosing the goggle antenna with the same polarization as the VTX (RHCP/LHCP confusion); the range drops a lot.",
+      "Being so absorbed in FPV while flying that you don't observe your surroundings/other people; this is why a spotter is recommended — in Türkiye, FPV doesn't count as direct line-of-sight flight."
+    ],
+    "relatedLessonIds": ["fpv-nedir", "gorus-mesafesi-vs-fpv"]
+  },
+  {
+    "id": "radio",
+    "name": "Radio / Transmitter",
+    "meshName": "radio",
+    "order": 11,
+    "whatItDoes": "The radio (transmitter) is the handheld device the pilot uses to control the drone. It has two sticks: in the typical 'Mode 2' layout, the left stick controls throttle and yaw, and the right stick controls pitch and roll. The radio transmits these commands over RF; the receiver (RX) on the drone picks them up. It has switches that set things like arming, flight mode, and the VTX.",
+    "howToChoose": "The radio's RF protocol must be compatible with the receiver; today the most popular open standard is ExpressLRS (ELRS) (with a built-in transmitter or one that plugs into a module bay). Software-wise, EdgeTX/OpenTX provide flexibility. Gimbal (stick mechanism) quality determines control precision: hall-sensor gimbals are more precise and longer-lasting. Ergonomics and switch count are personal preference.",
+    "howItConnects": "The radio itself isn't connected to the drone by a cable; it communicates with the receiver (RX) over the air. On first use, the radio and receiver are 'bound' (paired). You practice without a real drone by connecting it to a simulator via USB or a wireless dongle. The stick layout (Mode 1/2) and switch assignments are configured in the radio's software.",
+    "commonMistakes": [
+      "Protocol incompatibility (e.g. an ELRS radio + a different-protocol receiver); it won't bind.",
+      "Trying to fly without setting up the arming/disarming switch, or setting it wrong; uncontrolled arming is dangerous.",
+      "Taking off when the radio battery is about to die; if the radio shuts off, the drone goes into failsafe — check the charge before flying."
+    ],
+    "relatedLessonIds": ["simulatorde-baslama", "arming-disarming", "throttle-kontrolu"]
+  }
+]

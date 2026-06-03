@@ -1,0 +1,81 @@
+---
+id: arming-disarming
+track: flight
+level: beginner
+order: 5
+title: "Arming (activating the motors)"
+summary: "Explains the arm/disarm concept, the arming switch (AUX channel), safety rules like prop-off, when the motors start spinning, and an intuition for failsafe."
+estimatedMinutes: 9
+objectives:
+  - "Be able to explain what arming and disarming mean"
+  - "Know the role of the arming switch (AUX channel) and the basic safety rules"
+  - "Understand why safety measures like the prop-off test and failsafe are important"
+prerequisites: ["simulatorde-baslama"]
+quizId: arming-disarming
+---
+
+Your simulator is open and your radio is connected. Before you launch the drone, the first thing you need to learn is how the motors "wake up." This process is called **arming.**
+
+- <KeyTerm en="arm">Arm</KeyTerm> = putting the motors into the **active (ready-to-fly)** state. After arming, the motors spin when you apply throttle.
+- <KeyTerm en="disarm">Disarm</KeyTerm> = **locking (stopping) the motors**. While disarmed, the motors won't spin even if you apply throttle.
+
+A drone is always either armed or disarmed. Think of it like a car's ignition: with the ignition off (disarmed), the car won't move even if you press the gas; once you turn the ignition on (armed), the vehicle starts responding to commands.
+
+## What is an arming switch? (AUX channel)
+
+To arm/disarm the drone, you use a button (usually a switch) on the radio. This is assigned to one of the radio's auxiliary channels, called <KeyTerm en="AUX channel">AUX channels</KeyTerm>.
+
+Besides the radio's two main sticks (throttle/steering), there are **AUX channels** for extra buttons and switches. You set one of them as the "arming switch": flip the switch up and the drone arms, pull it down and it disarms.
+
+<Callout type="tip">
+Binding arming to a dedicated switch is very important, because it gives you the power to **disarm instantly**. If something goes wrong — the drone gets out of control or heads in a dangerous direction — flipping that switch off stops the motors right then. This is the single most important safety reflex in FPV.
+</Callout>
+
+## Safety rules: take the propellers off FIRST
+
+On a real drone, while the motors are spinning the propellers are like sharp blades; they spin thousands of revolutions per second and can cause serious injury. Therefore:
+
+<Callout type="warning">
+**Golden rule: REMOVE THE PROPELLERS before you start building, configuring, or testing.** When you're going to test your drone on the bench, configure it, or arm it for the first time to watch the motors spin, the propellers **must not be installed.** A motor spinning without a propeller is harmless.
+</Callout>
+
+This is called the <KeyTerm en="prop-off test">prop-off test</KeyTerm>: removing the propellers and arming the drone to safely check that the motors spin in the right direction without issues. This way you can see the motors actually spin and respond to the radio without harming anyone.
+
+A few more safety habits:
+
+- **Always stay away from the drone and from people before arming.** The instant you arm, the motors may start spinning at low RPM.
+- **Disarm as soon as you're done.** Leaving a drone "armed" even on the ground is risky.
+- **Plug in the battery last, unplug it first.** (We cover this in detail in the hardware lessons.)
+
+## When do the motors start spinning?
+
+This is what confuses beginners the most. The sequence is:
+
+1. The drone is **disarmed** — the motors **don't spin** even if you apply throttle.
+2. You flip the arming switch → the drone is **armed**.
+3. With default settings, most drones start spinning the motors at a **very low RPM** (idle) the moment they arm, even with throttle at zero; this means "I'm ready." (In some Betaflight settings the motors don't spin when armed — that's also normal.)
+4. When you apply throttle, the RPM increases and the drone takes off.
+
+<Callout type="info">
+So the motors wake up not with throttle but **at the moment of arming**. That's why seeing "I armed it and the motors slowly started spinning" is normal and a good sign — it means the drone is waiting for commands. Never try this on the bench with the propellers attached.
+</Callout>
+
+## An intuition for failsafe
+
+But what if, while flying, the connection between the radio and the drone is lost (you got too far away, the signal dropped)? This is where <KeyTerm en="failsafe">failsafe</KeyTerm> comes in.
+
+Failsafe is the safety behavior the drone performs automatically when it "loses the radio." For a beginner, the most common and safest failsafe setting is this: **if the connection is lost, stop the motors immediately (disarm/drop).** This way, instead of flying off uncontrollably, an out-of-control drone falls where it is.
+
+<Callout type="warning">
+Grasp the logic of failsafe now: if the radio link drops, you **don't want the drone to fly off out of control.** On your first flights, the safest behavior is for the motors to cut when the signal is lost. You'll do the detailed setup later; for now, getting the intuition is enough.
+</Callout>
+
+<DemoPlaceholder title="Arm / disarm and the prop-off test" note="Two scenes: (1) The AUX switch on the radio is flipped up, the drone shows 'ARMED' and the propeller-less motors start spinning slowly; when the switch is pulled down it shows 'DISARMED' and the motors stop. (2) A side panel highlights a 'PROPELLERS REMOVED' badge. Let the user feel the arm/disarm transition." />
+
+## What's next?
+
+Now you know how to activate the motors safely. The next lesson teaches you what determines how much power you give those motors: **throttle control.**
+
+<Callout type="info">
+**Summary:** Arm = activate the motors, disarm = lock them. Arming is bound to a switch on an AUX channel and gives you the power to disarm instantly. Remove the propellers (prop-off) before testing/configuring. The motors wake up at the moment of arming, not with throttle. Failsafe safely stops the drone when the connection drops. Now a mini quiz!
+</Callout>

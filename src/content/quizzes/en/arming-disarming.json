@@ -1,0 +1,65 @@
+{
+  "id": "arming-disarming",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "What does it mean to 'arm' a drone?",
+      "options": [
+        "Making the motors active (ready to fly); when you apply throttle, the motors spin",
+        "Charging the drone's battery",
+        "Removing the propellers",
+        "Turning off the drone and putting it back in its box"
+      ],
+      "answerIndex": 0,
+      "explanation": "Arming activates the motors: once armed, the motors spin when you apply throttle. Disarming locks the motors (they won't spin even if you apply throttle)."
+    },
+    {
+      "id": "q2",
+      "prompt": "Where is the arming switch usually assigned on the radio, and why is it important?",
+      "options": [
+        "To the throttle stick; it protects the battery",
+        "To a switch on an AUX (auxiliary) channel; it gives you the power to disarm instantly",
+        "To the screen brightness button; it sharpens the image",
+        "It isn't assigned anywhere; arming is automatic"
+      ],
+      "answerIndex": 1,
+      "explanation": "Arming is bound to a switch on an AUX channel. If something goes wrong, you can flip that switch off and stop the motors instantly; this is the most important safety reflex."
+    },
+    {
+      "id": "q3",
+      "prompt": "What is the most important safety rule when testing a drone on the bench or arming it for the first time?",
+      "options": [
+        "Keeping the battery fully charged",
+        "Removing the propellers first (prop-off testing)",
+        "Turning off the room lights",
+        "Disconnecting the radio from the computer"
+      ],
+      "answerIndex": 1,
+      "explanation": "Spinning propellers are like sharp blades. Removing the propellers before testing/setup (prop-off) lets you safely see the motors spin without hurting anyone."
+    },
+    {
+      "id": "q4",
+      "prompt": "On most drones, when do the motors start spinning?",
+      "options": [
+        "Only when the throttle is fully open",
+        "As soon as the battery is plugged in, before arming",
+        "At the moment of arming, even at zero throttle, at a very low idle speed",
+        "Never; the propellers are turned by hand"
+      ],
+      "answerIndex": 2,
+      "explanation": "The motors 'wake up' at the moment of arming, not with throttle. It's normal for them to start spinning at a low idle even at zero throttle once armed, showing the drone is awaiting commands."
+    },
+    {
+      "id": "q5",
+      "prompt": "If the link between the radio and the drone is lost while flying, what is the safest failsafe behavior for a beginner?",
+      "options": [
+        "The drone continuing to fly forward at full throttle",
+        "The motors stopping, so that the drone falls where it is instead of flying away uncontrollably",
+        "The drone automatically ejecting its propellers",
+        "Nothing; the drone keeps flying the same way"
+      ],
+      "answerIndex": 1,
+      "explanation": "Failsafe kicks in when the link is lost. The safest behavior is for the motors to cut, so an out-of-control drone drops instead of flying off into the distance."
+    }
+  ]
+}

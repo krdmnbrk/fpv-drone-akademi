@@ -1,0 +1,91 @@
+---
+id: tuning
+track: flight
+level: advanced
+order: 4
+title: "Tuning (PID/filter fine-tuning)"
+summary: "Explains when PID and filter tuning is needed, the intuition behind blackbox, how PID changes affect flight feel, the filter-versus-latency balance, and the importance of progressing in small steps."
+estimatedMinutes: 13
+objectives:
+  - "Be able to state when tuning is needed and when it's unnecessary"
+  - "Be able to explain what a blackbox recording is for and what kind of intuition it provides"
+  - "Understand in broad strokes how PID changes affect flight feel"
+  - "Grasp the balance between filtering and latency, and the importance of progressing in small steps"
+prerequisites: ["pid-rates-temel", "kendi-drone-kurma-lehimleme"]
+quizId: tuning
+---
+
+You've built your own drone and you know the PID/rate concepts. <KeyTerm en="tuning">Tuning</KeyTerm> is bringing the drone's flight behavior to the feel you want, through fine-tuning in software (Betaflight). But let's start with the most important message:
+
+<Callout type="tip">
+The **default (stock) settings** of modern flight firmware **are already very good for most drones.** Tuning is not "a mandatory step on every drone," but is for **solving a problem** or perfecting an already good flight. If you're just starting out: fly with the defaults first, and if there's no problem, don't touch it.
+</Callout>
+
+## When is tuning needed?
+
+You turn to tuning not blindly, but when you see a **symptom.** Typical signs:
+
+- **Vibration / oscillation:** The drone shakes in the air, "buzzes" while accelerating or under throttle, the motors overheat.
+- **Blurry / jello-like video:** A vibration-induced wobble in the image (jello) — usually a filter/vibration issue.
+- **Unresponsive or overly responsive feel:** The drone responds late to commands, or it's too twitchy/jumpy.
+- **Hardware change:** If you switched to a very different motor/propeller/frame, the default tune may no longer be ideal.
+
+<Callout type="warning">
+Before starting to tune, **address mechanical problems.** A bent/cracked propeller, a loose motor screw, a poorly balanced part, or a loose frame is the real cause of most vibrations that look like a "PID problem." Make sure the hardware is clean before trying to fix it in software.
+</Callout>
+
+## Blackbox: not blindly, but with data
+
+<KeyTerm en="blackbox">Blackbox</KeyTerm> is a "black box recorder" that logs all the data inside the drone during flight (gyro motion, motor outputs, commands) thousands of times per second. Afterwards you can review this recording on a computer and see **what happened and when.**
+
+The intuition blackbox gives you is this: instead of trying to "feel," you **see.** For example:
+
+- How well do the drone's requested motion (setpoint) and its actual motion (gyro) overlap?
+- At what frequency is the vibration? (This tells you which filter is needed.)
+- Are the motors working needlessly (constantly making corrections)?
+
+<DemoPlaceholder title="Blackbox: setpoint vs gyro" note="A graph animation: a 'setpoint' line (what the pilot wants) and a 'gyro' line (what the drone actually does) overlaid. With good tuning the two lines are nearly coincident and smooth. With bad tuning the gyro line oscillates around the setpoint (oscillation). When the pilot moves a slider for the P value, the oscillation is seen to decrease and increase." />
+
+<Callout type="info">
+Reading the blackbox in fine detail is an advanced topic; the goal here is to gain **intuition**: tuning is not a guessing game but a job done by measuring and observing. You want to say "the oscillation decreased on the graph" rather than "it felt better."
+</Callout>
+
+## How PID changes affect flight feel
+
+<KeyTerm en="PID">PID</KeyTerm> is the three settings that determine "how the drone corrects the difference between the motion I want and the actual motion." Very roughly, in terms of flight feel:
+
+- **P (Proportional):** How **hard** the drone responds to error. Too low P = soft, loose, "spongy" feel. Too high P = sharp, but past a point **vibration/oscillation** begins.
+- **I (Integral):** How **stubbornly** the drone holds a direction (e.g. keeping its nose steady in wind). Too low I = the drone "drifts," can't hold the requested angle. Too high I = a stiff, slow-to-recover feel.
+- **D (Derivative):** The setting that **suppresses/dampens** oscillation; it reins in P's excess. But D heats the motors, and too much of it leads to noise (and heat).
+
+<Callout type="tip">
+Intuitive summary: P is "how hard," I is "how stubbornly it holds," D is "how much it dampens oscillation." Don't think of a single value in isolation, think of the balance: often if you increase P, you also need to look at D to rein it in.
+</Callout>
+
+## The filter vs latency balance
+
+<KeyTerm en="filter">Filters</KeyTerm> clean the unwanted **noise/vibration** in the gyro and motor signals. Without filters this noise passes to the motors, causing heating and blurry video. It might sound like "the more filtering the better" — but it has a cost.
+
+<KeyTerm en="latency">Latency</KeyTerm> is the time it takes for a command/sensing to turn into an effect. Every filter, while "smoothing" the signal, adds a bit of **latency** to it. Here's the fundamental balance:
+
+- **Too heavy filtering:** Noise is cleaned well, but the drone gets "lazy," responds late to commands, the feel becomes blurry, and it can actually become more prone to oscillation.
+- **Too light filtering:** The response is sharp and lively, but since the noise isn't cleaned, the motors heat up and vibration increases.
+
+<Callout type="warning">
+The goal is not "as much filtering as possible," but **the least filtering that does the job.** Unnecessarily heavy filtering can amplify the latency/responsiveness problem you're trying to solve. If your hardware is clean (well balanced, solid), you'll need less filtering anyway.
+</Callout>
+
+<DemoPlaceholder title="The filter-latency balance" note="A two-pan scale animation: one pan holds 'noise cleaning,' the other 'low latency (lively feel).' When the user increases the amount of filtering, the scale tips toward 'cleaning' but slides as 'latency' increases; when reduced, the reverse. Highlight the 'balanced' zone in the middle." />
+
+## Progress in small steps
+
+The most important practical rule of tuning: **one thing at a time, in small steps.**
+
+1. **One variable:** Don't change P, D, and the filter at the same time. Change one thing, fly/measure, see the result.
+2. **Small step:** Don't make big jumps; test with a small change. A big step can amplify the problem without you understanding where it came from.
+3. **Save and compare:** Note which setting gave which result (and compare with blackbox). Answer "did it get better?" with data.
+4. **Be able to revert:** Back up a working setting (e.g. stock or a good ready-made tune) so you can return if things get worse.
+
+<Callout type="info">
+**Summary:** Tuning is not mandatory on every drone; the defaults are usually good. Turn to it when you see a symptom (vibration, jello, bad feel) and after first ruling out **mechanics.** Progress not blindly but by measuring with **blackbox.** P = stiffness, I = holding stubbornness, D = oscillation damping; filters clean noise but add **latency** — settle for the least filtering. Do everything **one variable at a time, in small steps**, and keep a backup so you can revert. Now a mini quiz!
+</Callout>

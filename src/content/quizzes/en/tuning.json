@@ -1,0 +1,65 @@
+{
+  "id": "tuning",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Which statement about tuning (PID/filter fine-tuning) is most correct?",
+      "options": [
+        "It's a mandatory step that must be done before flying every new drone",
+        "Modern default settings are usually good; tuning is for solving a problem or perfecting an already good flight",
+        "It's only needed on racing drones and never needed for freestyle",
+        "Tuning always slows the drone down"
+      ],
+      "answerIndex": 1,
+      "explanation": "Stock settings are already good for most drones. Tuning isn't a mandatory step done blindly, but a fine adjustment you turn to when there's a symptom/problem."
+    },
+    {
+      "id": "q2",
+      "prompt": "When you see vibration/oscillation on the drone, what should you do before starting to tune?",
+      "options": [
+        "Immediately double the P value",
+        "First rule out mechanical issues (bent/cracked prop, loose motor screw, unbalanced part, loose frame)",
+        "Change the battery",
+        "Turn off all the filters"
+      ],
+      "answerIndex": 1,
+      "explanation": "Most vibrations that look like a 'PID problem' are actually mechanical. Before trying to fix it in software, make sure the hardware is clean and solid."
+    },
+    {
+      "id": "q3",
+      "prompt": "What is the Blackbox log good for in tuning?",
+      "options": [
+        "It records the drone's video more clearly",
+        "It extends the battery's life",
+        "It logs flight data (gyro, motor output, command); so you can tune by measuring and seeing (e.g. setpoint vs gyro, vibration frequency) instead of 'feeling' it",
+        "It reduces the drone's weight"
+      ],
+      "answerIndex": 2,
+      "explanation": "Blackbox records what happened and when, thousands of times per second. This turns tuning from a guessing game into work done by measuring and observing (with data)."
+    },
+    {
+      "id": "q4",
+      "prompt": "Which statement is most correct about the trade-off between filtering and latency?",
+      "options": [
+        "The more filters you add, the better the drone flies",
+        "Filters have no cost",
+        "Every filter cleans up noise but adds latency to the signal; the goal isn't the most filtering, but the least filtering that gets the job done",
+        "Filters only affect video quality, not flight"
+      ],
+      "answerIndex": 2,
+      "explanation": "Filtering cleans up noise, but every filter adds a little latency and can make the drone feel sluggish. The goal is enough cleanup with as little filtering as possible."
+    },
+    {
+      "id": "q5",
+      "prompt": "What is the practical approach to follow when tuning?",
+      "options": [
+        "Changing P, I, D, and filters together in big steps at the same time",
+        "Changing one variable at a time in small steps and testing; logging the results and keeping a backup to revert to",
+        "Cranking all values to maximum without testing anything",
+        "Making one change and never touching it again"
+      ],
+      "answerIndex": 1,
+      "explanation": "Change one thing at a time in small steps; test each change and compare (with Blackbox), and back up a working tune so you can revert if it gets worse."
+    }
+  ]
+}

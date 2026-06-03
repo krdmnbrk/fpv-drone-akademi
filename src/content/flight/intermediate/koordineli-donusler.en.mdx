@@ -1,0 +1,62 @@
+---
+id: koordineli-donusler
+track: flight
+level: intermediate
+order: 2
+title: "Coordinated turns"
+summary: "Compares turning with roll versus turning with yaw; teaches how to combine the two with throttle to draw a smooth, controlled circle."
+estimatedMinutes: 12
+objectives:
+  - "Be able to explain the difference between turning with roll and turning with yaw"
+  - "Be able to draw a smooth circle by combining roll, yaw, and throttle"
+  - "Understand why you need to add throttle during a turn"
+prerequisites: ["stabil-hover-yaw"]
+quizId: koordineli-donusler
+---
+
+You've learned to yaw in place. Now let's tackle turning while flying **forward** — that is, drawing a real **circle.** There are two different "turning" methods here, and good pilots **combine** them.
+
+## Turning with roll vs turning with yaw
+
+There are two ways to turn a drone while it's moving forward:
+
+- **Turning with yaw:** You only turn the nose. The drone rotates almost in place; it's a very tight turn but one that feels **slow and "skiddy."** Used on its own, the drone slides sideways (sideslip).
+- **Turning with roll:** You **lean** the drone (bank it) in the direction you want to turn. Just like an airplane or a motorcycle leaning into a corner. With forward speed, roll makes the drone draw a **wide arc** in that direction.
+
+A <KeyTerm en="coordinated turn">coordinated turn</KeyTerm> uses both together: you **lean with roll** to start the turn, and **with yaw** you turn the nose into the direction of the turn so the drone doesn't slide sideways. The result: the drone draws a smooth circle with its nose always pointing where it's going.
+
+<Callout type="info">
+An intuitive distinction: **roll** sets the *radius* of the turn (how wide it goes), while **yaw** *aligns* the nose (keeps the drone facing where it's going). Yaw only = tight but skiddy; roll only = wide but the nose points sideways; both together = a clean circle.
+</Callout>
+
+## Throttle management in a turn
+
+Here's the critical point new pilots miss: **when the drone banks, it loses altitude.**
+
+Why? In a hover, the propellers direct all of their thrust **upward**. When the drone banks (leans over), part of that thrust now goes sideways; the part remaining upward decreases. It's no longer enough to overcome gravity, and the drone starts to descend.
+
+The solution is simple: **add a bit of throttle as you enter the turn.** A little more throttle as the bank angle increases; ease the throttle back as you come out of the turn and level off. This small throttle addition keeps the circle at a level altitude.
+
+<Callout type="warning">
+If you forget this, your turns become a "downward-spiraling" spiral — the drone loses altitude on every turn. In hard (steep) banks the altitude loss is very fast. So at first, work with **gentle, shallow** turns.
+</Callout>
+
+## Drawing a smooth circle
+
+The command that combines it all is three small inputs at the same time:
+
+1. **Roll** — lean the drone slightly into the direction of the turn (sets the radius).
+2. **Yaw** — turn the nose into the direction of the turn to prevent sliding.
+3. **Throttle** — add a bit to compensate for the altitude loss caused by the bank.
+
+These should be **smooth and simultaneous**, not abrupt. The goal is for the drone to draw a single fluid arc without jerking the sticks.
+
+<DemoPlaceholder title="Coordinated circle" note="Top-down view of a drone drawing a circle. Three thin stick indicators: roll (bank), yaw (nose alignment), throttle (altitude compensation). First, with only yaw selected the drone turns tightly and skiddily; with only roll selected it turns wide but the nose points sideways and the drone descends; with all three combined the nose stays tangent to the path, the altitude stays steady, and a clean circle emerges." />
+
+<Callout type="tip">
+To practice, pick an imaginary circle on the ground (or in the simulator) and try to keep the drone on that line. Big and slow circles first; as your control improves, make the circle smaller and faster. Work both clockwise and counterclockwise — one will feel easier, so deliberately practice your weak side.
+</Callout>
+
+<Callout type="info">
+**Summary:** A yaw turn is tight but skiddy; a roll turn is wide but the nose points sideways and you lose altitude. A coordinated turn combines the two and compensates for the bank's altitude loss **by adding throttle.** The result: a smooth circle at a steady altitude with the nose always pointing along the path. Now a mini quiz!
+</Callout>

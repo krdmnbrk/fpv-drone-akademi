@@ -1,0 +1,65 @@
+{
+  "id": "stabil-hover-yaw",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "What does a yaw input make a drone do?",
+      "options": [
+        "Rotates the drone in place around its vertical axis (the nose turns left/right)",
+        "Translates the drone sideways",
+        "Moves the drone up/down",
+        "Tilts the drone forward/backward"
+      ],
+      "answerIndex": 0,
+      "explanation": "Yaw rotates the drone around a vertical axis; its position doesn't change, only the direction the nose points. Just like spinning in place on the spot."
+    },
+    {
+      "id": "q2",
+      "prompt": "What is the key difference between roll and yaw?",
+      "options": [
+        "Roll rotates the drone, yaw moves it sideways",
+        "Roll tilts/translates the drone sideways, while yaw rotates the drone in place",
+        "They are exactly the same thing",
+        "Roll controls throttle, yaw controls altitude"
+      ],
+      "answerIndex": 1,
+      "explanation": "Roll banks the drone and moves it sideways; yaw turns the nose and rotates the drone in place. Both feel like 'left-right,' but they do different things."
+    },
+    {
+      "id": "q3",
+      "prompt": "On a standard Mode 2 radio, which movement controls yaw?",
+      "options": [
+        "Up/down movement of the right stick",
+        "Left/right movement of the right stick",
+        "Left/right movement of the left stick",
+        "Up/down movement of the left stick"
+      ],
+      "answerIndex": 2,
+      "explanation": "In Mode 2, yaw is the left/right movement of the left stick. The up/down of that same left stick controls throttle."
+    },
+    {
+      "id": "q4",
+      "prompt": "What is the most common mistake new pilots make when yawing?",
+      "options": [
+        "Installing the propellers incorrectly",
+        "Connecting the battery backwards",
+        "Accidentally touching the throttle, which is on the same stick as yaw, and disturbing altitude",
+        "Forgetting to take off the goggles"
+      ],
+      "answerIndex": 2,
+      "explanation": "Because yaw and throttle are on the same (left) stick, it's very common to accidentally move the stick up/down while turning the nose, touching the throttle and losing altitude."
+    },
+    {
+      "id": "q5",
+      "prompt": "Why do the controls get harder when the drone's nose turns toward you?",
+      "options": [
+        "Because the controls feel reversed: when the drone faces you, your right is the drone's left",
+        "Because the battery drains faster",
+        "Because yaw stops working",
+        "Because the throttle shuts off automatically"
+      ],
+      "answerIndex": 0,
+      "explanation": "When the nose points at you, the drone's orientation is opposite to yours, so roll/pitch inputs feel reversed. That's why you should take small steps and practice in a simulator first."
+    }
+  ]
+}

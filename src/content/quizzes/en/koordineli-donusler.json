@@ -1,0 +1,65 @@
+{
+  "id": "koordineli-donusler",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "What is the typical problem with turning using yaw only (just turning the nose)?",
+      "options": [
+        "The drone climbs very quickly",
+        "The turn is very tight but slow and 'sloppy'; the drone slides sideways",
+        "The drone doesn't turn at all",
+        "The propellers spin in reverse"
+      ],
+      "answerIndex": 1,
+      "explanation": "Yaw alone rotates the drone almost in place; it gives a tight but slow turn that sideslips. That's why it's combined with roll."
+    },
+    {
+      "id": "q2",
+      "prompt": "What does turning with roll (banking) make the drone do?",
+      "options": [
+        "Banks the drone into the direction of the turn and, with forward speed, carves a wide arc (like an airplane)",
+        "Only turns the nose without changing position",
+        "Lifts the drone straight up vertically",
+        "Stops the motors"
+      ],
+      "answerIndex": 0,
+      "explanation": "Roll banks the drone into the direction you want to turn; with forward speed, this carves the drone into a wide arc, just like an airplane banking into a turn."
+    },
+    {
+      "id": "q3",
+      "prompt": "What does a coordinated turn mean?",
+      "options": [
+        "Turning by applying throttle only",
+        "Banking with roll to start the turn and using yaw to align the nose with the turn direction to prevent sideslip",
+        "Stopping the propellers one by one",
+        "Keeping the drone perfectly level and sliding it sideways"
+      ],
+      "answerIndex": 1,
+      "explanation": "In a coordinated turn, roll starts the turn (sets the radius) and yaw aligns the nose with the direction of travel; so the drone carves a clean circle with its nose on the path, without sliding sideways."
+    },
+    {
+      "id": "q4",
+      "prompt": "Why does the drone lose altitude when it banks into a turn?",
+      "options": [
+        "Because the battery weakens",
+        "Because the propellers slow down",
+        "Because part of the thrust now goes sideways, and the remaining upward part isn't enough to overcome gravity",
+        "Because air resistance disappears"
+      ],
+      "answerIndex": 2,
+      "explanation": "In a hover, thrust is entirely upward. When the drone banks, part of the thrust points sideways; the upward component decreases, and when it's no longer enough to overcome gravity, the drone descends."
+    },
+    {
+      "id": "q5",
+      "prompt": "What do you need to do in a turn to carve a smooth, constant-altitude circle?",
+      "options": [
+        "Cut the throttle completely",
+        "Add a little throttle during the turn to compensate for the altitude loss caused by banking",
+        "Use yaw only and never use roll",
+        "Move the sticks as hard and abruptly as possible"
+      ],
+      "answerIndex": 1,
+      "explanation": "Because the bank angle causes altitude loss, you add a little throttle as you enter the turn and ease it back as you level out. This keeps the circle at a constant altitude."
+    }
+  ]
+}
