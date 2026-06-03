@@ -1,5 +1,7 @@
 # FPV Drone Academy (FPV Drone Akademi)
 
+**🚀 Live demo: https://krdmnbrk.github.io/fpv-drone-akademi/**
+
 An interactive, animated learning platform that takes a complete beginner to an
 advanced FPV pilot. Two tracks:
 
