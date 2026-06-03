@@ -13,6 +13,7 @@ export const en: Translation = {
     backToHome: 'Back to home',
     minutesShort: 'min',
     dismiss: 'Dismiss',
+    cancel: 'Cancel',
   },
   safety: {
     bannerLabel: 'Safety notice',

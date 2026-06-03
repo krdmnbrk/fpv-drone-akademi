@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getFlightLessonTitle, getPart, hardwareParts } from '@/content';
@@ -79,20 +79,45 @@ export function HardwareExplorer() {
   const [searchParams, setSearchParams] = useSearchParams();
   const reducedMotion = usePrefersReducedMotion();
 
-  const [selectedId, setSelectedId] = useState<string | null>(() => searchParams.get('part'));
+  // Only accept a deep-linked part id that actually exists.
+  const [selectedId, setSelectedId] = useState<string | null>(() => {
+    const param = searchParams.get('part');
+    return param && getPart(param) ? param : null;
+  });
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const detailRef = useRef<HTMLDivElement>(null);
 
   const webglAvailable = useMemo(() => hasWebGL(), []);
   const show3D = webglAvailable;
   const selectedPart = selectedId ? getPart(selectedId) : undefined;
 
-  // Reflect deep links such as /hardware?part=esc.
+  // Reflect deep links such as /hardware?part=esc; ignore and scrub unknown ids
+  // so the UI never shows a "selected" state with no matching part.
   useEffect(() => {
     const param = searchParams.get('part');
-    if (param && param !== selectedId) {
-      setSelectedId(param);
+    if (!param) return;
+    if (getPart(param)) {
+      if (param !== selectedId) setSelectedId(param);
+    } else {
+      const next = new URLSearchParams(searchParams);
+      next.delete('part');
+      setSearchParams(next, { replace: true });
     }
-  }, [searchParams, selectedId]);
+  }, [searchParams, selectedId, setSearchParams]);
+
+  // Bring the detail panel into view when a part is selected — mainly helps on
+  // small screens where the detail sits well below the list. `block: 'nearest'`
+  // keeps it a no-op when the panel is already visible (e.g. desktop).
+  useEffect(() => {
+    const el = detailRef.current;
+    if (selectedPart && el && typeof el.scrollIntoView === 'function') {
+      try {
+        el.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'nearest' });
+      } catch {
+        /* jsdom / older browsers: no-op */
+      }
+    }
+  }, [selectedId, selectedPart, reducedMotion]);
 
   const handleSelect = (id: string) => {
     setSelectedId(id);
@@ -174,7 +199,7 @@ export function HardwareExplorer() {
         <div>
           <div className="flex items-baseline justify-between gap-3">
             <h2 className="text-lg font-semibold text-white">{t('hardware.partsHeading')}</h2>
-            {selectedId && (
+            {selectedPart && (
               <button
                 type="button"
                 onClick={handleDeselect}
@@ -211,7 +236,7 @@ export function HardwareExplorer() {
         </div>
       </div>
 
-      <div className="mt-6">
+      <div className="mt-6" ref={detailRef}>
         {selectedPart ? (
           <PartDetail part={selectedPart} />
         ) : (

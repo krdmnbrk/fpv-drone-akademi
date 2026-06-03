@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
@@ -19,11 +20,54 @@ export function ProgressPage() {
   const pct = overallProgressPct(completed, total);
   const earnedCount = badgeDefinitions.filter((badge) => badges[badge.id]).length;
 
-  const handleReset = () => {
-    if (window.confirm(t('progress.resetConfirm'))) {
-      state.resetProgress();
-    }
+  const [confirmOpen, setConfirmOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const cancelRef = useRef<HTMLButtonElement>(null);
+  const confirmRef = useRef<HTMLButtonElement>(null);
+
+  // Focus the confirm button when the dialog opens.
+  useEffect(() => {
+    if (confirmOpen) confirmRef.current?.focus();
+  }, [confirmOpen]);
+
+  const closeConfirm = () => {
+    setConfirmOpen(false);
+    triggerRef.current?.focus(); // restore focus to the trigger
   };
+
+  const confirmReset = () => {
+    state.resetProgress();
+    closeConfirm();
+  };
+
+  // While the dialog is open: Esc dismisses, and Tab is trapped between the two
+  // buttons. Handled at the document level so it works regardless of focus.
+  useEffect(() => {
+    if (!confirmOpen) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setConfirmOpen(false);
+        triggerRef.current?.focus();
+        return;
+      }
+      if (event.key === 'Tab') {
+        const first = cancelRef.current;
+        const last = confirmRef.current;
+        if (!first || !last) return;
+        const active = document.activeElement;
+        if (event.shiftKey && active === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && active === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [confirmOpen]);
 
   return (
     <Container className="py-12">
@@ -124,9 +168,47 @@ export function ProgressPage() {
         </ul>
       </section>
 
-      <Button variant="secondary" className="mt-12" onClick={handleReset}>
+      <Button
+        ref={triggerRef}
+        variant="secondary"
+        className="mt-12"
+        onClick={() => setConfirmOpen(true)}
+      >
         {t('progress.reset')}
       </Button>
+
+      {confirmOpen && (
+        <div
+          className="fixed inset-0 z-[200] grid place-items-center bg-black/60 p-4 backdrop-blur-sm"
+          role="presentation"
+          onClick={(event) => {
+            if (event.target === event.currentTarget) closeConfirm();
+          }}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="reset-dialog-title"
+            aria-describedby="reset-dialog-desc"
+            className="w-full max-w-sm rounded-2xl border border-white/10 bg-brand-900 p-6 shadow-xl"
+          >
+            <h2 id="reset-dialog-title" className="text-lg font-semibold text-white">
+              {t('progress.reset')}
+            </h2>
+            <p id="reset-dialog-desc" className="mt-2 text-sm text-brand-200">
+              {t('progress.resetConfirm')}
+            </p>
+            <div className="mt-6 flex justify-end gap-3">
+              <Button ref={cancelRef} variant="secondary" onClick={closeConfirm}>
+                {t('common.cancel')}
+              </Button>
+              <Button ref={confirmRef} variant="primary" onClick={confirmReset}>
+                {t('progress.reset')}
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </Container>
   );
 }

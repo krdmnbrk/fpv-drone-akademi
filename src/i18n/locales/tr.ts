@@ -10,6 +10,7 @@ export const tr = {
     backToHome: 'Ana sayfaya dön',
     minutesShort: 'dk',
     dismiss: 'Kapat',
+    cancel: 'İptal',
   },
   safety: {
     bannerLabel: 'Güvenlik uyarısı',
